@@ -6,6 +6,7 @@
 package Interface;
 
 import Business.Account;
+import Business.AccountDirectory;
 import java.awt.CardLayout;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -20,6 +21,7 @@ public class ViewAccountJPanel extends javax.swing.JPanel {
     /* Initialize variables to use */
     private JPanel userProcessContainer;
     private Account account;
+    private AccountDirectory accountDirectory;
     /**
      * Creates new form ViewAccountJPanel
      */
@@ -166,6 +168,8 @@ public class ViewAccountJPanel extends javax.swing.JPanel {
         userProcessContainer.remove(this);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
+        ManageAccountJPanel manageJpanel = new ManageAccountJPanel(userProcessContainer,accountDirectory);
+        manageJpanel.populateTable();
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed

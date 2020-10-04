@@ -225,7 +225,7 @@ public class ManageAccountJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtAccountNumber;
     // End of variables declaration//GEN-END:variables
 
-    private void populateTable() {
+    void populateTable() {
         /* This function l.oads all the account details from the account array list and ashpows in table */
         DefaultTableModel dtm = (DefaultTableModel) tblAccounts.getModel();
         dtm.setRowCount(0);
