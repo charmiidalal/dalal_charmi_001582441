@@ -8,6 +8,8 @@ package Interface;
 import Business.Account;
 import Business.AccountDirectory;
 import java.awt.CardLayout;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -163,10 +165,27 @@ public class CreateAccountJPanel extends javax.swing.JPanel {
     private void btnCreateAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateAccountActionPerformed
         // TODO add your handling code here
         /* Check if all the fields are not empty */
+        Pattern pattern1 = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
+        Matcher matchAccNum = pattern1.matcher(txtAccountNumber.getText());
+        boolean checkAccNum = matchAccNum.find();
+        Matcher matchRoutNum = pattern1.matcher(txtRoutingNumber.getText());
+        boolean checkRoutingNum = matchRoutNum.find();
+        Matcher matchBankName = pattern1.matcher(txtBankName.getText());
+        boolean checkBankName = matchBankName.find();
         if(txtAccountNumber.getText().equals("") || txtRoutingNumber.getText().equals("")
            || txtBankName.getText().equals("") || txtBalance.getText().equals(""))
         {
             JOptionPane.showMessageDialog(null, "Please fill out all fields.");
+        }else if(checkAccNum ||  checkRoutingNum || checkBankName || txtAccountNumber.getText().matches("^[a-zA-Z]*$") 
+           || txtRoutingNumber.getText().matches("^[a-zA-Z]*$")){
+            JOptionPane.showMessageDialog(null, "Please enter only alphanumeric "
+            + "value in Routing Number, Account Number and Bank Name!");
+        }else if(txtBankName.getText().matches("[0-9]+")){
+            JOptionPane.showMessageDialog(null, "Please enter only alphabet "
+            + "value Bank Name!");
+        }
+        else if(!txtBalance.getText().matches("[0-9]+")){
+            JOptionPane.showMessageDialog(null, "Please enter valid balance!");
         }
         else
         {
