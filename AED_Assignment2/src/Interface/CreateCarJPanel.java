@@ -9,6 +9,7 @@ import Business.CarCatalog;
 import java.awt.CardLayout;
 import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,6 +31,9 @@ public class CreateCarJPanel extends javax.swing.JPanel {
         initComponents();
         this.menuContainer = menuContainer;
         this.carCatalog = carCatalog;
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("E, MMM dd yyyy HH:mm:ss");
+        String currDate = simpleDateFormat.format(new Date());
+        txtDateTimeAvailable.setText(currDate);
     }
 
     /**
@@ -268,11 +272,12 @@ public class CreateCarJPanel extends javax.swing.JPanel {
                             .addComponent(txtSerialNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblSerialNo))))
                 .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblIsExpired)
-                    .addComponent(txtCityName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCityName)
-                    .addComponent(checkBoxIsExpired))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(checkBoxIsExpired)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblIsExpired)
+                        .addComponent(txtCityName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblCityName)))
                 .addGap(60, 60, 60)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSaveCar)
@@ -341,9 +346,10 @@ public class CreateCarJPanel extends javax.swing.JPanel {
 
             car.setCarName(txtCarName.getText());
             car.setCity(txtCityName.getText());
-            try {  
-                Date d = DateFormat.getDateInstance().parse(txtDateTimeAvailable.getText());
-                car.setTimeAvailable(d);
+            try { 
+                SimpleDateFormat formatter5=new SimpleDateFormat("E, MMM dd yyyy HH:mm:ss");  
+                //Date d = DateFormat.getDateInstance().parse(txtDateTimeAvailable.getText());
+                car.setTimeAvailable(formatter5.parse(txtDateTimeAvailable.getText()));
             } catch (ParseException ex) {
                 Logger.getLogger(CreateCarJPanel.class.getName()).log(Level.SEVERE, null, ex);
             }

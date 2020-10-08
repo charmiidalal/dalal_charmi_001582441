@@ -28,8 +28,8 @@ import static javafx.scene.input.KeyCode.T;
  */
 public class UserJFrame extends javax.swing.JFrame {
     /* Initialize Car Catalog object variable */
-    private CarCatalog carCatalog;
-    private CarCatalog resultCatalog;
+    private final CarCatalog carCatalog;
+    private final CarCatalog resultCatalog;
     /**
      * Creates new form UserJPanel1
      */
@@ -40,13 +40,15 @@ public class UserJFrame extends javax.swing.JFrame {
         this.carCatalog = new CarCatalog();
         this.resultCatalog = new CarCatalog();
         this.resultCatalog.setCarList(new ArrayList<Car>());
+        /* Show when last catalog was updated */
         carCatalog.getLastUpdated();
         lblLastUpdated.setText("Last Fleet Updated On: "+ carCatalog.getLastUpdated());
     }
-    
+    /* This function shows filtered data by users */
     void showTable()
     {
         DefaultTableModel dtm = (DefaultTableModel) tblCars.getModel();
+        /* CHeck if any specific matches are found */
         if(resultCatalog.getCarList().size() == 0){
             JOptionPane.showMessageDialog(null, "No such cars found!");
             dtm.setRowCount(0);
@@ -69,7 +71,7 @@ public class UserJFrame extends javax.swing.JFrame {
             }
         }
     }
-    
+    /* Check if user has added value in serach box before searching */
     Boolean checkNullTextbox(){
         Boolean flag = true;
         if(globalSearchBox.getText().trim().equals("")){
@@ -79,6 +81,7 @@ public class UserJFrame extends javax.swing.JFrame {
         return flag;
     }
     
+    /* Check if user has added value in serach box before searching */
     Boolean checkSeatTextbox(){
         Boolean flag = true;
         if(globalSearchBox.getText().trim().equals(null)){
@@ -376,6 +379,7 @@ public class UserJFrame extends javax.swing.JFrame {
 
     private void btnListExpiredCarsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListExpiredCarsActionPerformed
         // TODO add your handling code here:
+        /* This method finds the car whose licenses are expired */
         this.resultCatalog.setCarList(new ArrayList<Car>());
         for(Car car:carCatalog.getCarList())
         {
@@ -389,6 +393,7 @@ public class UserJFrame extends javax.swing.JFrame {
  
     private void btnFindCarBySeatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindCarBySeatActionPerformed
         // TODO add your handling code here:
+        /* This method finds the car with the min and max seats */
         if(checkSeatTextbox()){
             this.resultCatalog.setCarList(new ArrayList<Car>());
             int minSeat = Integer.parseInt(txtMinSeat.getText());
@@ -410,6 +415,7 @@ public class UserJFrame extends javax.swing.JFrame {
 
     private void btnListCarByModelNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListCarByModelNoActionPerformed
         // TODO add your handling code here:
+        /*List cars by model no provided in serachbox */
         if(checkNullTextbox()){
             this.resultCatalog.setCarList(new ArrayList<Car>());
             String modelNo = globalSearchBox.getText();
@@ -426,6 +432,7 @@ public class UserJFrame extends javax.swing.JFrame {
 
     private void listByManufactureYearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listByManufactureYearActionPerformed
         // TODO add your handling code here:
+        /* List cars by manufacture years mentioned in serach box */
         if(checkNullTextbox()){
             this.resultCatalog.setCarList(new ArrayList<Car>());
             int listByManufactureYear = Integer.parseInt(globalSearchBox.getText());
@@ -442,12 +449,13 @@ public class UserJFrame extends javax.swing.JFrame {
 
     private void listCarByCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listCarByCityActionPerformed
         // TODO add your handling code here:
+        /* List cars by the cities */
         if(checkNullTextbox()){
             this.resultCatalog.setCarList(new ArrayList<Car>());
             String cityName = globalSearchBox.getText();
             for(Car car:carCatalog.getCarList())
             {
-                if(car.getCity() == cityName)
+                if(car.getCity().equals(cityName))
                 {
                     this.resultCatalog.addCar(car);
                 } 
@@ -458,7 +466,9 @@ public class UserJFrame extends javax.swing.JFrame {
 
     private void listCarByManufactureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listCarByManufactureActionPerformed
         // TODO add your handling code here:
+        /* List car by the manufacturer's name */
         if(checkNullTextbox()){
+            this.resultCatalog.setCarList(new ArrayList<Car>());
             String manufactureName = globalSearchBox.getText();
             for(Car car:carCatalog.getCarList())
             {
@@ -473,6 +483,7 @@ public class UserJFrame extends javax.swing.JFrame {
 
     private void btnListCarBySerialNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListCarBySerialNoActionPerformed
         // TODO add your handling code here:
+        /* Lists car by the serial no */
         if(checkNullTextbox()){
             this.resultCatalog.setCarList(new ArrayList<Car>());
             String serialNo = globalSearchBox.getText();
@@ -489,6 +500,7 @@ public class UserJFrame extends javax.swing.JFrame {
 
     private void btnFindAvailableCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindAvailableCarActionPerformed
         // TODO add your handling code here:
+        /* This method finds car which are available right now */
         this.resultCatalog.setCarList(new ArrayList<Car>());
         for(Car car:carCatalog.getCarList())
         {
@@ -502,6 +514,7 @@ public class UserJFrame extends javax.swing.JFrame {
 
     private void btnFindUnavailableCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindUnavailableCarActionPerformed
         // TODO add your handling code here:
+        /* This method finds car which are not available yet */
         this.resultCatalog.setCarList(new ArrayList<Car>());
         for(Car car:carCatalog.getCarList())
         {
@@ -537,36 +550,32 @@ public class UserJFrame extends javax.swing.JFrame {
     
     private void btnFindCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindCarActionPerformed
         // TODO add your handling code here:
+        /* Find car which is available in nearest time */
         Date date = new Date() ;
         SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm") ;
-        this.resultCatalog.setCarList(new ArrayList<Car>());
-        List<Date> dates = new ArrayList<Date>();
+        this.resultCatalog.setCarList(new ArrayList<>());
+        List<Date> dates = new ArrayList<>();
         for(Car car:carCatalog.getCarList())
         { 
             try {
-                if(!dateFormat.parse(dateFormat.format(date)).after(dateFormat.parse(car.getTimeAvailable())))
+                if(!dateFormat.parse(dateFormat.format(date)).after(dateFormat.parse(car.getTimeAvailable())) &&
+                   car.isIsAvailable())
                 {
                     this.resultCatalog.addCar(car);
                     dates.add(dateFormat.parse(car.getTimeAvailable()));
-//                    for(Car carAdded: this.resultCatalog.getCarList())
-//                    {
-//                        if(dateFormat.parse(car.getTimeAvailable()).after(dateFormat.parse(carAdded.getTimeAvailable()))){
-//                            this.resultCatalog.deleteCar(car);
-//                        }
-//                    }
                 }
                 
             } catch (ParseException ex) {
                 Logger.getLogger(UserJFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        /* SOrt the dates array and get the car which is first available */
         Collections.sort(resultCatalog.getCarList(), new Comparator<Car>() {
-
-        public int compare(Car o1, Car o2) {
-            // compare two instance of `Score` and return `int` as result.
-            return o1.getTimeAvailable().compareTo(o2.getTimeAvailable());
-        }
-    });
+            public int compare(Car o1, Car o2) {
+                // compare two instance of `Score` and return `int` as result.
+                return o1.getTimeAvailable().compareTo(o2.getTimeAvailable());
+            }
+        });
         Car firstAvailable = resultCatalog.getCarList().get(0);
         ArrayList<Car> nl = new ArrayList<Car>();
         nl.add(firstAvailable);
