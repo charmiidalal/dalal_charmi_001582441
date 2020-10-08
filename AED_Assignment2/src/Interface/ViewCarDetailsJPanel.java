@@ -169,6 +169,7 @@ public class ViewCarDetailsJPanel extends javax.swing.JPanel {
             }
         });
 
+        txtSerialNo.setEditable(false);
         txtSerialNo.setBackground(new java.awt.Color(153, 153, 153));
         txtSerialNo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -188,6 +189,7 @@ public class ViewCarDetailsJPanel extends javax.swing.JPanel {
         lblIsAvailable.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblIsAvailable.setText("Is Available:");
 
+        txtDateTimeAvailable.setEditable(false);
         txtDateTimeAvailable.setBackground(new java.awt.Color(153, 153, 153));
         txtDateTimeAvailable.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

@@ -142,7 +142,7 @@ public class MainJframe extends javax.swing.JFrame {
         try {
             // TODO add your handling code here:
             /* Onclick of Admin section, Open User related options */
-            new UserJFrame().setVisible(true);
+            new UserJFrame(carCatalog).setVisible(true);
         } catch (IOException | ParseException ex) {
             Logger.getLogger(MainJframe.class.getName()).log(Level.SEVERE, null, ex);
         }

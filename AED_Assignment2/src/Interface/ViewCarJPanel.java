@@ -230,17 +230,21 @@ public class ViewCarJPanel extends javax.swing.JPanel {
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
         /* Check if valid car num exists */
-        Car result = carCatalog.searchAccount(txtCarSerialNo.getText());
-        if(result == null){
-            JOptionPane.showMessageDialog(null, "Car Serial Number you entered does not exist.","Information",JOptionPane.INFORMATION_MESSAGE);
-        }
-        else
-        {
-            /* if serial number is there then go to view details jpanel */
-            ViewCarDetailsJPanel panel = new ViewCarDetailsJPanel(menuContainer, result);
-            menuContainer.add("ViewAccountJPanel",panel);
-            CardLayout layout = (CardLayout) menuContainer.getLayout();
-            layout.next(menuContainer);
+        if(txtCarSerialNo.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Please enter the serach value first!","Information",JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            Car result = carCatalog.searchAccount(txtCarSerialNo.getText());
+            if(result == null){
+                JOptionPane.showMessageDialog(null, "Car Serial Number you entered does not exist.","Information",JOptionPane.INFORMATION_MESSAGE);
+            }
+            else
+            {
+                /* if serial number is there then go to view details jpanel */
+                ViewCarDetailsJPanel panel = new ViewCarDetailsJPanel(menuContainer, result);
+                menuContainer.add("ViewAccountJPanel",panel);
+                CardLayout layout = (CardLayout) menuContainer.getLayout();
+                layout.next(menuContainer);
+            }
         }
     }//GEN-LAST:event_btnSearchActionPerformed
     
