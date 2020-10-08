@@ -5,11 +5,10 @@
  */
 package Interface;
 /* Import Card Layout & Exception log libraries */
-import Business.Car;
 import Business.CarCatalog;
 import java.awt.CardLayout;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,16 +19,15 @@ import java.util.logging.Logger;
 public class MainJframe extends javax.swing.JFrame {
     
     /* Initialize Car Catalog object variable */
-    private CarCatalog carCatalog;
-    private CarCatalog resultCatalog;
+    private final CarCatalog carCatalog;
+    
     /**
      * Creates new form MainJframe
      */
-    public MainJframe() throws IOException {
+    public MainJframe() throws IOException, ParseException {
         initComponents();
         /* Initialize object of Car Catalog */
-        this.carCatalog = new CarCatalog();
-        
+        this.carCatalog = new CarCatalog();   
     }
 
     /**
@@ -52,7 +50,12 @@ public class MainJframe extends javax.swing.JFrame {
 
         SplitPane.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
+        topJPanel.setBackground(new java.awt.Color(51, 51, 51));
+        topJPanel.setPreferredSize(new java.awt.Dimension(896, 200));
+
+        lblWelcome.setBackground(new java.awt.Color(0, 0, 0));
         lblWelcome.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        lblWelcome.setForeground(new java.awt.Color(255, 255, 255));
         lblWelcome.setText("Welcome to Uber");
 
         btnAdmin.setText("Admin");
@@ -83,7 +86,7 @@ public class MainJframe extends javax.swing.JFrame {
                         .addComponent(btnAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(214, 214, 214)
                         .addComponent(btnUser, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(246, Short.MAX_VALUE))
+                .addContainerGap(234, Short.MAX_VALUE))
         );
         topJPanelLayout.setVerticalGroup(
             topJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -99,6 +102,7 @@ public class MainJframe extends javax.swing.JFrame {
 
         SplitPane.setLeftComponent(topJPanel);
 
+        menuContainer.setBackground(new java.awt.Color(255, 255, 255));
         menuContainer.setLayout(new java.awt.CardLayout());
         SplitPane.setRightComponent(menuContainer);
 
@@ -106,19 +110,19 @@ public class MainJframe extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 912, Short.MAX_VALUE)
+            .addGap(0, 900, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(SplitPane)
+                    .addComponent(SplitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 888, Short.MAX_VALUE)
                     .addContainerGap()))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 578, Short.MAX_VALUE)
+            .addGap(0, 600, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addComponent(SplitPane)
+                    .addComponent(SplitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 594, Short.MAX_VALUE)
                     .addContainerGap()))
         );
 
@@ -139,7 +143,7 @@ public class MainJframe extends javax.swing.JFrame {
             // TODO add your handling code here:
             /* Onclick of Admin section, Open User related options */
             new UserJFrame().setVisible(true);
-        } catch (IOException ex) {
+        } catch (IOException | ParseException ex) {
             Logger.getLogger(MainJframe.class.getName()).log(Level.SEVERE, null, ex);
         }
         this.dispose();//to close the current jframe
@@ -173,13 +177,11 @@ public class MainJframe extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    new MainJframe().setVisible(true);
-                } catch (IOException ex) {
-                    Logger.getLogger(MainJframe.class.getName()).log(Level.SEVERE, null, ex);
-                }
+        java.awt.EventQueue.invokeLater(() -> {
+            try {
+                new MainJframe().setVisible(true);
+            } catch (IOException | ParseException ex) {
+                Logger.getLogger(MainJframe.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
     }

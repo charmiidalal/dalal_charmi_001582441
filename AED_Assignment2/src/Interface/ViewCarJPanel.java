@@ -18,8 +18,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ViewCarJPanel extends javax.swing.JPanel {
     /* Initialize variables of card layout */
-    private JPanel menuContainer;
-    private CarCatalog carCatalog;
+    private final JPanel menuContainer;
+    private final CarCatalog carCatalog;
     /**
      * Creates new form ViewCarJPanel
      */
@@ -44,25 +44,38 @@ public class ViewCarJPanel extends javax.swing.JPanel {
         btnBack = new javax.swing.JButton();
         btnDeleteCar = new javax.swing.JButton();
         btnViewDetails = new javax.swing.JButton();
-        txtCarModelNo = new javax.swing.JTextField();
+        txtCarSerialNo = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
+        lblCarDetails = new javax.swing.JLabel();
+        lblModelNo = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(255, 255, 255));
 
         tblCars.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         tblCars.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Car Name", "Model No", "Is Available", "City"
+                "Car Name", "Model No", "Is Available", "City", "Serial No", "Mf Name", "Mf Year", "Is Expired", "Seat Available", "Available Time"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, true, true, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tblCars);
 
-        btnBack.setBackground(new java.awt.Color(204, 204, 204));
+        btnBack.setBackground(new java.awt.Color(51, 51, 51));
         btnBack.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        btnBack.setForeground(new java.awt.Color(255, 255, 255));
         btnBack.setText("< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,8 +83,9 @@ public class ViewCarJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnDeleteCar.setBackground(new java.awt.Color(204, 204, 204));
+        btnDeleteCar.setBackground(new java.awt.Color(51, 51, 51));
         btnDeleteCar.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        btnDeleteCar.setForeground(new java.awt.Color(255, 255, 255));
         btnDeleteCar.setText("Delete Car");
         btnDeleteCar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,8 +93,9 @@ public class ViewCarJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnViewDetails.setBackground(new java.awt.Color(204, 204, 204));
+        btnViewDetails.setBackground(new java.awt.Color(51, 51, 51));
         btnViewDetails.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        btnViewDetails.setForeground(new java.awt.Color(255, 255, 255));
         btnViewDetails.setText("View Details");
         btnViewDetails.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,14 +103,17 @@ public class ViewCarJPanel extends javax.swing.JPanel {
             }
         });
 
-        txtCarModelNo.addActionListener(new java.awt.event.ActionListener() {
+        txtCarSerialNo.setBackground(new java.awt.Color(51, 51, 51));
+        txtCarSerialNo.setForeground(new java.awt.Color(255, 255, 255));
+        txtCarSerialNo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCarModelNoActionPerformed(evt);
+                txtCarSerialNoActionPerformed(evt);
             }
         });
 
-        btnSearch.setBackground(new java.awt.Color(204, 204, 204));
+        btnSearch.setBackground(new java.awt.Color(51, 51, 51));
         btnSearch.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        btnSearch.setForeground(new java.awt.Color(255, 255, 255));
         btnSearch.setText("Search");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,44 +121,59 @@ public class ViewCarJPanel extends javax.swing.JPanel {
             }
         });
 
+        lblCarDetails.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        lblCarDetails.setForeground(new java.awt.Color(255, 255, 255));
+        lblCarDetails.setText("Car Details");
+
+        lblModelNo.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        lblModelNo.setText("Search Serial No:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lblModelNo)
+                .addGap(70, 70, 70)
+                .addComponent(txtCarSerialNo, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(99, 99, 99)
+                .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(167, 167, 167))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(369, 369, 369)
+                .addComponent(lblCarDetails)
+                .addContainerGap(428, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(25, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(207, 207, 207)
-                        .addComponent(txtCarModelNo, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)
-                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(133, 133, 133)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnViewDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(64, 64, 64)
-                                .addComponent(btnDeleteCar))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(139, Short.MAX_VALUE))
+                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(225, 225, 225)
+                        .addComponent(btnViewDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnDeleteCar, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 853, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(74, 74, 74)
+                .addGap(57, 57, 57)
+                .addComponent(lblCarDetails)
+                .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCarModelNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSearch))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                    .addComponent(txtCarSerialNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSearch)
+                    .addComponent(lblModelNo))
+                .addGap(29, 29, 29)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBack)
                     .addComponent(btnViewDetails)
                     .addComponent(btnDeleteCar))
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addContainerGap(154, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -190,20 +223,20 @@ public class ViewCarJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnViewDetailsActionPerformed
 
-    private void txtCarModelNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCarModelNoActionPerformed
+    private void txtCarSerialNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCarSerialNoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtCarModelNoActionPerformed
+    }//GEN-LAST:event_txtCarSerialNoActionPerformed
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
-        /* Check if valid account num exists */
-        Car result = carCatalog.searchAccount(txtCarModelNo.getText());
+        /* Check if valid car num exists */
+        Car result = carCatalog.searchAccount(txtCarSerialNo.getText());
         if(result == null){
-            JOptionPane.showMessageDialog(null, "Car Model Number you entered does not exist.","Information",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Car Serial Number you entered does not exist.","Information",JOptionPane.INFORMATION_MESSAGE);
         }
         else
         {
-            /* if account number is there then go to view details jpanel */
+            /* if serial number is there then go to view details jpanel */
             ViewCarDetailsJPanel panel = new ViewCarDetailsJPanel(menuContainer, result);
             menuContainer.add("ViewAccountJPanel",panel);
             CardLayout layout = (CardLayout) menuContainer.getLayout();
@@ -212,16 +245,22 @@ public class ViewCarJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnSearchActionPerformed
     
     
-    void populateTable() {
+    private void populateTable() {
         /* This function loads all the car details from the car array list and shows in table */
         DefaultTableModel dtm = (DefaultTableModel) tblCars.getModel();
         dtm.setRowCount(0);
         for(Car car: carCatalog.getCarList()){
-            Object[] row = new Object[4];
+            Object[] row = new Object[10];
             row[0] = car;
             row[1] = car.getModelNo();
             row[2] = car.isIsAvailable();
             row[3] = car.getCity();
+            row[4] = car.getSerialNo();
+            row[5] = car.getManufacturerName();
+            row[6] = car.getManufactureYear();
+            row[7] = car.isIsExpired();
+            row[8] = car.getSeatCapacity();
+            row[9] = car.getTimeAvailable();
             
             dtm.addRow(row);
         }
@@ -232,7 +271,9 @@ public class ViewCarJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnViewDetails;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblCarDetails;
+    private javax.swing.JLabel lblModelNo;
     private javax.swing.JTable tblCars;
-    private javax.swing.JTextField txtCarModelNo;
+    private javax.swing.JTextField txtCarSerialNo;
     // End of variables declaration//GEN-END:variables
 }

@@ -8,8 +8,11 @@ package Interface;
 import Business.Car;
 import Business.CarCatalog;
 import java.awt.CardLayout;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -19,9 +22,9 @@ import javax.swing.JPanel;
  */
 public class ViewCarDetailsJPanel extends javax.swing.JPanel {
     /* Initialize variables to use */
-    private JPanel menuContainer;
-    private Car car;
-    private CarCatalog carCatalog;
+    private final JPanel menuContainer;
+    private final Car car;
+    
     /**
      * Creates new form ViewCarDetailsJPanel
      */
@@ -31,11 +34,13 @@ public class ViewCarDetailsJPanel extends javax.swing.JPanel {
         this.menuContainer = menuContainer;
         this.car = car;
         populateCarDetails();
+        /* Disable save button untill the update has been made */
         btnSaveCar.setEnabled(false);
         btnUpdate.setEnabled(true);
     }
     
-    private void populateCarDetails() {   
+    private void populateCarDetails() {  
+        /* Set the setboxes with car details */
         txtCarName.setText(car.getCarName());
         txtCityName.setText(car.getCity());
         txtDateTimeAvailable.setText(car.getTimeAvailable());
@@ -81,38 +86,54 @@ public class ViewCarDetailsJPanel extends javax.swing.JPanel {
         lblSerialNo = new javax.swing.JLabel();
         btnUpdate = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        lblModelNo.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblModelNo.setText("Model No:");
 
+        txtManufacturerName.setBackground(new java.awt.Color(153, 153, 153));
         txtManufacturerName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtManufacturerNameActionPerformed(evt);
             }
         });
 
+        lblSeatCapacity.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblSeatCapacity.setText("Seat Capacity:");
 
+        txtManufactureYear.setBackground(new java.awt.Color(153, 153, 153));
         txtManufactureYear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtManufactureYearActionPerformed(evt);
             }
         });
 
+        lblIsExpired.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblIsExpired.setText("Is Expired:");
 
+        lblCityName.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblCityName.setText("City:");
 
+        chckBoxIsAvailable.setBackground(new java.awt.Color(153, 153, 153));
+
+        txtSeatCapacity.setBackground(new java.awt.Color(153, 153, 153));
         txtSeatCapacity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSeatCapacityActionPerformed(evt);
             }
         });
 
+        checkBoxIsExpired.setBackground(new java.awt.Color(153, 153, 153));
+
+        txtModelNo.setBackground(new java.awt.Color(153, 153, 153));
         txtModelNo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtModelNoActionPerformed(evt);
             }
         });
 
+        btnSaveCar.setBackground(new java.awt.Color(51, 51, 51));
+        btnSaveCar.setForeground(new java.awt.Color(255, 255, 255));
         btnSaveCar.setText("Save");
         btnSaveCar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,17 +141,20 @@ public class ViewCarDetailsJPanel extends javax.swing.JPanel {
             }
         });
 
+        lblCreateCar.setBackground(new java.awt.Color(255, 255, 255));
         lblCreateCar.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         lblCreateCar.setText("Car Details");
 
+        txtCityName.setBackground(new java.awt.Color(153, 153, 153));
         txtCityName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCityNameActionPerformed(evt);
             }
         });
 
-        btnBack.setBackground(new java.awt.Color(204, 204, 204));
+        btnBack.setBackground(new java.awt.Color(51, 51, 51));
         btnBack.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        btnBack.setForeground(new java.awt.Color(255, 255, 255));
         btnBack.setText("< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -138,38 +162,48 @@ public class ViewCarDetailsJPanel extends javax.swing.JPanel {
             }
         });
 
+        txtCarName.setBackground(new java.awt.Color(153, 153, 153));
         txtCarName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCarNameActionPerformed(evt);
             }
         });
 
+        txtSerialNo.setBackground(new java.awt.Color(153, 153, 153));
         txtSerialNo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSerialNoActionPerformed(evt);
             }
         });
 
+        lblCarName.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblCarName.setText("Name:");
 
+        lblManufactureYear.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblManufactureYear.setText("Manufacture Year:");
 
+        lblDateTimeAvailable.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblDateTimeAvailable.setText("Time Available:");
 
+        lblIsAvailable.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblIsAvailable.setText("Is Available:");
 
+        txtDateTimeAvailable.setBackground(new java.awt.Color(153, 153, 153));
         txtDateTimeAvailable.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDateTimeAvailableActionPerformed(evt);
             }
         });
 
+        lblManufacturerName.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblManufacturerName.setText("Manufacturer Name:");
 
+        lblSerialNo.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblSerialNo.setText("Serial No:");
 
-        btnUpdate.setBackground(new java.awt.Color(204, 204, 204));
+        btnUpdate.setBackground(new java.awt.Color(51, 51, 51));
         btnUpdate.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        btnUpdate.setForeground(new java.awt.Color(255, 255, 255));
         btnUpdate.setText("Update");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -181,101 +215,102 @@ public class ViewCarDetailsJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(16, 16, 16)
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblCarName)
-                    .addComponent(lblDateTimeAvailable)
-                    .addComponent(lblSerialNo)
-                    .addComponent(lblCityName)
-                    .addComponent(lblManufactureYear))
-                .addGap(54, 54, 54)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(txtSerialNo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                    .addComponent(txtManufactureYear, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtDateTimeAvailable, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtCarName, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtCityName))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 207, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblIsAvailable)
-                    .addComponent(lblManufacturerName)
-                    .addComponent(lblSeatCapacity)
-                    .addComponent(lblModelNo)
-                    .addComponent(lblIsExpired))
-                .addGap(76, 76, 76)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtManufacturerName, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
-                    .addComponent(txtSeatCapacity)
-                    .addComponent(txtModelNo)
-                    .addComponent(chckBoxIsAvailable)
-                    .addComponent(checkBoxIsExpired))
-                .addGap(117, 117, 117))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblCarName)
+                            .addComponent(lblDateTimeAvailable)
+                            .addComponent(lblSerialNo)
+                            .addComponent(lblCityName)
+                            .addComponent(lblManufactureYear))
+                        .addGap(54, 54, 54)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtSerialNo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                            .addComponent(txtManufactureYear, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtDateTimeAvailable, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtCarName, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtCityName)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(81, 81, 81)
-                        .addComponent(btnSaveCar, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(68, 68, 68)
-                        .addComponent(btnUpdate)
-                        .addGap(308, 308, 308))
+                        .addGap(47, 47, 47)
+                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnSaveCar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(90, 90, 90))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblCreateCar, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(434, 434, 434))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblIsAvailable)
+                                .addComponent(lblManufacturerName)
+                                .addComponent(lblSeatCapacity)
+                                .addComponent(lblModelNo)
+                                .addComponent(lblIsExpired))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(lblCreateCar, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(57, 57, 57)))))
+                .addGap(53, 53, 53)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(txtManufacturerName, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtSeatCapacity, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtModelNo, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(checkBoxIsExpired)
+                    .addComponent(chckBoxIsAvailable))
+                .addGap(90, 90, 90))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(16, 16, 16)
                 .addComponent(lblCreateCar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtCarName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblCarName))
-                        .addGap(26, 26, 26))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(chckBoxIsAvailable)
+                            .addComponent(lblCarName)
                             .addComponent(lblIsAvailable))
-                        .addGap(36, 36, 36)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtDateTimeAvailable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDateTimeAvailable)
-                    .addComponent(lblManufacturerName)
-                    .addComponent(txtManufacturerName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(txtDateTimeAvailable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblDateTimeAvailable)
+                                    .addComponent(lblManufacturerName)
+                                    .addComponent(txtManufacturerName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(29, 29, 29)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(lblSeatCapacity)
+                                            .addComponent(txtSeatCapacity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(37, 37, 37)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(txtManufactureYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(lblManufactureYear))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(lblModelNo)
+                                            .addComponent(txtSerialNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(lblSerialNo)
+                                            .addComponent(txtModelNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(27, 27, 27)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lblIsExpired)
+                                    .addComponent(txtCityName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblCityName)))
+                            .addComponent(checkBoxIsExpired, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(47, 47, 47)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblSeatCapacity)
-                            .addComponent(txtSeatCapacity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtManufactureYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblManufactureYear))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblModelNo)
-                            .addComponent(txtModelNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtSerialNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblSerialNo))))
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblIsExpired)
-                    .addComponent(txtCityName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCityName)
-                    .addComponent(checkBoxIsExpired))
-                .addGap(71, 71, 71)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnBack)
-                    .addComponent(btnSaveCar)
-                    .addComponent(btnUpdate))
-                .addContainerGap(187, Short.MAX_VALUE))
+                            .addComponent(btnUpdate)
+                            .addComponent(btnSaveCar)
+                            .addComponent(btnBack)))
+                    .addComponent(chckBoxIsAvailable))
+                .addContainerGap(207, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -297,6 +332,7 @@ public class ViewCarDetailsJPanel extends javax.swing.JPanel {
 
     private void btnSaveCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveCarActionPerformed
         // TODO add your handling code here
+        /* On save check that the fields are not empty and with valid values */
         if(txtCarName.getText().equals("") || txtCityName.getText().equals("")
            || txtDateTimeAvailable.getText().equals("") || txtManufacturerName.getText().equals("")
            || txtManufactureYear.getText().equals("") || txtSeatCapacity.getText().equals("")
@@ -309,10 +345,17 @@ public class ViewCarDetailsJPanel extends javax.swing.JPanel {
         }
         else if(!txtSeatCapacity.getText().matches("[0-9]+") || !txtManufactureYear.getText().matches("[0-9]+")){
             JOptionPane.showMessageDialog(null, "Please enter integer value for Seat and Manufacture Year !");
-        }else{
+        }
+        else
+        {
             car.setCarName(txtCarName.getText());
             car.setCity(txtCityName.getText());
-            car.setTimeAvailable(txtCityName.getText());
+            try {  
+                Date d = DateFormat.getDateInstance().parse(txtDateTimeAvailable.getText());
+                car.setTimeAvailable(d);
+            } catch (ParseException ex) {
+                Logger.getLogger(CreateCarJPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
             car.setIsExpired(checkBoxIsExpired.isSelected());
             car.setManufacturerName(txtManufacturerName.getText());
             car.setManufactureYear(Integer.parseInt(txtManufactureYear.getText()));

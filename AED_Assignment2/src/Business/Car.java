@@ -4,6 +4,11 @@
  * and open the template in the editor.
  */
 package Business;
+
+/* Import Date packages for converting the datetime in time */
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  *
  * @author manushpatel
@@ -22,6 +27,7 @@ public class Car {
     private boolean isExpired;
 
     /* Add getters and setters for all the variables */
+    /* Get and Set Car Name */
     public String getCarName() {
         return carName;
     }
@@ -29,7 +35,7 @@ public class Car {
     public void setCarName(String carName) {
         this.carName = carName;
     }
-
+    /* Get and Set Availability */
     public boolean isIsAvailable() {
         return isAvailable;
     }
@@ -37,15 +43,7 @@ public class Car {
     public void setIsAvailable(boolean isAvailable) {
         this.isAvailable = isAvailable;
     }
-
-    public String getTimeAvailable() {
-        return timeAvailable;
-    }
-
-    public void setTimeAvailable(String timeAvailable) {
-        this.timeAvailable = timeAvailable;
-    }
-
+    /* Get and Set Manufacture Name */
     public String getManufacturerName() {
         return manufacturerName;
     }
@@ -53,7 +51,7 @@ public class Car {
     public void setManufacturerName(String manufacturerName) {
         this.manufacturerName = manufacturerName;
     }
-
+    /* Get and Set Manufacture Year */
     public int getManufactureYear() {
         return manufactureYear;
     }
@@ -61,7 +59,16 @@ public class Car {
     public void setManufactureYear(int manufactureYear) {
         this.manufactureYear = manufactureYear;
     }
+    /* Get and Set Time Available */
+    public String getTimeAvailable() {
+        return timeAvailable;
+    }
 
+    public void setTimeAvailable(Date timeAvailable) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm") ;
+        this.timeAvailable = dateFormat.format(timeAvailable);
+    }
+    /* Get and Set Seat Capacity */
     public int getSeatCapacity() {
         return seatCapacity;
     }
@@ -69,7 +76,7 @@ public class Car {
     public void setSeatCapacity(int seatCapacity) {
         this.seatCapacity = seatCapacity;
     }
-
+    /* Get and Set Serial No */
     public String getSerialNo() {
         return serialNo;
     }
@@ -77,7 +84,7 @@ public class Car {
     public void setSerialNo(String serialNo) {
         this.serialNo = serialNo;
     }
-
+    /* Get and Set Model No */
     public String getModelNo() {
         return modelNo;
     }
@@ -85,7 +92,7 @@ public class Car {
     public void setModelNo(String modelNo) {
         this.modelNo = modelNo;
     }
-
+    /* Get and Set City */
     public String getCity() {
         return city;
     }
@@ -93,7 +100,7 @@ public class Car {
     public void setCity(String city) {
         this.city = city;
     }
-
+    /* Get and Set Is Expired */
     public boolean isIsExpired() {
         return isExpired;
     }
@@ -126,5 +133,4 @@ public class Car {
         }
         return true;
     }
-  
 }

@@ -7,6 +7,8 @@ package Business;
 /* Import File & Buffer Reader, Date libraries */
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Properties;
@@ -14,7 +16,7 @@ import java.util.Properties;
  *
  * @author manushpatel
  */
-public class CarCatalog {
+public final class CarCatalog {
     /* Initialize Car List Array List */
     private ArrayList<Car> carList;
     private Date lastUpdated;
@@ -31,13 +33,17 @@ public class CarCatalog {
     private static final int IS_EXPIRED = 9;
     
     /* Create constructor and assign array list memory */
-    public CarCatalog() throws IOException {
+    public CarCatalog() throws IOException, ParseException {
         /* Initialize array list for car catalog */
-        this.carList = new ArrayList<Car>();
+        this.carList = new ArrayList<>();
         /* Read car details from config file and store it in an array */
         Properties prop=new Properties();
         FileInputStream ip= new FileInputStream("config.properties");
         prop.load(ip);
+        /* Convert available uber datetime in time */
+        Date date = new Date() ;
+        SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm") ;
+        dateFormat.format(date);
         /* Loop throgh the array size */
         for(int i=1;i<=20;i+=1)
         {
@@ -45,7 +51,7 @@ public class CarCatalog {
             Car tempCar = new Car();
             tempCar.setCarName(carDetails[CAR_NAME]);
             tempCar.setIsAvailable(Boolean.parseBoolean(carDetails[IS_AVAILABLE]));
-            tempCar.setTimeAvailable(carDetails[TIME_AVAILABLE]);
+            tempCar.setTimeAvailable(dateFormat.parse(carDetails[TIME_AVAILABLE]));
             tempCar.setManufacturerName(carDetails[MANUFACTURER_NAME]);
             tempCar.setManufactureYear(Integer.parseInt(carDetails[MANUFACTURER_YEAR]));
             tempCar.setSeatCapacity(Integer.parseInt(carDetails[SEAT_CAPACITY]));
@@ -92,14 +98,14 @@ public class CarCatalog {
     /* Delete car details from an array */
     public void deleteCar(Car car){
         carList.remove(car);
-        //setLastUpdated(new Date());
+        setLastUpdated(new Date());
     }
     
     /* Search Car details through model number in array */
-    public Car searchAccount(String modelNo){
+    public Car searchAccount(String serialNo){
         for(Car car: carList)
         {
-            if(car.getModelNo().equals(modelNo))
+            if(car.getSerialNo().equals(serialNo))
             {
                 return car;
             }

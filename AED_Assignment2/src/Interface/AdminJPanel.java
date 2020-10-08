@@ -40,6 +40,10 @@ public class AdminJPanel extends javax.swing.JPanel {
         btnCreateCar = new javax.swing.JButton();
         btnViewCar = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        btnCreateCar.setBackground(new java.awt.Color(102, 102, 102));
+        btnCreateCar.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         btnCreateCar.setText("Create Car Details");
         btnCreateCar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -47,6 +51,8 @@ public class AdminJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnViewCar.setBackground(new java.awt.Color(102, 102, 102));
+        btnViewCar.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         btnViewCar.setText("View Car Details");
         btnViewCar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -59,20 +65,20 @@ public class AdminJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(259, 259, 259)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnViewCar, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCreateCar))
-                .addContainerGap(312, Short.MAX_VALUE))
+                .addGap(320, 320, 320)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnViewCar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCreateCar, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE))
+                .addContainerGap(381, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(137, 137, 137)
+                .addGap(112, 112, 112)
                 .addComponent(btnCreateCar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(81, 81, 81)
                 .addComponent(btnViewCar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(150, Short.MAX_VALUE))
+                .addContainerGap(326, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
