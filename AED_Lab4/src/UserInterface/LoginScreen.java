@@ -6,6 +6,7 @@
 package UserInterface;
 
 import Business.Abstract.User;
+import Business.Users.Admin;
 import Business.Users.Customer;
 import Business.Users.Supplier;
 import java.awt.CardLayout;
@@ -25,13 +26,18 @@ public class LoginScreen extends javax.swing.JPanel {
     List<User> list;
     JPanel panelRight;
     private String userType;
+    private String username;
+    private String password;
+    private String requiredMsg;
+    private boolean fieldsEmpty;
     
-    public LoginScreen(JPanel panelRight, List<User> supplierList, String userType) {
+    public LoginScreen(JPanel panelRight, List<User> userList, String userType) {
         initComponents();
-        this.list = list;
+        this.list = userList;
         this.userType = userType;
         this.panelRight = panelRight;
         initialize();
+        populateUserComboBox();
     }
 
     /**
@@ -92,9 +98,42 @@ public class LoginScreen extends javax.swing.JPanel {
                 .addContainerGap(131, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    void populateUserComboBox(){
+        for (int i = 0; i < this.list.size(); i++) {
+            comboUser.addItem(this.list.get(i).userName);
+        }
+    }
+    
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         // TODO add your handling code here:
+        this.fieldsEmpty = false;
+        this.username = comboUser.getSelectedItem().toString();
+        this.password = txtPword.getText();
+        if(this.username.isEmpty()){
+           this.requiredMsg = this.requiredMsg+ "Username\n";
+           this.fieldsEmpty = true;
+        } 
+        if(txtPword.getText().isEmpty()){
+            this.requiredMsg = this.requiredMsg+ "Password\n";
+            this.fieldsEmpty = true;
+        }
+        if(this.fieldsEmpty){
+            JOptionPane.showMessageDialog(null,  this.requiredMsg);
+        }
+        if(!this.fieldsEmpty){
+            for (int i = 0; i < this.list.size(); i++) {
+                if(this.list.get(i).userName == this.username){
+                    if(this.list.get(i).password.equals(this.password)){
+                        // TODO add your handling code here:
+                        CardLayout layout = (CardLayout)panelRight.getLayout();
+                        panelRight.add(new SuccessScreen(this.list.get(i)));
+                        layout.next(panelRight);
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Password Incorrect. Try Again!");
+                    }
+                }
+            }
+        }
         
     }//GEN-LAST:event_btnSubmitActionPerformed
 
