@@ -35,6 +35,16 @@ public class ViewCarDetailsJPanel extends javax.swing.JPanel {
         this.car = car;
         populateCarDetails();
         /* Disable save button untill the update has been made */
+        txtCarName.setEnabled(false);
+        txtCityName.setEnabled(false);
+        txtDateTimeAvailable.setEnabled(false);
+        checkBoxIsExpired.setEnabled(false);
+        txtManufacturerName.setEnabled(false);
+        txtManufactureYear.setEnabled(false);
+        txtSeatCapacity.setEnabled(false);
+        txtSerialNo.setEnabled(false);
+        txtModelNo.setEnabled(false);
+        chckBoxIsAvailable.setEnabled(false);
         btnSaveCar.setEnabled(false);
         btnUpdate.setEnabled(true);
     }

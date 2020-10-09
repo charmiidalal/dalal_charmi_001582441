@@ -18,7 +18,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import java.util.*;
 /**
  *
  * @author manushpatel
@@ -38,20 +37,20 @@ public class UserJFrame extends javax.swing.JFrame {
         this.resultCatalog = resultCatalog;
         this.showTable();
         /* Show when last catalog was updated */
-        resultCatalog.getLastUpdated();
-        lblLastUpdated.setText("Last Fleet Updated On: "+ resultCatalog.getLastUpdated());
+        this.resultCatalog.getLastUpdated();
+        lblLastUpdated.setText("Last Fleet Updated On: "+ this.resultCatalog.getLastUpdated());
     }
     /* This function shows filtered data by users */
     void showTable()
     {
         DefaultTableModel dtm = (DefaultTableModel) tblCars.getModel();
         /* CHeck if any specific matches are found */
-        if(resultCatalog.getCarList().isEmpty()){
+        if(this.resultCatalog.getCarList().isEmpty()){
             JOptionPane.showMessageDialog(null, "No such cars found!");
             dtm.setRowCount(0);
         }else{
             dtm.setRowCount(0);
-            for(Car car:resultCatalog.getCarList())
+            for(Car car:this.resultCatalog.getCarList())
             {
                 Object[] row = new Object[10];
                 row[0] = car;
@@ -66,7 +65,7 @@ public class UserJFrame extends javax.swing.JFrame {
                 row[9] = car.getCity();
                 dtm.addRow(row);
             }
-            carCatalog.setCarList(resultCatalog.getCarList());
+            carCatalog.setCarList(this.resultCatalog.getCarList());
         }
     }
     /* Check if user has added value in serach box before searching */
@@ -258,7 +257,7 @@ public class UserJFrame extends javax.swing.JFrame {
                         .addGroup(topJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
                             .addComponent(globalSearchBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(topJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(listCarByCity)
                             .addComponent(btnListCarByModelNo)
@@ -377,11 +376,12 @@ public class UserJFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(SplitPane, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnFindCar)
-                    .addComponent(btnFindAvailableCar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnListExpiredCars, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnFindUnavailableCar))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnFindCar)
+                        .addComponent(btnFindAvailableCar)
+                        .addComponent(btnFindUnavailableCar)))
                 .addGap(18, 18, 18)
                 .addComponent(lblLastUpdated)
                 .addGap(12, 12, 12)
@@ -566,10 +566,17 @@ public class UserJFrame extends javax.swing.JFrame {
     private void btnFindCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindCarActionPerformed
         // TODO add your handling code here:
         /* Find car which is available in nearest time */
+        try {
+            carCatalog = new CarCatalog();
+            resultCatalog = new CarCatalog();
+        } catch (IOException ex) {
+            Logger.getLogger(UserJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
+            Logger.getLogger(UserJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
         Date date = new Date() ;
         SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm") ;
         this.resultCatalog.setCarList(new ArrayList<>());
-        List<Date> dates = new ArrayList<>();
         for(Car car:carCatalog.getCarList())
         { 
             try {
@@ -577,7 +584,6 @@ public class UserJFrame extends javax.swing.JFrame {
                    car.isIsAvailable())
                 {
                     this.resultCatalog.addCar(car);
-                    dates.add(dateFormat.parse(car.getTimeAvailable()));
                 }
                 
             } catch (ParseException ex) {
@@ -585,16 +591,18 @@ public class UserJFrame extends javax.swing.JFrame {
             }
         }
         /* SOrt the dates array and get the car which is first available */
-        Collections.sort(resultCatalog.getCarList(), new Comparator<Car>() {
+        Collections.sort(this.resultCatalog.getCarList(), new Comparator<Car>() {
             public int compare(Car o1, Car o2) {
                 // compare two instance of `Score` and return `int` as result.
                 return o1.getTimeAvailable().compareTo(o2.getTimeAvailable());
             }
         });
-        Car firstAvailable = resultCatalog.getCarList().get(0);
-        ArrayList<Car> nl = new ArrayList<Car>();
-        nl.add(firstAvailable);
-        resultCatalog.setCarList(nl);
+        if(this.resultCatalog.getCarList().size() > 0){
+        Car firstAvailable = this.resultCatalog.getCarList().get(0);
+            ArrayList<Car> nl = new ArrayList<>();
+            nl.add(firstAvailable);
+            this.resultCatalog.setCarList(nl);
+        }
         showTable();
     }//GEN-LAST:event_btnFindCarActionPerformed
 

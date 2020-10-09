@@ -64,11 +64,13 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="SplitPane" min="-2" pref="182" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnFindCar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnFindAvailableCar" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="btnListExpiredCars" alignment="0" max="32767" attributes="0"/>
-                  <Component id="btnFindUnavailableCar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="btnFindCar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnFindAvailableCar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnFindUnavailableCar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="lblLastUpdated" min="-2" max="-2" attributes="0"/>
@@ -160,7 +162,7 @@
                                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="globalSearchBox" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="8" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="listCarByCity" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnListCarByModelNo" alignment="3" min="-2" max="-2" attributes="0"/>
