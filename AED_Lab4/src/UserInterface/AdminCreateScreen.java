@@ -40,6 +40,7 @@ public class AdminCreateScreen extends javax.swing.JPanel {
     private boolean roleSelected;
     private String requiredMsg;
     private boolean fieldsEmpty;
+    private boolean validationError;
     
     public AdminCreateScreen(JPanel panelRight, Admin admin) {
         initComponents();
@@ -56,6 +57,7 @@ public class AdminCreateScreen extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         btnCreate = new javax.swing.JButton();
         txtUser = new javax.swing.JTextField();
         txtPword = new javax.swing.JTextField();
@@ -80,6 +82,7 @@ public class AdminCreateScreen extends javax.swing.JPanel {
 
         lblReEnterPassword.setText("Re-enter Password :");
 
+        buttonGroup1.add(radioCustomer);
         radioCustomer.setText("Customer");
         radioCustomer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -87,6 +90,7 @@ public class AdminCreateScreen extends javax.swing.JPanel {
             }
         });
 
+        buttonGroup1.add(radioSupplier);
         radioSupplier.setText("Supplier");
 
         btnBack.setText("< BACK");
@@ -151,6 +155,7 @@ public class AdminCreateScreen extends javax.swing.JPanel {
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
         this.fieldsEmpty = false;
+        this.validationError = false;
         this.roleSelected = false;
         this.requiredMsg = "Please enter required field:\n";
         this.username = txtUser.getText();
@@ -179,14 +184,42 @@ public class AdminCreateScreen extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null,  this.requiredMsg);
         }
         if(!this.fieldsEmpty){
-           if(radioCustomer.isSelected()){
-                Customer customer = new Customer(password,username);
-                admin.custDir.customerList.add(customer);
-           }
-           if(radioSupplier.isSelected()){
-                Supplier supplier = new Supplier(password,username);
-                admin.suppDir.supplierList.add(supplier);
-           }
+            Pattern usernameP = Pattern.compile("\\b[A-Za-z0-9._%-]+_+[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}\\b");
+            Matcher userMatch = usernameP.matcher(this.username);
+            if (userMatch.find() == false){
+                this.requiredMsg = "Please enter username in following format! \n 'xxx_xxx@xxx.xxx' \n";
+                this.validationError = true;
+            }
+            Pattern passwordP = Pattern.compile("^(?=.*[0-9])"
+                           + "(?=.*[a-z])(?=.*[A-Z])"
+                           + "(?=.*[@#$%^&+=])"
+                           + "(?=\\S+$).{6,20}$");
+            Matcher passMatch = passwordP.matcher(this.password); 
+            passMatch.matches();
+            if (passMatch.matches() == false){
+                this.requiredMsg += "Password should be at least 6 digits and contain at"
+                + " least one upper case letter, one lower case letter, one digit and one special character $, *, # or &.\n";
+                this.validationError = true;
+            }  
+            if(!this.password.equals(reEnterPassword)){
+                this.requiredMsg += "Passwords & Re-type passwords should match! ";
+                this.validationError = true;
+            }
+            if(this.validationError){
+                JOptionPane.showMessageDialog(null, this.requiredMsg);
+            }
+            else {
+               if(radioCustomer.isSelected()){
+                    Customer customer = new Customer(password,username);
+                    admin.custDir.customerList.add(customer);
+                    JOptionPane.showMessageDialog(null, "Customer created successfully!");
+               }
+               if(radioSupplier.isSelected()){
+                    Supplier supplier = new Supplier(password,username);
+                    admin.suppDir.supplierList.add(supplier);
+                    JOptionPane.showMessageDialog(null, "Supplier created successfully!");
+               }
+            }
         }
     }//GEN-LAST:event_btnCreateActionPerformed
 
@@ -206,6 +239,7 @@ public class AdminCreateScreen extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnCreate;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblReEnterPassword;
     private javax.swing.JLabel lblUser;
