@@ -13,9 +13,10 @@ import java.util.Date;
  * @author AEDSpring2019
  */
 public class Customer extends User implements Comparable<Supplier> {
-    
+   private Date createdDate;
     public Customer(String password, String userName) {
         super(password, userName, "CUSTOMER");
+        this.createdDate = new Date();
     }
 
     @Override
@@ -32,6 +33,10 @@ public class Customer extends User implements Comparable<Supplier> {
         if(password.equals(getPassword()))
             return true;
         return false;
+    }
+
+    public Date getCreatedDate() {
+        return createdDate;
     }
     
 }

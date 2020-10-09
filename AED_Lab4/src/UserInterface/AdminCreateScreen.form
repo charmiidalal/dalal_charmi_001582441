@@ -31,13 +31,8 @@
                           <Component id="txtPword" min="-2" pref="173" max="-2" attributes="0"/>
                           <Component id="txtRePword" min="-2" pref="173" max="-2" attributes="0"/>
                           <Component id="btnCreate" alignment="0" min="-2" pref="173" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="radioSupplier" min="-2" max="-2" attributes="0"/>
-                                  <Component id="radioCustomer" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
+                          <Component id="radioCustomer" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="radioSupplier" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -45,7 +40,7 @@
                       <Component id="btnBack" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="76" max="32767" attributes="0"/>
+              <EmptySpace pref="74" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -73,9 +68,9 @@
               <Component id="radioCustomer" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="radioSupplier" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnCreate" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="47" max="32767" attributes="0"/>
+              <EmptySpace pref="35" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -97,17 +92,17 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblUser">
       <Properties>
-        <Property name="text" type="java.lang.String" value="username:"/>
+        <Property name="text" type="java.lang.String" value="Username:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblPassword">
       <Properties>
-        <Property name="text" type="java.lang.String" value="password:"/>
+        <Property name="text" type="java.lang.String" value="Password:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblReEnterPassword">
       <Properties>
-        <Property name="text" type="java.lang.String" value="re-enter password :"/>
+        <Property name="text" type="java.lang.String" value="Re-enter Password :"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JRadioButton" name="radioCustomer">

@@ -74,11 +74,11 @@ public class AdminCreateScreen extends javax.swing.JPanel {
             }
         });
 
-        lblUser.setText("username:");
+        lblUser.setText("Username:");
 
-        lblPassword.setText("password:");
+        lblPassword.setText("Password:");
 
-        lblReEnterPassword.setText("re-enter password :");
+        lblReEnterPassword.setText("Re-enter Password :");
 
         radioCustomer.setText("Customer");
         radioCustomer.addActionListener(new java.awt.event.ActionListener() {
@@ -114,15 +114,12 @@ public class AdminCreateScreen extends javax.swing.JPanel {
                             .addComponent(txtPword, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtRePword, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(35, 35, 35)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(radioSupplier)
-                                    .addComponent(radioCustomer)))))
+                            .addComponent(radioCustomer)
+                            .addComponent(radioSupplier)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addComponent(btnBack)))
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,9 +142,9 @@ public class AdminCreateScreen extends javax.swing.JPanel {
                 .addComponent(radioCustomer)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(radioSupplier)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btnCreate)
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
