@@ -18,6 +18,8 @@ import java.awt.event.ActionListener;
 import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javafx.scene.layout.Border;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.event.DocumentEvent;
@@ -154,6 +156,9 @@ public class AdminCreateScreen extends javax.swing.JPanel {
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
+        javax.swing.border.Border redBorder = BorderFactory.createLineBorder(Color.RED, 1);
+        javax.swing.border.Border noneBorder = BorderFactory.createEmptyBorder();
+        
         this.fieldsEmpty = false;
         this.validationError = false;
         this.roleSelected = false;
@@ -188,7 +193,11 @@ public class AdminCreateScreen extends javax.swing.JPanel {
             Matcher userMatch = usernameP.matcher(this.username);
             if (userMatch.find() == false){
                 this.requiredMsg = "Please enter username in following format! \n 'xxx_xxx@xxx.xxx' \n";
+                // set the border of this component
+                txtUser.setBorder(redBorder);
                 this.validationError = true;
+            }else{
+                 txtUser.setBorder(noneBorder);
             }
             Pattern passwordP = Pattern.compile("^(?=.*[0-9])"
                            + "(?=.*[a-z])(?=.*[A-Z])"
@@ -200,10 +209,17 @@ public class AdminCreateScreen extends javax.swing.JPanel {
                 this.requiredMsg += "Password should be at least 6 digits and contain at"
                 + " least one upper case letter, one lower case letter, one digit and one special character $, *, # or &.\n";
                 this.validationError = true;
-            }  
-            if(!this.password.equals(reEnterPassword)){
+                // set the border of this component
+                txtPword.setBorder(redBorder);
+            } else{
+                txtPword.setBorder(noneBorder);
+            } 
+            if(passMatch.matches() && !this.password.equals(reEnterPassword)){
                 this.requiredMsg += "Passwords & Re-type passwords should match! ";
                 this.validationError = true;
+                txtRePword.setBorder(redBorder);
+            }else{
+               txtRePword.setBorder(noneBorder);
             }
             if(this.validationError){
                 JOptionPane.showMessageDialog(null, this.requiredMsg);
