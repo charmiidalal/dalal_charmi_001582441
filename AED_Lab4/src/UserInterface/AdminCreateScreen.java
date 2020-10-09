@@ -5,6 +5,9 @@
  */
 package UserInterface;
 
+import Business.Abstract.User;
+import Business.CustomerDirectory;
+import Business.SupplierDirectory;
 import Business.Users.Admin;
 import Business.Users.Customer;
 import Business.Users.Supplier;
@@ -31,6 +34,13 @@ public class AdminCreateScreen extends javax.swing.JPanel {
      */
     private JPanel panelRight;
     private Admin admin;
+    private String username;
+    private String password;
+    private String reEnterPassword;
+    private boolean roleSelected;
+    private String requiredMsg;
+    private boolean fieldsEmpty;
+    
     public AdminCreateScreen(JPanel panelRight, Admin admin) {
         initComponents();
         this.panelRight = panelRight;
@@ -50,9 +60,9 @@ public class AdminCreateScreen extends javax.swing.JPanel {
         txtUser = new javax.swing.JTextField();
         txtPword = new javax.swing.JTextField();
         txtRePword = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lblUser = new javax.swing.JLabel();
+        lblPassword = new javax.swing.JLabel();
+        lblReEnterPassword = new javax.swing.JLabel();
         radioCustomer = new javax.swing.JRadioButton();
         radioSupplier = new javax.swing.JRadioButton();
         btnBack = new javax.swing.JButton();
@@ -64,11 +74,11 @@ public class AdminCreateScreen extends javax.swing.JPanel {
             }
         });
 
-        jLabel1.setText("username:");
+        lblUser.setText("username:");
 
-        jLabel2.setText("password:");
+        lblPassword.setText("password:");
 
-        jLabel3.setText("re-enter password :");
+        lblReEnterPassword.setText("re-enter password :");
 
         radioCustomer.setText("Customer");
         radioCustomer.addActionListener(new java.awt.event.ActionListener() {
@@ -95,9 +105,9 @@ public class AdminCreateScreen extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(lblReEnterPassword)
+                            .addComponent(lblPassword, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblUser, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -122,15 +132,15 @@ public class AdminCreateScreen extends javax.swing.JPanel {
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(lblUser))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(lblPassword))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtRePword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(lblReEnterPassword))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(radioCustomer)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -143,7 +153,44 @@ public class AdminCreateScreen extends javax.swing.JPanel {
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
-        
+        this.fieldsEmpty = false;
+        this.roleSelected = false;
+        this.requiredMsg = "Please enter required field:\n";
+        this.username = txtUser.getText();
+        this.password = txtPword.getText();
+        this.reEnterPassword = txtRePword.getText();
+        if(radioCustomer.isSelected() ||radioSupplier.isSelected()){
+            this.roleSelected = true;
+        }
+        if(this.username.isEmpty()){
+           this.requiredMsg = this.requiredMsg+ "Username\n";
+           this.fieldsEmpty = true;
+        } 
+        if(this.password.isEmpty()){
+            this.requiredMsg = this.requiredMsg+ "Password\n";
+            this.fieldsEmpty = true;
+        }
+        if(this.reEnterPassword.isEmpty()){
+            this.requiredMsg = this.requiredMsg+ "Re-Enter Password\n";
+            this.fieldsEmpty = true;
+        }
+        if(!this.roleSelected){
+            this.requiredMsg = this.requiredMsg+ "Role";
+            this.fieldsEmpty = true;
+        }
+        if(this.fieldsEmpty){
+            JOptionPane.showMessageDialog(null,  this.requiredMsg);
+        }
+        if(!this.fieldsEmpty){
+           if(radioCustomer.isSelected()){
+                Customer customer = new Customer(password,username);
+                admin.custDir.customerList.add(customer);
+           }
+           if(radioSupplier.isSelected()){
+                Supplier supplier = new Supplier(password,username);
+                admin.suppDir.supplierList.add(supplier);
+           }
+        }
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void radioCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioCustomerActionPerformed
@@ -157,14 +204,14 @@ public class AdminCreateScreen extends javax.swing.JPanel {
         layout.previous(panelRight);
     }//GEN-LAST:event_btnBackActionPerformed
 
-    
-    
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnCreate;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel lblPassword;
+    private javax.swing.JLabel lblReEnterPassword;
+    private javax.swing.JLabel lblUser;
     private javax.swing.JRadioButton radioCustomer;
     private javax.swing.JRadioButton radioSupplier;
     private javax.swing.JTextField txtPword;

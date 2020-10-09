@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class SupplierDirectory {
     
-    private List<User> supplierList;
+    public List<User> supplierList;
     
     public SupplierDirectory(){
         supplierList = new ArrayList<>();

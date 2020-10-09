@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class CustomerDirectory {
     
-    private List<User> customerList;
+    public List<User> customerList;
     
     public CustomerDirectory(){
         customerList = new ArrayList<>();
