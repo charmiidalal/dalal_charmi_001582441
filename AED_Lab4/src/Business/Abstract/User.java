@@ -10,8 +10,8 @@ package Business.Abstract;
  * @author AEDSpring2019
  */
 public abstract class User {
-    private String password;
-    private String userName;
+    public String password;
+    public String userName;
     private String role;
 
     public User(String password, String userName, String role) {
