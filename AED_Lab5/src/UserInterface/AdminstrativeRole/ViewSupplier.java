@@ -25,11 +25,12 @@ public class ViewSupplier extends javax.swing.JPanel {
     }
 
     public void refreshTable(){
-        int rowCount = productCatalog.getRowCount();
+//        int rowCount = productCatalog.getRowCount();
         DefaultTableModel model = (DefaultTableModel) productCatalog.getModel();
-        for(int i=rowCount - 1;i>=0;i--){
-            model.removeRow(i);
-        }
+//        for(int i=rowCount - 1;i>=0;i--){
+//            model.removeRow(i);
+//        }
+        model.setRowCount(0);
         for(Product p: supplier.getProductCatalog().getProductcatalog()){
             Object row[] = new Object[3];
             row[0] = p;

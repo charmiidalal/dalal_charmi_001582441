@@ -39,6 +39,7 @@ public class ManageProductCatalogJPanel extends javax.swing.JPanel {
             row[0] = p;
             row[1] = p.getModelNumber();
             row[2] = p.getPrice();
+            row[3] = p.getAvail();
             model.addRow(row);
         }
     }
@@ -66,16 +67,20 @@ public class ManageProductCatalogJPanel extends javax.swing.JPanel {
         productCatalog.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         productCatalog.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Product Name", "Product ID", "Price"
+                "Product Name", "Product ID", "Price", "Availability"
             }
         ));
         jScrollPane1.setViewportView(productCatalog);
+        if (productCatalog.getColumnModel().getColumnCount() > 0) {
+            productCatalog.getColumnModel().getColumn(2).setResizable(false);
+            productCatalog.getColumnModel().getColumn(3).setResizable(false);
+        }
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 500, 170));
 

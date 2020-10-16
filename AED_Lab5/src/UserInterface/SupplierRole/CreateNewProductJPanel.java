@@ -34,6 +34,8 @@ public class CreateNewProductJPanel extends javax.swing.JPanel {
         btnBack = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
+        lblAvailability = new javax.swing.JLabel();
+        txtAvailability = new javax.swing.JTextField();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -80,11 +82,24 @@ public class CreateNewProductJPanel extends javax.swing.JPanel {
 
         txtName.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 210, -1));
+
+        lblAvailability.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblAvailability.setText("Availability");
+        add(lblAvailability, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, 110, 30));
+
+        txtAvailability.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtAvailability.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAvailabilityActionPerformed(evt);
+            }
+        });
+        add(txtAvailability, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, 160, 30));
     }// </editor-fold>//GEN-END:initComponents
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
 
         Product p = supplier.getProductCatalog().addProduct();
         p.setProdName(txtName.getText());
+        p.setAvail(Integer.parseInt(txtAvailability.getText()));
         String stringPrice = txtPrice.getText();
         if(stringPrice.isEmpty()==false){
             int price = Integer.parseInt(stringPrice);
@@ -103,6 +118,10 @@ public class CreateNewProductJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
+
+    private void txtAvailabilityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAvailabilityActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAvailabilityActionPerformed
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
@@ -111,6 +130,8 @@ public class CreateNewProductJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel lblAvailability;
+    private javax.swing.JTextField txtAvailability;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtPrice;
