@@ -26,8 +26,7 @@ public class MasterOrderCatalog {
         this.orderCatalog = orderCatalog;
     }
     
-    public Order addOrder(){
-        Order o = new Order();
+    public Order addOrder(Order o){
         orderCatalog.add(o);
         return o;
     }
