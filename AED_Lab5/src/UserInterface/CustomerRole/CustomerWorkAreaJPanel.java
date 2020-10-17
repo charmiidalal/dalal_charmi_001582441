@@ -61,7 +61,7 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
     private void browseProductCatalogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_browseProductCatalogActionPerformed
         // TODO add your handling code here:
         BrowseProducts bp = new BrowseProducts(userProcessContainer, supplierDirectory, masterOrdercatalog);
-        userProcessContainer.add("LoginSupplierJPanel", bp);
+        userProcessContainer.add("BrowseProductsJPanel", bp);
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);  
     }//GEN-LAST:event_browseProductCatalogActionPerformed

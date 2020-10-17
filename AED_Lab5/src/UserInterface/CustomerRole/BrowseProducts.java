@@ -323,15 +323,14 @@ public class BrowseProducts extends javax.swing.JPanel {
                     refreshOrderTable();
                     break;
                 }
-                if(!alreadyPresent){
-                    int oldAvail = selectedProduct.getAvail();
-                    int newAvail = oldAvail - fetchQty;
-                    selectedProduct.setAvail(newAvail);
-                    order.addOrderItem(selectedProduct, fetchQty, salesPrice);
-                    populateTable();
-                    refreshOrderTable();
-                    break;
-                }
+            }
+            if(!alreadyPresent){
+                int oldAvail = selectedProduct.getAvail();
+                int newAvail = oldAvail - fetchQty;
+                selectedProduct.setAvail(newAvail);
+                order.addOrderItem(selectedProduct, fetchQty, salesPrice);
+                populateTable();
+                refreshOrderTable();
             }
         }else{
             JOptionPane.showMessageDialog(null, "Quantity > Availability","Warning!", JOptionPane.WARNING_MESSAGE);
