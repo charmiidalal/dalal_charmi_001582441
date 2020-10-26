@@ -15,8 +15,11 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import lab7.entities.Comment;
 
 public class AnalysisHelper {
@@ -96,7 +99,7 @@ public class AnalysisHelper {
                 commentCount.put(c.getPostId(), 1);
             }
         }
-   
+
         Iterator it = commentCount.entrySet().iterator();
 
         while (it.hasNext()) {
@@ -113,13 +116,11 @@ public class AnalysisHelper {
             System.out.println("Post with most comments. : " + i);
         }
     }
-    
-    public void getInactiveUserByPost(){
+
+    public void getInactiveUserByPost() {
         Map<Integer, Comment> comments = DataStore.getInstance().getComments();
         HashMap<Integer, Integer> inactiveUserCount = new HashMap<>();
-        List<Integer> maxPosts = new ArrayList<>();
-        
-        int inactiveUsers = -1;
+
         for (Comment c : comments.values()) {
             if (inactiveUserCount.containsKey(c.getUserId())) {
                 inactiveUserCount.put(c.getUserId(), inactiveUserCount.get(c.getUserId()) + 1);
@@ -127,25 +128,42 @@ public class AnalysisHelper {
                 inactiveUserCount.put(c.getUserId(), 1);
             }
         }
-        System.out.println("Top 5 Inactive Users By Post : : " + inactiveUserCount);
-        
-        
-        Iterator it = inactiveUserCount.entrySet().iterator();
 
-        while (it.hasNext()) {
-            Map.Entry pair = (Map.Entry) it.next();
-            if ((Integer) pair.getValue() > inactiveUsers) {
-                maxPosts.clear();
-                maxPosts.add((Integer) pair.getKey());
-                inactiveUsers = (Integer) pair.getValue();
-            } else if ((Integer) pair.getValue() == inactiveUsers) {
-                maxPosts.add((Integer) pair.getKey());
+        System.out.println("Top 5 Inactive Users By Post: ");
+
+        Map<Integer, Integer> hm1 = sortByValue(inactiveUserCount);
+        int count = 1;
+        // print the sorted hashmap 
+        for (Map.Entry<Integer, Integer> en : hm1.entrySet()) {
+            if (count > 5) {
+                break;
             }
+            System.out.println(count + ". UserID = " + en.getKey()
+                    + ", Post No = " + en.getValue());
+            count++;
         }
-        for (int i : maxPosts) {
-            System.out.println("Post with most comments. : " + i);
+
+    }
+
+    public static HashMap<Integer, Integer> sortByValue(HashMap<Integer, Integer> hm) {
+        // Create a list from elements of HashMap 
+        List<Map.Entry<Integer, Integer>> list
+                = new LinkedList<Map.Entry<Integer, Integer>>(hm.entrySet());
+
+        // Sort the list 
+        Collections.sort(list, new Comparator<Map.Entry<Integer, Integer>>() {
+            public int compare(Map.Entry<Integer, Integer> o1,
+                    Map.Entry<Integer, Integer> o2) {
+                return (o1.getValue()).compareTo(o2.getValue());
+            }
+        });
+        //Collections.sort(list, Collections.reverseOrder());
+        // put data from sorted list to hashmap  
+        HashMap<Integer, Integer> temp = new LinkedHashMap<Integer, Integer>();
+        for (Map.Entry<Integer, Integer> aa : list) {
+            temp.put(aa.getKey(), aa.getValue());
         }
-        
+        return temp;
     }
 
 }
