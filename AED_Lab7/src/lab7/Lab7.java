@@ -94,7 +94,10 @@ public class Lab7 {
         // TODO
 //        helper.getAverageLikesPerCommets();
 //        helper.getMostLikedComments();
-//        helper.getPostWithMostComments();
-        helper.getInactiveUserByPost();
+        //helper.getPostWithMostComments();
+        //helper.getInactiveUserByPost();
+        //helper.getInactiveUserByComment();
+        //helper.getOverAllInactiveUsers();
+        helper.getOverAllProactiveUsers();
     }
 }
