@@ -5,21 +5,18 @@
  */
 package Business;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
- * @author manushpatel
+ * @author vennelareddy
  */
-public class Fleet {
-    private List<Airplane> airplaneList;
-
-    public Fleet() {
-        airplaneList = new ArrayList<Airplane>();
-    }
-
-    public List<Airplane> getAirplanelist() {
-        return airplaneList;
-    }
+public class FlightDirectory {
+   
 }

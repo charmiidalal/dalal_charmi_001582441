@@ -14,13 +14,13 @@ import java.util.List;
  */
 public class CustomerDirectory {
     
-    private List<Person> personList;
+    private List<Customer> personList;
     public CustomerDirectory() {
     
-        personList = new ArrayList<Person>();
+        personList = new ArrayList<Customer>();
     }
     
-    public List<Person> getPersonlist(){
+    public List<Customer> getPersonlist(){
         return personList;
     }
 }
