@@ -10,17 +10,34 @@ import java.util.List;
 
 /**
  *
- * @author manushpatel
+ * @author Charmi Dalal
  */
 public class CustomerDirectory {
+    //public static CustomerDirectory customerDirectory;
+    public static List<Customer> customerList;
     
-    private List<Customer> personList;
-    public CustomerDirectory() {
-    
-        personList = new ArrayList<Customer>();
+    public CustomerDirectory(){
+       customerList= new ArrayList<Customer>();
     }
     
-    public List<Customer> getPersonlist(){
-        return personList;
+//    public static CustomerDirectory getCustomersDirectory(){
+//        customerDirectory = new CustomerDirectory();
+//        return customerDirectory;
+//    } 
+
+    public void setCustomerList(List<Customer> customerList) {
+        this.customerList = customerList;
+    }
+
+    public List<Customer> getCustomerList() {
+        return customerList;
+    }
+    
+    public void addCustomer(Customer c){
+        customerList.add(c);
+    }
+    
+    public void sayhi(){
+        System.out.println(customerList.get(0).getFirstName());
     }
 }

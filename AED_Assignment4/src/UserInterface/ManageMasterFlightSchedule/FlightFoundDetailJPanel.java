@@ -8,7 +8,7 @@ package UserInterface.ManageMasterFlightSchedule;
 import Business.Customer;
 import Business.CustomerDirectory;
 import Business.Flight;
-import UserInterface.Customer.CustomerInformationJPanel;
+import UserInterface.Customer.CustomerDashboardJPanel;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -19,7 +19,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author shashank
+ * @author Charmi Dalal
  */
 public class FlightFoundDetailJPanel extends javax.swing.JPanel {
 
@@ -31,11 +31,21 @@ public class FlightFoundDetailJPanel extends javax.swing.JPanel {
 
     FlightFoundDetailJPanel(JPanel cardSequenceJPanel, Flight selectedFlight) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        
+        initComponents();
+        this.cardSequenceJPanel = cardSequenceJPanel;
+        this.selectedFlight = selectedFlight;
+        flightNumbTF.setText(selectedFlight.getFlightNumber());
+        priceTF.setText(Double.toString(selectedFlight.getPrice()));
+        seatSelectComboBoxBuild();
     }
     
     public void seatSelectComboBoxBuild(){
-       
+        DefaultComboBoxModel cBmodel = new DefaultComboBoxModel();
+        cBmodel.addElement("Select Seat");
+        for(int i=0;i<selectedFlight.getSeats().getSeat().size();i++){
+            cBmodel.addElement(selectedFlight.getSeats().getSeat().get(i));
+        }
+        seatComboBox.setModel(cBmodel);
     }
 
     /**
@@ -282,8 +292,32 @@ public class FlightFoundDetailJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please select a seat");
             return;
         }
+        Customer newCustomer = new Customer();
+        newCustomer.setFirstName(firstNameTF.getText());
+        newCustomer.setLastName(lastNameTF.getText());
+        newCustomer.setAge((int)Double.parseDouble(ageTF.getText()));
+        newCustomer.setPhNum(phoneTF.getText());
+        newCustomer.setSsn(ssnTF.getText());
+        newCustomer.setFlightBooked(selectedFlight);
+        newCustomer.setSeatBooked(seatComboBox.getSelectedItem().toString());
+        //CustomerDirectory customerDir = new CustomerDirectory();
+        CustomerDirectory.customerList.add(newCustomer);
+        //customerDir.sayhi();
         
-       
+        // removing seat which has been booked
+        selectedFlight.getSeats().getSeat().remove(seatComboBox.getSelectedItem());
+        
+        JOptionPane.showMessageDialog(null, "Flight Ticket Booked");
+        cardSequenceJPanel.remove(this);
+        CardLayout layout = (CardLayout) cardSequenceJPanel.getLayout();
+        Component[] components = cardSequenceJPanel.getComponents();
+        for(Component component: components){
+            if(component instanceof FlightFoundJPanel){
+                FlightFoundJPanel mpp = (FlightFoundJPanel) component;
+                mpp.populateTable();
+            }
+        }
+        layout.previous(cardSequenceJPanel);
     }//GEN-LAST:event_bookBtnActionPerformed
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed

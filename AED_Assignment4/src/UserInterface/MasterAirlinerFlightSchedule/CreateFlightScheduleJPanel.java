@@ -22,19 +22,19 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author vennelareddy
+ * @author Charmi Dalal
  */
 public class CreateFlightScheduleJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form CreateFlightScheduleJPanel
      */
-    private JPanel cardSequenceJPanel;
+    private JPanel cardLayoutJPanel;
     private FlightDirectory flightDir;
     public CreateFlightScheduleJPanel(JPanel cardSequenceJPanel,FlightDirectory flightDir, String airlinerName) {
         initComponents();
         airlinerTF.setText(airlinerName);
-        this.cardSequenceJPanel = cardSequenceJPanel;
+        this.cardLayoutJPanel = cardLayoutJPanel;
         this.flightDir = flightDir;
         otodComboBox.setSelectedItem("Select Option");
     }
@@ -243,7 +243,133 @@ public class CreateFlightScheduleJPanel extends javax.swing.JPanel {
 
     private void CreateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateBtnActionPerformed
         // TODO add your handling code here:
-      
+        if("".equals(airlinerTF.getText())){
+            JOptionPane.showMessageDialog(null, "Please enter airliner");
+            return;
+        }
+        if("".equals(flightNumTF.getText())){
+            flightNumTF.setBorder(BorderFactory.createLineBorder(Color.RED));
+            jLabel3.setForeground(Color.RED);
+            JOptionPane.showMessageDialog(null, "Please enter FlightNumber");
+            return;
+        }
+        else{
+            flightNumTF.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            jLabel3.setForeground(Color.BLACK);
+        }
+        
+        if("".equals(sourceTF.getText())){
+            JOptionPane.showMessageDialog(null, "Please enter Source");
+            return;
+        }
+         if("".equals(destinationTF.getText())){
+            JOptionPane.showMessageDialog(null, "Please enter Destination");
+            return;
+        }
+        
+        if("".equals(arrivalTimeTF.getText())){
+            JOptionPane.showMessageDialog(null, "Please enter arrival Time in HH:MM");
+            return;
+        }else{
+            Pattern p = Pattern.compile("^(0[0-9]|1[0-9]|2[0-3]|[0-9]):[0-5][0-9]$");
+            Matcher m = p.matcher(arrivalTimeTF.getText());
+            boolean b = m.matches();
+            if(!b){
+                JOptionPane.showMessageDialog(null, "Please enter arrival Time in HH:MM");
+                return;
+            }
+        }
+        if("".equals(departureTimeTF.getText())){
+            JOptionPane.showMessageDialog(null, "Please enter Departure Time in HH:MM");
+            return;
+        }
+        else{
+            Pattern p = Pattern.compile("^(0[0-9]|1[0-9]|2[0-3]|[0-9]):[0-5][0-9]$");
+            Matcher m = p.matcher(arrivalTimeTF.getText());
+            boolean b = m.matches();
+            if(!b){
+                JOptionPane.showMessageDialog(null, "Please enter departure Time in HH:MM");
+                return;
+            }
+        }
+        
+        if("".equals(flightNumTF.getText())){
+            JOptionPane.showMessageDialog(null, "Please enter Flight Number");
+            return;
+        }
+        if("".equals(dateTF.getText())){
+            JOptionPane.showMessageDialog(null, "Please enter Date");
+
+            return;
+        }
+        
+        if("".equals(sourceTF.getText())){
+            JOptionPane.showMessageDialog(null, "Please enter Source");
+            return;
+        }
+        if("".equals(destinationTF.getText())){
+            JOptionPane.showMessageDialog(null, "Please enter Destination");
+            return;
+        }
+        
+        
+//        try{
+//            Double.parseDouble(countriesOperatedTxtField.getText());
+//        }
+//        catch(Exception e){
+//            JOptionPane.showMessageDialog(null, "Please enter number for Countries operated");
+//            return;
+//        }
+//        if("".equals(originCountryTxtField.getText())){
+//            JOptionPane.showMessageDialog(null, "Please enter Origin Country");
+//            return;
+//        }
+  try{
+           Integer.parseInt(durationTF.getText());        }
+  catch(Exception e){
+           JOptionPane.showMessageDialog(null, "Please enter valid duartion");
+         return;    }
+        if("".equals(otodComboBox.getSelectedItem().equals("Select Option"))){
+            JOptionPane.showMessageDialog(null, "Please enter Code");
+            return;
+        }
+        
+        if(otodComboBox.getSelectedItem().equals("Select Option")){
+            JOptionPane.showMessageDialog(null, "Please select an option below");
+            return;
+        }
+        
+        Flight newFlight = new Flight();
+        newFlight.setOwner(airlinerTF.getText());
+        newFlight.setFlightNumber(flightNumTF.getText());
+        newFlight.setSource(sourceTF.getText());
+        newFlight.setDestination(destinationTF.getText());
+        newFlight.setDepTime(departureTimeTF.getText());
+        newFlight.setArrTime(arrivalTimeTF.getText());
+        newFlight.setDuration((int)Double.parseDouble(durationTF.getText())); 
+        
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        String dateInString = dateTF.getText();
+
+        try {
+
+            Date date = formatter.parse(dateInString);
+            //System.out.println(formatter.format(date));
+            newFlight.setDate(date);
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Please enter date in dd-MM-yyyy format");
+            return;
+        }
+
+        
+        Seats seats = new Seats();
+        newFlight.setSeats(seats);
+        newFlight.setOtod(otodComboBox.getSelectedItem().toString());
+        flightDir.addFlight(newFlight);
+        JOptionPane.showMessageDialog(null, "Flight Created Successfully");
+        emptyInputFields();
     }//GEN-LAST:event_CreateBtnActionPerformed
 
     private void airlinerTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_airlinerTFActionPerformed
@@ -264,18 +390,18 @@ public class CreateFlightScheduleJPanel extends javax.swing.JPanel {
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
         // TODO add your handling code here:
-        cardSequenceJPanel.remove(this);
-        CardLayout layout = (CardLayout) cardSequenceJPanel.getLayout();
+        cardLayoutJPanel.remove(this);
+        CardLayout layout = (CardLayout) cardLayoutJPanel.getLayout();
 
-        Component[] components = cardSequenceJPanel.getComponents();
+        Component[] components = cardLayoutJPanel.getComponents();
         for(Component component: components){
-            if(component instanceof ManageAirlinerFlightScheduleJPanel){
-                ManageAirlinerFlightScheduleJPanel mpp = (ManageAirlinerFlightScheduleJPanel) component;
+            if(component instanceof airlinerFlightScheduleJPanel){
+                airlinerFlightScheduleJPanel mpp = (airlinerFlightScheduleJPanel) component;
                 mpp.populateTable();
             }
         }
 
-        layout.previous(cardSequenceJPanel);
+        layout.previous(cardLayoutJPanel);
     }//GEN-LAST:event_backBtnActionPerformed
 
 

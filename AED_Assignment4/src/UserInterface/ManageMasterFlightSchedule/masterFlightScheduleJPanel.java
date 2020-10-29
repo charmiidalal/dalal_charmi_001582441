@@ -21,9 +21,9 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author shashank
+ * @author Charmi Dalal
  */
-public class ManageMasterFlightScheduleJPanel extends javax.swing.JPanel {
+public class masterFlightScheduleJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form ManageMasterFlightScheduleJPanel
@@ -32,15 +32,32 @@ public class ManageMasterFlightScheduleJPanel extends javax.swing.JPanel {
     private JPanel cardSequenceJPanel;
     private FlightDirectory flightDir;
     
-    public ManageMasterFlightScheduleJPanel(JPanel cardSequenceJPanel, FlightDirectory flightDir) {
+    public masterFlightScheduleJPanel(JPanel cardSequenceJPanel, FlightDirectory flightDir) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         initComponents();
         this.cardSequenceJPanel = cardSequenceJPanel;
         this.flightDir = flightDir;
-       
+        populateTable();
         otodComboBox.setSelectedItem("Select Option");
     }
-       
+        public void populateTable(){
+        DefaultTableModel dtm = (DefaultTableModel)tblMasterFlight.getModel();
+        dtm.setRowCount(0);
+        
+        for(Flight a : flightDir.getFlightDir()){
+            Object[] row = new Object[dtm.getColumnCount()];
+            row[0] = a.getOwner();
+            row[1] = a.getFlightNumber();
+            row[2] = a.getSource();
+            row[3] = a.getDestination();
+            row[4] = a.getDepTime();
+            row[5] = a.getArrTime();
+            row[6] = a.getDuration();
+            row[7] = a.getDate();
+            row[8] = a.getOtod();
+            dtm.addRow(row);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -214,7 +231,13 @@ public class ManageMasterFlightScheduleJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please enter date in dd-MM-yyyy format");
             return;
         }
-       
+        ArrayList<Flight> flightDirFiltered = flightDir.searchMaster(destinationTxtField.getText(),sourceTxtField.getText(),otodComboBox.getSelectedItem().toString(),dateTxtField.getText());
+        System.out.println(flightDirFiltered);
+        FlightFoundJPanel panel = new FlightFoundJPanel(cardSequenceJPanel, flightDirFiltered);
+        cardSequenceJPanel.add("FlightFoundJPanel",panel);
+        CardLayout layout = (CardLayout)cardSequenceJPanel.getLayout();
+        layout.next(cardSequenceJPanel);
+        clearSearchFields();
     }//GEN-LAST:event_searchBtnActionPerformed
 
     private void clearSearchFields(){

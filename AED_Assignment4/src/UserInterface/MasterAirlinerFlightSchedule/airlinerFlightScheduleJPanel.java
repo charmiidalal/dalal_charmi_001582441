@@ -14,26 +14,43 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author vennelareddy
+ * @author Charmi Dalal
  */
-public class ManageAirlinerFlightScheduleJPanel extends javax.swing.JPanel {
+public class airlinerFlightScheduleJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form ManageAirlinerFlightScheduleJPanel
      */
-    private JPanel cardSequenceJPanel;
+    private JPanel cardLayoutJPanel;
     private FlightDirectory flightDir;
     private String airlinerName;
-    public ManageAirlinerFlightScheduleJPanel(JPanel cardSequenceJPanel,FlightDirectory flightDir, String airlinerName) {
+    public airlinerFlightScheduleJPanel(JPanel cardSequenceJPanel,FlightDirectory flightDir, String airlinerName) {
         initComponents();
         this.flightDir = flightDir;
         this.airlinerName = airlinerName;
-        this.cardSequenceJPanel = cardSequenceJPanel;
+        this.cardLayoutJPanel = cardSequenceJPanel;
         populateTable();
     }
     
     public void populateTable(){
+        DefaultTableModel dtm = (DefaultTableModel)flightScheduleTbl.getModel();
+        dtm.setRowCount(0);
         
+        for(Flight a : flightDir.getFlightDir()){
+            if(a.getOwner().equals(airlinerName)){
+                Object[] row = new Object[dtm.getColumnCount()];
+                row[0] = a.getOwner();
+                row[1] = a.getFlightNumber();
+                row[2] = a.getSource();
+                row[3] = a.getDestination();
+                row[4] = a.getDepTime();
+                row[5] = a.getArrTime();
+                row[6] = a.getDuration();
+                row[7] = a.getDate();
+                row[8] = a.getOtod();
+                dtm.addRow(row);
+            }
+        }
     }
 
     /**
@@ -96,20 +113,19 @@ public class ManageAirlinerFlightScheduleJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(createScheduleBtn)
-                                .addGap(68, 68, 68)
-                                .addComponent(viewScheduleBtn)
-                                .addGap(65, 65, 65)
-                                .addComponent(deleteBtn))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 576, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(164, 164, 164)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(292, Short.MAX_VALUE))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(createScheduleBtn)
+                                .addGap(111, 111, 111)
+                                .addComponent(viewScheduleBtn)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(deleteBtn))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 683, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(185, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,8 +133,8 @@ public class ManageAirlinerFlightScheduleJPanel extends javax.swing.JPanel {
                 .addGap(15, 15, 15)
                 .addComponent(jLabel1)
                 .addGap(60, 60, 60)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(createScheduleBtn)
                     .addComponent(viewScheduleBtn)
@@ -129,17 +145,46 @@ public class ManageAirlinerFlightScheduleJPanel extends javax.swing.JPanel {
 
     private void createScheduleBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createScheduleBtnActionPerformed
         // TODO add your handling code here:
-        CreateFlightScheduleJPanel panel = new CreateFlightScheduleJPanel(cardSequenceJPanel, flightDir,airlinerName);
-        cardSequenceJPanel.add("CreateFlightScheduleJPanel",panel);
-        CardLayout layout = (CardLayout) cardSequenceJPanel.getLayout();
-        layout.next(cardSequenceJPanel);
+        CreateFlightScheduleJPanel panel = new CreateFlightScheduleJPanel(cardLayoutJPanel, flightDir,airlinerName);
+        cardLayoutJPanel.add("CreateFlightScheduleJPanel",panel);
+        CardLayout layout = (CardLayout) cardLayoutJPanel.getLayout();
+        layout.next(cardLayoutJPanel);
     }//GEN-LAST:event_createScheduleBtnActionPerformed
 
     private void viewScheduleBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewScheduleBtnActionPerformed
-        
+        // TODO add your handling code here:
+        int selectedRow = flightScheduleTbl.getSelectedRow();
+        if(selectedRow > -1){
+            Flight flight = flightDir.getFlightDir().get(selectedRow);
+            ViewFlightScheduleJPanel panel = new ViewFlightScheduleJPanel(cardLayoutJPanel, flight,flightDir);
+            cardLayoutJPanel.add("ViewFlightScheduleJPanel",panel);
+            CardLayout layout = (CardLayout) cardLayoutJPanel.getLayout();
+            layout.next(cardLayoutJPanel);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Please select a row above");
+            return;      
+        }
     }//GEN-LAST:event_viewScheduleBtnActionPerformed
 
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
+        // TODO add your handling code here:
+         int selectedRow = flightScheduleTbl.getSelectedRow();
+        if(selectedRow > -1){
+            Flight f = flightDir.getFlightDir().get(selectedRow);
+           int selectionButton = JOptionPane.YES_NO_OPTION;
+            int selectionResult = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete??","Warning",selectionButton);
+            if(selectionResult == JOptionPane.YES_OPTION)
+            {
+                flightDir.getFlightDir().remove(f);
+            }
+             
+                populateTable();
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Please select a row above");
+            return;      
+        }
         
     }//GEN-LAST:event_deleteBtnActionPerformed
 

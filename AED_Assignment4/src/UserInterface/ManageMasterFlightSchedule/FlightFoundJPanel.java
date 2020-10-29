@@ -16,26 +16,41 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author shashank
+ * @author Charmi Dalal
  */
 public class FlightFoundJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form FlightFoundJPanel
      */
-    private JPanel cardSequenceJPanel;
+    private JPanel cardLayoutJPanel;
     private ArrayList<Flight> flightDirFiltered;
 
     public FlightFoundJPanel(JPanel cardSequenceJPanel, ArrayList<Flight> flightDirFiltered) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         initComponents();
-        this.cardSequenceJPanel = cardSequenceJPanel;
+        this.cardLayoutJPanel = cardSequenceJPanel;
         this.flightDirFiltered = flightDirFiltered;
         populateTable();
     }
     
     public void populateTable(){
+        DefaultTableModel dtm = (DefaultTableModel)tblFlightFound.getModel();
+        dtm.setRowCount(0);
         
+        for(Flight a :flightDirFiltered){
+            Object[] row = new Object[dtm.getColumnCount()];
+            row[0] = a.getOwner();
+            row[1] = a.getFlightNumber();
+            row[2] = a.getSource();
+            row[3] = a.getDestination();
+            row[4] = a.getDepTime();
+            row[5] = a.getArrTime();
+            row[6] = a.getDuration();
+            row[7] = a.getDate();
+            row[8] = a.getOtod();
+            dtm.addRow(row);
+        }
     }
 
     /**
@@ -116,9 +131,9 @@ public class FlightFoundJPanel extends javax.swing.JPanel {
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
         // TODO add your handling code here:
-        cardSequenceJPanel.remove(this);
-        CardLayout layout = (CardLayout) cardSequenceJPanel.getLayout();
-        layout.previous(cardSequenceJPanel);
+        cardLayoutJPanel.remove(this);
+        CardLayout layout = (CardLayout) cardLayoutJPanel.getLayout();
+        layout.previous(cardLayoutJPanel);
     }//GEN-LAST:event_backBtnActionPerformed
 
     private void viewDetailsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewDetailsBtnActionPerformed
@@ -126,10 +141,10 @@ public class FlightFoundJPanel extends javax.swing.JPanel {
         int selectedRow = tblFlightFound.getSelectedRow();
         if(selectedRow > -1){
            Flight selectedFlight = flightDirFiltered.get(selectedRow);
-           FlightFoundDetailJPanel panel = new FlightFoundDetailJPanel(cardSequenceJPanel, selectedFlight);
-           cardSequenceJPanel.add("FlightFoundDetailJPanel",panel);
-           CardLayout layout = (CardLayout) cardSequenceJPanel.getLayout();
-           layout.next(cardSequenceJPanel);
+           FlightFoundDetailJPanel panel = new FlightFoundDetailJPanel(cardLayoutJPanel, selectedFlight);
+           cardLayoutJPanel.add("FlightFoundDetailJPanel",panel);
+           CardLayout layout = (CardLayout) cardLayoutJPanel.getLayout();
+           layout.next(cardLayoutJPanel);
         }else{
             JOptionPane.showMessageDialog(null, "Please select a row");
         }

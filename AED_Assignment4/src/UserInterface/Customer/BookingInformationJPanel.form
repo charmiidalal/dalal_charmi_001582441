@@ -17,45 +17,51 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-              <Component id="backBtn" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="181" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="294" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="367" max="32767" attributes="0"/>
           </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="204" max="-2" attributes="0"/>
-              <Component id="jLabel10" min="-2" pref="61" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="seatTF" min="-2" pref="129" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="205" max="-2" attributes="0"/>
+          <Group type="102" alignment="1" attributes="0">
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="backBtn" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="204" max="-2" attributes="0"/>
+                      <Component id="seatLbl" min="-2" pref="61" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="seatTxt" min="-2" pref="129" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace min="-2" pref="236" max="-2" attributes="0"/>
           </Group>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="204" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="flightNumLbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="airLineLbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="sourceLbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="destinationLbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="deptTimeLbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="ArrivalTimeLbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="durationLbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="dateLbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="operatedTimeLbl" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="204" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="operatedTimeTF" alignment="0" min="-2" pref="131" max="-2" attributes="0"/>
+                      <Component id="operatedTimeTxt" alignment="0" min="-2" pref="131" max="-2" attributes="0"/>
                       <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="airlinerTF" alignment="0" pref="131" max="32767" attributes="0"/>
-                          <Component id="flightNumTF" alignment="0" max="32767" attributes="0"/>
-                          <Component id="sourceTF" alignment="0" max="32767" attributes="0"/>
-                          <Component id="destinationTF" alignment="0" max="32767" attributes="0"/>
-                          <Component id="departureTimeTF" alignment="0" max="32767" attributes="0"/>
-                          <Component id="arrivalTimeTF" alignment="0" max="32767" attributes="0"/>
-                          <Component id="durationTF" alignment="0" max="32767" attributes="0"/>
-                          <Component id="dateTF" alignment="0" max="32767" attributes="0"/>
+                          <Component id="airlinerTxt" alignment="0" pref="131" max="32767" attributes="0"/>
+                          <Component id="flightNumTxt" alignment="0" max="32767" attributes="0"/>
+                          <Component id="sourceTxt" alignment="0" max="32767" attributes="0"/>
+                          <Component id="destinationTxt" alignment="0" max="32767" attributes="0"/>
+                          <Component id="departureTimeTxt" alignment="0" max="32767" attributes="0"/>
+                          <Component id="arrivalTimeTxt" alignment="0" max="32767" attributes="0"/>
+                          <Component id="durationTxt" alignment="0" max="32767" attributes="0"/>
+                          <Component id="dateTxt" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="204" max="32767" attributes="0"/>
@@ -67,16 +73,15 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="425" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="backBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="seatLbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="seatTxt" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="419" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="seatTF" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+              <Component id="backBtn" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
           </Group>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
@@ -84,48 +89,48 @@
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="airlinerTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="airLineLbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="airlinerTxt" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="flightNumTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="flightNumLbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="flightNumTxt" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="sourceTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="sourceLbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="sourceTxt" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="destinationTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="destinationLbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="destinationTxt" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="departureTimeTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="deptTimeLbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="departureTimeTxt" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                          <Component id="ArrivalTimeLbl" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="arrivalTimeTF" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="arrivalTimeTxt" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="durationTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="durationLbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="durationTxt" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="dateTF" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel9" alignment="0" min="-2" pref="26" max="-2" attributes="0"/>
+                      <Component id="dateTxt" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="dateLbl" alignment="0" min="-2" pref="26" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="operatedTimeTF" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="operatedTimeLbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="operatedTimeTxt" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="115" max="32767" attributes="0"/>
               </Group>
@@ -142,124 +147,124 @@
         <Property name="text" type="java.lang.String" value="Booking Information"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel2">
+    <Component class="javax.swing.JLabel" name="airLineLbl">
       <Properties>
         <Property name="text" type="java.lang.String" value="Air Liner"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="airlinerTF">
+    <Component class="javax.swing.JTextField" name="airlinerTxt">
       <Properties>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="airlinerTFActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="airlinerTxtActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="flightNumTF">
+    <Component class="javax.swing.JTextField" name="flightNumTxt">
       <Properties>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="flightNumTFActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="flightNumTxtActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel3">
+    <Component class="javax.swing.JLabel" name="flightNumLbl">
       <Properties>
         <Property name="text" type="java.lang.String" value="Flight Number"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel4">
+    <Component class="javax.swing.JLabel" name="sourceLbl">
       <Properties>
         <Property name="text" type="java.lang.String" value="Source"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel5">
+    <Component class="javax.swing.JLabel" name="destinationLbl">
       <Properties>
         <Property name="text" type="java.lang.String" value="Destination"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel6">
+    <Component class="javax.swing.JLabel" name="deptTimeLbl">
       <Properties>
         <Property name="text" type="java.lang.String" value="Departure Time"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel7">
+    <Component class="javax.swing.JLabel" name="ArrivalTimeLbl">
       <Properties>
         <Property name="text" type="java.lang.String" value="Arrival Time"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel8">
+    <Component class="javax.swing.JLabel" name="durationLbl">
       <Properties>
         <Property name="text" type="java.lang.String" value="Duration"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel9">
+    <Component class="javax.swing.JLabel" name="dateLbl">
       <Properties>
         <Property name="text" type="java.lang.String" value="Date"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel11">
+    <Component class="javax.swing.JLabel" name="operatedTimeLbl">
       <Properties>
         <Property name="text" type="java.lang.String" value="Operated Time of Day"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="sourceTF">
+    <Component class="javax.swing.JTextField" name="sourceTxt">
       <Properties>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sourceTFActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sourceTxtActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="destinationTF">
+    <Component class="javax.swing.JTextField" name="destinationTxt">
       <Properties>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="departureTimeTF">
+    <Component class="javax.swing.JTextField" name="departureTimeTxt">
       <Properties>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="arrivalTimeTF">
+    <Component class="javax.swing.JTextField" name="arrivalTimeTxt">
       <Properties>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="durationTF">
+    <Component class="javax.swing.JTextField" name="durationTxt">
       <Properties>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="durationTFActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="durationTxtActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="dateTF">
+    <Component class="javax.swing.JTextField" name="dateTxt">
       <Properties>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="operatedTimeTF">
+    <Component class="javax.swing.JTextField" name="operatedTimeTxt">
       <Properties>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="operatedTimeTFActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="operatedTimeTxtActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel10">
+    <Component class="javax.swing.JLabel" name="seatLbl">
       <Properties>
         <Property name="text" type="java.lang.String" value="Seat"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="seatTF">
+    <Component class="javax.swing.JTextField" name="seatTxt">
       <Properties>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="backBtn">
       <Properties>
-        <Property name="text" type="java.lang.String" value="back"/>
+        <Property name="text" type="java.lang.String" value="Back"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backBtnActionPerformed"/>

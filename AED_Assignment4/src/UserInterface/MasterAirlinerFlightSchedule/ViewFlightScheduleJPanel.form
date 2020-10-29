@@ -17,16 +17,16 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+              <Component id="backBtn" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="111" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="166" max="-2" attributes="0"/>
-                      <Component id="updateBtn" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                      <Component id="backBtn" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="111" max="32767" attributes="0"/>
+                      <Component id="updateBtn" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
+                      <Component id="saveBtn" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel1" alignment="0" min="-2" pref="335" max="-2" attributes="0"/>
                           <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -40,22 +40,18 @@
                           <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="airlinerTF" alignment="0" max="32767" attributes="0"/>
+                          <Component id="flightNumTF" alignment="0" max="32767" attributes="0"/>
+                          <Component id="sourceTF" alignment="0" max="32767" attributes="0"/>
+                          <Component id="destinationTF" alignment="0" max="32767" attributes="0"/>
+                          <Component id="departureTimeTF" alignment="0" max="32767" attributes="0"/>
+                          <Component id="arrivalTimeTF" alignment="0" max="32767" attributes="0"/>
+                          <Component id="durationTF" alignment="0" max="32767" attributes="0"/>
+                          <Component id="dateTF" alignment="0" max="32767" attributes="0"/>
+                          <Component id="otodComboBox" pref="131" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
-              </Group>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="airlinerTF" alignment="0" max="32767" attributes="0"/>
-                  <Component id="flightNumTF" alignment="0" max="32767" attributes="0"/>
-                  <Component id="sourceTF" alignment="0" max="32767" attributes="0"/>
-                  <Component id="destinationTF" alignment="0" max="32767" attributes="0"/>
-                  <Component id="departureTimeTF" alignment="0" max="32767" attributes="0"/>
-                  <Component id="arrivalTimeTF" alignment="0" max="32767" attributes="0"/>
-                  <Component id="durationTF" alignment="0" max="32767" attributes="0"/>
-                  <Component id="dateTF" alignment="0" max="32767" attributes="0"/>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-                      <Component id="saveBtn" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="otodComboBox" max="32767" attributes="0"/>
               </Group>
               <EmptySpace pref="228" max="32767" attributes="0"/>
           </Group>
@@ -121,12 +117,12 @@
                   <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                   <Component id="otodComboBox" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="70" max="32767" attributes="0"/>
+              <EmptySpace pref="38" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="updateBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="saveBtn" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="104" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

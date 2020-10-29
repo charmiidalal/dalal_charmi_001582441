@@ -7,26 +7,50 @@ package Business;
 
 /**
  *
- * @author manushpatel
+ * @author Charmi Dalal
  */
 public class Airliner {
-    private String airlinerID;
-    private String airlinerName;
+    
+    private String airlineName;
+    private String airlineCode;
+    private int airlineCount;
+    private String originCountry;
 
-    public String getAirlinerID() {
-        return airlinerID;
+  
+    public String getOriginCountry() {
+        return originCountry;
     }
 
-    public void setAirlinerID(String airlinerID) {
-        this.airlinerID = airlinerID;
+    public void setOriginCountry(String originCountry) {
+        this.originCountry = originCountry;
     }
 
-    public String getAirlinerName() {
-        return airlinerName;
+    public String getAirlineName() {
+        return airlineName;
     }
 
-    public void setAirlinerName(String airlinerName) {
-        this.airlinerName = airlinerName;
+    public void setAirlineName(String airlineName) {
+        this.airlineName = airlineName;
+    }
+
+    public String getAirlineCode() {
+        return airlineCode;
+    }
+
+    public void setAirlineCode(String airlineCode) {
+        this.airlineCode = airlineCode;
+    }
+
+    public int getAirlineCount() {
+        return airlineCount;
+    }
+
+    public void setAirlineCount(int airlineCount) {
+        this.airlineCount = airlineCount;
     }
     
+    @Override
+    public String toString(){
+        return this.getAirlineName();
+    }
 }

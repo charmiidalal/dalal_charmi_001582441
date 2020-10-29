@@ -15,25 +15,37 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author medas
+ * @author Charmi Dalal
  */
-public class CustomerInformationJPanel extends javax.swing.JPanel {
+public class CustomerDashboardJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form CustomerInformation
      */
     private List<Customer> customerList;
-    private JPanel cardSequenceJPanel;
-    public CustomerInformationJPanel(JPanel cardSequenceJPanel, List<Customer> customerList) {
+    private JPanel cardLayoutJPanel;
+    public CustomerDashboardJPanel(JPanel cardSequenceJPanel, List<Customer> customerList) {
          initComponents();
          this.customerList = customerList;
-         this.cardSequenceJPanel = cardSequenceJPanel;
-         
+         this.cardLayoutJPanel = cardSequenceJPanel;
+         populateTable();
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    
-    
+    public void populateTable(){
+        DefaultTableModel dtm = (DefaultTableModel)customersTbl.getModel();
+        dtm.setRowCount(0);
+        
+        for(Customer c : customerList){
+            Object[] row = new Object[dtm.getColumnCount()];
+            row[0]= c.getFirstName();
+            row[1]= c.getLastName();
+            row[2]= c.getAge();
+            row[3] = c.getPhNum();
+            row[4] = c.getSsn();
+            dtm.addRow(row);
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -102,7 +114,19 @@ public class CustomerInformationJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void viewBookingHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewBookingHistoryActionPerformed
-        
+        // TODO add your handling code here:
+        int selectedRow = customersTbl.getSelectedRow();
+        if(selectedRow > -1){
+           Flight bookedFlight = customerList.get(selectedRow).getFlightBooked();
+           BookingInformationJPanel panel = new BookingInformationJPanel(cardLayoutJPanel, bookedFlight, customerList.get(selectedRow).getSeatBooked());
+           cardLayoutJPanel.add("FlightFoundDetailJPanel",panel);
+           CardLayout layout = (CardLayout) cardLayoutJPanel.getLayout();
+           layout.next(cardLayoutJPanel);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Please select a row");
+            return;
+        }
     }//GEN-LAST:event_viewBookingHistoryActionPerformed
 
 
