@@ -60,6 +60,8 @@ public class CustomerDashboardJPanel extends javax.swing.JPanel {
         customersTbl = new javax.swing.JTable();
         btnViewBookingDetails = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Customers");
 
@@ -76,6 +78,7 @@ public class CustomerDashboardJPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(customersTbl);
 
+        btnViewBookingDetails.setBackground(new java.awt.Color(204, 204, 204));
         btnViewBookingDetails.setText("View Booking Details");
         btnViewBookingDetails.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

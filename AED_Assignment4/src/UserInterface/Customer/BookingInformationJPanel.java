@@ -84,6 +84,8 @@ public class BookingInformationJPanel extends javax.swing.JPanel {
         seatTxt = new javax.swing.JTextField();
         backBtn = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
         bookingDetailsLbl.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         bookingDetailsLbl.setText("Booking Details");
 
@@ -152,6 +154,7 @@ public class BookingInformationJPanel extends javax.swing.JPanel {
 
         seatTxt.setEnabled(false);
 
+        backBtn.setBackground(new java.awt.Color(204, 204, 204));
         backBtn.setText("Back");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -205,16 +208,16 @@ public class BookingInformationJPanel extends javax.swing.JPanel {
                                 .addComponent(arrivalTimeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(backBtn, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(294, 294, 294)
+                        .addGap(334, 334, 334)
                         .addComponent(bookingDetailsLbl)))
                 .addContainerGap(100, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
+                .addGap(37, 37, 37)
                 .addComponent(bookingDetailsLbl)
-                .addGap(33, 33, 33)
+                .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(airLineLbl)
                     .addComponent(airlinerTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)

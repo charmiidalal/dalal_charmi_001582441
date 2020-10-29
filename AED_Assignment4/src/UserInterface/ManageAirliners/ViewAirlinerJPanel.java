@@ -55,7 +55,6 @@ public class ViewAirlinerJPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         codeTxtField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        countriesOperatedTxtField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         originCountryTxtField = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -64,6 +63,9 @@ public class ViewAirlinerJPanel extends javax.swing.JPanel {
         saveBtn = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        backBtn.setBackground(new java.awt.Color(204, 204, 204));
         backBtn.setText("Back");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,26 +73,23 @@ public class ViewAirlinerJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel1.setText("Name");
+        jLabel1.setText("Airliner Name:");
 
         nameTxtField.setEnabled(false);
 
-        jLabel2.setText("Code");
+        jLabel2.setText("Airliner No:");
 
         codeTxtField.setEnabled(false);
 
-        jLabel3.setText("Countries Operated");
-
-        countriesOperatedTxtField.setEnabled(false);
-
-        jLabel4.setText("Origin Country");
+        jLabel4.setText("From Country:");
 
         originCountryTxtField.setEnabled(false);
 
-        jLabel5.setText("Fleet");
+        jLabel5.setText("Fleet Count:");
 
         noOfFlightsTxtField.setEnabled(false);
 
+        updateBtn.setBackground(new java.awt.Color(204, 204, 204));
         updateBtn.setText("Update");
         updateBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,6 +97,7 @@ public class ViewAirlinerJPanel extends javax.swing.JPanel {
             }
         });
 
+        saveBtn.setBackground(new java.awt.Color(204, 204, 204));
         saveBtn.setText("Save");
         saveBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,70 +113,69 @@ public class ViewAirlinerJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(422, 422, 422)
+                .addGap(311, 311, 311)
+                .addComponent(jLabel6)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(137, 137, 137)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(backBtn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(updateBtn)
-                        .addGap(80, 80, 80)
-                        .addComponent(saveBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(125, 125, 125))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addContainerGap(302, Short.MAX_VALUE))))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(253, 253, 253)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel1)
                         .addComponent(jLabel2)
+                        .addGap(161, 161, 161)
+                        .addComponent(codeTxtField))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(143, 143, 143)
+                        .addComponent(nameTxtField))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
-                        .addComponent(jLabel4)
-                        .addComponent(jLabel5))
-                    .addGap(104, 104, 104)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(nameTxtField)
-                        .addComponent(codeTxtField)
-                        .addComponent(countriesOperatedTxtField)
-                        .addComponent(originCountryTxtField)
-                        .addComponent(noOfFlightsTxtField))
-                    .addGap(123, 123, 123)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5))
+                        .addGap(143, 143, 143)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(backBtn)
+                                .addGap(35, 35, 35)
+                                .addComponent(updateBtn)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                                .addComponent(saveBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(noOfFlightsTxtField)
+                            .addComponent(originCountryTxtField))))
+                .addGap(224, 224, 224))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(46, 46, 46)
+                .addGap(38, 38, 38)
                 .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 464, Short.MAX_VALUE)
+                .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(nameTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(codeTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel4)
+                            .addComponent(originCountryTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(59, 59, 59)
+                        .addComponent(jLabel5))
+                    .addComponent(noOfFlightsTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(backBtn)
                     .addComponent(updateBtn)
-                    .addComponent(saveBtn)
-                    .addComponent(backBtn))
-                .addGap(32, 32, 32))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(180, 180, 180)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
-                        .addComponent(nameTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(51, 51, 51)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel2)
-                        .addComponent(codeTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(50, 50, 50)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel3)
-                        .addComponent(countriesOperatedTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(55, 55, 55)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel4)
-                        .addComponent(originCountryTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(40, 40, 40)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel5)
-                        .addComponent(noOfFlightsTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(94, Short.MAX_VALUE)))
+                    .addComponent(saveBtn))
+                .addGap(169, 169, 169))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -192,7 +191,6 @@ public class ViewAirlinerJPanel extends javax.swing.JPanel {
                 mpp.populateTable();
             }
         }
-
         layout.previous(cardLayoutJPanel);
     }//GEN-LAST:event_backBtnActionPerformed
 
@@ -201,7 +199,6 @@ public class ViewAirlinerJPanel extends javax.swing.JPanel {
         nameTxtField.setEnabled(true);
         originCountryTxtField.setEnabled(true);
         codeTxtField.setEnabled(true);
-        countriesOperatedTxtField.setEnabled(true);
         noOfFlightsTxtField.setEnabled(true);
         updateBtn.setEnabled(false);
         saveBtn.setEnabled(true);
@@ -230,17 +227,6 @@ public class ViewAirlinerJPanel extends javax.swing.JPanel {
             jLabel2.setForeground(Color.BLACK);
         }
         
-        try{
-            Double.parseDouble(countriesOperatedTxtField.getText());
-            countriesOperatedTxtField.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-            jLabel3.setForeground(Color.BLACK);
-        }
-        catch(Exception e){
-            countriesOperatedTxtField.setBorder(BorderFactory.createLineBorder(Color.RED));
-            jLabel3.setForeground(Color.RED);
-            JOptionPane.showMessageDialog(null, "Please enter number for Countries operated");
-            return;
-        }
         if("".equals(originCountryTxtField.getText())){
             originCountryTxtField.setBorder(BorderFactory.createLineBorder(Color.RED));
             jLabel4.setForeground(Color.RED);
@@ -271,7 +257,6 @@ public class ViewAirlinerJPanel extends javax.swing.JPanel {
         nameTxtField.setEnabled(false);
         originCountryTxtField.setEnabled(false);
         codeTxtField.setEnabled(false);
-        countriesOperatedTxtField.setEnabled(false);
         noOfFlightsTxtField.setEnabled(false);
         saveBtn.setEnabled(false);
         updateBtn.setEnabled(true);
@@ -281,7 +266,6 @@ public class ViewAirlinerJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backBtn;
     private javax.swing.JTextField codeTxtField;
-    private javax.swing.JTextField countriesOperatedTxtField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

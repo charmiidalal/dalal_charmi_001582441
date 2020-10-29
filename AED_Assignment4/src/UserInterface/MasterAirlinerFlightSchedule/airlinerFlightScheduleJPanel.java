@@ -69,6 +69,8 @@ public class airlinerFlightScheduleJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         deleteBtn = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
         flightScheduleTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null},
@@ -82,6 +84,7 @@ public class airlinerFlightScheduleJPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(flightScheduleTbl);
 
+        createScheduleBtn.setBackground(new java.awt.Color(204, 204, 204));
         createScheduleBtn.setText("Create Schedule");
         createScheduleBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,6 +92,7 @@ public class airlinerFlightScheduleJPanel extends javax.swing.JPanel {
             }
         });
 
+        viewScheduleBtn.setBackground(new java.awt.Color(204, 204, 204));
         viewScheduleBtn.setText("View Schedule");
         viewScheduleBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,6 +103,7 @@ public class airlinerFlightScheduleJPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jLabel1.setText("              Manage Flight Schedule ");
 
+        deleteBtn.setBackground(new java.awt.Color(204, 204, 204));
         deleteBtn.setText("Delete Schedule");
         deleteBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,33 +118,33 @@ public class airlinerFlightScheduleJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(164, 164, 164)
+                        .addGap(228, 228, 228)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 780, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(createScheduleBtn)
-                                .addGap(111, 111, 111)
+                                .addGap(149, 149, 149)
                                 .addComponent(viewScheduleBtn)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(deleteBtn))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 683, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(185, Short.MAX_VALUE))
+                                .addGap(210, 210, 210)
+                                .addComponent(deleteBtn)))))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addGap(32, 32, 32)
                 .addComponent(jLabel1)
-                .addGap(60, 60, 60)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(43, 43, 43)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(createScheduleBtn)
+                    .addComponent(deleteBtn)
                     .addComponent(viewScheduleBtn)
-                    .addComponent(deleteBtn))
-                .addContainerGap(312, Short.MAX_VALUE))
+                    .addComponent(createScheduleBtn))
+                .addContainerGap(266, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

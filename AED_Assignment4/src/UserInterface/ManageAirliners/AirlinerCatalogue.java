@@ -61,7 +61,9 @@ public class AirlinerCatalogue extends javax.swing.JPanel {
         createAirlinerBtn = new javax.swing.JButton();
         deleteAirlinerBtn = new javax.swing.JButton();
 
-        airlinerCatalogLbl.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        airlinerCatalogLbl.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         airlinerCatalogLbl.setText("AirLiners Catalogue");
 
         airlinerTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -78,6 +80,7 @@ public class AirlinerCatalogue extends javax.swing.JPanel {
         ));
         scrollPanel.setViewportView(airlinerTable);
 
+        viewAirlinerBtn.setBackground(new java.awt.Color(204, 204, 204));
         viewAirlinerBtn.setText("View Airliner");
         viewAirlinerBtn.setPreferredSize(new java.awt.Dimension(135, 40));
         viewAirlinerBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -86,6 +89,7 @@ public class AirlinerCatalogue extends javax.swing.JPanel {
             }
         });
 
+        createAirlinerBtn.setBackground(new java.awt.Color(204, 204, 204));
         createAirlinerBtn.setText("Create Airliner");
         createAirlinerBtn.setPreferredSize(new java.awt.Dimension(135, 40));
         createAirlinerBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -94,6 +98,7 @@ public class AirlinerCatalogue extends javax.swing.JPanel {
             }
         });
 
+        deleteAirlinerBtn.setBackground(new java.awt.Color(204, 204, 204));
         deleteAirlinerBtn.setText("Delete Airliner");
         deleteAirlinerBtn.setPreferredSize(new java.awt.Dimension(135, 40));
         deleteAirlinerBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -135,7 +140,7 @@ public class AirlinerCatalogue extends javax.swing.JPanel {
                     .addComponent(createAirlinerBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(viewAirlinerBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(deleteAirlinerBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(227, Short.MAX_VALUE))
+                .addContainerGap(228, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

@@ -77,6 +77,9 @@ public class FlightFoundDetailJPanel extends javax.swing.JPanel {
         bookBtn = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        backBtn.setBackground(new java.awt.Color(204, 204, 204));
         backBtn.setText("Cancel");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,6 +114,7 @@ public class FlightFoundDetailJPanel extends javax.swing.JPanel {
             }
         });
 
+        bookBtn.setBackground(new java.awt.Color(204, 204, 204));
         bookBtn.setText("Confirm Booking");
         bookBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

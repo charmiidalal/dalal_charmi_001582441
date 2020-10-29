@@ -79,6 +79,8 @@ public class masterFlightScheduleJPanel extends javax.swing.JPanel {
         searchBtn = new javax.swing.JButton();
         otodComboBox = new javax.swing.JComboBox<>();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
         tblMasterFlight.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null},
@@ -109,6 +111,7 @@ public class masterFlightScheduleJPanel extends javax.swing.JPanel {
             }
         });
 
+        searchBtn.setBackground(new java.awt.Color(204, 204, 204));
         searchBtn.setText("Search");
         searchBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

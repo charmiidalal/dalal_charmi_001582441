@@ -59,17 +59,23 @@ public class AirlineAgencyMain extends javax.swing.JFrame {
     private void initComponents() {
 
         splitPane = new javax.swing.JSplitPane();
+        cardLayoutJPanel = new javax.swing.JPanel();
         menuJPanel = new javax.swing.JPanel();
         airlinersBtn = new javax.swing.JButton();
         airlinerComboBox = new javax.swing.JComboBox<>();
         setFlightScheduleBtn = new javax.swing.JButton();
         travelAgencyBtn = new javax.swing.JButton();
         customerBtn = new javax.swing.JButton();
-        cardLayoutJPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        airlinersBtn.setText("Airliners");
+        cardLayoutJPanel.setBackground(new java.awt.Color(255, 255, 255));
+        cardLayoutJPanel.setLayout(new java.awt.CardLayout());
+        splitPane.setRightComponent(cardLayoutJPanel);
+
+        menuJPanel.setBackground(new java.awt.Color(204, 204, 255));
+
+        airlinersBtn.setText("Manage Airliners");
         airlinersBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 airlinersBtnActionPerformed(evt);
@@ -82,7 +88,7 @@ public class AirlineAgencyMain extends javax.swing.JFrame {
             }
         });
 
-        setFlightScheduleBtn.setText("Set Flight Schedule");
+        setFlightScheduleBtn.setText("Set Flight Schedules");
         setFlightScheduleBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 setFlightScheduleBtnActionPerformed(evt);
@@ -96,7 +102,7 @@ public class AirlineAgencyMain extends javax.swing.JFrame {
             }
         });
 
-        customerBtn.setText("Customer");
+        customerBtn.setText("Customer Bookings");
         customerBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 customerBtnActionPerformed(evt);
@@ -108,48 +114,48 @@ public class AirlineAgencyMain extends javax.swing.JFrame {
         menuJPanelLayout.setHorizontalGroup(
             menuJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menuJPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(menuJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(airlinerComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(airlinersBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(menuJPanelLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(setFlightScheduleBtn)
-                        .addGap(0, 14, Short.MAX_VALUE))
-                    .addComponent(customerBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(travelAgencyBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGap(35, 35, 35)
+                .addGroup(menuJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(airlinersBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(setFlightScheduleBtn)
+                    .addGroup(menuJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(travelAgencyBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(customerBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(airlinerComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
         menuJPanelLayout.setVerticalGroup(
             menuJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menuJPanelLayout.createSequentialGroup()
-                .addGap(103, 103, 103)
+                .addGap(93, 93, 93)
                 .addComponent(airlinersBtn)
-                .addGap(57, 57, 57)
+                .addGap(66, 66, 66)
                 .addComponent(airlinerComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(setFlightScheduleBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
-                .addComponent(customerBtn)
-                .addGap(45, 45, 45)
+                .addGap(72, 72, 72)
                 .addComponent(travelAgencyBtn)
-                .addGap(187, 187, 187))
+                .addGap(18, 18, 18)
+                .addComponent(customerBtn)
+                .addContainerGap(192, Short.MAX_VALUE))
         );
 
         splitPane.setLeftComponent(menuJPanel);
-
-        cardLayoutJPanel.setLayout(new java.awt.CardLayout());
-        splitPane.setRightComponent(cardLayoutJPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(splitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 898, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(splitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1163, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(splitPane)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(splitPane, javax.swing.GroupLayout.PREFERRED_SIZE, 606, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 6, Short.MAX_VALUE))
         );
 
         pack();
