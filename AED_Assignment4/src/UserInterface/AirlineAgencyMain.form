@@ -74,15 +74,22 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="airlinersBtn" min="-2" pref="170" max="-2" attributes="0"/>
-                          <Component id="setFlightScheduleBtn" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="travelAgencyBtn" min="-2" pref="176" max="-2" attributes="0"/>
-                              <Component id="customerBtn" min="-2" pref="176" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="setFlightScheduleBtn" min="-2" pref="170" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="airlinerComboBox" alignment="1" min="-2" pref="170" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="airlinersBtn" min="-2" pref="170" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="travelAgencyBtn" min="-2" pref="176" max="-2" attributes="0"/>
+                                      <Component id="customerBtn" min="-2" pref="176" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="airlinerComboBox" alignment="1" min="-2" pref="170" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
                       <EmptySpace pref="61" max="32767" attributes="0"/>
                   </Group>

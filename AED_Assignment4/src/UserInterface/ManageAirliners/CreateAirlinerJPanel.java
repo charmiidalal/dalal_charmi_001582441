@@ -7,6 +7,7 @@ package UserInterface.ManageAirliners;
 
 import Business.Airliner;
 import Business.AirlinerDirectory;
+import UserInterface.AirlineAgencyMain;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -204,7 +205,6 @@ public class CreateAirlinerJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please enter number for Fleet");
             return;
         }
-        
         Airliner newAirliner = new Airliner();
         newAirliner.setAirlineName(nameTxtField.getText());
         newAirliner.setAirlineCode(codeTxtField.getText());

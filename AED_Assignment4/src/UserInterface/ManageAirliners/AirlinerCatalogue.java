@@ -63,8 +63,8 @@ public class AirlinerCatalogue extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 255));
 
-        airlinerCatalogLbl.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        airlinerCatalogLbl.setText("AirLiners Catalogue");
+        airlinerCatalogLbl.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        airlinerCatalogLbl.setText("Airliners Catalogue");
 
         airlinerTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -140,7 +140,7 @@ public class AirlinerCatalogue extends javax.swing.JPanel {
                     .addComponent(createAirlinerBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(viewAirlinerBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(deleteAirlinerBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(228, Short.MAX_VALUE))
+                .addContainerGap(234, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -163,7 +163,7 @@ public class AirlinerCatalogue extends javax.swing.JPanel {
             layout.next(cardLayoutJPanel);
         }
         else{
-            JOptionPane.showMessageDialog(null, "Please select a row first");
+            JOptionPane.showMessageDialog(null, "Please select a row first!!");
         }
     }//GEN-LAST:event_viewAirlinerBtnActionPerformed
 

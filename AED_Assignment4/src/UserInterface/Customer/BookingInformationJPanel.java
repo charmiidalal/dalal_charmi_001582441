@@ -41,6 +41,7 @@ public class BookingInformationJPanel extends javax.swing.JPanel {
         arrivalTimeTxt.setText(bookedFlight.getFlightArrTime());
         departureTimeTxt.setText(bookedFlight.getFlightDepTime());
         durationTxt.setText(Integer.toString(bookedFlight.getFlightDuration()));
+        flightTimeTxt.setText(bookedFlight.getFlightTimePhase());
         String strDate = "";
         try {
             DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
@@ -79,7 +80,7 @@ public class BookingInformationJPanel extends javax.swing.JPanel {
         arrivalTimeTxt = new javax.swing.JTextField();
         durationTxt = new javax.swing.JTextField();
         dateTxt = new javax.swing.JTextField();
-        operatedTimeTxt = new javax.swing.JTextField();
+        flightTimeTxt = new javax.swing.JTextField();
         seatLbl = new javax.swing.JLabel();
         seatTxt = new javax.swing.JTextField();
         backBtn = new javax.swing.JButton();
@@ -119,7 +120,7 @@ public class BookingInformationJPanel extends javax.swing.JPanel {
 
         dateLbl.setText("Flight Date:");
 
-        operatedTimeLbl.setText("Operated Time of Day:");
+        operatedTimeLbl.setText("Flight Time of Day:");
 
         sourceTxt.setEnabled(false);
         sourceTxt.addActionListener(new java.awt.event.ActionListener() {
@@ -143,10 +144,10 @@ public class BookingInformationJPanel extends javax.swing.JPanel {
 
         dateTxt.setEnabled(false);
 
-        operatedTimeTxt.setEnabled(false);
-        operatedTimeTxt.addActionListener(new java.awt.event.ActionListener() {
+        flightTimeTxt.setEnabled(false);
+        flightTimeTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                operatedTimeTxtActionPerformed(evt);
+                flightTimeTxtActionPerformed(evt);
             }
         });
 
@@ -194,10 +195,10 @@ public class BookingInformationJPanel extends javax.swing.JPanel {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(operatedTimeLbl)
                                     .addComponent(seatLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(34, 34, 34)
+                                .addGap(55, 55, 55)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(seatTxt)
-                                    .addComponent(operatedTimeTxt)))
+                                    .addComponent(flightTimeTxt)
+                                    .addComponent(seatTxt)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(deptTimeLbl)
                                 .addGap(74, 74, 74)
@@ -249,7 +250,7 @@ public class BookingInformationJPanel extends javax.swing.JPanel {
                             .addComponent(seatTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(operatedTimeLbl)
-                        .addComponent(operatedTimeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(flightTimeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(46, 46, 46)
                 .addComponent(backBtn)
                 .addContainerGap(121, Short.MAX_VALUE))
@@ -272,9 +273,9 @@ public class BookingInformationJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_durationTxtActionPerformed
 
-    private void operatedTimeTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_operatedTimeTxtActionPerformed
+    private void flightTimeTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_flightTimeTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_operatedTimeTxtActionPerformed
+    }//GEN-LAST:event_flightTimeTxtActionPerformed
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
         // TODO add your handling code here:
@@ -310,8 +311,8 @@ public class BookingInformationJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField durationTxt;
     private javax.swing.JLabel flightNumLbl;
     private javax.swing.JTextField flightNumTxt;
+    private javax.swing.JTextField flightTimeTxt;
     private javax.swing.JLabel operatedTimeLbl;
-    private javax.swing.JTextField operatedTimeTxt;
     private javax.swing.JLabel seatLbl;
     private javax.swing.JTextField seatTxt;
     private javax.swing.JLabel sourceLbl;

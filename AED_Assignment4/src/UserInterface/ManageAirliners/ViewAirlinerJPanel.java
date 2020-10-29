@@ -180,10 +180,10 @@ public class ViewAirlinerJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
-        // TODO add your handling code here:
+       // TODO add your handling code here:
         cardLayoutJPanel.remove(this);
         CardLayout layout = (CardLayout) cardLayoutJPanel.getLayout();
-
+        
         Component[] components = cardLayoutJPanel.getComponents();
         for(Component component: components){
             if(component instanceof AirlinerCatalogue){

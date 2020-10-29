@@ -54,10 +54,10 @@
                                   <Component id="operatedTimeLbl" min="-2" max="-2" attributes="0"/>
                                   <Component id="seatLbl" min="-2" pref="61" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="flightTimeTxt" max="32767" attributes="0"/>
                                   <Component id="seatTxt" max="32767" attributes="0"/>
-                                  <Component id="operatedTimeTxt" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -125,7 +125,7 @@
                   </Group>
                   <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                       <Component id="operatedTimeLbl" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="operatedTimeTxt" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="flightTimeTxt" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
@@ -202,7 +202,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="operatedTimeLbl">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Operated Time of Day:"/>
+        <Property name="text" type="java.lang.String" value="Flight Time of Day:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="sourceTxt">
@@ -241,12 +241,12 @@
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="operatedTimeTxt">
+    <Component class="javax.swing.JTextField" name="flightTimeTxt">
       <Properties>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="operatedTimeTxtActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="flightTimeTxtActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="seatLbl">

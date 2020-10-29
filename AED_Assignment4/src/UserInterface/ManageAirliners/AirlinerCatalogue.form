@@ -58,7 +58,7 @@
                   <Component id="viewAirlinerBtn" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
                   <Component id="deleteAirlinerBtn" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="228" max="32767" attributes="0"/>
+              <EmptySpace pref="234" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -67,9 +67,9 @@
     <Component class="javax.swing.JLabel" name="airlinerCatalogLbl">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Arial" size="24" style="1"/>
+          <Font name="Lucida Grande" size="18" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="AirLiners Catalogue"/>
+        <Property name="text" type="java.lang.String" value="Airliners Catalogue"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JScrollPane" name="scrollPanel">

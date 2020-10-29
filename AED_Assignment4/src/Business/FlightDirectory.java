@@ -29,18 +29,18 @@ public class FlightDirectory {
     }
 
     public void fetchFlightSchedule() {
-        String[][] arr = {{"Air India", "AI563", "Boston", "Washington", "11:30", "4:30", "100.0", "Night", "3"},
+        String[][] arr = {{"Air India", "AI563", "Boston", "Washington", "11:30", "4:30", "1300.0", "Night", "3"},
         {"Air India", "AI563", "Boston", "Washington", "10:30", "4:30", "100.0", "Afternoon", "3"},
-        {"Luftanza Airways", "LA321", "Las Vegas", "New York", "01:30", "4:30", "100.0", "Morning", "4"},
-        {"Jet Airways", "JA566", "Newyork", "New jersey", "01:30", "4:30", "100.0", "Night", "4"},
-        {"Jet Airways", "JA566", "New Jersey", "Vermont", "01:30", "4:30", "100.0", "Afternoon", "4"},
-        {"Jet Airways", "JA566", "California", "Miami", "01:30", "4:30", "100.0", "Afternoon", "4"},
+        {"Luftanza Airways", "LA321", "Las Vegas", "New York", "01:30", "4:30", "3600.0", "Morning", "4"},
+        {"Jet Airways", "JA566", "Newyork", "New jersey", "01:30", "4:30", "100.0", "Night", "2"},
+        {"Jet Airways", "JA566", "New Jersey", "Vermont", "01:30", "4:30", "830.0", "Afternoon", "4"},
+        {"Jet Airways", "JA566", "California", "Miami", "01:30", "4:30", "3900.0", "Afternoon", "4"},
         {"Qatar Airways", "QA3454", "Huston", "Ahmedabad", "01:30", "4:30", "100.0", "Morning", "4"},
-        {"AirHaid Airways", "JA264", "Boston", "Dubai", "01:30", "4:30", "100.0", "Evening", "4"},
-        {"Delta Airways", "DT65", "Huston", "London", "01:30", "4:30", "100.0", "Afternoon", "4"},
-        {"AirHaid Airways", "JA264", "Philadelphia", "France", "01:30", "4:30", "100.0", "Night", "4"},
-        {"Eitihad Airways", "EA445", "Huston", "Germany", "01:30", "4:30", "100.0", "Morning", "4"},
-        {"Delta Airways", "DT65", "Philadelphia", "Greece", "01:30", "4:30", "100.0", "Morning", "4"}
+        {"AirHaid Airways", "JA264", "Boston", "Dubai", "01:30", "4:30", "470.0", "Evening", "5"},
+        {"Delta Airways", "DT65", "Huston", "London", "01:30", "4:30", "9270.0", "Afternoon", "4"},
+        {"AirHaid Airways", "JA264", "Philadelphia", "France", "01:30", "4:30", "9300.0", "Night", "10"},
+        {"Eitihad Airways", "EA445", "Huston", "Germany", "01:30", "4:30", "1230.0", "Morning", "4"},
+        {"Delta Airways", "DT65", "Philadelphia", "Greece", "01:30", "4:30", "130.0", "Morning", "1"}
         };
 
         for (int i = 0; i < arr.length; i++) {
@@ -102,16 +102,17 @@ public class FlightDirectory {
         this.airDir = airDir;
     }
 
-    public ArrayList<Flight> searchMaster(String destination, String source, String date) {
-        ArrayList<Flight> flightDirFiltered = new ArrayList<>();
+    public ArrayList<Flight> searchMaster(String destination, String prefferedTimeCombo,String source, String date) {
+        ArrayList<Flight> flightDirFiltered = new ArrayList<Flight>();
         for (Flight f : dirFlight) {
             String strDate = "";
             try {
                 DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
                 strDate = dateFormat.format(f.getFlightDate());
             } catch (Exception e) {
+                 e.printStackTrace();
             }
-            if (f.getFlightDestination().equals(destination) && f.getFlightSource().equals(source) && strDate.equals(date)) {
+            if (f.getFlightDestination().equals(destination)  && f.getFlightTimePhase().equals(prefferedTimeCombo) && f.getFlightSource().equals(source) && strDate.equals(date)) {
                 flightDirFiltered.add(f);
             }
         }
