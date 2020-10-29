@@ -10,69 +10,59 @@ package Business;
  * @author Charmi Dalal
  */
 public class Customer {
-    private String firstName;
-    private String lastName;
-    private int age;
-    private String phNum;
-    private String ssn;
-    private Flight flightBooked;
-    private String seatBooked;
-    //private int price; 
+    private String cstFirstName;
+    private String cstLastName;
+    private int cstAge;
+    private String cstPhoneNum;
+    private Flight cstFlight;
+    private String cstSeat;
 
-    public String getSeatBooked() {
-        return seatBooked;
+    public String getCstFirstName() {
+        return cstFirstName;
     }
 
-    public void setSeatBooked(String seatBooked) {
-        this.seatBooked = seatBooked;
+    public void setCstFirstName(String cstFirstName) {
+        this.cstFirstName = cstFirstName;
     }
 
-    public Flight getFlightBooked() {
-        return flightBooked;
+    public String getCstLastName() {
+        return cstLastName;
     }
 
-    public void setFlightBooked(Flight flightBooked) {
-        this.flightBooked = flightBooked;
-    }
-    
-    public String getSsn() {
-        return ssn;
+    public void setCstLastName(String cstLastName) {
+        this.cstLastName = cstLastName;
     }
 
-    public void setSsn(String ssn) {
-        this.ssn = ssn;
-    }
-    
-    public int getAge() {
-        return age;
+    public int getCstAge() {
+        return cstAge;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setCstAge(int cstAge) {
+        this.cstAge = cstAge;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getCstPhoneNum() {
+        return cstPhoneNum;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setCstPhoneNum(String cstPhoneNum) {
+        this.cstPhoneNum = cstPhoneNum;
     }
 
-    public String getLastName() {
-        return lastName;
+    public Flight getCstFlight() {
+        return cstFlight;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setCstFlight(Flight cstFlight) {
+        this.cstFlight = cstFlight;
     }
 
-    public String getPhNum() {
-        return phNum;
+    public String getCstSeat() {
+        return cstSeat;
     }
 
-    public void setPhNum(String phNum) {
-        this.phNum = phNum;
+    public void setCstSeat(String cstSeat) {
+        this.cstSeat = cstSeat;
     }
     
 }

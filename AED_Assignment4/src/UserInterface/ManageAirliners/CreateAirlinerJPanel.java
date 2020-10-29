@@ -215,7 +215,7 @@ public class CreateAirlinerJPanel extends javax.swing.JPanel {
         newAirliner.setAirlineName(nameTxtField.getText());
         newAirliner.setAirlineCode(codeTxtField.getText());
         newAirliner.setAirlineCount((int)Double.parseDouble(noOfFlightsTxtField.getText()));
-        newAirliner.setOriginCountry(originCountryTxtField.getText());
+        newAirliner.setFromCountry(originCountryTxtField.getText());
         airlinerDir.addAirliner(newAirliner);
         JOptionPane.showMessageDialog(null, "Airliner Created Successfully");
         emptyInputFields();

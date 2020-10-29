@@ -10,19 +10,18 @@ package Business;
  * @author Charmi Dalal
  */
 public class Airliner {
-    
+
     private String airlineName;
     private String airlineCode;
     private int airlineCount;
-    private String originCountry;
+    private String fromCountry;
 
-  
-    public String getOriginCountry() {
-        return originCountry;
+    public String getFromCountry() {
+        return fromCountry;
     }
 
-    public void setOriginCountry(String originCountry) {
-        this.originCountry = originCountry;
+    public void setFromCountry(String fromCountry) {
+        this.fromCountry = fromCountry;
     }
 
     public String getAirlineName() {
@@ -33,6 +32,14 @@ public class Airliner {
         this.airlineName = airlineName;
     }
 
+    public int getAirlineCount() {
+        return airlineCount;
+    }
+
+    public void setAirlineCount(int airlineCount) {
+        this.airlineCount = airlineCount;
+    }
+
     public String getAirlineCode() {
         return airlineCode;
     }
@@ -41,16 +48,8 @@ public class Airliner {
         this.airlineCode = airlineCode;
     }
 
-    public int getAirlineCount() {
-        return airlineCount;
-    }
-
-    public void setAirlineCount(int airlineCount) {
-        this.airlineCount = airlineCount;
-    }
-    
     @Override
-    public String toString(){
+    public String toString() {
         return this.getAirlineName();
     }
 }

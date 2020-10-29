@@ -36,16 +36,14 @@ public class ViewFlightScheduleJPanel extends javax.swing.JPanel {
     }
 
     private void autoFillInputs() {
-        airlinerTF.setText(flight.getOwner());
+        airlinerTF.setText(flight.getFlightOwner());
         flightNumTF.setText(flight.getFlightNumber());
-        sourceTF.setText(flight.getSource());
-        destinationTF.setText(flight.getDestination());
-        departureTimeTF.setText(flight.getDepTime());
-        arrivalTimeTF.setText(flight.getArrTime());
-        durationTF.setText(Integer.toString(flight.getDuration()));
-        dateTF.setText(flight.getDate().toString());
-        //seatTF.setText("");
-        otodComboBox.setSelectedItem(flight.getOtod().toString());
+        sourceTF.setText(flight.getFlightSource());
+        destinationTF.setText(flight.getFlightDestination());
+        departureTimeTF.setText(flight.getFlightDepTime());
+        arrivalTimeTF.setText(flight.getFlightArrTime());
+        durationTF.setText(Integer.toString(flight.getFlightDuration()));
+        dateTF.setText(flight.getFlightDate().toString());
     }
 
     /**
@@ -305,18 +303,17 @@ public class ViewFlightScheduleJPanel extends javax.swing.JPanel {
         }
 
         //Flight newFlight = new Flight();
-        flight.setOwner(airlinerTF.getText());
+        flight.setFlightOwner(airlinerTF.getText());
         flight.setFlightNumber(flightNumTF.getText());
-        flight.setSource(sourceTF.getText());
-        flight.setDestination(destinationTF.getText());
-        flight.setDepTime(departureTimeTF.getText());
-        flight.setArrTime(arrivalTimeTF.getText());
-        flight.setDuration((int) Double.parseDouble(durationTF.getText()));
+        flight.setFlightSource(sourceTF.getText());
+        flight.setFlightDestination(destinationTF.getText());
+        flight.setFlightDepTime(departureTimeTF.getText());
+        flight.setFlightArrTime(arrivalTimeTF.getText());
+        flight.setFlightDuration((int) Double.parseDouble(durationTF.getText()));
         Date newDate = new Date();
-        flight.setDate(newDate);//edit
+        flight.setFlightDate(newDate);//edit
         Seats seats = new Seats();
-        flight.setSeats(seats);
-        flight.setOtod(otodComboBox.getSelectedItem().toString());
+        flight.setFlightSeats(seats);
         JOptionPane.showMessageDialog(null, "Flight Upadated Successfully");
         disabled();
         saveBtn.setEnabled(false);

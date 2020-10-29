@@ -12,86 +12,34 @@ import java.util.Date;
  * @author Charmi Dalal
  */
 public class Flight {
-    
-    private String owner;
+
+    private String flightOwner;
     private String flightNumber;
-    private String source;
-    private String destination;
-    private String depTime;
-    private String arrTime;
-    private Double price;
-    private Date date;
-    private Seats seats;
-    private String otod;
-    private int duration;
+    private String flightSource;
+    private String flightDestination;
+    private String flightDepTime;
+    private String flightArrTime;
+    private Double flightPrice;
+    private Date flightDate;
+    private Seats flightSeats;
+    private int flightDuration;
+    private String flightTimePhase;
 
-    public int getDuration() {
-        return duration;
-    }
-
-    public void setDuration(int duration) {
-        this.duration = duration;
-    }
-    
-    
-     public String getOtod() {
-        return otod;
+    public String getFlightTimePhase() {
+        return flightTimePhase;
     }
 
-    public void setOtod(String otod) {
-        this.otod = otod;
+    public void setFlightTimePhase(String flightTimePhase) {
+        this.flightTimePhase = flightTimePhase;
     }
 
-    public String getOwner() {
-        return owner;
+    public String getFlightOwner() {
+        return flightOwner;
     }
 
-    public void setOwner(String owner) {
-        this.owner = owner;
+    public void setFlightOwner(String flightOwner) {
+        this.flightOwner = flightOwner;
     }
-
-    public Seats getSeats() {
-        return seats;
-    }
-
-    public void setSeats(Seats seats) {
-        this.seats = seats;
-    }
-
-    public int getHour() {
-        return hour;
-    }
-
-    public void setHour(int hour) {
-        this.hour = hour;
-    }
-
-    public int getMinutes() {
-        return minutes;
-    }
-
-    public void setMinutes(int minutes) {
-        this.minutes = minutes;
-    }
-    private int hour;
-    private int minutes;
-
-    public String getDepTime() {
-        return depTime;
-    }
-
-    public void setDepTime(String depTime) {
-        this.depTime = depTime;
-    }
-
-    public String getArrTime() {
-        return arrTime;
-    }
-
-    public void setArrTime(String arrTime) {
-        this.arrTime = arrTime;
-    }
-    private int noOfSeats;
 
     public String getFlightNumber() {
         return flightNumber;
@@ -101,44 +49,68 @@ public class Flight {
         this.flightNumber = flightNumber;
     }
 
-    public String getSource() {
-        return source;
+    public String getFlightSource() {
+        return flightSource;
     }
 
-    public void setSource(String source) {
-        this.source = source;
+    public void setFlightSource(String flightSource) {
+        this.flightSource = flightSource;
     }
 
-    public String getDestination() {
-        return destination;
+    public String getFlightDestination() {
+        return flightDestination;
     }
 
-    public void setDestination(String destination) {
-        this.destination = destination;
+    public void setFlightDestination(String flightDestination) {
+        this.flightDestination = flightDestination;
     }
 
-    public Double getPrice() {
-        return price;
+    public String getFlightDepTime() {
+        return flightDepTime;
     }
 
-    public void setPrice(Double price) {
-        this.price = price;
+    public void setFlightDepTime(String flightDepTime) {
+        this.flightDepTime = flightDepTime;
     }
 
-    public Date getDate() {
-        return date;
+    public String getFlightArrTime() {
+        return flightArrTime;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setFlightArrTime(String flightArrTime) {
+        this.flightArrTime = flightArrTime;
     }
 
-    public int getNoOfSeats() {
-        return noOfSeats;
+    public Double getFlightPrice() {
+        return flightPrice;
     }
 
-    public void setNoOfSeats(int noOfSeats) {
-        this.noOfSeats = noOfSeats;
+    public void setFlightPrice(Double fllightPrice) {
+        this.flightPrice = fllightPrice;
     }
-    
+
+    public Date getFlightDate() {
+        return flightDate;
+    }
+
+    public void setFlightDate(Date flightDate) {
+        this.flightDate = flightDate;
+    }
+
+    public Seats getFlightSeats() {
+        return flightSeats;
+    }
+
+    public void setFlightSeats(Seats flightSeats) {
+        this.flightSeats = flightSeats;
+    }
+
+    public int getFlightDuration() {
+        return flightDuration;
+    }
+
+    public void setFlightDuration(int flightDuration) {
+        this.flightDuration = flightDuration;
+    }
+
 }

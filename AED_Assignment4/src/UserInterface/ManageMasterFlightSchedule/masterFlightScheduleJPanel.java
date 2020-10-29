@@ -46,15 +46,14 @@ public class masterFlightScheduleJPanel extends javax.swing.JPanel {
         
         for(Flight a : flightDir.getFlightDir()){
             Object[] row = new Object[dtm.getColumnCount()];
-            row[0] = a.getOwner();
+            row[0] = a.getFlightOwner();
             row[1] = a.getFlightNumber();
-            row[2] = a.getSource();
-            row[3] = a.getDestination();
-            row[4] = a.getDepTime();
-            row[5] = a.getArrTime();
-            row[6] = a.getDuration();
-            row[7] = a.getDate();
-            row[8] = a.getOtod();
+            row[2] = a.getFlightSource();
+            row[3] = a.getFlightDestination();
+            row[4] = a.getFlightDepTime();
+            row[5] = a.getFlightArrTime();
+            row[6] = a.getFlightDuration();
+            row[7] = a.getFlightDate();
             dtm.addRow(row);
         }
     }
@@ -231,7 +230,7 @@ public class masterFlightScheduleJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please enter date in dd-MM-yyyy format");
             return;
         }
-        ArrayList<Flight> flightDirFiltered = flightDir.searchMaster(destinationTxtField.getText(),sourceTxtField.getText(),otodComboBox.getSelectedItem().toString(),dateTxtField.getText());
+        ArrayList<Flight> flightDirFiltered = flightDir.searchMaster(destinationTxtField.getText(),sourceTxtField.getText(),dateTxtField.getText());
         System.out.println(flightDirFiltered);
         FlightFoundJPanel panel = new FlightFoundJPanel(cardSequenceJPanel, flightDirFiltered);
         cardSequenceJPanel.add("FlightFoundJPanel",panel);

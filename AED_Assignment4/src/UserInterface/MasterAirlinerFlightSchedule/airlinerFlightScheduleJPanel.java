@@ -37,17 +37,17 @@ public class airlinerFlightScheduleJPanel extends javax.swing.JPanel {
         dtm.setRowCount(0);
         
         for(Flight a : flightDir.getFlightDir()){
-            if(a.getOwner().equals(airlinerName)){
+            if(a.getFlightOwner().equals(airlinerName)){
                 Object[] row = new Object[dtm.getColumnCount()];
-                row[0] = a.getOwner();
+                row[0] = a.getFlightOwner();
                 row[1] = a.getFlightNumber();
-                row[2] = a.getSource();
-                row[3] = a.getDestination();
-                row[4] = a.getDepTime();
-                row[5] = a.getArrTime();
-                row[6] = a.getDuration();
-                row[7] = a.getDate();
-                row[8] = a.getOtod();
+                row[2] = a.getFlightSource();
+                row[3] = a.getFlightDestination();
+                row[4] = a.getFlightDepTime();
+                row[5] = a.getFlightArrTime();
+                row[6] = a.getFlightDuration();
+                row[7] = a.getFlightDate();
+                row[8] = a.getFlightTimePhase();
                 dtm.addRow(row);
             }
         }
@@ -71,13 +71,13 @@ public class airlinerFlightScheduleJPanel extends javax.swing.JPanel {
 
         flightScheduleTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Airliner", "Flight Number", "Source", "Destination", "Departure Time", "Arrival Time", "Duration", "Date", "Time of day"
+                "Airliner", "Flight Number", "Source", "Destination", "Departure Time", "Arrival Time", "Duration", "Date", "Time of day", "Flight Period"
             }
         ));
         jScrollPane1.setViewportView(flightScheduleTbl);

@@ -39,7 +39,7 @@ public class AirlinerCatalogue extends javax.swing.JPanel {
             Object[] row = new Object[dtm.getColumnCount()];
             row[0]= a;
             row[1]= a.getAirlineCode();
-            row[2] = a.getOriginCountry();
+            row[2] = a.getFromCountry();
             row[3] = a.getAirlineCount();
             dtm.addRow(row);
         }

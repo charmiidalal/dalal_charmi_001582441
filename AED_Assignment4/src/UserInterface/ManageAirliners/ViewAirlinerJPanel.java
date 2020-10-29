@@ -35,7 +35,7 @@ public class ViewAirlinerJPanel extends javax.swing.JPanel {
     
     private void populateInputs(){
         nameTxtField.setText(airliner.getAirlineName());
-        originCountryTxtField.setText(airliner.getOriginCountry());
+        originCountryTxtField.setText(airliner.getFromCountry());
         codeTxtField.setText(airliner.getAirlineCode());
         noOfFlightsTxtField.setText(Integer.toString(airliner.getAirlineCount()));
     }
@@ -266,7 +266,7 @@ public class ViewAirlinerJPanel extends javax.swing.JPanel {
         airliner.setAirlineName(nameTxtField.getText());
         airliner.setAirlineCode(codeTxtField.getText());
         airliner.setAirlineCount((int)Double.parseDouble(noOfFlightsTxtField.getText()));
-        airliner.setOriginCountry(originCountryTxtField.getText());
+        airliner.setFromCountry(originCountryTxtField.getText());
         JOptionPane.showMessageDialog(null, "Airliner Updated Successfully");
         nameTxtField.setEnabled(false);
         originCountryTxtField.setEnabled(false);

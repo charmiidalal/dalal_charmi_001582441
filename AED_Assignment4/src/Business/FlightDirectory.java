@@ -29,42 +29,42 @@ public class FlightDirectory {
     }
 
     public void fetchFlightSchedule() {
-        String[][] arr = {{"British Airways", "ba01", "boston", "los angles", "01:30", "4:30", "100.0", "Morning", "3"},
-        {"British Airways", "ba02", "boston", "los vegas", "01:30", "4:30", "100.0", "Afternoon", "3"},
-        {"American Airways", "aa01", "boston", "los angles", "01:30", "4:30", "100.0", "Morning", "4"},
-        {"American Airways", "aa02", "boston", "los vegas", "01:30", "4:30", "100.0", "Afternoon", "4"},
-        {"Jet Airways", "ja01", "boston", "los angles", "01:30", "4:30", "100.0", "Morning", "4"},
-        {"Jet Airways", "ja02", "boston", "los vegas", "01:30", "4:30", "100.0", "Afternoon", "4"},
-        {"Indian Airways", "ia01", "boston", "los angles", "01:30", "4:30", "100.0", "Morning", "4"},
-        {"Indian Airways", "ia02", "boston", "los vegas", "01:30", "4:30", "100.0", "Evening", "4"},
-        {"Chineese Airways", "ca01", "boston", "los angles", "01:30", "4:30", "100.0", "Night", "4"},
-        {"Chineese Airways", "ca02", "boston", "los vegas", "01:30", "4:30", "100.0", "Night", "4"},
-        {"Aerlingus Airways", "aea01", "boston", "los angles", "01:30", "4:30", "100.0", "Morning", "4"},
-        {"Aerlingus Airways", "aea02", "boston", "los vegas", "01:30", "4:30", "100.0", "Morning", "4"}
+        String[][] arr = {{"Air India", "AI563", "Boston", "Washington", "11:30", "4:30", "100.0", "Night", "3"},
+        {"Air India", "AI563", "Boston", "Washington", "10:30", "4:30", "100.0", "Afternoon", "3"},
+        {"Luftanza Airways", "LA321", "Las Vegas", "New York", "01:30", "4:30", "100.0", "Morning", "4"},
+        {"Jet Airways", "JA566", "Newyork", "New jersey", "01:30", "4:30", "100.0", "Night", "4"},
+        {"Jet Airways", "JA566", "New Jersey", "Vermont", "01:30", "4:30", "100.0", "Afternoon", "4"},
+        {"Jet Airways", "JA566", "California", "Miami", "01:30", "4:30", "100.0", "Afternoon", "4"},
+        {"Qatar Airways", "QA3454", "Huston", "Ahmedabad", "01:30", "4:30", "100.0", "Morning", "4"},
+        {"AirHaid Airways", "JA264", "Boston", "Dubai", "01:30", "4:30", "100.0", "Evening", "4"},
+        {"Delta Airways", "DT65", "Huston", "London", "01:30", "4:30", "100.0", "Afternoon", "4"},
+        {"AirHaid Airways", "JA264", "Philadelphia", "France", "01:30", "4:30", "100.0", "Night", "4"},
+        {"Eitihad Airways", "EA445", "Huston", "Germany", "01:30", "4:30", "100.0", "Morning", "4"},
+        {"Delta Airways", "DT65", "Philadelphia", "Greece", "01:30", "4:30", "100.0", "Morning", "4"}
         };
 
         for (int i = 0; i < arr.length; i++) {
             Flight temp = new Flight();
 
-            temp.setOwner(arr[i][0]);
+            temp.setFlightOwner(arr[i][0]);
             temp.setFlightNumber(arr[i][1]);
-            temp.setSource(arr[i][2]);
-            temp.setDestination(arr[i][3]);
-            temp.setDepTime(arr[i][4]);
-            temp.setArrTime(arr[i][5]);
-            temp.setPrice(Double.parseDouble(arr[i][6]));
-            temp.setOtod(arr[i][7]);
-            temp.setDuration((int) Double.parseDouble(arr[i][8]));
+            temp.setFlightSource(arr[i][2]);
+            temp.setFlightDestination(arr[i][3]);
+            temp.setFlightDepTime(arr[i][4]);
+            temp.setFlightArrTime(arr[i][5]);
+            temp.setFlightPrice(Double.parseDouble(arr[i][6]));
+            temp.setFlightTimePhase(arr[i][7]);
+            temp.setFlightDuration((int) Double.parseDouble(arr[i][8]));
+            
             // setting objects
             Seats seats = new Seats();
-            temp.setSeats(seats);
+            temp.setFlightSeats(seats);
             SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
             String dateInString = "16-10-2019";
 
             try {
-
                 Date date = formatter.parse(dateInString);
-                temp.setDate(date);
+                temp.setFlightDate(date);
             } catch (ParseException e) {
                 JOptionPane.showMessageDialog(null, "Please enter date in dd-MM-yyyy format");
                 return;
@@ -102,22 +102,19 @@ public class FlightDirectory {
         this.airDir = airDir;
     }
 
-    public ArrayList<Flight> searchMaster(String destination, String source, String otod, String date) {
+    public ArrayList<Flight> searchMaster(String destination, String source, String date) {
         ArrayList<Flight> flightDirFiltered = new ArrayList<>();
         for (Flight f : dirFlight) {
-            //SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
             String strDate = "";
             try {
                 DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-                strDate = dateFormat.format(f.getDate());
-                //System.out.println("Converted String: " + strDate);
+                strDate = dateFormat.format(f.getFlightDate());
             } catch (Exception e) {
             }
-            if (f.getDestination().equals(destination) && f.getSource().equals(source) && f.getOtod().equals(otod) && strDate.equals(date)) {
+            if (f.getFlightDestination().equals(destination) && f.getFlightSource().equals(source) && strDate.equals(date)) {
                 flightDirFiltered.add(f);
             }
         }
-
         return flightDirFiltered;
     }
 }

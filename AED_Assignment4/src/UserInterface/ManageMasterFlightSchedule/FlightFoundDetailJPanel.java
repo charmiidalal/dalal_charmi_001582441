@@ -35,15 +35,15 @@ public class FlightFoundDetailJPanel extends javax.swing.JPanel {
         this.cardSequenceJPanel = cardSequenceJPanel;
         this.selectedFlight = selectedFlight;
         flightNumbTF.setText(selectedFlight.getFlightNumber());
-        priceTF.setText(Double.toString(selectedFlight.getPrice()));
+        priceTF.setText(Double.toString(selectedFlight.getFlightPrice()));
         seatSelectComboBoxBuild();
     }
     
     public void seatSelectComboBoxBuild(){
         DefaultComboBoxModel cBmodel = new DefaultComboBoxModel();
         cBmodel.addElement("Select Seat");
-        for(int i=0;i<selectedFlight.getSeats().getSeat().size();i++){
-            cBmodel.addElement(selectedFlight.getSeats().getSeat().get(i));
+        for(int i=0;i<selectedFlight.getFlightSeats().getSeat().size();i++){
+            cBmodel.addElement(selectedFlight.getFlightSeats().getSeat().get(i));
         }
         seatComboBox.setModel(cBmodel);
     }
@@ -293,19 +293,18 @@ public class FlightFoundDetailJPanel extends javax.swing.JPanel {
             return;
         }
         Customer newCustomer = new Customer();
-        newCustomer.setFirstName(firstNameTF.getText());
-        newCustomer.setLastName(lastNameTF.getText());
-        newCustomer.setAge((int)Double.parseDouble(ageTF.getText()));
-        newCustomer.setPhNum(phoneTF.getText());
-        newCustomer.setSsn(ssnTF.getText());
-        newCustomer.setFlightBooked(selectedFlight);
-        newCustomer.setSeatBooked(seatComboBox.getSelectedItem().toString());
+        newCustomer.setCstFirstName(firstNameTF.getText());
+        newCustomer.setCstLastName(lastNameTF.getText());
+        newCustomer.setCstAge((int)Double.parseDouble(ageTF.getText()));
+        newCustomer.setCstPhoneNum(phoneTF.getText());
+        newCustomer.setCstFlight(selectedFlight);
+        newCustomer.setCstSeat(seatComboBox.getSelectedItem().toString());
         //CustomerDirectory customerDir = new CustomerDirectory();
         CustomerDirectory.customerList.add(newCustomer);
         //customerDir.sayhi();
         
         // removing seat which has been booked
-        selectedFlight.getSeats().getSeat().remove(seatComboBox.getSelectedItem());
+        selectedFlight.getFlightSeats().getSeat().remove(seatComboBox.getSelectedItem());
         
         JOptionPane.showMessageDialog(null, "Flight Ticket Booked");
         cardSequenceJPanel.remove(this);

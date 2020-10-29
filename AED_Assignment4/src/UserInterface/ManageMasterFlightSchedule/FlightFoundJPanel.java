@@ -40,15 +40,14 @@ public class FlightFoundJPanel extends javax.swing.JPanel {
         
         for(Flight a :flightDirFiltered){
             Object[] row = new Object[dtm.getColumnCount()];
-            row[0] = a.getOwner();
+            row[0] = a.getFlightOwner();
             row[1] = a.getFlightNumber();
-            row[2] = a.getSource();
-            row[3] = a.getDestination();
-            row[4] = a.getDepTime();
-            row[5] = a.getArrTime();
-            row[6] = a.getDuration();
-            row[7] = a.getDate();
-            row[8] = a.getOtod();
+            row[2] = a.getFlightSource();
+            row[3] = a.getFlightDestination();
+            row[4] = a.getFlightDepTime();
+            row[5] = a.getFlightArrTime();
+            row[6] = a.getFlightDuration();
+            row[7] = a.getFlightDate();
             dtm.addRow(row);
         }
     }

@@ -13,20 +13,14 @@ import java.util.List;
  * @author Charmi Dalal
  */
 public class CustomerDirectory {
-    //public static CustomerDirectory customerDirectory;
     public static List<Customer> customerList;
     
     public CustomerDirectory(){
-       customerList= new ArrayList<Customer>();
+       customerList= new ArrayList<>();
     }
-    
-//    public static CustomerDirectory getCustomersDirectory(){
-//        customerDirectory = new CustomerDirectory();
-//        return customerDirectory;
-//    } 
-
+   
     public void setCustomerList(List<Customer> customerList) {
-        this.customerList = customerList;
+        CustomerDirectory.customerList = customerList;
     }
 
     public List<Customer> getCustomerList() {
@@ -38,6 +32,6 @@ public class CustomerDirectory {
     }
     
     public void sayhi(){
-        System.out.println(customerList.get(0).getFirstName());
+        System.out.println(customerList.get(0).getCstFirstName());
     }
 }

@@ -38,11 +38,10 @@ public class CustomerDashboardJPanel extends javax.swing.JPanel {
         
         for(Customer c : customerList){
             Object[] row = new Object[dtm.getColumnCount()];
-            row[0]= c.getFirstName();
-            row[1]= c.getLastName();
-            row[2]= c.getAge();
-            row[3] = c.getPhNum();
-            row[4] = c.getSsn();
+            row[0]= c.getCstFirstName();
+            row[1]= c.getCstLastName();
+            row[2]= c.getCstAge();
+            row[3] = c.getCstPhoneNum();
             dtm.addRow(row);
         }
     }
@@ -59,28 +58,28 @@ public class CustomerDashboardJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         customersTbl = new javax.swing.JTable();
-        viewBookingHistory = new javax.swing.JButton();
+        btnViewBookingDetails = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Customers");
 
         customersTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "FirstName", "LastName", "Age", "Phone", "SSN"
+                "First Name", "Last Name", "Age", "Phone"
             }
         ));
         jScrollPane1.setViewportView(customersTbl);
 
-        viewBookingHistory.setText("View Booking Information");
-        viewBookingHistory.addActionListener(new java.awt.event.ActionListener() {
+        btnViewBookingDetails.setText("View Booking Details");
+        btnViewBookingDetails.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewBookingHistoryActionPerformed(evt);
+                btnViewBookingDetailsActionPerformed(evt);
             }
         });
 
@@ -90,7 +89,7 @@ public class CustomerDashboardJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(viewBookingHistory)
+                    .addComponent(btnViewBookingDetails)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                             .addGap(396, 396, 396)
@@ -108,17 +107,17 @@ public class CustomerDashboardJPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49)
-                .addComponent(viewBookingHistory, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnViewBookingDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(310, 310, 310))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void viewBookingHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewBookingHistoryActionPerformed
+    private void btnViewBookingDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewBookingDetailsActionPerformed
         // TODO add your handling code here:
         int selectedRow = customersTbl.getSelectedRow();
         if(selectedRow > -1){
-           Flight bookedFlight = customerList.get(selectedRow).getFlightBooked();
-           BookingInformationJPanel panel = new BookingInformationJPanel(cardLayoutJPanel, bookedFlight, customerList.get(selectedRow).getSeatBooked());
+           Flight bookedFlight = customerList.get(selectedRow).getCstFlight();
+           BookingInformationJPanel panel = new BookingInformationJPanel(cardLayoutJPanel, bookedFlight, customerList.get(selectedRow).getCstSeat());
            cardLayoutJPanel.add("FlightFoundDetailJPanel",panel);
            CardLayout layout = (CardLayout) cardLayoutJPanel.getLayout();
            layout.next(cardLayoutJPanel);
@@ -127,13 +126,13 @@ public class CustomerDashboardJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please select a row");
             return;
         }
-    }//GEN-LAST:event_viewBookingHistoryActionPerformed
+    }//GEN-LAST:event_btnViewBookingDetailsActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnViewBookingDetails;
     private javax.swing.JTable customersTbl;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton viewBookingHistory;
     // End of variables declaration//GEN-END:variables
 }

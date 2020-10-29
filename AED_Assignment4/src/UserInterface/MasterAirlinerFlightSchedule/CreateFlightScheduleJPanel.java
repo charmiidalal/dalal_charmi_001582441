@@ -31,7 +31,8 @@ public class CreateFlightScheduleJPanel extends javax.swing.JPanel {
      */
     private JPanel cardLayoutJPanel;
     private FlightDirectory flightDir;
-    public CreateFlightScheduleJPanel(JPanel cardSequenceJPanel,FlightDirectory flightDir, String airlinerName) {
+
+    public CreateFlightScheduleJPanel(JPanel cardSequenceJPanel, FlightDirectory flightDir, String airlinerName) {
         initComponents();
         airlinerTF.setText(airlinerName);
         this.cardLayoutJPanel = cardLayoutJPanel;
@@ -39,7 +40,7 @@ public class CreateFlightScheduleJPanel extends javax.swing.JPanel {
         otodComboBox.setSelectedItem("Select Option");
     }
 
-    public void emptyInputFields(){
+    public void emptyInputFields() {
         airlinerTF.setText("");
         flightNumTF.setText("");
         sourceTF.setText("");
@@ -50,6 +51,7 @@ public class CreateFlightScheduleJPanel extends javax.swing.JPanel {
         dateTF.setText("");
         otodComboBox.setSelectedItem("Select Option");
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -243,111 +245,98 @@ public class CreateFlightScheduleJPanel extends javax.swing.JPanel {
 
     private void CreateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateBtnActionPerformed
         // TODO add your handling code here:
-        if("".equals(airlinerTF.getText())){
+        if ("".equals(airlinerTF.getText())) {
             JOptionPane.showMessageDialog(null, "Please enter airliner");
             return;
         }
-        if("".equals(flightNumTF.getText())){
+        if ("".equals(flightNumTF.getText())) {
             flightNumTF.setBorder(BorderFactory.createLineBorder(Color.RED));
             jLabel3.setForeground(Color.RED);
             JOptionPane.showMessageDialog(null, "Please enter FlightNumber");
             return;
-        }
-        else{
+        } else {
             flightNumTF.setBorder(BorderFactory.createLineBorder(Color.BLACK));
             jLabel3.setForeground(Color.BLACK);
         }
-        
-        if("".equals(sourceTF.getText())){
+
+        if ("".equals(sourceTF.getText())) {
             JOptionPane.showMessageDialog(null, "Please enter Source");
             return;
         }
-         if("".equals(destinationTF.getText())){
+        if ("".equals(destinationTF.getText())) {
             JOptionPane.showMessageDialog(null, "Please enter Destination");
             return;
         }
-        
-        if("".equals(arrivalTimeTF.getText())){
+
+        if ("".equals(arrivalTimeTF.getText())) {
             JOptionPane.showMessageDialog(null, "Please enter arrival Time in HH:MM");
             return;
-        }else{
+        } else {
             Pattern p = Pattern.compile("^(0[0-9]|1[0-9]|2[0-3]|[0-9]):[0-5][0-9]$");
             Matcher m = p.matcher(arrivalTimeTF.getText());
             boolean b = m.matches();
-            if(!b){
+            if (!b) {
                 JOptionPane.showMessageDialog(null, "Please enter arrival Time in HH:MM");
                 return;
             }
         }
-        if("".equals(departureTimeTF.getText())){
+        if ("".equals(departureTimeTF.getText())) {
             JOptionPane.showMessageDialog(null, "Please enter Departure Time in HH:MM");
             return;
-        }
-        else{
+        } else {
             Pattern p = Pattern.compile("^(0[0-9]|1[0-9]|2[0-3]|[0-9]):[0-5][0-9]$");
             Matcher m = p.matcher(arrivalTimeTF.getText());
             boolean b = m.matches();
-            if(!b){
+            if (!b) {
                 JOptionPane.showMessageDialog(null, "Please enter departure Time in HH:MM");
                 return;
             }
         }
-        
-        if("".equals(flightNumTF.getText())){
+
+        if ("".equals(flightNumTF.getText())) {
             JOptionPane.showMessageDialog(null, "Please enter Flight Number");
             return;
         }
-        if("".equals(dateTF.getText())){
+        if ("".equals(dateTF.getText())) {
             JOptionPane.showMessageDialog(null, "Please enter Date");
 
             return;
         }
-        
-        if("".equals(sourceTF.getText())){
+
+        if ("".equals(sourceTF.getText())) {
             JOptionPane.showMessageDialog(null, "Please enter Source");
             return;
         }
-        if("".equals(destinationTF.getText())){
+        if ("".equals(destinationTF.getText())) {
             JOptionPane.showMessageDialog(null, "Please enter Destination");
             return;
         }
-        
-        
-//        try{
-//            Double.parseDouble(countriesOperatedTxtField.getText());
-//        }
-//        catch(Exception e){
-//            JOptionPane.showMessageDialog(null, "Please enter number for Countries operated");
-//            return;
-//        }
-//        if("".equals(originCountryTxtField.getText())){
-//            JOptionPane.showMessageDialog(null, "Please enter Origin Country");
-//            return;
-//        }
-  try{
-           Integer.parseInt(durationTF.getText());        }
-  catch(Exception e){
-           JOptionPane.showMessageDialog(null, "Please enter valid duartion");
-         return;    }
-        if("".equals(otodComboBox.getSelectedItem().equals("Select Option"))){
+
+        try {
+            Integer.parseInt(durationTF.getText());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Please enter valid duartion");
+            return;
+        }
+        if ("".equals(otodComboBox.getSelectedItem().equals("Select Option"))) {
             JOptionPane.showMessageDialog(null, "Please enter Code");
             return;
         }
-        
-        if(otodComboBox.getSelectedItem().equals("Select Option")){
+
+        if (otodComboBox.getSelectedItem().equals("Select Option")) {
             JOptionPane.showMessageDialog(null, "Please select an option below");
             return;
         }
-        
+
         Flight newFlight = new Flight();
-        newFlight.setOwner(airlinerTF.getText());
+        newFlight.setFlightOwner(airlinerTF.getText());
         newFlight.setFlightNumber(flightNumTF.getText());
-        newFlight.setSource(sourceTF.getText());
-        newFlight.setDestination(destinationTF.getText());
-        newFlight.setDepTime(departureTimeTF.getText());
-        newFlight.setArrTime(arrivalTimeTF.getText());
-        newFlight.setDuration((int)Double.parseDouble(durationTF.getText())); 
-        
+        newFlight.setFlightSource(sourceTF.getText());
+        newFlight.setFlightDestination(destinationTF.getText());
+        newFlight.setFlightDepTime(departureTimeTF.getText());
+        newFlight.setFlightArrTime(arrivalTimeTF.getText());
+        newFlight.setFlightDuration((int) Double.parseDouble(durationTF.getText()));
+
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
         String dateInString = dateTF.getText();
 
@@ -355,7 +344,7 @@ public class CreateFlightScheduleJPanel extends javax.swing.JPanel {
 
             Date date = formatter.parse(dateInString);
             //System.out.println(formatter.format(date));
-            newFlight.setDate(date);
+            newFlight.setFlightDate(date);
 
         } catch (ParseException e) {
             e.printStackTrace();
@@ -363,10 +352,8 @@ public class CreateFlightScheduleJPanel extends javax.swing.JPanel {
             return;
         }
 
-        
         Seats seats = new Seats();
-        newFlight.setSeats(seats);
-        newFlight.setOtod(otodComboBox.getSelectedItem().toString());
+        newFlight.setFlightSeats(seats);
         flightDir.addFlight(newFlight);
         JOptionPane.showMessageDialog(null, "Flight Created Successfully");
         emptyInputFields();
@@ -394,8 +381,8 @@ public class CreateFlightScheduleJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) cardLayoutJPanel.getLayout();
 
         Component[] components = cardLayoutJPanel.getComponents();
-        for(Component component: components){
-            if(component instanceof airlinerFlightScheduleJPanel){
+        for (Component component : components) {
+            if (component instanceof airlinerFlightScheduleJPanel) {
                 airlinerFlightScheduleJPanel mpp = (airlinerFlightScheduleJPanel) component;
                 mpp.populateTable();
             }
