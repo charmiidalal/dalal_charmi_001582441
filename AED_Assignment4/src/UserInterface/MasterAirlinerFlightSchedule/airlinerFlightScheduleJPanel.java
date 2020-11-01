@@ -170,9 +170,25 @@ public class airlinerFlightScheduleJPanel extends javax.swing.JPanel {
     private void viewScheduleBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewScheduleBtnActionPerformed
         // TODO add your handling code here:
         int selectedRow = flightTbl.getSelectedRow();
+        int c =0;
         if (selectedRow > -1) {
-            Flight flight = fd.getFlightDir().get(selectedRow);
-            ViewFlightScheduleJPanel panel = new ViewFlightScheduleJPanel(cardLayoutJPanel, flight, fd);
+//            FlightDirectory fd1 = new FlightDirectory();
+            Flight f1 = new Flight();
+            for (Flight flight : fd.getFlightDir()) {
+                
+            if (flight.getFlightOwner().equals(airlinerName)) {
+                
+                if(c == selectedRow)
+                {
+                    f1 = flight;
+                    break;
+                }
+                c +=1;
+            }
+        }
+          
+
+            ViewFlightScheduleJPanel panel = new ViewFlightScheduleJPanel(cardLayoutJPanel, f1, fd);
             cardLayoutJPanel.add("ViewFlightScheduleJPanel", panel);
             CardLayout layout = (CardLayout) cardLayoutJPanel.getLayout();
             layout.next(cardLayoutJPanel);

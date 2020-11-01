@@ -23,9 +23,9 @@ public class ViewFlightScheduleJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ViewFlightScheduleJPanel
      */
-    private final JPanel cardLayoutJPanel;
-    private final Flight f;
-    private final FlightDirectory fd;
+    private  JPanel cardLayoutJPanel;
+    private  Flight f;
+    private  FlightDirectory fd;
 
     public ViewFlightScheduleJPanel(JPanel cardLayoutJPanel, Flight f, FlightDirectory fd) {
         initComponents();
@@ -43,6 +43,22 @@ public class ViewFlightScheduleJPanel extends javax.swing.JPanel {
         departureTimeTxt.setText(f.getFlightDepTime());
         arrivalTimeTxt.setText(f.getFlightArrTime());
         durationTxt.setText(Integer.toString(f.getFlightDuration()));
+        if(f.getFlightTimePhase() == "Morning")
+        {
+            timeCB.setSelectedIndex(1);
+        }
+        else if (f.getFlightTimePhase() == "Afernoon")
+        {
+            timeCB.setSelectedIndex(2);
+        }
+         else if (f.getFlightTimePhase() == "Evening")
+        {
+            timeCB.setSelectedIndex(3);
+        }
+         else if (f.getFlightTimePhase() == "Night")
+        {
+            timeCB.setSelectedIndex(4);
+        }
         dateTxt.setText(f.getFlightDate().toString());
     }
 
