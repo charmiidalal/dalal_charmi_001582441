@@ -12,7 +12,7 @@ import Business.FlightDirectory;
 import UserInterface.Customer.CustomerDashboardJPanel;
 import UserInterface.ManageAirliners.AirlinerCatalogue;
 import UserInterface.MasterAirlinerFlightSchedule.airlinerFlightScheduleJPanel;
-import UserInterface.ManageMasterFlightSchedule.masterFlightScheduleJPanel;
+import UserInterface.ManageMasterFlightSchedule.MasterFlightScheduleJPanel;
 import java.awt.CardLayout;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
@@ -73,7 +73,8 @@ public class AirlineAgencyMain extends javax.swing.JFrame {
         cardLayoutJPanel.setLayout(new java.awt.CardLayout());
         splitPane.setRightComponent(cardLayoutJPanel);
 
-        menuJPanel.setBackground(new java.awt.Color(204, 204, 255));
+        menuJPanel.setBackground(new java.awt.Color(153, 204, 255));
+        menuJPanel.setToolTipText("");
 
         airlinersBtn.setText("Manage Airliners");
         airlinersBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -82,6 +83,16 @@ public class AirlineAgencyMain extends javax.swing.JFrame {
             }
         });
 
+        airlinerComboBox.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                airlinerComboBoxFocusGained(evt);
+            }
+        });
+        airlinerComboBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                airlinerComboBoxMouseClicked(evt);
+            }
+        });
         airlinerComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 airlinerComboBoxActionPerformed(evt);
@@ -126,7 +137,7 @@ public class AirlineAgencyMain extends javax.swing.JFrame {
                                 .addComponent(travelAgencyBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(customerBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(airlinerComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         menuJPanelLayout.setVerticalGroup(
             menuJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,7 +152,7 @@ public class AirlineAgencyMain extends javax.swing.JFrame {
                 .addComponent(travelAgencyBtn)
                 .addGap(18, 18, 18)
                 .addComponent(customerBtn)
-                .addContainerGap(192, Short.MAX_VALUE))
+                .addContainerGap(215, Short.MAX_VALUE))
         );
 
         splitPane.setLeftComponent(menuJPanel);
@@ -187,7 +198,7 @@ public class AirlineAgencyMain extends javax.swing.JFrame {
     }//GEN-LAST:event_setFlightScheduleBtnActionPerformed
     private void travelAgencyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_travelAgencyBtnActionPerformed
         // TODO add your handling code here:
-        masterFlightScheduleJPanel panel = new masterFlightScheduleJPanel(cardLayoutJPanel, dirFlight);
+        MasterFlightScheduleJPanel panel = new MasterFlightScheduleJPanel(cardLayoutJPanel, dirFlight);
         cardLayoutJPanel.add("masterFlightScheduleJPanel", panel);
         CardLayout layout = (CardLayout) cardLayoutJPanel.getLayout();
         layout.next(cardLayoutJPanel);
@@ -204,7 +215,18 @@ public class AirlineAgencyMain extends javax.swing.JFrame {
 
     private void airlinerComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_airlinerComboBoxActionPerformed
         // TODO add your handling code here:
+       
     }//GEN-LAST:event_airlinerComboBoxActionPerformed
+
+    private void airlinerComboBoxFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_airlinerComboBoxFocusGained
+        // TODO add your handling code here:
+        showAirlinerComboBox();
+    }//GEN-LAST:event_airlinerComboBoxFocusGained
+
+    private void airlinerComboBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_airlinerComboBoxMouseClicked
+        // TODO add your handling code here:
+//        showAirlinerComboBox();
+    }//GEN-LAST:event_airlinerComboBoxMouseClicked
 
     /**
      * @param args the command line arguments

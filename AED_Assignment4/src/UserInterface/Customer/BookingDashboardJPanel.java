@@ -14,17 +14,16 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author Charmi Dalal
+ * @author Dinesh Kumar
  */
-public class BookingInformationJPanel extends javax.swing.JPanel {
+public class BookingDashboardJPanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form BookingInformationJPanel
-     */
-    private JPanel cardLayoutJPanel;
-    private Flight bookedFlight;
-    private String seatBooked;
-    BookingInformationJPanel(JPanel cardSequenceJPanel, Flight bookedFlight, String seatBooked) {
+    /* Create constructor for booking dashboard*/
+    private final Flight bookedFlight;
+    private final JPanel cardLayoutJPanel;
+    private final String seatBooked;
+
+    BookingDashboardJPanel(JPanel cardLayoutJPanel, Flight bookedFlight, String seatBooked) {
         initComponents();
         this.cardLayoutJPanel = cardLayoutJPanel;
         this.bookedFlight = bookedFlight;
@@ -32,21 +31,20 @@ public class BookingInformationJPanel extends javax.swing.JPanel {
         populateInputFields();
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    private void populateInputFields(){
+    /*Populate all the fields on selected row */
+    private void populateInputFields() {
         airlinerTxt.setText(bookedFlight.getFlightOwner());
-        flightNumTxt.setText(bookedFlight.getFlightNumber());
         destinationTxt.setText(bookedFlight.getFlightDestination());
         sourceTxt.setText(bookedFlight.getFlightSource());
+        flightNumTxt.setText(bookedFlight.getFlightNumber());
+        durationTxt.setText(Integer.toString(bookedFlight.getFlightDuration()));
         arrivalTimeTxt.setText(bookedFlight.getFlightArrTime());
         departureTimeTxt.setText(bookedFlight.getFlightDepTime());
-        durationTxt.setText(Integer.toString(bookedFlight.getFlightDuration()));
         flightTimeTxt.setText(bookedFlight.getFlightTimePhase());
         String strDate = "";
         try {
             DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
             strDate = dateFormat.format(bookedFlight.getFlightDate());
-            //System.out.println("Converted String: " + strDate);
         } catch (Exception e) {
         }
         dateTxt.setText(strDate);
@@ -85,13 +83,14 @@ public class BookingInformationJPanel extends javax.swing.JPanel {
         seatTxt = new javax.swing.JTextField();
         backBtn = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(153, 204, 255));
 
         bookingDetailsLbl.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         bookingDetailsLbl.setText("Booking Details");
 
         airLineLbl.setText("Airliner Name:");
 
+        airlinerTxt.setBackground(new java.awt.Color(255, 204, 102));
         airlinerTxt.setEnabled(false);
         airlinerTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,6 +98,7 @@ public class BookingInformationJPanel extends javax.swing.JPanel {
             }
         });
 
+        flightNumTxt.setBackground(new java.awt.Color(255, 204, 102));
         flightNumTxt.setEnabled(false);
         flightNumTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,6 +122,7 @@ public class BookingInformationJPanel extends javax.swing.JPanel {
 
         operatedTimeLbl.setText("Flight Time of Day:");
 
+        sourceTxt.setBackground(new java.awt.Color(255, 204, 102));
         sourceTxt.setEnabled(false);
         sourceTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,12 +130,16 @@ public class BookingInformationJPanel extends javax.swing.JPanel {
             }
         });
 
+        destinationTxt.setBackground(new java.awt.Color(255, 204, 102));
         destinationTxt.setEnabled(false);
 
+        departureTimeTxt.setBackground(new java.awt.Color(255, 204, 102));
         departureTimeTxt.setEnabled(false);
 
+        arrivalTimeTxt.setBackground(new java.awt.Color(255, 204, 102));
         arrivalTimeTxt.setEnabled(false);
 
+        durationTxt.setBackground(new java.awt.Color(255, 204, 102));
         durationTxt.setEnabled(false);
         durationTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -142,8 +147,10 @@ public class BookingInformationJPanel extends javax.swing.JPanel {
             }
         });
 
+        dateTxt.setBackground(new java.awt.Color(255, 204, 102));
         dateTxt.setEnabled(false);
 
+        flightTimeTxt.setBackground(new java.awt.Color(255, 204, 102));
         flightTimeTxt.setEnabled(false);
         flightTimeTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,10 +160,14 @@ public class BookingInformationJPanel extends javax.swing.JPanel {
 
         seatLbl.setText("Seat No:");
 
+        seatTxt.setBackground(new java.awt.Color(255, 204, 102));
         seatTxt.setEnabled(false);
 
-        backBtn.setBackground(new java.awt.Color(204, 204, 204));
+        backBtn.setBackground(new java.awt.Color(255, 204, 102));
+        backBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         backBtn.setText("Back");
+        backBtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 0, 0), new java.awt.Color(204, 204, 204), null));
+        backBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         backBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backBtnActionPerformed(evt);
@@ -206,11 +217,13 @@ public class BookingInformationJPanel extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(ArrivalTimeLbl)
                                 .addGap(95, 95, 95)
-                                .addComponent(arrivalTimeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(backBtn, javax.swing.GroupLayout.Alignment.TRAILING)))
+                                .addComponent(arrivalTimeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(334, 334, 334)
-                        .addComponent(bookingDetailsLbl)))
+                        .addComponent(bookingDetailsLbl))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(100, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -252,8 +265,8 @@ public class BookingInformationJPanel extends javax.swing.JPanel {
                         .addComponent(operatedTimeLbl)
                         .addComponent(flightTimeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(46, 46, 46)
-                .addComponent(backBtn)
-                .addContainerGap(121, Short.MAX_VALUE))
+                .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(115, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -276,15 +289,15 @@ public class BookingInformationJPanel extends javax.swing.JPanel {
     private void flightTimeTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_flightTimeTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_flightTimeTxtActionPerformed
-
+    /* Onclick on back button go to prev window */
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
         // TODO add your handling code here:
         cardLayoutJPanel.remove(this);
         CardLayout layout = (CardLayout) cardLayoutJPanel.getLayout();
 
         Component[] components = cardLayoutJPanel.getComponents();
-        for(Component component: components){
-            if(component instanceof CustomerDashboardJPanel){
+        for (Component component : components) {
+            if (component instanceof CustomerDashboardJPanel) {
                 CustomerDashboardJPanel mpp = (CustomerDashboardJPanel) component;
                 mpp.populateTable();
             }

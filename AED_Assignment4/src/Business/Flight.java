@@ -25,6 +25,7 @@ public class Flight {
     private int flightDuration;
     private String flightTimePhase;
 
+    /* Get and set flight time phase */
     public String getFlightTimePhase() {
         return flightTimePhase;
     }
@@ -32,7 +33,7 @@ public class Flight {
     public void setFlightTimePhase(String flightTimePhase) {
         this.flightTimePhase = flightTimePhase;
     }
-
+    /* Get and set flightOwner */
     public String getFlightOwner() {
         return flightOwner;
     }
@@ -40,15 +41,15 @@ public class Flight {
     public void setFlightOwner(String flightOwner) {
         this.flightOwner = flightOwner;
     }
-
+    /* Get and set FLight number */
     public String getFlightNumber() {
         return flightNumber;
     }
-
+    
     public void setFlightNumber(String flightNumber) {
         this.flightNumber = flightNumber;
     }
-
+    /* Get and set FLight Source */
     public String getFlightSource() {
         return flightSource;
     }
@@ -56,7 +57,7 @@ public class Flight {
     public void setFlightSource(String flightSource) {
         this.flightSource = flightSource;
     }
-
+    /* Get and set FLight destination */
     public String getFlightDestination() {
         return flightDestination;
     }
@@ -64,7 +65,7 @@ public class Flight {
     public void setFlightDestination(String flightDestination) {
         this.flightDestination = flightDestination;
     }
-
+    /* Get and set FLight departure time */
     public String getFlightDepTime() {
         return flightDepTime;
     }
@@ -72,7 +73,7 @@ public class Flight {
     public void setFlightDepTime(String flightDepTime) {
         this.flightDepTime = flightDepTime;
     }
-
+    /* Get and set flight arrival time */
     public String getFlightArrTime() {
         return flightArrTime;
     }
@@ -80,7 +81,7 @@ public class Flight {
     public void setFlightArrTime(String flightArrTime) {
         this.flightArrTime = flightArrTime;
     }
-
+    /* Get and set FLight price */
     public Double getFlightPrice() {
         return flightPrice;
     }
@@ -92,7 +93,7 @@ public class Flight {
     public Date getFlightDate() {
         return flightDate;
     }
-
+    /* Get and set FLight date */
     public void setFlightDate(Date flightDate) {
         this.flightDate = flightDate;
     }
@@ -100,11 +101,11 @@ public class Flight {
     public Seats getFlightSeats() {
         return flightSeats;
     }
-
+    /* Get and set FLight seats */
     public void setFlightSeats(Seats flightSeats) {
         this.flightSeats = flightSeats;
     }
-
+    /* Get and set FLight duration */
     public int getFlightDuration() {
         return flightDuration;
     }

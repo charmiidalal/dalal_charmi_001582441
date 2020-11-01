@@ -1,13 +1,11 @@
- /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package UserInterface.ManageMasterFlightSchedule;
 
-import Business.AirlinerDirectory;
 import Business.Flight;
-import Business.FlightDirectory;
 import java.awt.CardLayout;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -18,37 +16,36 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Charmi Dalal
  */
-public class FlightFoundJPanel extends javax.swing.JPanel {
+public class FlightFilterJPanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form FlightFoundJPanel
-     */
-    private JPanel cardLayoutJPanel;
-    private ArrayList<Flight> flightDirFiltered;
+    /*  reates constructor and populate flight details*/
+    private final JPanel cardLayoutJPanel;
+    private final ArrayList<Flight> flightSearch;
 
-    public FlightFoundJPanel(JPanel cardSequenceJPanel, ArrayList<Flight> flightDirFiltered) {
+    public FlightFilterJPanel(JPanel cardLayoutJPanel, ArrayList<Flight> flightSearch) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         initComponents();
-        this.cardLayoutJPanel = cardSequenceJPanel;
-        this.flightDirFiltered = flightDirFiltered;
+        this.cardLayoutJPanel = cardLayoutJPanel;
+        this.flightSearch = flightSearch;
         populateTable();
     }
-    
-    public void populateTable(){
-        DefaultTableModel dtm = (DefaultTableModel)tblFlightFound.getModel();
+    /* Populate search result */
+    public void populateTable() {
+        DefaultTableModel dtm = (DefaultTableModel) flightTbl.getModel();
         dtm.setRowCount(0);
-        
-        for(Flight a :flightDirFiltered){
-            Object[] row = new Object[dtm.getColumnCount()];
-            row[0] = a.getFlightOwner();
-            row[1] = a.getFlightNumber();
-            row[2] = a.getFlightSource();
-            row[3] = a.getFlightDestination();
-            row[4] = a.getFlightDepTime();
-            row[5] = a.getFlightArrTime();
-            row[6] = a.getFlightDuration();
-            row[7] = a.getFlightDate();
-            dtm.addRow(row);
+
+        for (Flight flight : flightSearch) {
+            Object[] flightRec = new Object[dtm.getColumnCount()];
+            flightRec[0] = flight.getFlightOwner();
+            flightRec[1] = flight.getFlightNumber();
+            flightRec[2] = flight.getFlightSource();
+            flightRec[3] = flight.getFlightDestination();
+            flightRec[4] = flight.getFlightDepTime();
+            flightRec[5] = flight.getFlightArrTime();
+            flightRec[6] = flight.getFlightDuration();
+            flightRec[7] = flight.getFlightDate();
+            flightRec[8] = flight.getFlightTimePhase();
+            dtm.addRow(flightRec);
         }
     }
 
@@ -62,14 +59,15 @@ public class FlightFoundJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblFlightFound = new javax.swing.JTable();
-        viewDetailsBtn = new javax.swing.JButton();
+        flightTbl = new javax.swing.JTable();
+        btnBook = new javax.swing.JButton();
         backBtn = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        searchResultLbl = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(153, 204, 255));
 
-        tblFlightFound.setModel(new javax.swing.table.DefaultTableModel(
+        flightTbl.setBackground(new java.awt.Color(255, 204, 102));
+        flightTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null},
@@ -80,26 +78,30 @@ public class FlightFoundJPanel extends javax.swing.JPanel {
                 "Airliner", "Flight Number", "Source", "Destination", "Departure Time", "Arrival Time", "Duration", "Date", "Time of Day"
             }
         ));
-        jScrollPane1.setViewportView(tblFlightFound);
+        jScrollPane1.setViewportView(flightTbl);
 
-        viewDetailsBtn.setBackground(new java.awt.Color(204, 204, 204));
-        viewDetailsBtn.setText("Book");
-        viewDetailsBtn.addActionListener(new java.awt.event.ActionListener() {
+        btnBook.setBackground(new java.awt.Color(255, 204, 102));
+        btnBook.setText("Book");
+        btnBook.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 0, 0), new java.awt.Color(204, 204, 204), null));
+        btnBook.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBook.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewDetailsBtnActionPerformed(evt);
+                btnBookActionPerformed(evt);
             }
         });
 
-        backBtn.setBackground(new java.awt.Color(204, 204, 204));
+        backBtn.setBackground(new java.awt.Color(255, 204, 102));
         backBtn.setText("Back");
+        backBtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 0, 0), new java.awt.Color(204, 204, 204), null));
+        backBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         backBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backBtnActionPerformed(evt);
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText("Search Results");
+        searchResultLbl.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        searchResultLbl.setText("Search Results");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -112,56 +114,56 @@ public class FlightFoundJPanel extends javax.swing.JPanel {
                         .addGap(554, 554, 554)
                         .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(viewDetailsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnBook, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 765, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createSequentialGroup()
                             .addGap(287, 287, 287)
-                            .addComponent(jLabel1))))
+                            .addComponent(searchResultLbl))))
                 .addContainerGap(86, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(42, 42, 42)
-                .addComponent(jLabel1)
+                .addComponent(searchResultLbl)
                 .addGap(43, 43, 43)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(68, 68, 68)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(viewDetailsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBook, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(292, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    /* Onclick on back button go back to prev panel */
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
         // TODO add your handling code here:
         cardLayoutJPanel.remove(this);
         CardLayout layout = (CardLayout) cardLayoutJPanel.getLayout();
         layout.previous(cardLayoutJPanel);
     }//GEN-LAST:event_backBtnActionPerformed
-
-    private void viewDetailsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewDetailsBtnActionPerformed
+    /* Onclick on book confirm booking */
+    private void btnBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookActionPerformed
         // TODO add your handling code here:
-        int selectedRow = tblFlightFound.getSelectedRow();
-        if(selectedRow > -1){
-           Flight selectedFlight = flightDirFiltered.get(selectedRow);
-           FlightFoundDetailJPanel panel = new FlightFoundDetailJPanel(cardLayoutJPanel, selectedFlight);
-           cardLayoutJPanel.add("FlightFoundDetailJPanel",panel);
-           CardLayout layout = (CardLayout) cardLayoutJPanel.getLayout();
-           layout.next(cardLayoutJPanel);
-        }else{
-            JOptionPane.showMessageDialog(null, "Please select a row");
+        int selectedRow = flightTbl.getSelectedRow();
+        if (selectedRow > -1) {
+            Flight selectedFlight = flightSearch.get(selectedRow);
+            FlightSearchResultJPanel panel = new FlightSearchResultJPanel(cardLayoutJPanel, selectedFlight);
+            cardLayoutJPanel.add("FlightFoundDetailJPanel", panel);
+            CardLayout layout = (CardLayout) cardLayoutJPanel.getLayout();
+            layout.next(cardLayoutJPanel);
+        } else {
+            JOptionPane.showMessageDialog(null, "Kindly select a row first.");
         }
-    }//GEN-LAST:event_viewDetailsBtnActionPerformed
+    }//GEN-LAST:event_btnBookActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backBtn;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btnBook;
+    private javax.swing.JTable flightTbl;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblFlightFound;
-    private javax.swing.JButton viewDetailsBtn;
+    private javax.swing.JLabel searchResultLbl;
     // End of variables declaration//GEN-END:variables
 }

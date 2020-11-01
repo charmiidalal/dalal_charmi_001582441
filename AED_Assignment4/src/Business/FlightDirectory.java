@@ -9,6 +9,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -24,7 +25,7 @@ public class FlightDirectory {
     private AirlinerDirectory airDir;
 
     public FlightDirectory() {
-        dirFlight = new ArrayList<Flight>();
+        dirFlight = new ArrayList<>();
         fetchFlightSchedule();
     }
 
@@ -44,32 +45,31 @@ public class FlightDirectory {
         };
 
         for (int i = 0; i < arr.length; i++) {
-            Flight temp = new Flight();
+            Flight flight = new Flight();
 
-            temp.setFlightOwner(arr[i][0]);
-            temp.setFlightNumber(arr[i][1]);
-            temp.setFlightSource(arr[i][2]);
-            temp.setFlightDestination(arr[i][3]);
-            temp.setFlightDepTime(arr[i][4]);
-            temp.setFlightArrTime(arr[i][5]);
-            temp.setFlightPrice(Double.parseDouble(arr[i][6]));
-            temp.setFlightTimePhase(arr[i][7]);
-            temp.setFlightDuration((int) Double.parseDouble(arr[i][8]));
+            flight.setFlightOwner(arr[i][0]);
+            flight.setFlightNumber(arr[i][1]);
+            flight.setFlightSource(arr[i][2]);
+            flight.setFlightDestination(arr[i][3]);
+            flight.setFlightDepTime(arr[i][4]);
+            flight.setFlightArrTime(arr[i][5]);
+            flight.setFlightPrice(Double.parseDouble(arr[i][6]));
+            flight.setFlightTimePhase(arr[i][7]);
+            flight.setFlightDuration((int) Double.parseDouble(arr[i][8]));
             
             // setting objects
             Seats seats = new Seats();
-            temp.setFlightSeats(seats);
+            flight.setFlightSeats(seats);
             SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-            String dateInString = "16-10-2019";
-
+            String dateInString = "31-10-2020";
             try {
                 Date date = formatter.parse(dateInString);
-                temp.setFlightDate(date);
+                flight.setFlightDate(date);
             } catch (ParseException e) {
                 JOptionPane.showMessageDialog(null, "Please enter date in dd-MM-yyyy format");
                 return;
             }
-            dirFlight.add(temp);
+            dirFlight.add(flight);
         }
 
     }
@@ -103,19 +103,18 @@ public class FlightDirectory {
     }
 
     public ArrayList<Flight> searchMaster(String destination, String prefferedTimeCombo,String source, String date) {
-        ArrayList<Flight> flightDirFiltered = new ArrayList<Flight>();
-        for (Flight f : dirFlight) {
+        ArrayList<Flight> flightDirFiltered = new ArrayList<>();
+        dirFlight.forEach((f) -> {
             String strDate = "";
             try {
                 DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
                 strDate = dateFormat.format(f.getFlightDate());
             } catch (Exception e) {
-                 e.printStackTrace();
             }
-            if (f.getFlightDestination().equals(destination)  && f.getFlightTimePhase().equals(prefferedTimeCombo) && f.getFlightSource().equals(source) && strDate.equals(date)) {
+            if (f.getFlightDestination().equalsIgnoreCase(destination)  && f.getFlightTimePhase().equals(prefferedTimeCombo) && f.getFlightSource().equalsIgnoreCase(source) && strDate.equals(date)) {
                 flightDirFiltered.add(f);
             }
-        }
+        });
         return flightDirFiltered;
     }
 }

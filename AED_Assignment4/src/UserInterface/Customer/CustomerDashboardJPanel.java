@@ -15,23 +15,22 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Charmi Dalal
+ * @author Anusha
  */
 public class CustomerDashboardJPanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form CustomerInformation
-     */
-    private List<Customer> customerList;
-    private JPanel cardLayoutJPanel;
-    public CustomerDashboardJPanel(JPanel cardSequenceJPanel, List<Customer> customerList) {
+    /* Creates constructor of customer dashboard */
+    private final List<Customer> customerList;
+    private final JPanel cardLayoutJPanel;
+    public CustomerDashboardJPanel(JPanel cardLayoutJPanel, List<Customer> customerList) {
          initComponents();
          this.customerList = customerList;
-         this.cardLayoutJPanel = cardSequenceJPanel;
+         this.cardLayoutJPanel = cardLayoutJPanel;
          populateTable();
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    /*Populates all customers */
     public void populateTable(){
         DefaultTableModel dtm = (DefaultTableModel)customersTbl.getModel();
         dtm.setRowCount(0);
@@ -60,11 +59,12 @@ public class CustomerDashboardJPanel extends javax.swing.JPanel {
         customersTbl = new javax.swing.JTable();
         btnViewBookingDetails = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(153, 204, 255));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Customers");
 
+        customersTbl.setBackground(new java.awt.Color(255, 204, 102));
         customersTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -78,8 +78,11 @@ public class CustomerDashboardJPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(customersTbl);
 
-        btnViewBookingDetails.setBackground(new java.awt.Color(204, 204, 204));
+        btnViewBookingDetails.setBackground(new java.awt.Color(255, 204, 102));
+        btnViewBookingDetails.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnViewBookingDetails.setText("View Booking Details");
+        btnViewBookingDetails.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 0, 0), new java.awt.Color(204, 204, 204), null));
+        btnViewBookingDetails.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnViewBookingDetails.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnViewBookingDetailsActionPerformed(evt);
@@ -114,13 +117,13 @@ public class CustomerDashboardJPanel extends javax.swing.JPanel {
                 .addGap(310, 310, 310))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    /* Onclick of view details show booking records */
     private void btnViewBookingDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewBookingDetailsActionPerformed
         // TODO add your handling code here:
         int selectedRow = customersTbl.getSelectedRow();
         if(selectedRow > -1){
            Flight bookedFlight = customerList.get(selectedRow).getCstFlight();
-           BookingInformationJPanel panel = new BookingInformationJPanel(cardLayoutJPanel, bookedFlight, customerList.get(selectedRow).getCstSeat());
+           BookingDashboardJPanel panel = new BookingDashboardJPanel(cardLayoutJPanel, bookedFlight, customerList.get(selectedRow).getCstSeat());
            cardLayoutJPanel.add("FlightFoundDetailJPanel",panel);
            CardLayout layout = (CardLayout) cardLayoutJPanel.getLayout();
            layout.next(cardLayoutJPanel);

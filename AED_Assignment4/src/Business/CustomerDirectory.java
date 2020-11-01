@@ -13,12 +13,17 @@ import java.util.List;
  * @author Charmi Dalal
  */
 public class CustomerDirectory {
+
     public static List<Customer> customerList;
-    
-    public CustomerDirectory(){
-       customerList= new ArrayList<>();
+
+    public CustomerDirectory() {
+        customerList = new ArrayList<>();
     }
-   
+
+    public void addCustomer(Customer c) {
+        customerList.add(c);
+    }
+
     public void setCustomerList(List<Customer> customerList) {
         CustomerDirectory.customerList = customerList;
     }
@@ -26,12 +31,5 @@ public class CustomerDirectory {
     public List<Customer> getCustomerList() {
         return customerList;
     }
-    
-    public void addCustomer(Customer c){
-        customerList.add(c);
-    }
-    
-    public void sayhi(){
-        System.out.println(customerList.get(0).getCstFirstName());
-    }
+
 }

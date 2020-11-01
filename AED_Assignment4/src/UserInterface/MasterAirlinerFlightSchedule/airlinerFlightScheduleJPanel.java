@@ -14,41 +14,42 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Charmi Dalal
+ * @author Anusha
  */
 public class airlinerFlightScheduleJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form ManageAirlinerFlightScheduleJPanel
      */
-    private JPanel cardLayoutJPanel;
-    private FlightDirectory flightDir;
-    private String airlinerName;
-    public airlinerFlightScheduleJPanel(JPanel cardSequenceJPanel,FlightDirectory flightDir, String airlinerName) {
+    private final JPanel cardLayoutJPanel;
+    private final FlightDirectory fd;
+    private final String airlinerName;
+
+    public airlinerFlightScheduleJPanel(JPanel cardLayoutJPanel, FlightDirectory fd, String airlinerName) {
         initComponents();
-        this.flightDir = flightDir;
+        this.fd = fd;
         this.airlinerName = airlinerName;
-        this.cardLayoutJPanel = cardSequenceJPanel;
+        this.cardLayoutJPanel = cardLayoutJPanel;
         populateTable();
     }
-    
-    public void populateTable(){
-        DefaultTableModel dtm = (DefaultTableModel)flightScheduleTbl.getModel();
+
+    public void populateTable() {
+        DefaultTableModel dtm = (DefaultTableModel) flightTbl.getModel();
         dtm.setRowCount(0);
-        
-        for(Flight a : flightDir.getFlightDir()){
-            if(a.getFlightOwner().equals(airlinerName)){
-                Object[] row = new Object[dtm.getColumnCount()];
-                row[0] = a.getFlightOwner();
-                row[1] = a.getFlightNumber();
-                row[2] = a.getFlightSource();
-                row[3] = a.getFlightDestination();
-                row[4] = a.getFlightDepTime();
-                row[5] = a.getFlightArrTime();
-                row[6] = a.getFlightDuration();
-                row[7] = a.getFlightDate();
-                row[8] = a.getFlightTimePhase();
-                dtm.addRow(row);
+
+        for (Flight flight : fd.getFlightDir()) {
+            if (flight.getFlightOwner().equals(airlinerName)) {
+                Object[] flightOwner = new Object[dtm.getColumnCount()];
+                flightOwner[0] = flight.getFlightOwner();
+                flightOwner[1] = flight.getFlightNumber();
+                flightOwner[2] = flight.getFlightSource();
+                flightOwner[3] = flight.getFlightDestination();
+                flightOwner[4] = flight.getFlightDepTime();
+                flightOwner[5] = flight.getFlightArrTime();
+                flightOwner[6] = flight.getFlightDuration();
+                flightOwner[7] = flight.getFlightDate();
+                flightOwner[8] = flight.getFlightTimePhase();
+                dtm.addRow(flightOwner);
             }
         }
     }
@@ -63,29 +64,33 @@ public class airlinerFlightScheduleJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        flightScheduleTbl = new javax.swing.JTable();
+        flightTbl = new javax.swing.JTable();
         createScheduleBtn = new javax.swing.JButton();
         viewScheduleBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         deleteBtn = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(153, 204, 255));
 
-        flightScheduleTbl.setModel(new javax.swing.table.DefaultTableModel(
+        flightTbl.setBackground(new java.awt.Color(255, 204, 102));
+        flightTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Airliner", "Flight Number", "Source", "Destination", "Departure Time", "Arrival Time", "Duration", "Date", "Time of day", "Flight Period"
+                "Airliner", "Flight Number", "Source", "Destination", "Departure Time", "Arrival Time", "Duration", "Date", "Time of day"
             }
         ));
-        jScrollPane1.setViewportView(flightScheduleTbl);
+        jScrollPane1.setViewportView(flightTbl);
 
         createScheduleBtn.setBackground(new java.awt.Color(204, 204, 204));
+        createScheduleBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         createScheduleBtn.setText("Create Schedule");
+        createScheduleBtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 0, 0), new java.awt.Color(204, 204, 204), null));
+        createScheduleBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         createScheduleBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 createScheduleBtnActionPerformed(evt);
@@ -93,7 +98,10 @@ public class airlinerFlightScheduleJPanel extends javax.swing.JPanel {
         });
 
         viewScheduleBtn.setBackground(new java.awt.Color(204, 204, 204));
+        viewScheduleBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         viewScheduleBtn.setText("View Schedule");
+        viewScheduleBtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 0, 0), new java.awt.Color(204, 204, 204), null));
+        viewScheduleBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         viewScheduleBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewScheduleBtnActionPerformed(evt);
@@ -104,7 +112,10 @@ public class airlinerFlightScheduleJPanel extends javax.swing.JPanel {
         jLabel1.setText("              Manage Flight Schedule ");
 
         deleteBtn.setBackground(new java.awt.Color(204, 204, 204));
+        deleteBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         deleteBtn.setText("Delete Schedule");
+        deleteBtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 0, 0), new java.awt.Color(204, 204, 204), null));
+        deleteBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         deleteBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteBtnActionPerformed(evt);
@@ -123,13 +134,13 @@ public class airlinerFlightScheduleJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 780, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(createScheduleBtn)
-                                .addGap(149, 149, 149)
-                                .addComponent(viewScheduleBtn)
-                                .addGap(210, 210, 210)
-                                .addComponent(deleteBtn)))))
+                                .addComponent(createScheduleBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(182, 182, 182)
+                                .addComponent(viewScheduleBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(186, 186, 186)
+                                .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 780, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(88, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -139,65 +150,62 @@ public class airlinerFlightScheduleJPanel extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addGap(43, 43, 43)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(deleteBtn)
-                    .addComponent(viewScheduleBtn)
-                    .addComponent(createScheduleBtn))
-                .addContainerGap(266, Short.MAX_VALUE))
+                    .addComponent(viewScheduleBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(createScheduleBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(212, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void createScheduleBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createScheduleBtnActionPerformed
         // TODO add your handling code here:
-        CreateFlightScheduleJPanel panel = new CreateFlightScheduleJPanel(cardLayoutJPanel, flightDir,airlinerName);
-        cardLayoutJPanel.add("CreateFlightScheduleJPanel",panel);
+        CreateFlightScheduleJPanel panel = new CreateFlightScheduleJPanel(cardLayoutJPanel, fd, airlinerName);
+        cardLayoutJPanel.add("CreateFlightScheduleJPanel", panel);
         CardLayout layout = (CardLayout) cardLayoutJPanel.getLayout();
         layout.next(cardLayoutJPanel);
     }//GEN-LAST:event_createScheduleBtnActionPerformed
 
     private void viewScheduleBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewScheduleBtnActionPerformed
         // TODO add your handling code here:
-        int selectedRow = flightScheduleTbl.getSelectedRow();
-        if(selectedRow > -1){
-            Flight flight = flightDir.getFlightDir().get(selectedRow);
-            ViewFlightScheduleJPanel panel = new ViewFlightScheduleJPanel(cardLayoutJPanel, flight,flightDir);
-            cardLayoutJPanel.add("ViewFlightScheduleJPanel",panel);
+        int selectedRow = flightTbl.getSelectedRow();
+        if (selectedRow > -1) {
+            Flight flight = fd.getFlightDir().get(selectedRow);
+            ViewFlightScheduleJPanel panel = new ViewFlightScheduleJPanel(cardLayoutJPanel, flight, fd);
+            cardLayoutJPanel.add("ViewFlightScheduleJPanel", panel);
             CardLayout layout = (CardLayout) cardLayoutJPanel.getLayout();
             layout.next(cardLayoutJPanel);
-        }
-        else{
+        } else {
             JOptionPane.showMessageDialog(null, "Please select a row above");
-            return;      
+            return;
         }
     }//GEN-LAST:event_viewScheduleBtnActionPerformed
 
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
         // TODO add your handling code here:
-         int selectedRow = flightScheduleTbl.getSelectedRow();
-        if(selectedRow > -1){
-            Flight f = flightDir.getFlightDir().get(selectedRow);
-           int selectionButton = JOptionPane.YES_NO_OPTION;
-            int selectionResult = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete??","Warning",selectionButton);
-            if(selectionResult == JOptionPane.YES_OPTION)
-            {
-                flightDir.getFlightDir().remove(f);
+        int selectedRow = flightTbl.getSelectedRow();
+        if (selectedRow > -1) {
+            Flight f = fd.getFlightDir().get(selectedRow);
+            int selectionButton = JOptionPane.YES_NO_OPTION;
+            int selectionResult = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete?", "Warning", selectionButton);
+            if (selectionResult == JOptionPane.YES_OPTION) {
+                fd.getFlightDir().remove(f);
             }
-             
-                populateTable();
-        }
-        else{
+
+            populateTable();
+        } else {
             JOptionPane.showMessageDialog(null, "Please select a row above");
-            return;      
+            return;
         }
-        
+
     }//GEN-LAST:event_deleteBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton createScheduleBtn;
     private javax.swing.JButton deleteBtn;
-    private javax.swing.JTable flightScheduleTbl;
+    private javax.swing.JTable flightTbl;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton viewScheduleBtn;

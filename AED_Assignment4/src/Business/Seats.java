@@ -15,6 +15,7 @@ public class Seats {
 
     ArrayList<String> seatList;
 
+    /* Add seats with 2 rows and 25 columns */
     public Seats() {
         seatList = new ArrayList<>();
         for (int i = 1; i <= 25; i++) {
