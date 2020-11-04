@@ -4,7 +4,6 @@
  */
 package Business.UserAccount;
 
-import Business.Employee.Employee;
 import Business.Role.Role;
 import Business.WorkQueue.WorkQueue;
 
@@ -12,22 +11,26 @@ import Business.WorkQueue.WorkQueue;
  *
  * @author raunak
  */
-public class UserAccount {
-    
+public abstract class UserAccount {
+
+    private int id;
     private String username;
     private String password;
-    private Employee employee;
     private Role role;
     private WorkQueue workQueue;
-
-    public UserAccount() {
+    private static int counter = 0;
+    
+    public UserAccount(String username, String password, Role role) {
+        this.id = counter;
+        counter++;
+        this.username = username;
+        this.password = password;
+        this.role = role;
         workQueue = new WorkQueue();
     }
-    
-    
-    
+
     public String getUsername() {
-        return username;
+        return this.username;
     }
 
     public void setUsername(String username) {
@@ -35,40 +38,27 @@ public class UserAccount {
     }
 
     public String getPassword() {
-        return password;
+        return this.password;
     }
 
     public void setPassword(String password) {
         this.password = password;
     }
 
-    public Role getRole() {
-        return role;
+    public WorkQueue getWorkQueue() {
+        return this.workQueue;
     }
 
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
+    public Role getRole() {
+        return this.role;
     }
 
     public void setRole(Role role) {
         this.role = role;
     }
 
-    public Employee getEmployee() {
-        return employee;
-    }
-
-    public WorkQueue getWorkQueue() {
-        return workQueue;
-    }
-
-    
-    
     @Override
     public String toString() {
         return username;
     }
-    
-    
-    
 }

@@ -15,8 +15,10 @@ import javax.swing.JPanel;
  * @author raunak
  */
 public abstract class Role {
-    
+    private RoleType type;
     public enum RoleType{
+        
+        
         RestaurantAdmin("RestaurantAdmin"),
         Customer("Customer"),
         DeliveryMan("Delivery"),
@@ -37,6 +39,10 @@ public abstract class Role {
         }
     }
     
+     public Role(RoleType type) {
+        this.type = type;
+    }
+     
     public abstract JPanel createWorkArea(JPanel userProcessContainer, 
             UserAccount account,  
             EcoSystem business);
