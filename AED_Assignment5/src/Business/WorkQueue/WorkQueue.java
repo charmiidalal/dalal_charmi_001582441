@@ -10,7 +10,7 @@ import java.util.ArrayList;
  *
  * @author raunak
  */
-public class WorkQueue {
+public class WorkQueue extends WorkRequest{
     
     private ArrayList<WorkRequest> workRequestList;
 
@@ -21,4 +21,5 @@ public class WorkQueue {
     public ArrayList<WorkRequest> getWorkRequestList() {
         return workRequestList;
     }
+    
 }

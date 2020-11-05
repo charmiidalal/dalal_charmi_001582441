@@ -4,9 +4,14 @@
  */
 package Business.Role;
 
+import Business.Customer.CustomerDirectory;
+import Business.DeliveryMan.DeliveryManDirectory;
 import Business.EcoSystem;
+import Business.Menu.MenuDirectory;
+import Business.Order.OrderDirectory;
 
 import Business.Organization;
+import Business.Restaurant.RestaurantDirectory;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
 
@@ -15,10 +20,8 @@ import javax.swing.JPanel;
  * @author raunak
  */
 public abstract class Role {
-    private RoleType type;
+    
     public enum RoleType{
-        
-        
         RestaurantAdmin("RestaurantAdmin"),
         Customer("Customer"),
         DeliveryMan("Delivery"),
@@ -39,13 +42,14 @@ public abstract class Role {
         }
     }
     
-     public Role(RoleType type) {
-        this.type = type;
-    }
-     
     public abstract JPanel createWorkArea(JPanel userProcessContainer, 
             UserAccount account,  
-            EcoSystem business);
+            EcoSystem business,
+            CustomerDirectory customerDirectory,
+            RestaurantDirectory restaurantDirectory,
+            DeliveryManDirectory deliveryManDirectory,
+            MenuDirectory menuDirectory,
+            OrderDirectory orderDirectory);
 
     @Override
     public String toString() {

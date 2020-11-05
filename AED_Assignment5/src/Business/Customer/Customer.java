@@ -4,78 +4,57 @@
  * and open the template in the editor.
  */
 package Business.Customer;
-import java.util.ArrayList;
 
 /**
  *
- * @author ranranhe
+ * @author Charmi Dalal
  */
 public class Customer {
-    private int id;
-   private String name;
-    private String address;
-    private String phone;
-    private String email;
-    private static int count = 0;
 
-    public Customer(String name, String email, String phone) {
-        this.name = name;
-        this.address = "";
-        this.email = email;
-        this.phone = phone;
-        id = count;
-        count++;
+    private String customerNo;
+    private String customerName;
+    private String customerPhone;
+    private String customerStreet;
+    private String customerZipcode;
+
+    public String getCustomerNo() {
+        return customerNo;
     }
 
-    public int getId() {
-        return id;
+    public void setCustomerNo(String customerNo) {
+        this.customerNo = customerNo;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public String getCustomerName() {
+        return customerName;
     }
 
-    public String getName() {
-        return name;
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getCustomerPhone() {
+        return customerPhone;
     }
 
-    public String getAddress() {
-        return address;
+    public void setCustomerPhone(String customerPhone) {
+        this.customerPhone = customerPhone;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public String getCustomerStreet() {
+        return customerStreet;
     }
 
-    public String getPhone() {
-        return phone;
+    public void setCustomerStreet(String customerStreet) {
+        this.customerStreet = customerStreet;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public String getCustomerZipcode() {
+        return customerZipcode;
     }
 
-    public String getEmail() {
-        return email;
+    public void setCustomerZipcode(String customerZipcode) {
+        this.customerZipcode = customerZipcode;
     }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public static int getCount() {
-        return count;
-    }
-
-    public static void setCount(int count) {
-        Customer.count = count;
-    }
-
-   
-    
 
 }
