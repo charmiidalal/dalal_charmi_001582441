@@ -42,6 +42,14 @@ public class MainJFrame extends javax.swing.JFrame {
 
         system = dB4OUtil.retrieveSystem();
         this.setSize(1680, 1050);
+        if(system.getMenuDirectory() == null)
+        {           
+            this.menuDirectory = new MenuDirectory();
+
+        }
+        else{
+            this.menuDirectory = system.getMenuDirectory();
+        }
         if(system.getCustomerDirectory() == null)
         {           
             this.customerDirectory = new CustomerDirectory();

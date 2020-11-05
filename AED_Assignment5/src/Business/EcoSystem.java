@@ -5,8 +5,8 @@
  */
 package Business;
 
-
 import Business.Customer.CustomerDirectory;
+import Business.Menu.MenuDirectory;
 import Business.DeliveryMan.DeliveryManDirectory;
 import Business.Order.OrderDirectory;
 import Business.Restaurant.RestaurantDirectory;
@@ -19,11 +19,20 @@ import java.util.ArrayList;
  *
  * @author MyPC1
  */
-public class EcoSystem extends Organization{
-    
+public class EcoSystem extends Organization {
+
     private static EcoSystem business;
     private RestaurantDirectory restaurantDirectory;
     private CustomerDirectory customerDirectory;
+    private MenuDirectory menuDirectory;
+
+    public MenuDirectory getMenuDirectory() {
+        return menuDirectory;
+    }
+
+    public void setMenuDirectory(MenuDirectory menuDirectory) {
+        this.menuDirectory = menuDirectory;
+    }
 
     public static EcoSystem getBusiness() {
         return business;
@@ -73,30 +82,30 @@ public class EcoSystem extends Organization{
     public void setOrderDirectory(OrderDirectory orderDirectory) {
         this.orderDirectory = orderDirectory;
     }
-    
-    public static EcoSystem getInstance(){
-        if(business==null){
-            business=new EcoSystem();
+
+    public static EcoSystem getInstance() {
+        if (business == null) {
+            business = new EcoSystem();
         }
         return business;
     }
-    
+
     @Override
     public ArrayList<Role> getSupportedRole() {
-        ArrayList<Role> roleList=new ArrayList<Role>();
+        ArrayList<Role> roleList = new ArrayList<Role>();
         roleList.add(new SystemAdminRole());
         return roleList;
     }
-    private EcoSystem(){
+
+    private EcoSystem() {
         super("1");
-       // networkList=new ArrayList<Network>();
+        // networkList=new ArrayList<Network>();
         orderDirectory = new OrderDirectory();
     }
 
-    
-    public boolean checkIfUserIsUnique(String userName){
-       //
-       return false;
+    public boolean checkIfUserIsUnique(String userName) {
+        //
+        return false;
     }
-    
+
 }

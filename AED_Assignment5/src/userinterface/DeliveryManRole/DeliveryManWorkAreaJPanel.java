@@ -61,7 +61,7 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
                     row[3] = order.getStatus();
                     row[4] = order.getOrderId();
                     row[5] = order.getCustomer().getCustomerStreet();
-                    row[6] = order.getRestaurant().getAddress();
+                    row[6] = order.getRestaurant().getStreetAddress();
                     model.addRow(row);
             }
             }

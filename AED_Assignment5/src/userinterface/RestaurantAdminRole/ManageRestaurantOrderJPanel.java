@@ -58,13 +58,13 @@ public class ManageRestaurantOrderJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) orderTable.getModel();
         model.setRowCount(0);
         for (Order order : business.getOrderDirectory().getOrderDirectory()) {
-            if (order.getRestaurant().getRestaurantId().equalsIgnoreCase(account.getEmployee().getName())) {
+            if (order.getRestaurant().getRestaurantNo().equalsIgnoreCase(account.getEmployee().getName())) {
                 Object[] row = new Object[10];
                 row[0] = order.getMessage();
                 row[1] = order.getReceiver();
                 row[2] = order.getStatus();
                 row[3] = (order.getResult() == null ? "Waiting" : order.getResult());
-                row[4] = order.getRestaurant().getName();
+                row[4] = order.getRestaurant().getRestaurantName();
                 row[5] = order.getFoodItem().getItemName();
                 row[6] = order.getQuantity();
                 row[7] = order.getQuantity() * order.getFoodItem().getPrice();

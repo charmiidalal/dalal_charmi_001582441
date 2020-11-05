@@ -7,9 +7,7 @@ package userinterface.SystemAdminWorkArea;
 
 import Business.Customer.Customer;
 import Business.Customer.CustomerDirectory;
-import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
-import Business.Restaurant.Restaurant;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -45,12 +43,13 @@ public class ManageCustomersJPanel extends javax.swing.JPanel {
         for (UserAccount ua : system.getUserAccountDirectory().getUserAccountList()) {
             for (Customer customer : customerDirectory.getCustomerDirectory()) {
                 if (customer.getCustomerNo().equalsIgnoreCase(ua.getEmployee().getName())) {
-                    Object[] row = new Object[5];
+                    Object[] row = new Object[6];
                     row[0] = customer.getCustomerNo();
-                    row[1] = customer.getCustomerName();
-                    row[2] = customer.getCustomerPhone();
-                    row[3] = customer.getCustomerStreet();
-                    row[4] = ua.getUsername();
+                    row[1] = ua.getUsername();
+                    row[2] = customer.getCustomerName();
+                    row[3] = customer.getCustomerPhone();
+                    row[4] = customer.getCustomerStreet();
+                    row[5] = customer.getCustomerZipcode();
                     model.addRow(row);
                 }
             }
@@ -81,17 +80,17 @@ public class ManageCustomersJPanel extends javax.swing.JPanel {
 
         customerJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Customer Id", "Name", "Contact No", "Address", "Username"
+                "Customer No", "Username", "Name", "Contact No", "Street Address", "Zipcode"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

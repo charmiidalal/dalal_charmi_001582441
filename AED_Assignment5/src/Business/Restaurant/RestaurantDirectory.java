@@ -33,12 +33,12 @@ public class RestaurantDirectory {
     }
     
     public void add(Restaurant restaurant) {
-       restaurant.setRestaurantId("R"+(restaurantDirectory.size()+1));
+       restaurant.setRestaurantNo("R"+(restaurantDirectory.size()+1));
        restaurantDirectory.add(restaurant);
     }
     
     public void deleteRestaurant(int index,EcoSystem system){
-        String id = restaurantDirectory.get(index).getRestaurantId();
+        String id = restaurantDirectory.get(index).getRestaurantNo();
         for(int i =0; i <system.getUserAccountDirectory().getUserAccountList().size();i++){
             if(system.getUserAccountDirectory().getUserAccountList().get(i).getEmployee().getName().equalsIgnoreCase(id)){
                 system.getUserAccountDirectory().getUserAccountList().remove(i);
@@ -53,8 +53,8 @@ public class RestaurantDirectory {
 
     public String getRestName(String restaurantId) {
         for(Restaurant restaurant: restaurantDirectory){
-            if(restaurant.getRestaurantId().equalsIgnoreCase(restaurantId)){
-                return restaurant.getName();
+            if(restaurant.getRestaurantNo().equalsIgnoreCase(restaurantId)){
+                return restaurant.getRestaurantName();
             }
         }
         return "";
@@ -62,7 +62,7 @@ public class RestaurantDirectory {
     
     public Restaurant getRestaurant(String id){
         for(Restaurant restaurant: restaurantDirectory){
-            if(restaurant.getRestaurantId().equalsIgnoreCase(id)){
+            if(restaurant.getRestaurantNo().equalsIgnoreCase(id)){
                 return restaurant;
             }
         }
@@ -71,7 +71,7 @@ public class RestaurantDirectory {
     
     public boolean isPhoneUnique(String phone){
         for(Restaurant restaurant: restaurantDirectory){
-            if(restaurant.getPhoneNo().equalsIgnoreCase(phone)){
+            if(restaurant.getMobileNo().equalsIgnoreCase(phone)){
                 return false;
             }
         }

@@ -5,9 +5,7 @@
  */
 package userinterface.SystemAdminWorkArea;
 
-import Business.Customer.Customer;
 import Business.EcoSystem;
-import Business.Employee.Employee;
 import Business.Employee.EmployeeDirectory;
 import Business.Restaurant.Restaurant;
 import Business.Restaurant.RestaurantDirectory;
@@ -66,17 +64,17 @@ public class ManageRestaurantJPanel extends javax.swing.JPanel {
 
         restaurantJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Restaurant Id", "Restaurant Name", "Username", "Manager Name", "Restaurant Address", "Restaurant Contact No", "License No"
+                "Restaurant Id", "Restaurant Name", "Username", "Manager Name", "Restaurant Address", "Restaurant Contact No"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -160,14 +158,14 @@ public class ManageRestaurantJPanel extends javax.swing.JPanel {
         model.setRowCount(0);
         for (UserAccount ua : system.getUserAccountDirectory().getUserAccountList()) {
             for (Restaurant restaurant : restaurantDirectory.getRestaurantDirectory()) {
-                if (restaurant.getRestaurantId().equalsIgnoreCase(ua.getEmployee().getName())) {
+                if (restaurant.getRestaurantNo().equalsIgnoreCase(ua.getEmployee().getName())) {
                     Object[] row = new Object[6];
-                    row[0] = restaurant.getRestaurantId();
-                    row[1] = restaurant.getName();
+                    row[0] = restaurant.getRestaurantNo();
+                    row[1] = restaurant.getRestaurantName();
                     row[2] = ua.getUsername();
                     row[3] = restaurant.getManagerName();
-                    row[4] = restaurant.getPhoneNo();
-                    row[5] = restaurant.getAddress();
+                    row[4] = restaurant.getStreetAddress();
+                    row[5] = restaurant.getMobileNo();
                     model.addRow(row);
                 }
             }

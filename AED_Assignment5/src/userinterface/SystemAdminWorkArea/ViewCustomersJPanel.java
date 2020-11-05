@@ -32,15 +32,17 @@ public class ViewCustomersJPanel extends javax.swing.JPanel {
         this.container = container;
         this.customer = customer;
         
-        customerIdTextField.setText(customer.getCustomerNo());
-        customerNameTextField.setText(customer.getCustomerName());
-        customerContactNoTextField.setText(customer.getCustomerPhone());
-        customerAddressTextField.setText(customer.getCustomerStreet());
+        txtCustomerNo.setText(customer.getCustomerNo());
+        txtFullName.setText(customer.getCustomerName());
+        txtMobileNo.setText(customer.getCustomerPhone());
+        txtStreetAddress.setText(customer.getCustomerStreet());
+        txtZipcode.setText(customer.getCustomerZipcode());
         
-        customerIdTextField.setEditable(false);
-        customerNameTextField.setEditable(false);
-        customerContactNoTextField.setEditable(false);
-        customerAddressTextField.setEditable(false);
+        txtCustomerNo.setEditable(false);
+        txtFullName.setEditable(false);
+        txtMobileNo.setEditable(false);
+        txtStreetAddress.setEditable(false);
+        txtZipcode.setEditable(false);
     }
 
     /**
@@ -57,50 +59,56 @@ public class ViewCustomersJPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        customerIdTextField = new javax.swing.JTextField();
-        customerNameTextField = new javax.swing.JTextField();
-        customerContactNoTextField = new javax.swing.JTextField();
-        customerAddressTextField = new javax.swing.JTextField();
-        backBtn = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        txtCustomerNo = new javax.swing.JTextField();
+        txtFullName = new javax.swing.JTextField();
+        txtMobileNo = new javax.swing.JTextField();
+        txtZipcode = new javax.swing.JTextField();
+        btnBack = new javax.swing.JButton();
+        btnEditCustomer = new javax.swing.JButton();
+        btnSaveChanges = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        customerAddressTextField1 = new javax.swing.JTextField();
+        txtStreetAddress = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setText("Edit Customer");
 
-        jLabel2.setText("Customer Id");
+        jLabel2.setText("Customer No:");
 
-        jLabel3.setText("Customer Name");
+        jLabel3.setText("Full Name:");
 
-        jLabel4.setText(" Customer Contact No");
+        jLabel4.setText("Mobile No:");
 
-        jLabel5.setText("Street:");
+        jLabel5.setText("Street Address:");
 
-        backBtn.setText("Back");
-        backBtn.addActionListener(new java.awt.event.ActionListener() {
+        txtZipcode.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backBtnActionPerformed(evt);
+                txtZipcodeActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Edit Customer");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnBackActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Save Changes");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnEditCustomer.setText("Edit Customer");
+        btnEditCustomer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnEditCustomerActionPerformed(evt);
             }
         });
 
-        jLabel6.setText("Customer Address");
+        btnSaveChanges.setText("Save Changes");
+        btnSaveChanges.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveChangesActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setText("ZIpcode:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -112,84 +120,83 @@ public class ViewCustomersJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel3)
                     .addComponent(jLabel2)
                     .addComponent(jLabel5)
-                    .addComponent(jLabel6))
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel4))
                 .addGap(84, 84, 84)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(customerContactNoTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
-                    .addComponent(customerNameTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(customerIdTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(customerAddressTextField)
-                    .addComponent(customerAddressTextField1))
-                .addGap(0, 676, Short.MAX_VALUE))
+                    .addComponent(txtMobileNo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
+                    .addComponent(txtFullName, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtCustomerNo, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtZipcode)
+                    .addComponent(txtStreetAddress))
+                .addGap(0, 697, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(backBtn)
-                        .addGap(59, 59, 59)
+                        .addGap(134, 134, 134)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(24, 24, 24)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton2)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnEditCustomer)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSaveChanges)
+                        .addGap(35, 35, 35)
+                        .addComponent(btnBack)))
+                .addContainerGap(684, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(backBtn))
+                .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(customerIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCustomerNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(customerNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtFullName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(customerContactNoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtMobileNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(customerAddressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtZipcode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton2)
-                            .addComponent(jButton1)))
-                    .addComponent(customerAddressTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(254, Short.MAX_VALUE))
+                            .addComponent(btnSaveChanges)
+                            .addComponent(btnEditCustomer)
+                            .addComponent(btnBack)))
+                    .addComponent(txtStreetAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(267, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnEditCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditCustomerActionPerformed
         // TODO add your handling code here:
-        customerNameTextField.setEditable(true);
-        customerContactNoTextField.setEditable(true);
-        customerAddressTextField.setEditable(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+        txtCustomerNo.setEditable(true);
+        txtFullName.setEditable(true);
+        txtMobileNo.setEditable(true);
+        txtStreetAddress.setEditable(true);
+        txtZipcode.setEditable(true);
+    }//GEN-LAST:event_btnEditCustomerActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnSaveChangesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveChangesActionPerformed
         // TODO add your handling code here:
-        String id = customerIdTextField.getText();
-        String name = customerNameTextField.getText();
-        String phone = customerContactNoTextField.getText();
-        String address = customerAddressTextField.getText();
-        String street = customerContactNoTextField.getText();
-        String zipcode = customerAddressTextField.getText();
+        String id = txtCustomerNo.getText();
+        String name = txtFullName.getText();
+        String phone = txtMobileNo.getText();
+        String street = txtStreetAddress.getText();
+        String zipcode = txtZipcode.getText();
         
-        if(name.isEmpty() || phone.isEmpty() || address.isEmpty()){
+        if(name.isEmpty() || phone.isEmpty() || street.isEmpty() | zipcode.isEmpty()){
             JOptionPane.showMessageDialog(null, "Please enter all fields!");
         }
         else if(!phoneFormat(phone))
@@ -199,13 +206,13 @@ public class ViewCustomersJPanel extends javax.swing.JPanel {
         else{
             customerDirectory.updateCustomer(id,name,phone,street,zipcode);
             JOptionPane.showMessageDialog(null, "Customer details updated!");
-            customerNameTextField.setEditable(false);
-            customerContactNoTextField.setEditable(false);
-            customerAddressTextField.setEditable(false);
+            txtFullName.setEditable(false);
+            txtMobileNo.setEditable(false);
+            txtZipcode.setEditable(false);
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnSaveChangesActionPerformed
 
-    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
         container.remove(this);
          Component[] componentArray = container.getComponents();
@@ -215,7 +222,11 @@ public class ViewCustomersJPanel extends javax.swing.JPanel {
 
         CardLayout layout = (CardLayout) container.getLayout();
         layout.previous(container);
-    }//GEN-LAST:event_backBtnActionPerformed
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void txtZipcodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtZipcodeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtZipcodeActionPerformed
 
     public boolean phoneFormat(String phone){
         String regex = "^\\(?([0-9]{3})\\)?[-.\\s]?([0-9]{3})[-.\\s]?([0-9]{4})$";
@@ -229,19 +240,19 @@ public class ViewCustomersJPanel extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton backBtn;
-    private javax.swing.JTextField customerAddressTextField;
-    private javax.swing.JTextField customerAddressTextField1;
-    private javax.swing.JTextField customerContactNoTextField;
-    private javax.swing.JTextField customerIdTextField;
-    private javax.swing.JTextField customerNameTextField;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnEditCustomer;
+    private javax.swing.JButton btnSaveChanges;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JTextField txtCustomerNo;
+    private javax.swing.JTextField txtFullName;
+    private javax.swing.JTextField txtMobileNo;
+    private javax.swing.JTextField txtStreetAddress;
+    private javax.swing.JTextField txtZipcode;
     // End of variables declaration//GEN-END:variables
 }

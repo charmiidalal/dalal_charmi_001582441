@@ -31,7 +31,6 @@ public class CreateFoodItemJPanel extends javax.swing.JPanel {
      */
     JFileChooser chooser;
     File file;
-    BufferedImage img;
     private JPanel userProcessContainer;
     private EcoSystem system;
     private RestaurantDirectory restaurantDirectory;
@@ -63,8 +62,6 @@ public class CreateFoodItemJPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         addBtn = new javax.swing.JButton();
         backBtn = new javax.swing.JButton();
 
@@ -77,15 +74,6 @@ public class CreateFoodItemJPanel extends javax.swing.JPanel {
         jLabel3.setText("Food Item Description");
 
         jLabel4.setText("Food Item Price");
-
-        jLabel5.setText("Food Item Photo");
-
-        jButton1.setText("Choose");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
 
         addBtn.setText("Add");
         addBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -121,8 +109,7 @@ public class CreateFoodItemJPanel extends javax.swing.JPanel {
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel2)
                                         .addComponent(jLabel3)
-                                        .addComponent(jLabel4)
-                                        .addComponent(jLabel5)))
+                                        .addComponent(jLabel4)))
                                 .addGap(28, 28, 28)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(itemNameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
@@ -130,9 +117,7 @@ public class CreateFoodItemJPanel extends javax.swing.JPanel {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(itemPriceTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
-                            .addComponent(jButton1))))
+                        .addComponent(itemPriceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(1130, 1130, 1130))
         );
         layout.setVerticalGroup(
@@ -154,11 +139,7 @@ public class CreateFoodItemJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(itemPriceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(41, 41, 41)
                 .addComponent(addBtn)
                 .addContainerGap(533, Short.MAX_VALUE))
         );
@@ -175,12 +156,13 @@ public class CreateFoodItemJPanel extends javax.swing.JPanel {
         }catch(NumberFormatException exception){
             JOptionPane.showMessageDialog(null, "Enter valid price!");
         }
-        if(name.isEmpty() || description.isEmpty() || price == 0.0 || img == null){
+        if(name.isEmpty() || description.isEmpty() || price == 0.0){
             JOptionPane.showMessageDialog(null, "Enter all fields!");
         }
         else{
             String restaurantId = account.getEmployee().getName();
-            menuDirectory.add(restaurantId,name,description,img,price);
+            menuDirectory.add(restaurantId,name,description,price);
+            system.setMenuDirectory(menuDirectory);
             JOptionPane.showMessageDialog(null, "Food Item added to Menu!");
             itemNameTextField.setText("");
             itemDescriptionTextField.setText("");
@@ -188,17 +170,6 @@ public class CreateFoodItemJPanel extends javax.swing.JPanel {
         }
         
     }//GEN-LAST:event_addBtnActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        chooser = new JFileChooser();
-        chooser.showOpenDialog(null);
-        file = chooser.getSelectedFile();
-        try{
-            img = ImageIO.read(file);
-        } catch (IOException e){
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
         // TODO add your handling code here:
@@ -219,11 +190,9 @@ public class CreateFoodItemJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField itemDescriptionTextField;
     private javax.swing.JTextField itemNameTextField;
     private javax.swing.JTextField itemPriceTextField;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,19 +5,57 @@
  */
 package Business.Restaurant;
 
-import java.awt.image.BufferedImage;
-
 /**
  *
  * @author Charmi Dalal
  */
 public class Restaurant {
-    private String restaurantId;
-    private String name;
-    private String phoneNo;
-    private String address;
+    private String restaurantNo;
+    private String restaurantName;
+    private String mobileNo;
+    private String streetAddress;
+    private String zipcode;
     private String managerName;
 
+    public String getRestaurantNo() {
+        return restaurantNo;
+    }
+
+    public void setRestaurantNo(String restaurantNo) {
+        this.restaurantNo = restaurantNo;
+    }
+
+    public String getRestaurantName() {
+        return restaurantName;
+    }
+
+    public void setRestaurantName(String restaurantName) {
+        this.restaurantName = restaurantName;
+    }
+
+    public String getMobileNo() {
+        return mobileNo;
+    }
+
+    public void setMobileNo(String mobileNo) {
+        this.mobileNo = mobileNo;
+    }
+
+    public String getStreetAddress() {
+        return streetAddress;
+    }
+
+    public void setStreetAddress(String streetAddress) {
+        this.streetAddress = streetAddress;
+    }
+
+    public String getZipcode() {
+        return zipcode;
+    }
+
+    public void setZipcode(String zipcode) {
+        this.zipcode = zipcode;
+    }
 
     public String getManagerName() {
         return managerName;
@@ -26,37 +64,7 @@ public class Restaurant {
     public void setManagerName(String managerName) {
         this.managerName = managerName;
     }
+
+
     
-    public String getRestaurantId() {
-        return restaurantId;
-    }
-
-    public void setRestaurantId(String restaurantId) {
-        this.restaurantId = restaurantId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPhoneNo() {
-        return phoneNo;
-    }
-
-    public void setPhoneNo(String phoneNo) {
-        this.phoneNo = phoneNo;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
 }

@@ -28,37 +28,34 @@
                   <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                  <Component id="customerContactNoTextField" alignment="0" pref="186" max="32767" attributes="0"/>
-                  <Component id="customerNameTextField" alignment="0" max="32767" attributes="0"/>
-                  <Component id="customerIdTextField" alignment="0" max="32767" attributes="0"/>
-                  <Component id="customerAddressTextField" max="32767" attributes="0"/>
-                  <Component id="customerAddressTextField1" alignment="1" max="32767" attributes="0"/>
+                  <Component id="txtMobileNo" alignment="0" pref="186" max="32767" attributes="0"/>
+                  <Component id="txtFullName" alignment="0" max="32767" attributes="0"/>
+                  <Component id="txtCustomerNo" alignment="0" max="32767" attributes="0"/>
+                  <Component id="txtZipcode" max="32767" attributes="0"/>
+                  <Component id="txtStreetAddress" alignment="1" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace min="0" pref="676" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="697" max="32767" attributes="0"/>
           </Group>
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="backBtn" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="134" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jButton2" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
+                      <Component id="btnEditCustomer" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="btnSaveChanges" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="btnBack" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="684" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -66,24 +63,21 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="backBtn" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="customerIdTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtCustomerNo" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="customerNameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtFullName" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="customerContactNoTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtMobileNo" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -91,18 +85,19 @@
                       <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="customerAddressTextField" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtZipcode" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnSaveChanges" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnEditCustomer" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnBack" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Component id="customerAddressTextField1" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtStreetAddress" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="254" max="32767" attributes="0"/>
+              <EmptySpace pref="267" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -115,62 +110,65 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Customer Id"/>
+        <Property name="text" type="java.lang.String" value="Customer No:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Customer Name"/>
+        <Property name="text" type="java.lang.String" value="Full Name:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
-        <Property name="text" type="java.lang.String" value=" Customer Contact No"/>
+        <Property name="text" type="java.lang.String" value="Mobile No:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Street:"/>
+        <Property name="text" type="java.lang.String" value="Street Address:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="customerIdTextField">
+    <Component class="javax.swing.JTextField" name="txtCustomerNo">
     </Component>
-    <Component class="javax.swing.JTextField" name="customerNameTextField">
+    <Component class="javax.swing.JTextField" name="txtFullName">
     </Component>
-    <Component class="javax.swing.JTextField" name="customerContactNoTextField">
+    <Component class="javax.swing.JTextField" name="txtMobileNo">
     </Component>
-    <Component class="javax.swing.JTextField" name="customerAddressTextField">
+    <Component class="javax.swing.JTextField" name="txtZipcode">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtZipcodeActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="backBtn">
+    <Component class="javax.swing.JButton" name="btnBack">
       <Properties>
         <Property name="text" type="java.lang.String" value="Back"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backBtnActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBackActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="btnEditCustomer">
       <Properties>
         <Property name="text" type="java.lang.String" value="Edit Customer"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditCustomerActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="btnSaveChanges">
       <Properties>
         <Property name="text" type="java.lang.String" value="Save Changes"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSaveChangesActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel6">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Customer Address"/>
+        <Property name="text" type="java.lang.String" value="ZIpcode:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="customerAddressTextField1">
+    <Component class="javax.swing.JTextField" name="txtStreetAddress">
     </Component>
   </SubComponents>
 </Form>

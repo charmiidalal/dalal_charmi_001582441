@@ -21,6 +21,7 @@ tomcat
 *.ear
 *.sar
 *.class
+Databank.db4o
 
 # Maven 
 target/

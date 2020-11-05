@@ -58,16 +58,16 @@ public class ManageResturantInfoJPanel extends javax.swing.JPanel {
         licenseTextField.setEditable(false);
 
         for (Restaurant rest : restaurantDirectory.getRestaurantDirectory()) {
-            if (rest.getRestaurantId().equalsIgnoreCase(account.getEmployee().getName())) {
+            if (rest.getRestaurantNo().equalsIgnoreCase(account.getEmployee().getName())) {
                 this.restaurant = rest;
             }
         }
 
-        idTextField.setText(restaurant.getRestaurantId());
-        nameTextField.setText(restaurant.getName());
+        idTextField.setText(restaurant.getRestaurantNo());
+        nameTextField.setText(restaurant.getRestaurantName());
         managerTextField.setText(restaurant.getManagerName());
-        addressTextField.setText(restaurant.getAddress());
-        contactTextField.setText(restaurant.getPhoneNo());
+        addressTextField.setText(restaurant.getStreetAddress());
+        contactTextField.setText(restaurant.getMobileNo());
     }
 
     /**
@@ -239,9 +239,9 @@ public class ManageResturantInfoJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Phone format incorrect!");
         }else {
             restaurant.setManagerName(manager);
-            restaurant.setAddress(address);
-            restaurant.setPhoneNo(contact);
-            restaurant.setName(name);
+            restaurant.setStreetAddress(address);
+            restaurant.setMobileNo(contact);
+            restaurant.setRestaurantName(name);
             
             JOptionPane.showMessageDialog(null, "Changes saved sucessfully!");
             

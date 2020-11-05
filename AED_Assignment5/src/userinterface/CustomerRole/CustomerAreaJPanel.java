@@ -52,7 +52,7 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
         this.menuDirectory = menuDirectory;
         //valueLabel.setText(enterprise.getName());
         populateRequestTable();
-      //  populateMenuTable();
+        populateMenuTable();
     }
     
     public void populateMenuTable(){
@@ -78,7 +78,7 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
                     row[1] = order.getReceiver();
                     row[2] = order.getStatus();
                     row[3] = (order.getResult() == null ? "Waiting" : order.getResult());
-                    row[4] = order.getRestaurant().getName();
+                    row[4] = order.getRestaurant().getRestaurantName();
                     row[5] = order.getFoodItem().getItemName();
                     row[6] = order.getQuantity();
                     row[7] = order.getQuantity()* order.getFoodItem().getPrice();

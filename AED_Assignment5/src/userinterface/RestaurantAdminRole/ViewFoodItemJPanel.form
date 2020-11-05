@@ -35,18 +35,11 @@
                               <Component id="jButton2" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="272" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="itemPhoto" min="-2" pref="117" max="-2" attributes="0"/>
-                                  <Component id="changeImgBtn" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="itemIdTextField" alignment="0" pref="156" max="32767" attributes="0"/>
-                                  <Component id="itemNameTextField" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="itemDescriptionTextField" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="itemPriceTextField" alignment="0" max="32767" attributes="0"/>
-                              </Group>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="itemIdTextField" alignment="0" pref="156" max="32767" attributes="0"/>
+                              <Component id="itemNameTextField" alignment="0" max="32767" attributes="0"/>
+                              <Component id="itemDescriptionTextField" alignment="0" max="32767" attributes="0"/>
+                              <Component id="itemPriceTextField" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -66,27 +59,19 @@
                   <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="itemIdTextField" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="itemNameTextField" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="itemDescriptionTextField" min="-2" pref="86" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="itemPhoto" max="32767" attributes="0"/>
-              </Group>
+              <Component id="itemIdTextField" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="itemPriceTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="changeImgBtn" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <Component id="itemNameTextField" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="itemDescriptionTextField" min="-2" pref="86" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="itemPriceTextField" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="saveBtn" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="27" max="32767" attributes="0"/>
+              <EmptySpace pref="30" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -95,24 +80,6 @@
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="text" type="java.lang.String" value="View/ Edit Food Item"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="itemPhoto">
-      <Properties>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-            <LineBorder/>
-          </Border>
-        </Property>
-        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[120, 120]"/>
-        </Property>
-        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[120, 120]"/>
-        </Property>
-        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[120, 120]"/>
-        </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="itemIdTextField">
@@ -137,14 +104,6 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saveBtnActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="changeImgBtn">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Choose"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="changeImgBtnActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton2">
