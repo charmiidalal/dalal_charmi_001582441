@@ -5,16 +5,10 @@
  */
 package userinterface.RestaurantAdminRole;
 
-import Business.Menu.FoodItem;
+import Business.Menu.Item;
 import Business.Menu.MenuDirectory;
 import java.awt.CardLayout;
 import java.awt.Component;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -27,27 +21,24 @@ public class ViewFoodItemJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ViewFoodItemJPanel
      */
-    JFileChooser chooser;
-    File file;
-    BufferedImage img;
     private JPanel container;
-    private FoodItem foodItem;
+    private Item item;
     private MenuDirectory menuDirectory;
     //private ;
     
-    public ViewFoodItemJPanel(JPanel container,FoodItem foodItem, MenuDirectory menuDirectory) {
+    public ViewFoodItemJPanel(JPanel container,Item item, MenuDirectory menuDirectory) {
         initComponents();
         this.container = container;
-        this.foodItem = foodItem;
+        this.item = item;
         this.menuDirectory = menuDirectory;
-        itemNameTextField.setText(foodItem.getItemName());
-        itemDescriptionTextField.setText(foodItem.getDescription());
-        itemPriceTextField.setText(String.valueOf(foodItem.getPrice()));
-        itemIdTextField.setText(foodItem.getItemId());
-        itemNameTextField.setEditable(false);
-        itemDescriptionTextField.setEditable(false);
-        itemPriceTextField.setEditable(false);
-        itemIdTextField.setEditable(false);
+        txtItemName.setText(item.getItemName());
+        txtIngrediants.setText(item.getIngrediants());
+        txtItemPrice.setText(String.valueOf(item.getPrice()));
+        txtItemNo.setText(item.getItemNo());
+        txtItemName.setEditable(false);
+        txtItemNo.setEditable(false);
+        txtIngrediants.setEditable(false);
+        txtItemPrice.setEditable(false);
     }
 
     /**
@@ -59,39 +50,52 @@ public class ViewFoodItemJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        itemIdTextField = new javax.swing.JTextField();
-        itemNameTextField = new javax.swing.JTextField();
-        itemDescriptionTextField = new javax.swing.JTextField();
-        itemPriceTextField = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        saveBtn = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        lblUpdateMenuItem = new javax.swing.JLabel();
+        txtItemNo = new javax.swing.JTextField();
+        txtItemName = new javax.swing.JTextField();
+        txtIngrediants = new javax.swing.JTextField();
+        txtItemPrice = new javax.swing.JTextField();
+        btnUpdate = new javax.swing.JButton();
+        btnSave = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
+        lblItemNo = new javax.swing.JLabel();
+        lblItemName = new javax.swing.JLabel();
+        lblIngrediants = new javax.swing.JLabel();
+        lblItemPrice = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(204, 204, 204));
 
-        jLabel1.setText("View/ Edit Food Item");
+        lblUpdateMenuItem.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        lblUpdateMenuItem.setText("Update Menu Item");
 
-        jButton1.setText("Edit");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnUpdateActionPerformed(evt);
             }
         });
 
-        saveBtn.setText("Save Changes");
-        saveBtn.addActionListener(new java.awt.event.ActionListener() {
+        btnSave.setText("Save");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                saveBtnActionPerformed(evt);
+                btnSaveActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Back");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnBackActionPerformed(evt);
             }
         });
+
+        lblItemNo.setText("Item No:");
+
+        lblItemName.setText("Item Name:");
+
+        lblIngrediants.setText("Ingrediants:");
+
+        lblItemPrice.setText("Item Price:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -100,100 +104,118 @@ public class ViewFoodItemJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addComponent(jButton1)
-                        .addGap(80, 80, 80)
-                        .addComponent(saveBtn))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGap(228, 228, 228)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton2)
-                                .addGap(272, 272, 272))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(itemIdTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
-                                .addComponent(itemNameTextField)
-                                .addComponent(itemDescriptionTextField)
-                                .addComponent(itemPriceTextField)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1)))
-                .addContainerGap(315, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblItemName)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lblItemPrice)
+                                        .addComponent(lblItemNo)
+                                        .addComponent(lblIngrediants)))
+                                .addGap(98, 98, 98)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtItemName, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                                    .addComponent(txtItemNo)
+                                    .addComponent(txtIngrediants)
+                                    .addComponent(txtItemPrice)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnUpdate)
+                                .addGap(60, 60, 60)
+                                .addComponent(btnSave)
+                                .addGap(45, 45, 45)
+                                .addComponent(btnBack))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(317, 317, 317)
+                        .addComponent(lblUpdateMenuItem)))
+                .addContainerGap(312, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(29, 29, 29)
+                .addComponent(lblUpdateMenuItem)
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblItemNo)
+                    .addComponent(txtItemNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jButton2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(itemIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(itemNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(itemDescriptionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(itemPriceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                    .addComponent(txtItemName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblItemName))
+                .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(saveBtn))
-                .addContainerGap(30, Short.MAX_VALUE))
+                    .addComponent(lblIngrediants)
+                    .addComponent(txtIngrediants, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtItemPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblItemPrice))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBack)
+                    .addComponent(btnSave)
+                    .addComponent(btnUpdate))
+                .addGap(108, 108, 108))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
-        String id = itemIdTextField.getText();
-        String name = itemNameTextField.getText();
-        String description = itemDescriptionTextField.getText();
+        String itemNo = txtItemNo.getText();
+        String itemName = txtItemName.getText();
+        String ingrediants = txtIngrediants.getText();
         Double price = 0.0;
         try{
-            price  = Double.parseDouble(itemPriceTextField.getText());
+            price  = Double.parseDouble(txtItemPrice.getText());
         } catch(NumberFormatException exception){
-            JOptionPane.showMessageDialog(null, "Enter valid price!");
+            JOptionPane.showMessageDialog(null, "Enter Valid Price!");
         }
        
-        if(id.isEmpty() || name.isEmpty() || description.isEmpty() || price == 0.0 || img == null){
-            JOptionPane.showMessageDialog(null, "Enter all fields!");
+        if(itemNo.isEmpty() || itemName.isEmpty() || ingrediants.isEmpty() || price == 0.0){
+            JOptionPane.showMessageDialog(null, "Please Fill All Fields!");
         }
         else{
-            menuDirectory.updateFoodItem(foodItem.getItemId(),name,description,price,img);
-            itemNameTextField.setEditable(false);
-            itemDescriptionTextField.setEditable(false);
-            itemPriceTextField.setEditable(false);
-            itemIdTextField.setEditable(false);
-            JOptionPane.showMessageDialog(null, "Food Item updated succesfully!");
+            menuDirectory.updateFoodItem(item.getItemNo(),itemName,ingrediants,price);
+            txtItemName.setEditable(false);
+            txtIngrediants.setEditable(false);
+            txtItemPrice.setEditable(false);
+            JOptionPane.showMessageDialog(null, "Menu Item Updated!");
         }
-    }//GEN-LAST:event_saveBtnActionPerformed
+    }//GEN-LAST:event_btnSaveActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
-        itemNameTextField.setEditable(true);
-        itemDescriptionTextField.setEditable(true);
-        itemPriceTextField.setEditable(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+        txtItemName.setEditable(true);
+        txtIngrediants.setEditable(true);
+        txtItemPrice.setEditable(true);
+    }//GEN-LAST:event_btnUpdateActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
         container.remove(this);
         Component[] componentArray = container.getComponents();
         Component component = componentArray[componentArray.length - 1];
         ManageMenuJPanel manageMenuJPanel = (ManageMenuJPanel) component;
-        manageMenuJPanel.populate();
+        manageMenuJPanel.populateMenu();
         CardLayout layout = (CardLayout) container.getLayout();
         layout.previous(container);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnBackActionPerformed
     
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField itemDescriptionTextField;
-    private javax.swing.JTextField itemIdTextField;
-    private javax.swing.JTextField itemNameTextField;
-    private javax.swing.JTextField itemPriceTextField;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JButton saveBtn;
+    private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnSave;
+    private javax.swing.JButton btnUpdate;
+    private javax.swing.JLabel lblIngrediants;
+    private javax.swing.JLabel lblItemName;
+    private javax.swing.JLabel lblItemNo;
+    private javax.swing.JLabel lblItemPrice;
+    private javax.swing.JLabel lblUpdateMenuItem;
+    private javax.swing.JTextField txtIngrediants;
+    private javax.swing.JTextField txtItemName;
+    private javax.swing.JTextField txtItemNo;
+    private javax.swing.JTextField txtItemPrice;
     // End of variables declaration//GEN-END:variables
 }

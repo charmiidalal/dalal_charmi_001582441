@@ -13,11 +13,8 @@ import Business.Role.AdminRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -30,13 +27,11 @@ public class CreateRestaurantJPanel extends javax.swing.JPanel {
     /**
      * Creates new form createRestaurantJPanel
      */
-    JFileChooser chooser;
-    File file;
-    BufferedImage img;
-    private RestaurantDirectory restaurantDirectory;
-    private JPanel container;
-    private EcoSystem system;
-    public CreateRestaurantJPanel(JPanel container, EcoSystem system,RestaurantDirectory restaurantDirectory) {
+    private final RestaurantDirectory restaurantDirectory;
+    private final JPanel container;
+    private final EcoSystem system;
+
+    public CreateRestaurantJPanel(JPanel container, EcoSystem system, RestaurantDirectory restaurantDirectory) {
         initComponents();
         this.restaurantDirectory = restaurantDirectory;
         this.container = container;
@@ -52,55 +47,56 @@ public class CreateRestaurantJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        restaurantNameTextField = new javax.swing.JTextField();
-        restaurantAddressTextField = new javax.swing.JTextField();
-        restaurantPhoneNoTextField = new javax.swing.JTextField();
-        addRestaurantBtn = new javax.swing.JButton();
-        backBtn = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        usernameTextField = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        managerNameTextField = new javax.swing.JTextField();
-        passwordTextField = new javax.swing.JPasswordField();
-        jLabel5 = new javax.swing.JLabel();
+        lblAddRes = new javax.swing.JLabel();
+        lblResName = new javax.swing.JLabel();
+        lblStreetAdd = new javax.swing.JLabel();
+        lblPhoneNo = new javax.swing.JLabel();
+        txtResName = new javax.swing.JTextField();
+        txtStreetAddress = new javax.swing.JTextField();
+        txtPhoneNo = new javax.swing.JTextField();
+        btnSave = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
+        lblUsername = new javax.swing.JLabel();
+        lblPassword = new javax.swing.JLabel();
+        txtUsername = new javax.swing.JTextField();
+        lblManagerName = new javax.swing.JLabel();
+        txtManagerName = new javax.swing.JTextField();
+        txtPassword = new javax.swing.JPasswordField();
+        lblZipcode = new javax.swing.JLabel();
         txtZipcode = new javax.swing.JTextField();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(204, 204, 204));
 
-        jLabel1.setText("Restaurant");
+        lblAddRes.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        lblAddRes.setText(" Create Restaurant");
 
-        jLabel2.setText("Restaurant Name:");
+        lblResName.setText("Restaurant Name:");
 
-        jLabel3.setText("Street");
+        lblStreetAdd.setText("Street Address:");
 
-        jLabel4.setText("Phone no");
+        lblPhoneNo.setText("Phone no:");
 
-        addRestaurantBtn.setText("Add");
-        addRestaurantBtn.addActionListener(new java.awt.event.ActionListener() {
+        btnSave.setText("Create");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addRestaurantBtnActionPerformed(evt);
+                btnSaveActionPerformed(evt);
             }
         });
 
-        backBtn.setText("Back");
-        backBtn.addActionListener(new java.awt.event.ActionListener() {
+        btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backBtnActionPerformed(evt);
+                btnBackActionPerformed(evt);
             }
         });
 
-        jLabel6.setText("Username");
+        lblUsername.setText("Username:");
 
-        jLabel7.setText("Password");
+        lblPassword.setText("Password:");
 
-        jLabel8.setText("Manager Name:");
+        lblManagerName.setText("Manager Name:");
 
-        jLabel5.setText("Zipcode");
+        lblZipcode.setText("Zipcode:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -111,107 +107,94 @@ public class CreateRestaurantJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel6))
-                        .addGap(58, 58, 58)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtZipcode, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(managerNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(usernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 330, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(restaurantAddressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(restaurantPhoneNoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(passwordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(434, 434, 434))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(44, 44, 44)
-                                .addComponent(restaurantNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(221, 221, 221)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel7))))
-                        .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
+                            .addComponent(lblUsername)
+                            .addComponent(lblManagerName)
+                            .addComponent(lblResName))
+                        .addGap(24, 24, 24)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtManagerName, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtResName, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(86, 86, 86))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnSave)
+                        .addGap(16, 16, 16)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(backBtn)
-                        .addGap(287, 287, 287)
-                        .addComponent(jLabel1))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblPassword)
+                            .addComponent(lblPhoneNo))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPhoneNo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnBack))
+                        .addGap(286, 286, 286))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(119, 119, 119)
-                        .addComponent(addRestaurantBtn)))
-                .addGap(348, 348, 348))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblAddRes)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblStreetAdd)
+                                .addGap(38, 38, 38)
+                                .addComponent(txtStreetAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(44, 44, 44)
+                                .addComponent(lblZipcode)
+                                .addGap(32, 32, 32)
+                                .addComponent(txtZipcode, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 39, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(46, 46, 46)
+                .addComponent(lblAddRes)
+                .addGap(70, 70, 70)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(backBtn))
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(restaurantNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(restaurantAddressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(managerNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel4)
-                    .addComponent(restaurantPhoneNoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
+                    .addComponent(txtResName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblResName, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblStreetAdd)
+                    .addComponent(txtStreetAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblZipcode)
                     .addComponent(txtZipcode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(passwordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(usernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(31, 31, 31)
-                .addComponent(addRestaurantBtn)
-                .addContainerGap(212, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtManagerName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblManagerName)
+                    .addComponent(lblPhoneNo)
+                    .addComponent(txtPhoneNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(62, 62, 62)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblUsername)
+                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPassword))
+                .addGap(66, 66, 66)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSave)
+                    .addComponent(btnBack))
+                .addGap(93, 93, 93))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void addRestaurantBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addRestaurantBtnActionPerformed
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
-        String name = restaurantNameTextField.getText();
-        String address = restaurantAddressTextField.getText();
-        String phone = restaurantPhoneNoTextField.getText();
-        String username = usernameTextField.getText();
-        String password = passwordTextField.getText();
-        String managerName = managerNameTextField.getText();
+        String name = txtResName.getText();
+        String address = txtStreetAddress.getText();
+        String phone = txtPhoneNo.getText();
+        String username = txtUsername.getText();
+        String password = txtPassword.getText();
+        String managerName = txtManagerName.getText();
         String zipcode = txtZipcode.getText();
-        
-        if(username.isEmpty() || password.isEmpty() || name.isEmpty() || address.isEmpty() || phone.isEmpty() || managerName.isEmpty()){
-            JOptionPane.showMessageDialog(null, "Please enter all fields!");
-        } 
-        else if(!phoneFormat(phone))
-        {
-            JOptionPane.showMessageDialog(null, "Phone format incorrect!");
-        }
-        else if(!system.getUserAccountDirectory().checkIfUsernameIsUnique(username)){
-            JOptionPane.showMessageDialog(null, "Username already exists!");
-        }
-        else if(!restaurantDirectory.isPhoneUnique(phone)){
-            JOptionPane.showMessageDialog(null, "Phone No already registered!");
-        }
-        else{
+
+        if (username.isEmpty() || password.isEmpty() || name.isEmpty() || address.isEmpty() || phone.isEmpty() || managerName.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please Enter All Fields!");
+        } else if (!phoneFormat(phone)) {
+            JOptionPane.showMessageDialog(null, "Please Enter Valid Phone No.");
+        } else if (!system.getUserAccountDirectory().checkIfUsernameIsUnique(username)) {
+            JOptionPane.showMessageDialog(null, "Username Already Exists!");
+        } else if (!restaurantDirectory.isPhoneUnique(phone)) {
+            JOptionPane.showMessageDialog(null, "Phone No Already Registered!");
+        } else {
             Restaurant restaurant = new Restaurant();
             restaurant.setRestaurantName(name);
             restaurant.setStreetAddress(address);
@@ -222,60 +205,60 @@ public class CreateRestaurantJPanel extends javax.swing.JPanel {
             system.setRestaurantDirectory(restaurantDirectory);
             Employee employee = system.getEmployeeDirectory().createEmployee(restaurant.getRestaurantNo());
             UserAccount account = system.getUserAccountDirectory().createUserAccount(username, password, employee, new AdminRole());
-            JOptionPane.showMessageDialog(null, "Restaurant added!");
-            restaurantNameTextField.setText("");
-            restaurantAddressTextField.setText("");
-            restaurantPhoneNoTextField.setText("");
-            usernameTextField.setText("");
-            passwordTextField.setText("");
-            managerNameTextField.setText("");
-            txtZipcode.setText("");
-            img = null;
-            
-            
+            JOptionPane.showMessageDialog(null, "New Restaurant has been added!");
+            clearAllFields();
         }
-    }//GEN-LAST:event_addRestaurantBtnActionPerformed
-    
-    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
+    }//GEN-LAST:event_btnSaveActionPerformed
+
+    public void clearAllFields() {
+        txtResName.setText("");
+        txtStreetAddress.setText("");
+        txtPhoneNo.setText("");
+        txtUsername.setText("");
+        txtPassword.setText("");
+        txtManagerName.setText("");
+        txtZipcode.setText("");
+    }
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
         container.remove(this);
-         Component[] componentArray = container.getComponents();
+        Component[] componentArray = container.getComponents();
         Component component = componentArray[componentArray.length - 1];
         ManageRestaurantJPanel manageRestaurantJPanel = (ManageRestaurantJPanel) component;
-        manageRestaurantJPanel.populate();
+        manageRestaurantJPanel.populateRestaurants();
 
         CardLayout layout = (CardLayout) container.getLayout();
         layout.previous(container);
-    }//GEN-LAST:event_backBtnActionPerformed
-    
-    public boolean phoneFormat(String phone){
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    public boolean phoneFormat(String phone) {
         String regex = "^\\(?([0-9]{3})\\)?[-.\\s]?([0-9]{3})[-.\\s]?([0-9]{4})$";
         Pattern pattern = Pattern.compile(regex);
-        
+
         Matcher matcher = pattern.matcher(phone);
-        if(matcher.matches()){
+        if (matcher.matches()) {
             return true;
         }
         return false;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addRestaurantBtn;
-    private javax.swing.JButton backBtn;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JTextField managerNameTextField;
-    private javax.swing.JPasswordField passwordTextField;
-    private javax.swing.JTextField restaurantAddressTextField;
-    private javax.swing.JTextField restaurantNameTextField;
-    private javax.swing.JTextField restaurantPhoneNoTextField;
+    private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnSave;
+    private javax.swing.JLabel lblAddRes;
+    private javax.swing.JLabel lblManagerName;
+    private javax.swing.JLabel lblPassword;
+    private javax.swing.JLabel lblPhoneNo;
+    private javax.swing.JLabel lblResName;
+    private javax.swing.JLabel lblStreetAdd;
+    private javax.swing.JLabel lblUsername;
+    private javax.swing.JLabel lblZipcode;
+    private javax.swing.JTextField txtManagerName;
+    private javax.swing.JPasswordField txtPassword;
+    private javax.swing.JTextField txtPhoneNo;
+    private javax.swing.JTextField txtResName;
+    private javax.swing.JTextField txtStreetAddress;
+    private javax.swing.JTextField txtUsername;
     private javax.swing.JTextField txtZipcode;
-    private javax.swing.JTextField usernameTextField;
     // End of variables declaration//GEN-END:variables
 }

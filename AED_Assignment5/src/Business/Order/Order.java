@@ -7,7 +7,7 @@ package Business.Order;
 
 import Business.Customer.Customer;
 import Business.DeliveryMan.DeliveryMan;
-import Business.Menu.FoodItem;
+import Business.Menu.Item;
 import Business.Restaurant.Restaurant;
 import Business.WorkQueue.WorkRequest;
 
@@ -18,7 +18,7 @@ import Business.WorkQueue.WorkRequest;
 public class Order extends WorkRequest{
     private String orderId;
     private int orderStatusPercentage;
-    private FoodItem foodItem;
+    private Item foodItem;
     private Restaurant restaurant;
     private Customer customer;
     private DeliveryMan deliveryMan;
@@ -41,11 +41,11 @@ public class Order extends WorkRequest{
         this.orderId = orderId;
     }
 
-    public FoodItem getFoodItem() {
+    public Item getFoodItem() {
         return foodItem;
     }
 
-    public void setFoodItem(FoodItem foodItem) {
+    public void setFoodItem(Item foodItem) {
         this.foodItem = foodItem;
     }
 

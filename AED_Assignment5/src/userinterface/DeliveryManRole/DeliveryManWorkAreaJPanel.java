@@ -4,18 +4,11 @@
  */
 package userinterface.DeliveryManRole;
 
-import Business.Customer.CustomerDirectory;
 import Business.DeliveryMan.DeliveryManDirectory;
 import Business.EcoSystem;
-import Business.Menu.MenuDirectory;
 import Business.Order.Order;
 import Business.Order.OrderDirectory;
-import Business.Restaurant.RestaurantDirectory;
-
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.LabTestWorkRequest;
-import Business.WorkQueue.WorkRequest;
-import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -24,7 +17,6 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author raunak
  */
-
 public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
@@ -32,29 +24,29 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
     private EcoSystem business;
     private DeliveryManDirectory deliveryManDirectory;
     private OrderDirectory orderDirectory;
+
     /**
      * Creates new form LabAssistantWorkAreaJPanel
      */
     public DeliveryManWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem business, DeliveryManDirectory deliveryManDirectory, OrderDirectory orderDirectory) {
         initComponents();
-        
+
         this.userProcessContainer = userProcessContainer;
         this.account = account;
         this.business = business;
         this.deliveryManDirectory = deliveryManDirectory;
         this.orderDirectory = orderDirectory;
-      
-        
+
         populateTable();
     }
-    
-    public void populateTable(){
+
+    public void populateTable() {
         DefaultTableModel model = (DefaultTableModel) workRequestJTable.getModel();
         model.setRowCount(0);
-        for(Order order: business.getOrderDirectory().getOrderDirectory()){
-            if(order.getDeliveryMan() != null){
-                if(order.getDeliveryMan().getDeliveryId().equalsIgnoreCase(account.getEmployee().getName())){
-                Object[] row = new Object[7];
+        for (Order order : business.getOrderDirectory().getOrderDirectory()) {
+            if (order.getDeliveryMan() != null) {
+                if (order.getDeliveryMan().getDeliveryId().equalsIgnoreCase(account.getEmployee().getName())) {
+                    Object[] row = new Object[7];
                     row[0] = order.getMessage();
                     row[1] = order.getSender();
                     row[2] = order.getReceiver();
@@ -63,7 +55,7 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
                     row[5] = order.getCustomer().getCustomerStreet();
                     row[6] = order.getRestaurant().getStreetAddress();
                     model.addRow(row);
-            }
+                }
             }
         }
     }
@@ -86,7 +78,7 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
         resultJTextField = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(255, 204, 102));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -153,23 +145,22 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
 
     private void processJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processJButtonActionPerformed
         int selectedRow = workRequestJTable.getSelectedRow();
-        
-        if (selectedRow < 0){
+
+        if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Select a row!");
             return;
         }
-        
+
         String selectedOrderId = (String) workRequestJTable.getValueAt(selectedRow, 4);
         Order order = business.getOrderDirectory().getOrderByOrderId(selectedOrderId);
-     
-        if(order.getStatus().trim().equalsIgnoreCase("Out For Delivery")){
+
+        if (order.getStatus().trim().equalsIgnoreCase("Out For Delivery")) {
             order.setResult(resultJTextField.getText());
             order.setStatus("Completed");
             resultJTextField.setText("");
             JOptionPane.showMessageDialog(null, "Order updated!");
             populateTable();
-        }
-        else{
+        } else {
             JOptionPane.showMessageDialog(null, "Confirm order pick up before confirming delivery!");
         }
     }//GEN-LAST:event_processJButtonActionPerformed
@@ -181,15 +172,15 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         int selectedRow = workRequestJTable.getSelectedRow();
-        
-        if (selectedRow < 0){
+
+        if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Select a row!");
             return;
         }
-        
+
         String selectedOrderId = (String) workRequestJTable.getValueAt(selectedRow, 4);
         Order order = business.getOrderDirectory().getOrderByOrderId(selectedOrderId);
-     
+
         order.setStatus("Out For Delivery");
         JOptionPane.showMessageDialog(null, "Order updated!");
         populateTable();

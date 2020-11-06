@@ -23,27 +23,19 @@ public class ViewRestaurantsJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ViewRestaurantsJPanel
      */
-    private JPanel container;
-    private RestaurantDirectory restaurantDirectory;
-    private Restaurant restaurant;
+    private final JPanel container;
+    private final Restaurant restaurant;
 
-    public ViewRestaurantsJPanel(JPanel container, Restaurant restaurant, RestaurantDirectory restaurantDirectory) {
+    public ViewRestaurantsJPanel(JPanel container, Restaurant restaurant) {
         initComponents();
         this.container = container;
-        this.restaurantDirectory = restaurantDirectory;
         this.restaurant = restaurant;
         txtRestaurantID.setText(restaurant.getRestaurantNo());
         txtManagerName.setText(restaurant.getManagerName());
         txtAddressStreet.setText(restaurant.getStreetAddress());
-        txtContactNo.setText(restaurant.getMobileNo());
+        txtPhoneNo.setText(restaurant.getMobileNo());
         txtRestaurantName.setText(restaurant.getRestaurantName());
         txtZipcode.setText(restaurant.getZipcode());
-        txtRestaurantID.setEditable(false);
-        txtManagerName.setEditable(false);
-        txtContactNo.setEditable(false);
-        txtRestaurantName.setEditable(false);
-        txtAddressStreet.setEditable(false);
-        txtZipcode.setEditable(false);
     }
 
     /**
@@ -55,34 +47,35 @@ public class ViewRestaurantsJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lblUpdateResDetails = new javax.swing.JLabel();
+        lblResName = new javax.swing.JLabel();
+        lblManagerName = new javax.swing.JLabel();
         txtRestaurantName = new javax.swing.JTextField();
         txtManagerName = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
+        lblAddressStreet = new javax.swing.JLabel();
         txtAddressStreet = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        txtContactNo = new javax.swing.JTextField();
+        lblPhoneNo = new javax.swing.JLabel();
+        txtPhoneNo = new javax.swing.JTextField();
         btnEdit = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
+        lblZipcode = new javax.swing.JLabel();
         txtZipcode = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        lblResNo = new javax.swing.JLabel();
         txtRestaurantID = new javax.swing.JTextField();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(204, 204, 204));
 
-        jLabel1.setText("Edit Restaurant");
+        lblUpdateResDetails.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        lblUpdateResDetails.setText("Update Restaurant Details");
 
-        jLabel2.setText("Restaurant Name:");
+        lblResName.setText(" Name:");
 
-        jLabel3.setText("Manager Name:");
+        lblManagerName.setText("Manager Name:");
 
-        jLabel5.setText("Address Street:");
+        lblAddressStreet.setText("Address Street:");
 
-        jLabel6.setText("Contact No");
+        lblPhoneNo.setText("Phone No:");
 
         btnEdit.setText("Edit");
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
@@ -91,7 +84,7 @@ public class ViewRestaurantsJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnSave.setText("Save Changes");
+        btnSave.setText("Update");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSaveActionPerformed(evt);
@@ -105,123 +98,130 @@ public class ViewRestaurantsJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel7.setText("Zipcode:");
+        lblZipcode.setText("Zipcode:");
 
-        jLabel4.setText("Restaurant ID:");
+        lblResNo.setText("Restaurant No:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(274, 274, 274)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(42, 42, 42)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnEdit)
+                        .addGap(55, 55, 55))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblZipcode)
+                                .addComponent(lblManagerName))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(txtZipcode, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                                .addComponent(txtManagerName, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtRestaurantID, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(lblResNo)
+                            .addGap(234, 234, 234))))
+                .addComponent(btnSave)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnEdit)
-                        .addGap(18, 18, 18))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(btnBack)
+                        .addGap(311, 311, 311))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel7))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(60, 60, 60)
-                                        .addComponent(txtZipcode, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(txtManagerName, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(lblResName)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtRestaurantName, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(64, 64, 64)
-                                .addComponent(txtRestaurantID, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(38, 38, 38)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnSave)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel6)
-                        .addComponent(jLabel5)
-                        .addComponent(jLabel2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtAddressStreet, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBack)
-                    .addComponent(txtRestaurantName, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtContactNo, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(261, 261, 261))
+                                .addComponent(lblAddressStreet)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtAddressStreet, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblPhoneNo)
+                                .addGap(106, 106, 106)
+                                .addComponent(txtPhoneNo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(133, 133, 133))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblUpdateResDetails)
+                .addGap(346, 346, 346))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(53, 53, 53)
+                .addGap(20, 20, 20)
+                .addComponent(lblUpdateResDetails)
+                .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtRestaurantName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel4)
+                    .addComponent(lblResName)
+                    .addComponent(lblResNo)
                     .addComponent(txtRestaurantID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(55, 55, 55)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
+                    .addComponent(txtAddressStreet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblAddressStreet)
                     .addComponent(txtManagerName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtAddressStreet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
+                    .addComponent(lblManagerName))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtPhoneNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPhoneNo)
                     .addComponent(txtZipcode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel6)
-                    .addComponent(txtContactNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                    .addComponent(lblZipcode))
+                .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSave)
                     .addComponent(btnBack)
+                    .addComponent(btnSave)
                     .addComponent(btnEdit))
-                .addGap(81, 81, 81))
+                .addGap(46, 46, 46))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         // TODO add your handling code here:
-        txtManagerName.setEditable(true);
-        txtContactNo.setEditable(true);
         txtRestaurantName.setEditable(true);
+        txtManagerName.setEditable(true);
+        txtPhoneNo.setEditable(true);
         txtAddressStreet.setEditable(true);
         txtZipcode.setEditable(true);
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
-        if (txtRestaurantName.getText().isEmpty() || txtAddressStreet.getText().isEmpty() || txtContactNo.getText().isEmpty() || txtManagerName.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Please enter all fields!");
-        } else if (!phoneFormat(txtContactNo.getText())) {
-            JOptionPane.showMessageDialog(null, "Phone format incorrect!");
+        if (txtRestaurantName.getText().isEmpty() || txtAddressStreet.getText().isEmpty() || txtPhoneNo.getText().isEmpty() || txtManagerName.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please Fill All Fields!");
+        } else if (!checkPhoneNoValidation(txtPhoneNo.getText())) {
+            JOptionPane.showMessageDialog(null, "Please Enter Valid Phone No!");
         } else {
+            restaurant.setRestaurantName(txtRestaurantName.getText());
             restaurant.setManagerName(txtManagerName.getText());
             restaurant.setStreetAddress(txtAddressStreet.getText());
-            restaurant.setMobileNo(txtContactNo.getText());
-            restaurant.setRestaurantName(txtRestaurantName.getText());
-            JOptionPane.showMessageDialog(null, "Changes saved sucessfully!");
-
-            txtManagerName.setEditable(false);
-            txtContactNo.setEditable(false);
-            txtRestaurantName.setEditable(false);
-            txtAddressStreet.setEditable(false);
-            txtZipcode.setEditable(false);
+            restaurant.setMobileNo(txtPhoneNo.getText());
+            JOptionPane.showMessageDialog(null, "Changes Saved Sucessfully!");
+            disableEditing();
         }
     }//GEN-LAST:event_btnSaveActionPerformed
 
-    public boolean phoneFormat(String phone) {
+    public void disableEditing() {
+        txtRestaurantID.setEditable(false);
+        txtManagerName.setEditable(false);
+        txtPhoneNo.setEditable(false);
+        txtRestaurantName.setEditable(false);
+        txtAddressStreet.setEditable(false);
+        txtZipcode.setEditable(false);
+    }
+
+    public boolean checkPhoneNoValidation(String phoneNo) {
         String regex = "^\\(?([0-9]{3})\\)?[-.\\s]?([0-9]{3})[-.\\s]?([0-9]{4})$";
         Pattern pattern = Pattern.compile(regex);
-
-        Matcher matcher = pattern.matcher(phone);
+        Matcher matcher = pattern.matcher(phoneNo);
         if (matcher.matches()) {
             return true;
         }
@@ -234,8 +234,7 @@ public class ViewRestaurantsJPanel extends javax.swing.JPanel {
         Component[] componentArray = container.getComponents();
         Component component = componentArray[componentArray.length - 1];
         ManageRestaurantJPanel manageRestaurantJPanel = (ManageRestaurantJPanel) component;
-        manageRestaurantJPanel.populate();
-
+        manageRestaurantJPanel.populateRestaurants();
         CardLayout layout = (CardLayout) container.getLayout();
         layout.previous(container);
     }//GEN-LAST:event_btnBackActionPerformed
@@ -245,16 +244,16 @@ public class ViewRestaurantsJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnSave;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel lblAddressStreet;
+    private javax.swing.JLabel lblManagerName;
+    private javax.swing.JLabel lblPhoneNo;
+    private javax.swing.JLabel lblResName;
+    private javax.swing.JLabel lblResNo;
+    private javax.swing.JLabel lblUpdateResDetails;
+    private javax.swing.JLabel lblZipcode;
     private javax.swing.JTextField txtAddressStreet;
-    private javax.swing.JTextField txtContactNo;
     private javax.swing.JTextField txtManagerName;
+    private javax.swing.JTextField txtPhoneNo;
     private javax.swing.JTextField txtRestaurantID;
     private javax.swing.JTextField txtRestaurantName;
     private javax.swing.JTextField txtZipcode;

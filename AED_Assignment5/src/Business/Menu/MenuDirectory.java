@@ -5,7 +5,6 @@
  */
 package Business.Menu;
 
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 /**
@@ -13,39 +12,44 @@ import java.util.ArrayList;
  * @author Charmi Dalal
  */
 public class MenuDirectory {
-    private ArrayList<FoodItem> menuDirectory;
+    private ArrayList<Item> menuDirectory;
     
     public MenuDirectory(){
-        menuDirectory = new ArrayList<FoodItem>();
+        menuDirectory = new ArrayList<Item>();
     }
 
-    public ArrayList<FoodItem> getMenuDirectory() {
+    public ArrayList<Item> getMenuDirectory() {
         return menuDirectory;
     }
 
-    public void setMenuDirectory(ArrayList<FoodItem> menuDirectory) {
+    public void setMenuDirectory(ArrayList<Item> menuDirectory) {
         this.menuDirectory = menuDirectory;
     }
 
-    public void add(String restaurantId, String name, String description, double price) {
-        FoodItem item = new FoodItem("F"+(menuDirectory.size()+1),restaurantId,name,description,price);
+    public void add(String restaurantId, String name, double price, String description) {     
+        Item item = new Item();
+        item.setItemNo("MenuItem"+(menuDirectory.size()+1));
+        item.setItemName(name);
+        item.setPrice(price);
+        item.setRestaurantNo(restaurantId);
+        item.setIngrediants(description);
         menuDirectory.add(item);
     }
     
-    public FoodItem getFoodItem(String itemId){
-        for(FoodItem item: menuDirectory){
-            if(item.getItemId().equalsIgnoreCase(itemId)){
+    public Item getFoodItem(String itemId){
+        for(Item item: menuDirectory){
+            if(item.getItemNo().equalsIgnoreCase(itemId)){
                 return item;
             }
         }
         return null;
     }
 
-    public void updateFoodItem(String itemId, String name, String description, Double price, BufferedImage img) {
-        for(FoodItem item: menuDirectory){
-            if(item.getItemId().equalsIgnoreCase(itemId)){
-                item.setItemName(name);
-                item.setDescription(description);
+    public void updateFoodItem(String itemNo, String itemName, String ingrediants, Double price) {
+        for(Item item: menuDirectory){
+            if(item.getItemNo().equalsIgnoreCase(itemNo)){
+                item.setItemName(itemName);
+                item.setIngrediants(ingrediants);
                 item.setPrice(price);
             }
         }
@@ -53,13 +57,13 @@ public class MenuDirectory {
     
     public void deleteItem(String id){
         for(int i =0; i< menuDirectory.size();i++){
-            if(menuDirectory.get(i).getItemId().equalsIgnoreCase(id)){
+            if(menuDirectory.get(i).getItemNo().equalsIgnoreCase(id)){
                 menuDirectory.remove(i);
             }
         }
     }
     
-    public FoodItem getFoodItemByIndex(int index){
+    public Item getFoodItemByIndex(int index){
         return menuDirectory.get(index);
     }
 }
