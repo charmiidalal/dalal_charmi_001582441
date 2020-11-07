@@ -26,21 +26,19 @@ public class ViewDeliveryManJPanel extends javax.swing.JPanel {
     public DeliveryMan deliveryMan;
     public DeliveryManDirectory deliveryManDirectory;
     private final EcoSystem system;
-    
-    public ViewDeliveryManJPanel(EcoSystem system,JPanel container,DeliveryMan deliveryMan,DeliveryManDirectory deliveryManDirectory) {
+
+    public ViewDeliveryManJPanel(EcoSystem system, JPanel container, DeliveryMan deliveryMan, DeliveryManDirectory deliveryManDirectory) {
         initComponents();
         this.container = container;
         this.deliveryMan = deliveryMan;
         this.deliveryManDirectory = deliveryManDirectory;
         this.system = system;
-        deliveryManIdTextField.setText(deliveryMan.getDeliveryId());
-        deliveryManNameTextField.setText(deliveryMan.getName());
-        deliveryManPhoneTextField.setText(deliveryMan.getPhoneNo());
-        deliveryManIdTextField.setEditable(false);
-        deliveryManNameTextField.setEditable(false);
-        deliveryManPhoneTextField.setEditable(false);
-        deliveryManAddressTextField.setEditable(false);
-        
+        txtDeliveryNo.setText(deliveryMan.getDeliveryId());
+        txtFullName.setText(deliveryMan.getName());
+        txtPhone.setText(deliveryMan.getPhoneNo());
+        txtEmail.setText(deliveryMan.getEmail());
+        setEditableFalse();
+
     }
 
     /**
@@ -57,14 +55,13 @@ public class ViewDeliveryManJPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        deliveryManIdTextField = new javax.swing.JTextField();
-        deliveryManNameTextField = new javax.swing.JTextField();
-        deliveryManPhoneTextField = new javax.swing.JTextField();
-        deliveryManAddressTextField = new javax.swing.JTextField();
+        txtDeliveryNo = new javax.swing.JTextField();
+        txtFullName = new javax.swing.JTextField();
+        txtPhone = new javax.swing.JTextField();
         editBtn = new javax.swing.JButton();
         saveBtn = new javax.swing.JButton();
-        image = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        txtEmail = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(204, 204, 204));
 
@@ -84,8 +81,6 @@ public class ViewDeliveryManJPanel extends javax.swing.JPanel {
 
         jLabel5.setText("Phone No:");
 
-        jLabel6.setText("Street Address:");
-
         editBtn.setText("Edit");
         editBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,6 +94,8 @@ public class ViewDeliveryManJPanel extends javax.swing.JPanel {
                 saveBtnActionPerformed(evt);
             }
         });
+
+        jLabel7.setText("Email:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -114,31 +111,34 @@ public class ViewDeliveryManJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(43, 43, 43)
-                        .addComponent(deliveryManIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtDeliveryNo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel4)
                         .addGap(54, 54, 54))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(82, 82, 82)
-                                .addComponent(deliveryManPhoneTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 121, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(editBtn)
                                 .addGap(27, 27, 27)
-                                .addComponent(saveBtn)))
-                        .addGap(18, 18, 18)
+                                .addComponent(saveBtn))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addGap(82, 82, 82)
+                                .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 121, Short.MAX_VALUE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(backBtn)
-                            .addComponent(jLabel6))
-                        .addGap(26, 26, 26)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(backBtn))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel7)))
+                        .addGap(46, 46, 46)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(image, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(deliveryManNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(deliveryManAddressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(txtFullName, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(167, 167, 167))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,22 +149,18 @@ public class ViewDeliveryManJPanel extends javax.swing.JPanel {
                         .addComponent(jLabel1)
                         .addGap(49, 49, 49)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(deliveryManIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtDeliveryNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2)
                             .addComponent(jLabel4)
-                            .addComponent(deliveryManNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtFullName, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(65, 65, 65)
                         .addComponent(jLabel5))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(image, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(deliveryManAddressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel6)))
-                            .addComponent(deliveryManPhoneTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(203, 203, 203)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(backBtn)
@@ -176,31 +172,28 @@ public class ViewDeliveryManJPanel extends javax.swing.JPanel {
 
     private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed
         // TODO add your handling code here:
-        deliveryManNameTextField.setEditable(true);
-        deliveryManPhoneTextField.setEditable(true);
-        deliveryManAddressTextField.setEditable(true);
+        txtFullName.setEditable(true);
+        txtPhone.setEditable(true);
+        txtEmail.setEditable(true);
     }//GEN-LAST:event_editBtnActionPerformed
-    
+
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
         // TODO add your handling code here:
-        String id = deliveryManIdTextField.getText();
-        String name = deliveryManNameTextField.getText();
-        String phone = deliveryManPhoneTextField.getText();
-        String address = deliveryManAddressTextField.getText();
-        
-        if(name.isEmpty() || phone.isEmpty() || address.isEmpty()){
+        String id = txtDeliveryNo.getText();
+        String name = txtFullName.getText();
+        String phone = txtPhone.getText();
+        String email = txtEmail.getText();
+
+        if (name.isEmpty() || phone.isEmpty() || email.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please enter all fields!");
-        }
-        else if(!system.checkValidPhoneFormat(phone))
-        {
+        } else if (!system.checkValidPhoneFormat(phone)) {
             JOptionPane.showMessageDialog(null, "Phone format incorrect!");
-        }
-        else{
-            deliveryManDirectory.updateDeliveryMan(id,name,phone,address);
+        } else if (!system.checkValidEmailFormat(email)) {
+            JOptionPane.showMessageDialog(null, "Email format incorrect!");
+        } else {
+            deliveryManDirectory.updateDeliveryMan(id, name, phone, email);
             JOptionPane.showMessageDialog(null, "Delivery man details updated!");
-            deliveryManNameTextField.setEditable(false);
-            deliveryManPhoneTextField.setEditable(false);
-            deliveryManAddressTextField.setEditable(false);
+            setEditableFalse();
         }
     }//GEN-LAST:event_saveBtnActionPerformed
 
@@ -210,26 +203,30 @@ public class ViewDeliveryManJPanel extends javax.swing.JPanel {
         Component[] componentArray = container.getComponents();
         Component component = componentArray[componentArray.length - 1];
         UpdateDeliveryManJPanel manageDeliveryJPanel = (UpdateDeliveryManJPanel) component;
-        manageDeliveryJPanel.populate();
+        manageDeliveryJPanel.populateDeliveryManList();
 
         CardLayout layout = (CardLayout) container.getLayout();
         layout.previous(container);
     }//GEN-LAST:event_backBtnActionPerformed
-
+    public void setEditableFalse() {
+        txtDeliveryNo.setEditable(false);
+        txtFullName.setEditable(false);
+        txtPhone.setEditable(false);
+        txtEmail.setEditable(false);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backBtn;
-    private javax.swing.JTextField deliveryManAddressTextField;
-    private javax.swing.JTextField deliveryManIdTextField;
-    private javax.swing.JTextField deliveryManNameTextField;
-    private javax.swing.JTextField deliveryManPhoneTextField;
     private javax.swing.JButton editBtn;
-    private javax.swing.JLabel image;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JButton saveBtn;
+    private javax.swing.JTextField txtDeliveryNo;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtFullName;
+    private javax.swing.JTextField txtPhone;
     // End of variables declaration//GEN-END:variables
 }

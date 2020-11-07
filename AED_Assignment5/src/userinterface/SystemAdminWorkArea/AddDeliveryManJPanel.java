@@ -13,9 +13,6 @@ import Business.Role.DeliverManRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
-import java.io.IOException;
-import javax.imageio.ImageIO;
-import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -58,6 +55,8 @@ public class AddDeliveryManJPanel extends javax.swing.JPanel {
         btnCreate = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
         txtPassword = new javax.swing.JPasswordField();
+        lblContactNo1 = new javax.swing.JLabel();
+        txtEmail = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(204, 204, 204));
 
@@ -86,19 +85,37 @@ public class AddDeliveryManJPanel extends javax.swing.JPanel {
             }
         });
 
+        lblContactNo1.setText("Email:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnCreate)
+                .addGap(146, 146, 146)
+                .addComponent(btnBack)
+                .addGap(341, 341, 341))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(375, 375, 375)
+                .addComponent(lblCreateDeliveryMan)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addGap(132, 132, 132)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblUsername)
-                    .addComponent(lblDeliveryName))
-                .addGap(42, 42, 42)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtUsername, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
-                    .addComponent(txtDeliveryName))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblContactNo1)
+                        .addGap(70, 70, 70)
+                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblUsername)
+                            .addComponent(lblDeliveryName))
+                        .addGap(42, 42, 42)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtUsername, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
+                            .addComponent(txtDeliveryName))))
                 .addGap(87, 87, 87)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -110,16 +127,6 @@ public class AddDeliveryManJPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtContactNo, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(117, 117, 117))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnCreate)
-                .addGap(146, 146, 146)
-                .addComponent(btnBack)
-                .addGap(341, 341, 341))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(375, 375, 375)
-                .addComponent(lblCreateDeliveryMan)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,7 +139,11 @@ public class AddDeliveryManJPanel extends javax.swing.JPanel {
                     .addComponent(lblDeliveryName)
                     .addComponent(lblContactNo)
                     .addComponent(txtContactNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(108, 108, 108)
+                .addGap(41, 41, 41)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblContactNo1)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblUsername)
@@ -152,6 +163,7 @@ public class AddDeliveryManJPanel extends javax.swing.JPanel {
         String phone = txtContactNo.getText();
         String username = txtUsername.getText();
         String password = txtPassword.getText();
+        String email = txtEmail.getText();
         
         if(name.isEmpty() || phone.isEmpty() || username.isEmpty() || password.isEmpty()){
             JOptionPane.showMessageDialog(null, "Please enter all fields!");
@@ -159,9 +171,14 @@ public class AddDeliveryManJPanel extends javax.swing.JPanel {
         else if(!system.checkValidPhoneFormat(phone))
         {
             JOptionPane.showMessageDialog(null, "Phone format incorrect!");
-        }
+        }else if (!system.checkValidEmailFormat(email)) {
+            JOptionPane.showMessageDialog(null, "Email format incorrect!");
+        } 
         else if(!deliveryManDirectory.isPhoneUnique(phone)){
-            JOptionPane.showMessageDialog(null, "Phone No already registered, try loging in!");
+            JOptionPane.showMessageDialog(null, "Sorry! Delivery man with this phone already exists!");
+        }
+        else if(!deliveryManDirectory.isEmailUnique(email)){
+            JOptionPane.showMessageDialog(null, "Sorry! Delivery man with this email already exists!");
         }
         else if(!system.getUserAccountDirectory().checkIfUsernameIsUnique(username)){
             JOptionPane.showMessageDialog(null, "Username already exists!");
@@ -170,6 +187,7 @@ public class AddDeliveryManJPanel extends javax.swing.JPanel {
             DeliveryMan deliveryMan = new DeliveryMan();
             deliveryMan.setName(name);
             deliveryMan.setPhoneNo(phone);
+            deliveryMan.setEmail(email);
             deliveryManDirectory.add(deliveryMan);
             system.setDeliveryManDirectory(deliveryManDirectory);
             Employee employee = system.getEmployeeDirectory().createEmployee(deliveryMan.getDeliveryId());
@@ -189,7 +207,7 @@ public class AddDeliveryManJPanel extends javax.swing.JPanel {
          Component[] componentArray = container.getComponents();
         Component component = componentArray[componentArray.length - 1];
         UpdateDeliveryManJPanel manageDeliveryJPanel = (UpdateDeliveryManJPanel) component;
-        manageDeliveryJPanel.populate();
+        manageDeliveryJPanel.populateDeliveryManList();
 
         CardLayout layout = (CardLayout) container.getLayout();
         layout.previous(container);
@@ -200,12 +218,14 @@ public class AddDeliveryManJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnCreate;
     private javax.swing.JLabel lblContactNo;
+    private javax.swing.JLabel lblContactNo1;
     private javax.swing.JLabel lblCreateDeliveryMan;
     private javax.swing.JLabel lblDeliveryName;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblUsername;
     private javax.swing.JTextField txtContactNo;
     private javax.swing.JTextField txtDeliveryName;
+    private javax.swing.JTextField txtEmail;
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables

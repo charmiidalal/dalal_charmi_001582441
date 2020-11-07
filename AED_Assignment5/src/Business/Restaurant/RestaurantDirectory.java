@@ -73,4 +73,12 @@ public class RestaurantDirectory {
         }
         return true;
     }
+    public boolean isEmailUnique(String email){
+        for(Restaurant restaurant: restaurantDirectory){
+            if(restaurant.getEmail().equalsIgnoreCase(email)){
+                return false;
+            }
+        }
+        return true;
+    }
 }

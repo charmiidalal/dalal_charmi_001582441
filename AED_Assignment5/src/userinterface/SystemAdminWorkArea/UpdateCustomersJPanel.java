@@ -43,13 +43,14 @@ public class UpdateCustomersJPanel extends javax.swing.JPanel {
         for (UserAccount ua : system.getUserAccountDirectory().getUserAccountList()) {
             for (Customer customer : customerDirectory.getCustomerDirectory()) {
                 if (customer.getCustomerNo().equalsIgnoreCase(ua.getEmployee().getName())) {
-                    Object[] row = new Object[6];
+                    Object[] row = new Object[7];
                     row[0] = customer.getCustomerNo();
                     row[1] = ua.getUsername();
                     row[2] = customer.getCustomerName();
                     row[3] = customer.getCustomerPhone();
-                    row[4] = customer.getCustomerStreet();
-                    row[5] = customer.getCustomerZipcode();
+                    row[4] = customer.getCustomerEmail();
+                    row[5] = customer.getCustomerStreet();
+                    row[6] = customer.getCustomerZipcode();
                     model.addRow(row);
                 }
             }
@@ -80,17 +81,17 @@ public class UpdateCustomersJPanel extends javax.swing.JPanel {
 
         customerJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Customer No", "Username", "Name", "Contact No", "Street Address", "Zipcode"
+                "Customer No", "Username", "Name", "Contact No", "Email", "Street Address", "Zipcode"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, true
+                false, false, false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

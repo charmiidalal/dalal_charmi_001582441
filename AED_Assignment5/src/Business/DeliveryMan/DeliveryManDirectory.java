@@ -57,11 +57,21 @@ public class DeliveryManDirectory {
         return true;
     }
     
-    public void updateDeliveryMan(String id,String name,String phone,String address){
+    public boolean isEmailUnique(String email){
+        for(DeliveryMan deliveryMan: deliveryManDirectory){
+            if(deliveryMan.getEmail().equalsIgnoreCase(email)){
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    public void updateDeliveryMan(String id,String name,String phone,String email){
         for(DeliveryMan deliveryMan: deliveryManDirectory){
             if(deliveryMan.getDeliveryId().equalsIgnoreCase(id)){
                 deliveryMan.setName(name);
                 deliveryMan.setPhoneNo(phone);
+                deliveryMan.setEmail(email);
             }
         }
     }

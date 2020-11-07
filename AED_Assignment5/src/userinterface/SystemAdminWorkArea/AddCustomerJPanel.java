@@ -61,6 +61,8 @@ public class AddCustomerJPanel extends javax.swing.JPanel {
         txtPassword = new javax.swing.JPasswordField();
         lblStreetAddress = new javax.swing.JLabel();
         txtUsername = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
+        lblUsername1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 204, 204));
 
@@ -99,6 +101,8 @@ public class AddCustomerJPanel extends javax.swing.JPanel {
 
         lblStreetAddress.setText("Street Address:");
 
+        lblUsername1.setText("Email Address:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -108,16 +112,19 @@ public class AddCustomerJPanel extends javax.swing.JPanel {
                 .addComponent(lblCreateCustomer)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(113, Short.MAX_VALUE)
+                .addContainerGap(101, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblUsername)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblFullName)
-                            .addComponent(lblMobileNo))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(1, 1, 1)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblFullName)
+                                    .addComponent(lblMobileNo)))
+                            .addComponent(lblUsername1))
                         .addGap(124, 124, 124)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtMobileNo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -125,8 +132,9 @@ public class AddCustomerJPanel extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(78, 78, 78)
                                 .addComponent(btnCreate))
-                            .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 142, Short.MAX_VALUE)
+                            .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnBack)
                             .addGroup(layout.createSequentialGroup()
@@ -145,39 +153,40 @@ public class AddCustomerJPanel extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(197, 197, 197)
-                        .addComponent(txtStreetAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(93, 93, 93)
-                        .addComponent(lblCreateCustomer)
-                        .addGap(83, 83, 83)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblStreetAddress)
-                            .addComponent(txtCustomerName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblFullName))
-                        .addGap(42, 42, 42)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblMobileNo)
-                            .addComponent(txtMobileNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtZipcode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblZipcode))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblUsername)
-                            .addComponent(lblPassword)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(44, 44, 44)))
-                .addGap(127, 127, 127))
+                .addGap(197, 197, 197)
+                .addComponent(txtStreetAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 320, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCreate)
                     .addComponent(btnBack))
                 .addGap(47, 47, 47))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(93, 93, 93)
+                .addComponent(lblCreateCustomer)
+                .addGap(83, 83, 83)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblStreetAddress)
+                    .addComponent(txtCustomerName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblFullName))
+                .addGap(42, 42, 42)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblMobileNo)
+                    .addComponent(txtMobileNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtZipcode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblZipcode))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblUsername)
+                    .addComponent(lblPassword)
+                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblUsername1))
+                .addGap(112, 112, 112))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -189,15 +198,20 @@ public class AddCustomerJPanel extends javax.swing.JPanel {
         String zipCode = txtZipcode.getText();
         String username = txtUsername.getText();
         String password = txtPassword.getText();
+        String email = txtEmail.getText();
 
         if (name.isEmpty() || phone.isEmpty() || streetAddress.isEmpty() || zipCode.isEmpty() || username.isEmpty() || password.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please enter all fields!");
         } else if (!system.checkValidPhoneFormat(phone)) {
             JOptionPane.showMessageDialog(null, "Please Enter Correct Phone Format.");
+        } else if (!system.checkValidEmailFormat(email)) {
+            JOptionPane.showMessageDialog(null, "Email format incorrect!");
+        } else if (!customerDirectory.isEmailUnique(email)) {
+            JOptionPane.showMessageDialog(null, "Sorry! User with this email already exist!");
         } else if (!customerDirectory.isPhoneUnique(phone)) {
-            JOptionPane.showMessageDialog(null, "Sorry! This Phone No is already registered!");
+            JOptionPane.showMessageDialog(null, "Sorry! User with this phone no already exist!");
         } else if (!system.getUserAccountDirectory().checkIfUsernameIsUnique(username)) {
-            JOptionPane.showMessageDialog(null, "Username already exists!");
+            JOptionPane.showMessageDialog(null, "Sorry! User with this username already exist!");
         } else {
             Customer customer = new Customer();
             customer.setCustomerNo(customerDirectory.generateCustomerID());
@@ -205,6 +219,7 @@ public class AddCustomerJPanel extends javax.swing.JPanel {
             customer.setCustomerPhone(phone);
             customer.setCustomerStreet(streetAddress);
             customer.setCustomerZipcode(zipCode);
+            customer.setCustomerEmail(email);
             customerDirectory.add(customer);
             Employee employee = system.getEmployeeDirectory().createEmployee(customer.getCustomerNo());
             system.setCustomerDirectory(customerDirectory);
@@ -246,8 +261,10 @@ public class AddCustomerJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblStreetAddress;
     private javax.swing.JLabel lblUsername;
+    private javax.swing.JLabel lblUsername1;
     private javax.swing.JLabel lblZipcode;
     private javax.swing.JTextField txtCustomerName;
+    private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtMobileNo;
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtStreetAddress;

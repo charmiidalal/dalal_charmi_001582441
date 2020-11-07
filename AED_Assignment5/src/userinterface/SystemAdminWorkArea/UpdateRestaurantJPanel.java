@@ -61,17 +61,17 @@ public class UpdateRestaurantJPanel extends javax.swing.JPanel {
 
         tblRestaurantList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Restaurant No", "Name", "Manager Name", "Street Address", "Zipcode", "Contact No"
+                "Restaurant No", "Name", "Manager Name", "Street Address", "Zipcode", "Contact No", "Email"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -79,6 +79,9 @@ public class UpdateRestaurantJPanel extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(tblRestaurantList);
+        if (tblRestaurantList.getColumnModel().getColumnCount() > 0) {
+            tblRestaurantList.getColumnModel().getColumn(6).setResizable(false);
+        }
 
         addRestaurantBtn.setText("Add Restaurant");
         addRestaurantBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -155,13 +158,14 @@ public class UpdateRestaurantJPanel extends javax.swing.JPanel {
         for (UserAccount ua : system.getUserAccountDirectory().getUserAccountList()) {
             for (Restaurant restaurant : restaurantDirectory.getRestaurantDirectory()) {
                 if (restaurant.getRestaurantNo().equalsIgnoreCase(ua.getEmployee().getName())) {
-                    Object[] row = new Object[6];
+                    Object[] row = new Object[7];
                     row[0] = restaurant.getRestaurantNo();
                     row[1] = restaurant.getRestaurantName();
                     row[2] = restaurant.getOperatorName();
                     row[3] = restaurant.getStreetAddress();
                     row[4] = restaurant.getZipcode();
                     row[5] = restaurant.getMobileNo();
+                    row[6] = restaurant.getEmail();
                     model.addRow(row);
                 }
             }

@@ -39,11 +39,11 @@ public class RestaurantOrderJPanel extends javax.swing.JPanel {
         this.account = account;
         this.business = business;
         this.deliveryManDirectory = deliveryManDirectory;
-        populate();
-        populateDeliveryManTable();
+        populateOrderList();
+        populateDeliveryManList();
     }
     
-    public void populate() {
+    public void populateOrderList() {
         DefaultTableModel model = (DefaultTableModel) tblOrderList.getModel();
         model.setRowCount(0);
         for (Order order : business.getOrderDirectory().getOrderDirectory()) {
@@ -64,7 +64,7 @@ public class RestaurantOrderJPanel extends javax.swing.JPanel {
         }
     }
     
-    public void populateDeliveryManTable(){
+    public void populateDeliveryManList(){
         DefaultTableModel model = (DefaultTableModel) tblDeliveryMan.getModel();
         model.setRowCount(0);
         for (DeliveryMan deliveryMan : deliveryManDirectory.getDeliveryManDirectory()) {
@@ -237,7 +237,7 @@ public class RestaurantOrderJPanel extends javax.swing.JPanel {
                 Order order = business.getOrderDirectory().fetchOrder(id);//orderDirectory.getOrderDirectory().get(row);
                 order.setStatus("Confirmed");
                 JOptionPane.showMessageDialog(null, "Order Confirmed!");
-                populate();
+                populateOrderList();
             }
         } else {
             JOptionPane.showMessageDialog(null, "Select one order!");
@@ -265,7 +265,7 @@ public class RestaurantOrderJPanel extends javax.swing.JPanel {
                     order.setReceiver(user);
                     order.setStatus("Preparing Order");
                     JOptionPane.showMessageDialog(null, "Delivery Man Assigned!");
-                    populate();
+                    populateOrderList();
                 }
                 }
                  else {

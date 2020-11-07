@@ -16,6 +16,7 @@ public class Restaurant {
     private String streetAddress;
     private String zipcode;
     private String operatorName;
+    private String Email;
 
     public String getRestaurantNo() {
         return restaurantNo;
@@ -64,4 +65,13 @@ public class Restaurant {
     public void setOperatorName(String operatorName) {
         this.operatorName = operatorName;
     }
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setEmail(String Email) {
+        this.Email = Email;
+    }
+    
 }

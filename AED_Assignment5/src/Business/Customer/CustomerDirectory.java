@@ -45,13 +45,14 @@ public class CustomerDirectory {
         return customerDirectory.get(index);
     }
     
-    public void updateCustomer(String customerNo, String customerName, String customerPhone, String customerStreet,String customerZipcode){
+    public void updateCustomer(String customerNo, String customerName, String customerPhone, String customerStreet,String customerZipcode,String customerEmail){
         for(Customer customer: customerDirectory){
             if(customer.getCustomerNo().equalsIgnoreCase(customerNo)){
                 customer.setCustomerName(customerName);
                 customer.setCustomerPhone(customerPhone);
                 customer.setCustomerStreet(customerStreet);
                 customer.setCustomerZipcode(customerZipcode);
+                customer.setCustomerZipcode(customerEmail);
             }
         }
     }
@@ -59,6 +60,15 @@ public class CustomerDirectory {
     public boolean isPhoneUnique(String phone){
         for(Customer customer: customerDirectory){
             if(customer.getCustomerPhone().equalsIgnoreCase(phone)){
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    public boolean isEmailUnique(String email){
+        for(Customer customer: customerDirectory){
+            if(customer.getCustomerEmail().equalsIgnoreCase(email)){
                 return false;
             }
         }

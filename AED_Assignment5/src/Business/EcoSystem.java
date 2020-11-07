@@ -102,6 +102,17 @@ public class EcoSystem extends Organization {
         }
         return false;
     }
+    public Boolean checkValidEmailFormat(String email)
+    {
+        String regex = "^(.+)@(.+)$";
+        Pattern pattern = Pattern.compile(regex);
+
+        Matcher matcher = pattern.matcher(email);
+        if (matcher.matches()) {
+            return true;
+        }
+        return false;
+    }
     @Override
     public ArrayList<Role> getSupportedRole() {
         ArrayList<Role> roleList = new ArrayList<Role>();

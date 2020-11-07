@@ -16,6 +16,7 @@ public class Customer {
     private String customerPhone;
     private String customerStreet;
     private String customerZipcode;
+    private String customerEmail;
 
     public String getCustomerNo() {
         return customerNo;
@@ -57,4 +58,12 @@ public class Customer {
         this.customerZipcode = customerZipcode;
     }
 
+    public String getCustomerEmail() {
+        return customerEmail;
+    }
+
+    public void setCustomerEmail(String customerEmail) {
+        this.customerEmail = customerEmail;
+    }
+    
 }

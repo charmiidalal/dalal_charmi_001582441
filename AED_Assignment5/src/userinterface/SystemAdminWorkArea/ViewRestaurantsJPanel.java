@@ -33,6 +33,7 @@ public class ViewRestaurantsJPanel extends javax.swing.JPanel {
         txtManagerName.setText(restaurant.getOperatorName());
         txtAddressStreet.setText(restaurant.getStreetAddress());
         txtPhoneNo.setText(restaurant.getMobileNo());
+        txtEmail.setText(restaurant.getEmail());
         txtRestaurantName.setText(restaurant.getRestaurantName());
         txtZipcode.setText(restaurant.getZipcode());
     }
@@ -62,6 +63,8 @@ public class ViewRestaurantsJPanel extends javax.swing.JPanel {
         txtZipcode = new javax.swing.JTextField();
         lblResNo = new javax.swing.JLabel();
         txtRestaurantID = new javax.swing.JTextField();
+        lblZipcode1 = new javax.swing.JLabel();
+        txtEmail = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(204, 204, 204));
 
@@ -70,7 +73,7 @@ public class ViewRestaurantsJPanel extends javax.swing.JPanel {
 
         lblResName.setText(" Name:");
 
-        lblManagerName.setText("manager Name:");
+        lblManagerName.setText("Manager Name:");
 
         lblAddressStreet.setText("Address Street:");
 
@@ -101,55 +104,57 @@ public class ViewRestaurantsJPanel extends javax.swing.JPanel {
 
         lblResNo.setText("Restaurant No:");
 
+        lblZipcode1.setText("Email:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnEdit)
-                        .addGap(55, 55, 55))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblZipcode)
-                                .addComponent(lblManagerName))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(txtZipcode, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
-                                .addComponent(txtManagerName, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtRestaurantID, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(lblResNo)
-                            .addGap(234, 234, 234))))
-                .addComponent(btnSave)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnBack)
-                        .addGap(311, 311, 311))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblResName)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtRestaurantName, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblAddressStreet)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtAddressStreet, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblPhoneNo)
-                                .addGap(106, 106, 106)
-                                .addComponent(txtPhoneNo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(133, 133, 133))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblUpdateResDetails)
-                .addGap(346, 346, 346))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lblZipcode)
+                                        .addComponent(lblManagerName)
+                                        .addComponent(lblZipcode1))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(txtZipcode, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                                        .addComponent(txtManagerName, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtRestaurantID, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 150, Short.MAX_VALUE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(lblResNo)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 331, Short.MAX_VALUE)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(lblResName)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtRestaurantName, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(lblAddressStreet)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtAddressStreet, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(lblPhoneNo)
+                                    .addGap(106, 106, 106)
+                                    .addComponent(txtPhoneNo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGap(133, 133, 133))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(btnEdit)
+                            .addGap(56, 56, 56)
+                            .addComponent(btnSave)
+                            .addGap(167, 167, 167)
+                            .addComponent(btnBack)
+                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lblUpdateResDetails)
+                        .addGap(346, 346, 346))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,18 +173,22 @@ public class ViewRestaurantsJPanel extends javax.swing.JPanel {
                     .addComponent(lblAddressStreet)
                     .addComponent(txtManagerName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblManagerName))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPhoneNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblPhoneNo)
                     .addComponent(txtZipcode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblZipcode))
-                .addGap(38, 38, 38)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnBack)
+                    .addComponent(lblZipcode1)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnEdit)
                     .addComponent(btnSave)
-                    .addComponent(btnEdit))
-                .addGap(46, 46, 46))
+                    .addComponent(btnBack))
+                .addGap(26, 26, 26))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -190,6 +199,7 @@ public class ViewRestaurantsJPanel extends javax.swing.JPanel {
         txtPhoneNo.setEditable(true);
         txtAddressStreet.setEditable(true);
         txtZipcode.setEditable(true);
+        txtEmail.setEditable(true);
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
@@ -203,6 +213,7 @@ public class ViewRestaurantsJPanel extends javax.swing.JPanel {
             restaurant.setOperatorName(txtManagerName.getText());
             restaurant.setStreetAddress(txtAddressStreet.getText());
             restaurant.setMobileNo(txtPhoneNo.getText());
+            restaurant.setEmail(txtEmail.getText());
             JOptionPane.showMessageDialog(null, "Changes Saved Sucessfully!");
             disableEditing();
         }
@@ -215,6 +226,7 @@ public class ViewRestaurantsJPanel extends javax.swing.JPanel {
         txtRestaurantName.setEditable(false);
         txtAddressStreet.setEditable(false);
         txtZipcode.setEditable(false);
+        txtEmail.setEditable(false);
     }
 
     public boolean checkPhoneNoValidation(String phoneNo) {
@@ -250,7 +262,9 @@ public class ViewRestaurantsJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblResNo;
     private javax.swing.JLabel lblUpdateResDetails;
     private javax.swing.JLabel lblZipcode;
+    private javax.swing.JLabel lblZipcode1;
     private javax.swing.JTextField txtAddressStreet;
+    private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtManagerName;
     private javax.swing.JTextField txtPhoneNo;
     private javax.swing.JTextField txtRestaurantID;

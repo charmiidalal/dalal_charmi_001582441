@@ -38,21 +38,22 @@ public class UpdateDeliveryManJPanel extends javax.swing.JPanel {
         this.container = userProcessContainer;
         this.system = system;
         this.deliveryManDirectory = deliveryManDirectory;
-        populate();
+        populateDeliveryManList();
     }
 
-    public void populate() {
+    public void populateDeliveryManList() {
         DefaultTableModel model = (DefaultTableModel) deliveryJTable.getModel();
         
         model.setRowCount(0);
         for (UserAccount ua : system.getUserAccountDirectory().getUserAccountList()) {
             for (DeliveryMan deliveryMan : deliveryManDirectory.getDeliveryManDirectory()) {
                 if (deliveryMan.getDeliveryId().equalsIgnoreCase(ua.getEmployee().getName())) {
-                    Object[] row = new Object[4];
+                    Object[] row = new Object[5];
                     row[0] = deliveryMan.getDeliveryId();
                     row[1] = deliveryMan.getName();
                     row[2] = deliveryMan.getPhoneNo();
-                    row[3] = ua.getUsername();
+                    row[3] = deliveryMan.getEmail();
+                    row[4] = ua.getUsername();
                     model.addRow(row);
                 }
             }
@@ -80,17 +81,17 @@ public class UpdateDeliveryManJPanel extends javax.swing.JPanel {
 
         deliveryJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Delivery Man Id", "Delivery Man Name", "Delivery Man Contact No", "Username"
+                "DeliveryMan No", "Full Name", "Phone", "Email", "Username"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -196,7 +197,7 @@ public class UpdateDeliveryManJPanel extends javax.swing.JPanel {
             int selectionResult = JOptionPane.showConfirmDialog(null, "Are you sure to delete??", "Warning", selectionButton);
             if (selectionResult == JOptionPane.YES_OPTION) {
                 deliveryManDirectory.deleteDeliveryMan(selectedRow,system);
-                populate();
+                populateDeliveryManList();
             }
         }
         } else {

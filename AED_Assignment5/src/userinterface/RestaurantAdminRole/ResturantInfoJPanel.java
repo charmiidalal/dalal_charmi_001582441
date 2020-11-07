@@ -47,6 +47,7 @@ public class ResturantInfoJPanel extends javax.swing.JPanel {
         txtManagerName.setText(restaurant.getOperatorName());
         txtStreetAdd.setText(restaurant.getStreetAddress());
         txtPhoneNo.setText(restaurant.getMobileNo());
+        txtEmail.setText(restaurant.getEmail());
     }
 
     /**
@@ -74,6 +75,8 @@ public class ResturantInfoJPanel extends javax.swing.JPanel {
         saveBtn = new javax.swing.JButton();
         editBtn = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        lblPhoneNo1 = new javax.swing.JLabel();
+        txtEmail = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(204, 204, 204));
 
@@ -113,6 +116,8 @@ public class ResturantInfoJPanel extends javax.swing.JPanel {
             }
         });
 
+        lblPhoneNo1.setText("Phone No:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -121,14 +126,17 @@ public class ResturantInfoJPanel extends javax.swing.JPanel {
                 .addGap(68, 68, 68)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(lblStreetAddress)
-                        .addComponent(lblOperatorName))
+                        .addComponent(lblOperatorName)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblPhoneNo1)
+                            .addComponent(lblStreetAddress)))
                     .addComponent(lblName))
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtStreetAdd, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
                     .addComponent(txtManagerName)
-                    .addComponent(txtResName))
+                    .addComponent(txtResName)
+                    .addComponent(txtEmail))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblZipcode)
@@ -137,8 +145,8 @@ public class ResturantInfoJPanel extends javax.swing.JPanel {
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtResNo, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
-                    .addComponent(txtPhoneNo)
-                    .addComponent(txtZipcode))
+                    .addComponent(txtZipcode)
+                    .addComponent(txtPhoneNo))
                 .addGap(119, 119, 119))
             .addGroup(layout.createSequentialGroup()
                 .addGap(147, 147, 147)
@@ -166,17 +174,21 @@ public class ResturantInfoJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel2))
                 .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPhoneNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblPhoneNo)
                     .addComponent(txtManagerName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblOperatorName))
+                    .addComponent(lblOperatorName)
+                    .addComponent(txtPhoneNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(61, 61, 61)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtZipcode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblZipcode)
                     .addComponent(lblStreetAddress)
                     .addComponent(txtStreetAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPhoneNo1)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(editBtn)
                     .addComponent(saveBtn)
@@ -199,18 +211,23 @@ public class ResturantInfoJPanel extends javax.swing.JPanel {
         String name = txtResName.getText();
         String manager = txtManagerName.getText();
         String address = txtStreetAdd.getText();
-        String contact = txtPhoneNo.getText();
-        String license = txtZipcode.getText();
+        String mobileNo = txtPhoneNo.getText();
+        String zipcode = txtZipcode.getText();
+        String email = txtEmail.getText();
 
-        if (id.isEmpty() || name.isEmpty() || manager.isEmpty() || address.isEmpty() || contact.isEmpty() || license.isEmpty()) {
+        if (id.isEmpty() || name.isEmpty() || manager.isEmpty() || address.isEmpty() || mobileNo.isEmpty() || email.isEmpty()| zipcode.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Enter all fields!");
-        } else if (!system.checkValidPhoneFormat(contact)) {
+        } else if (!system.checkValidPhoneFormat(mobileNo)) {
             JOptionPane.showMessageDialog(null, "Phone format incorrect!");
+        }else if (!system.checkValidEmailFormat(email)) {
+            JOptionPane.showMessageDialog(null, "Email format incorrect!");
         } else {
             restaurant.setOperatorName(manager);
             restaurant.setStreetAddress(address);
-            restaurant.setMobileNo(contact);
+            restaurant.setMobileNo(mobileNo);
+            restaurant.setEmail(email);
             restaurant.setRestaurantName(name);
+            restaurant.setZipcode(zipcode);
 
             JOptionPane.showMessageDialog(null, "Changes saved sucessfully!");
 
@@ -241,10 +258,12 @@ public class ResturantInfoJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblOperatorName;
     private javax.swing.JLabel lblPhoneNo;
+    private javax.swing.JLabel lblPhoneNo1;
     private javax.swing.JLabel lblResInfo;
     private javax.swing.JLabel lblStreetAddress;
     private javax.swing.JLabel lblZipcode;
     private javax.swing.JButton saveBtn;
+    private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtManagerName;
     private javax.swing.JTextField txtPhoneNo;
     private javax.swing.JTextField txtResName;

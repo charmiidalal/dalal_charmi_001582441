@@ -62,6 +62,8 @@ public class AddRestaurantJPanel extends javax.swing.JPanel {
         txtPassword = new javax.swing.JPasswordField();
         lblZipcode = new javax.swing.JLabel();
         txtZipcode = new javax.swing.JTextField();
+        lblPhoneNo1 = new javax.swing.JLabel();
+        txtEmail = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(204, 204, 204));
 
@@ -96,6 +98,8 @@ public class AddRestaurantJPanel extends javax.swing.JPanel {
 
         lblZipcode.setText("Zipcode:");
 
+        lblPhoneNo1.setText("Email:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -118,28 +122,31 @@ public class AddRestaurantJPanel extends javax.swing.JPanel {
                         .addComponent(btnSave)
                         .addGap(16, 16, 16)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblPassword)
-                            .addComponent(lblPhoneNo))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPhoneNo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnBack))
-                        .addGap(286, 286, 286))
+                    .addComponent(lblAddRes)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblAddRes)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblStreetAdd)
                                 .addGap(38, 38, 38)
-                                .addComponent(txtStreetAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(44, 44, 44)
-                                .addComponent(lblZipcode)
-                                .addGap(32, 32, 32)
-                                .addComponent(txtZipcode, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 39, Short.MAX_VALUE))))
+                                .addComponent(txtStreetAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblPassword)
+                                    .addComponent(lblPhoneNo))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtPhoneNo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnBack))))
+                        .addGap(44, 44, 44)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblZipcode)
+                            .addComponent(lblPhoneNo1))
+                        .addGap(24, 24, 24)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtZipcode, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(0, 43, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -159,7 +166,9 @@ public class AddRestaurantJPanel extends javax.swing.JPanel {
                     .addComponent(txtManagerName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblManagerName)
                     .addComponent(lblPhoneNo)
-                    .addComponent(txtPhoneNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPhoneNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPhoneNo1)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(62, 62, 62)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -183,21 +192,25 @@ public class AddRestaurantJPanel extends javax.swing.JPanel {
         String password = txtPassword.getText();
         String managerName = txtManagerName.getText();
         String zipcode = txtZipcode.getText();
+        String email = txtEmail.getText();
 
         if (username.isEmpty() || password.isEmpty() || name.isEmpty() || address.isEmpty() || phone.isEmpty() || managerName.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please Enter All Fields!");
         } else if (!system.checkValidPhoneFormat(phone)) {
             JOptionPane.showMessageDialog(null, "Please Enter Valid Phone No.");
-        } else if (!system.getUserAccountDirectory().checkIfUsernameIsUnique(username)) {
+        }else if (!system.checkValidEmailFormat(email)) {
+            JOptionPane.showMessageDialog(null, "Email format incorrect!");
+        }  else if (!system.getUserAccountDirectory().checkIfUsernameIsUnique(username)) {
             JOptionPane.showMessageDialog(null, "Username Already Exists!");
         } else if (!restaurantDirectory.isPhoneUnique(phone)) {
-            JOptionPane.showMessageDialog(null, "Phone No Already Registered!");
+            JOptionPane.showMessageDialog(null, "Phone no Already Registered!");
         } else {
             Restaurant restaurant = new Restaurant();
             restaurant.setRestaurantName(name);
             restaurant.setStreetAddress(address);
             restaurant.setOperatorName(managerName);
             restaurant.setMobileNo(phone);
+            restaurant.setEmail(email);
             restaurant.setZipcode(zipcode);
             restaurantDirectory.add(restaurant);
             system.setRestaurantDirectory(restaurantDirectory);
@@ -236,10 +249,12 @@ public class AddRestaurantJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblManagerName;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblPhoneNo;
+    private javax.swing.JLabel lblPhoneNo1;
     private javax.swing.JLabel lblResName;
     private javax.swing.JLabel lblStreetAdd;
     private javax.swing.JLabel lblUsername;
     private javax.swing.JLabel lblZipcode;
+    private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtManagerName;
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtPhoneNo;
