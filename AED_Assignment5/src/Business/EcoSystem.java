@@ -9,15 +9,16 @@ import Business.Customer.CustomerDirectory;
 import Business.Menu.MenuDirectory;
 import Business.DeliveryMan.DeliveryManDirectory;
 import Business.Order.OrderDirectory;
+import java.util.ArrayList;
 import Business.Restaurant.RestaurantDirectory;
 import Business.Role.Role;
 import Business.Role.SystemAdminRole;
-//import Business.WorkQueue.WorkQueue;
-import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  *
- * @author MyPC1
+ * @author Charmi Dalal
  */
 public class EcoSystem extends Organization {
 
@@ -26,12 +27,30 @@ public class EcoSystem extends Organization {
     private CustomerDirectory customerDirectory;
     private MenuDirectory menuDirectory;
 
+    private DeliveryManDirectory deliveryManDirectory;
+    private OrderDirectory orderDirectory;
+
+    public EcoSystem(RestaurantDirectory restaurantDirectory, CustomerDirectory customerDirectory, DeliveryManDirectory deliveryManDirectory) {
+
+        this.restaurantDirectory = restaurantDirectory;
+        this.customerDirectory = customerDirectory;
+        this.deliveryManDirectory = deliveryManDirectory;
+    }
+
     public MenuDirectory getMenuDirectory() {
         return menuDirectory;
     }
 
     public void setMenuDirectory(MenuDirectory menuDirectory) {
         this.menuDirectory = menuDirectory;
+    }
+
+    public DeliveryManDirectory getDeliveryManDirectory() {
+        return deliveryManDirectory;
+    }
+
+    public void setDeliveryManDirectory(DeliveryManDirectory deliveryManDirectory) {
+        this.deliveryManDirectory = deliveryManDirectory;
     }
 
     public static EcoSystem getBusiness() {
@@ -58,23 +77,6 @@ public class EcoSystem extends Organization {
         this.customerDirectory = customerDirectory;
     }
 
-    public DeliveryManDirectory getDeliveryManDirectory() {
-        return deliveryManDirectory;
-    }
-
-    public void setDeliveryManDirectory(DeliveryManDirectory deliveryManDirectory) {
-        this.deliveryManDirectory = deliveryManDirectory;
-    }
-    private DeliveryManDirectory deliveryManDirectory;
-    private OrderDirectory orderDirectory;
-
-    public EcoSystem(RestaurantDirectory restaurantDirectory, CustomerDirectory customerDirectory, DeliveryManDirectory deliveryManDirectory) {
-
-        this.restaurantDirectory = restaurantDirectory;
-        this.customerDirectory = customerDirectory;
-        this.deliveryManDirectory = deliveryManDirectory;
-    }
-
     public OrderDirectory getOrderDirectory() {
         return orderDirectory;
     }
@@ -89,7 +91,17 @@ public class EcoSystem extends Organization {
         }
         return business;
     }
+    public Boolean checkValidPhoneFormat(String phoneNo)
+    {
+        String regex = "^\\(?([0-9]{3})\\)?[-.\\s]?([0-9]{3})[-.\\s]?([0-9]{4})$";
+        Pattern pattern = Pattern.compile(regex);
 
+        Matcher matcher = pattern.matcher(phoneNo);
+        if (matcher.matches()) {
+            return true;
+        }
+        return false;
+    }
     @Override
     public ArrayList<Role> getSupportedRole() {
         ArrayList<Role> roleList = new ArrayList<Role>();
@@ -99,13 +111,10 @@ public class EcoSystem extends Organization {
 
     private EcoSystem() {
         super("1");
-        // networkList=new ArrayList<Network>();
-        orderDirectory = new OrderDirectory();
+        //orderDirectory = new OrderDirectory();
     }
 
     public boolean checkIfUserIsUnique(String userName) {
-        //
         return false;
     }
-
 }

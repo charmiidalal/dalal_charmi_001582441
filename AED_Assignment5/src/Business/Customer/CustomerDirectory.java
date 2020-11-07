@@ -75,6 +75,6 @@ public class CustomerDirectory {
     }
     
     public String generateCustomerID(){
-        return "C"+(customerDirectory.size()+1);
+        return "Customer"+(customerDirectory.size()+1);
     }
 }

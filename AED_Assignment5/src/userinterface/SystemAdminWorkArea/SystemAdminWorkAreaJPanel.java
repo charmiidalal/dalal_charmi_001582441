@@ -145,21 +145,21 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnManageCustomersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageCustomersActionPerformed
-        ManageCustomersJPanel manageCustomersJPanel = new ManageCustomersJPanel(userProcessContainer, ecosystem, customerDirectory);
+        UpdateCustomersJPanel manageCustomersJPanel = new UpdateCustomersJPanel(userProcessContainer, ecosystem, customerDirectory);
         userProcessContainer.add("manageCustomersJPanel", manageCustomersJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnManageCustomersActionPerformed
 
     private void btnManageRestaurantsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageRestaurantsActionPerformed
-        ManageRestaurantJPanel manageRestaurantJPanel = new ManageRestaurantJPanel(userProcessContainer, ecosystem, restaurantDirectory);
+        UpdateRestaurantJPanel manageRestaurantJPanel = new UpdateRestaurantJPanel(userProcessContainer, ecosystem, restaurantDirectory);
         userProcessContainer.add("manageRestaurantJPanel", manageRestaurantJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnManageRestaurantsActionPerformed
 
     private void btnManageDeliveryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageDeliveryActionPerformed
-        ManageDeliveryJPanel manageDeliveryJPanel = new ManageDeliveryJPanel(userProcessContainer, ecosystem, deliveryManDirectory);
+        UpdateDeliveryManJPanel manageDeliveryJPanel = new UpdateDeliveryManJPanel(userProcessContainer, ecosystem, deliveryManDirectory);
         userProcessContainer.add("manageDeliveryJPanel", manageDeliveryJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

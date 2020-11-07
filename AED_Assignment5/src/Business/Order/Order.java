@@ -15,38 +15,30 @@ import Business.WorkQueue.WorkRequest;
  *
  * @author Charmi Dalal
  */
-public class Order extends WorkRequest{
-    private String orderId;
-    private int orderStatusPercentage;
-    private Item foodItem;
+public class Order extends WorkRequest {
+
+    private String orderNo;
+    private Item item;
     private Restaurant restaurant;
     private Customer customer;
     private DeliveryMan deliveryMan;
+    private String orderConfimation;
     private int quantity;
-    private String result;
 
-    public String getResult() {
-        return result;
+    public String getOrderNo() {
+        return orderNo;
     }
 
-    public void setResult(String result) {
-        this.result = result;
+    public void setOrderNo(String orderNo) {
+        this.orderNo = orderNo;
     }
 
-    public String getOrderId() {
-        return orderId;
+    public Item getItem() {
+        return item;
     }
 
-    public void setOrderId(String orderId) {
-        this.orderId = orderId;
-    }
-
-    public Item getFoodItem() {
-        return foodItem;
-    }
-
-    public void setFoodItem(Item foodItem) {
-        this.foodItem = foodItem;
+    public void setItem(Item item) {
+        this.item = item;
     }
 
     public Restaurant getRestaurant() {
@@ -55,6 +47,14 @@ public class Order extends WorkRequest{
 
     public void setRestaurant(Restaurant restaurant) {
         this.restaurant = restaurant;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public Customer getCustomer() {
@@ -73,21 +73,12 @@ public class Order extends WorkRequest{
         this.deliveryMan = deliveryMan;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public String getOrderConfimation() {
+        return orderConfimation;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setOrderConfimation(String orderConfimation) {
+        this.orderConfimation = orderConfimation;
     }
-
-
-    public int getOrderStatusPercentage() {
-        return orderStatusPercentage;
-    }
-
-    public void setOrderStatusPercentage(int orderStatusPercentage) {
-        this.orderStatusPercentage = orderStatusPercentage;
-    } 
     
 }

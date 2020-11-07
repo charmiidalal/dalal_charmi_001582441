@@ -8,11 +8,11 @@ import java.util.ArrayList;
 
 /**
  *
- * @author raunak
+ * @author Charmi Dalal
  */
 public class EmployeeDirectory {
     
-    private ArrayList<Employee> employeeList;
+    private final ArrayList<Employee> employeeList;
 
     public EmployeeDirectory() {
         employeeList = new ArrayList();

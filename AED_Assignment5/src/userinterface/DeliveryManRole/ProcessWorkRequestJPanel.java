@@ -107,7 +107,7 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_backJButtonActionPerformed
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
-        order.setResult(resultJTextField.getText());
+        order.setOrderConfimation(resultJTextField.getText());
         order.setStatus("Completed");
     }//GEN-LAST:event_submitJButtonActionPerformed
 

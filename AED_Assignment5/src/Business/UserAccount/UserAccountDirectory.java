@@ -13,8 +13,8 @@ import java.util.ArrayList;
  * @author raunak
  */
 public class UserAccountDirectory {
-    
-    private ArrayList<UserAccount> userAccountList;
+
+    private final ArrayList<UserAccount> userAccountList;
 
     public UserAccountDirectory() {
         userAccountList = new ArrayList();
@@ -23,16 +23,17 @@ public class UserAccountDirectory {
     public ArrayList<UserAccount> getUserAccountList() {
         return userAccountList;
     }
-    
-    public UserAccount authenticateUser(String username, String password){
-        for (UserAccount ua : userAccountList)
-            if (ua.getUsername().equals(username) && ua.getPassword().equals(password)){
+
+    public UserAccount authenticateUser(String username, String password) {
+        for (UserAccount ua : userAccountList) {
+            if (ua.getUsername().equals(username) && ua.getPassword().equals(password)) {
                 return ua;
             }
+        }
         return null;
     }
-    
-    public UserAccount createUserAccount(String username, String password, Employee employee, Role role){
+
+    public UserAccount createUserAccount(String username, String password, Employee employee, Role role) {
         UserAccount userAccount = new UserAccount();
         userAccount.setUsername(username);
         userAccount.setPassword(password);
@@ -41,29 +42,33 @@ public class UserAccountDirectory {
         userAccountList.add(userAccount);
         return userAccount;
     }
-    
-    public UserAccount getUserByEmployeeId(String id){
-        for(UserAccount user: userAccountList){
-            if(user.getEmployee().getName().equalsIgnoreCase(id)){
+
+    public UserAccount getUserByEmployeeNo(String employeeNo) {
+        for (UserAccount user : userAccountList) {
+            if (user.getEmployee().getName().equalsIgnoreCase(employeeNo)) {
                 return user;
             }
         }
         return null;
     }
-    
-    public void removeAllAccounts(){
-        for(int i =0 ; i< userAccountList.size();i++)
-            if(!userAccountList.get(i).getUsername().equalsIgnoreCase("sysadmin"))
+
+    public void removeAllAccounts() {
+        for (int i = 0; i < userAccountList.size(); i++) {
+            if (!userAccountList.get(i).getUsername().equalsIgnoreCase("admin")) {
                 userAccountList.remove(i);
-        
-        for(int i =0 ; i< userAccountList.size();i++)
+            }
+        }
+
+        for (int i = 0; i < userAccountList.size(); i++) {
             System.out.println(userAccountList.get(i).getEmployee());
+        }
     }
-    
-    public boolean checkIfUsernameIsUnique(String username){
-        for (UserAccount ua : userAccountList){
-            if (ua.getUsername().equals(username))
+
+    public boolean checkIfUsernameIsUnique(String username) {
+        for (UserAccount ua : userAccountList) {
+            if (ua.getUsername().equals(username)) {
                 return false;
+            }
         }
         return true;
     }

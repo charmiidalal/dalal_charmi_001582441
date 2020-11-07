@@ -20,10 +20,10 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Charmi Dalal
  */
-public class ManageMenuJPanel extends javax.swing.JPanel {
+public class RestaurantMenuJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form ManageMenuJPanel
+     * Creates new form RestaurantMenuJPanel
      */
     private final JPanel container;
     private final EcoSystem system;
@@ -32,14 +32,13 @@ public class ManageMenuJPanel extends javax.swing.JPanel {
     private final UserAccount account;
 
     //private Restaurant restaurant;
-    public ManageMenuJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem system, RestaurantDirectory restaurantDirectory, MenuDirectory menuDirectory) {
+    public RestaurantMenuJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem system, RestaurantDirectory restaurantDirectory, MenuDirectory menuDirectory) {
         initComponents();
         this.container = userProcessContainer;
         this.system = system;
         this.restaurantDirectory = restaurantDirectory;
         this.menuDirectory = menuDirectory;
         this.account = account;
-        //this.restaurant = restaurant;
         populateMenu();
     }
 
@@ -172,7 +171,7 @@ public class ManageMenuJPanel extends javax.swing.JPanel {
     private void btnAddItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddItemActionPerformed
         // TODO add your handling code here:
         CardLayout layout = (CardLayout) container.getLayout();
-        CreateFoodItemJPanel createFoodItemJPanel = new CreateFoodItemJPanel(container, account, system, restaurantDirectory, menuDirectory);
+        AddMenuItemJPanel createFoodItemJPanel = new AddMenuItemJPanel(container, account, system, restaurantDirectory, menuDirectory);
         container.add(createFoodItemJPanel);
         layout.next(container);
     }//GEN-LAST:event_btnAddItemActionPerformed
@@ -195,7 +194,7 @@ public class ManageMenuJPanel extends javax.swing.JPanel {
                 CardLayout layout = (CardLayout) container.getLayout();
                 String foodItemId = (String) tblResMenu.getValueAt(selectedRow, 0);
                 Item foodItem = menuDirectory.getFoodItem(foodItemId);
-                ViewFoodItemJPanel viewCustomersJPanel = new ViewFoodItemJPanel(container, foodItem, menuDirectory);
+                RestaurantMenuItemJPanel viewCustomersJPanel = new RestaurantMenuItemJPanel(container, foodItem, menuDirectory);
                 container.add(viewCustomersJPanel);
                 layout.next(container);
             }

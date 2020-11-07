@@ -10,7 +10,6 @@ import Business.EcoSystem;
 import Business.Menu.MenuDirectory;
 import Business.Order.OrderDirectory;
 
-import Business.Organization;
 import Business.Restaurant.RestaurantDirectory;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
@@ -27,7 +26,7 @@ public abstract class Role {
         DeliveryMan("Delivery"),
         SysAdmin("Sysadmin");
         
-        private String value;
+        private final String value;
         private RoleType(String value){
             this.value = value;
         }

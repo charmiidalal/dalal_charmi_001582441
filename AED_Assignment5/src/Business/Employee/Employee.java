@@ -6,12 +6,12 @@ package Business.Employee;
 
 /**
  *
- * @author raunak
+ * @author Charmi Dalal
  */
 public class Employee {
     
     private String name;
-    private int id;
+    private final int id;
     private static int count = 1;
 
     public Employee() {

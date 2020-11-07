@@ -137,7 +137,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblManagerName">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Manager Name:"/>
+        <Property name="text" type="java.lang.String" value="manager Name:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtRestaurantName">

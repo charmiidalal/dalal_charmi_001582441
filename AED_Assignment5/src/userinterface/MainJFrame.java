@@ -86,7 +86,7 @@ public class MainJFrame extends javax.swing.JFrame {
         lblPassword = new javax.swing.JLabel();
         loginJLabel = new javax.swing.JLabel();
         btnLogout = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        lblTagline = new javax.swing.JLabel();
         cardLayoutJPanel = new javax.swing.JPanel();
         cardLayoutMainWindow = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -125,8 +125,8 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
-        jLabel1.setText("Hungry? You're in the right place!!");
+        lblTagline.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        lblTagline.setText("Hungry? You're in the right place!!");
 
         javax.swing.GroupLayout menuContainerLayout = new javax.swing.GroupLayout(menuContainer);
         menuContainer.setLayout(menuContainerLayout);
@@ -152,7 +152,7 @@ public class MainJFrame extends javax.swing.JFrame {
                         .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(menuContainerLayout.createSequentialGroup()
                         .addGap(474, 474, 474)
-                        .addComponent(jLabel1)))
+                        .addComponent(lblTagline)))
                 .addContainerGap(250, Short.MAX_VALUE))
         );
         menuContainerLayout.setVerticalGroup(
@@ -164,7 +164,7 @@ public class MainJFrame extends javax.swing.JFrame {
                         .addComponent(loginJLabel))
                     .addGroup(menuContainerLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel1)
+                        .addComponent(lblTagline)
                         .addGap(39, 39, 39)
                         .addGroup(menuContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblPassword)
@@ -299,9 +299,9 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnLogout;
     private javax.swing.JPanel cardLayoutJPanel;
     private javax.swing.JPanel cardLayoutMainWindow;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblPassword;
+    private javax.swing.JLabel lblTagline;
     private javax.swing.JLabel lblUsername;
     private javax.swing.JLabel loginJLabel;
     private javax.swing.JPanel menuContainer;

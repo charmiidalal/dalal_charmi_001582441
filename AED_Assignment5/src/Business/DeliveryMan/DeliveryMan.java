@@ -5,8 +5,6 @@
  */
 package Business.DeliveryMan;
 
-import java.awt.image.BufferedImage;
-
 /**
  *
  * @author Charmi Dalal
@@ -16,7 +14,6 @@ public class DeliveryMan {
     private String deliveryId;
     private String name;
     private String phoneNo;
-    private BufferedImage photo;
     
     public String getDeliveryId() {
         return deliveryId;
@@ -41,15 +38,4 @@ public class DeliveryMan {
     public void setPhoneNo(String phoneNo) {
         this.phoneNo = phoneNo;
     }
-
-
-    public BufferedImage getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(BufferedImage photo) {
-        this.photo = photo;
-    }
-    
-    
 }

@@ -15,7 +15,7 @@ public class Restaurant {
     private String mobileNo;
     private String streetAddress;
     private String zipcode;
-    private String managerName;
+    private String operatorName;
 
     public String getRestaurantNo() {
         return restaurantNo;
@@ -57,14 +57,11 @@ public class Restaurant {
         this.zipcode = zipcode;
     }
 
-    public String getManagerName() {
-        return managerName;
+    public String getOperatorName() {
+        return operatorName;
     }
 
-    public void setManagerName(String managerName) {
-        this.managerName = managerName;
+    public void setOperatorName(String operatorName) {
+        this.operatorName = operatorName;
     }
-
-
-    
 }

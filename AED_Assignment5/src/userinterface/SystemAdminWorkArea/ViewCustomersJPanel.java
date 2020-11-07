@@ -7,6 +7,7 @@ package userinterface.SystemAdminWorkArea;
 
 import Business.Customer.Customer;
 import Business.Customer.CustomerDirectory;
+import Business.EcoSystem;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.util.regex.Matcher;
@@ -26,18 +27,21 @@ public class ViewCustomersJPanel extends javax.swing.JPanel {
     public CustomerDirectory customerDirectory;
     public JPanel container;
     public Customer customer;
-    public ViewCustomersJPanel(JPanel container,Customer customer, CustomerDirectory customerDirectory) {
+    private final EcoSystem system;
+
+    public ViewCustomersJPanel(EcoSystem system, JPanel container, Customer customer, CustomerDirectory customerDirectory) {
         initComponents();
         this.customerDirectory = customerDirectory;
         this.container = container;
         this.customer = customer;
-        
+        this.system = system;
+
         txtCustomerNo.setText(customer.getCustomerNo());
         txtFullName.setText(customer.getCustomerName());
         txtMobileNo.setText(customer.getCustomerPhone());
         txtStreetAddress.setText(customer.getCustomerStreet());
         txtZipcode.setText(customer.getCustomerZipcode());
-        
+
         txtCustomerNo.setEditable(false);
         txtFullName.setEditable(false);
         txtMobileNo.setEditable(false);
@@ -206,16 +210,13 @@ public class ViewCustomersJPanel extends javax.swing.JPanel {
         String phone = txtMobileNo.getText();
         String street = txtStreetAddress.getText();
         String zipcode = txtZipcode.getText();
-        
-        if(name.isEmpty() || phone.isEmpty() || street.isEmpty() | zipcode.isEmpty()){
+
+        if (name.isEmpty() || phone.isEmpty() || street.isEmpty() | zipcode.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please enter all fields!");
-        }
-        else if(!phoneFormat(phone))
-        {
+        } else if (!system.checkValidPhoneFormat(phone)) {
             JOptionPane.showMessageDialog(null, "Phone format incorrect!");
-        }
-        else{
-            customerDirectory.updateCustomer(id,name,phone,street,zipcode);
+        } else {
+            customerDirectory.updateCustomer(id, name, phone, street, zipcode);
             JOptionPane.showMessageDialog(null, "Customer details updated!");
             txtFullName.setEditable(false);
             txtMobileNo.setEditable(false);
@@ -226,9 +227,9 @@ public class ViewCustomersJPanel extends javax.swing.JPanel {
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
         container.remove(this);
-         Component[] componentArray = container.getComponents();
+        Component[] componentArray = container.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        ManageCustomersJPanel manageCustomersJPanel = (ManageCustomersJPanel) component;
+        UpdateCustomersJPanel manageCustomersJPanel = (UpdateCustomersJPanel) component;
         manageCustomersJPanel.populate();
 
         CardLayout layout = (CardLayout) container.getLayout();
@@ -239,16 +240,6 @@ public class ViewCustomersJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtZipcodeActionPerformed
 
-    public boolean phoneFormat(String phone){
-        String regex = "^\\(?([0-9]{3})\\)?[-.\\s]?([0-9]{3})[-.\\s]?([0-9]{4})$";
-        Pattern pattern = Pattern.compile(regex);
-        
-        Matcher matcher = pattern.matcher(phone);
-        if(matcher.matches()){
-            return true;
-        }
-        return false;
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;

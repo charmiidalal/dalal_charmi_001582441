@@ -19,16 +19,16 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Charmi Dalal
  */
-public class ManageCustomersJPanel extends javax.swing.JPanel {
+public class UpdateCustomersJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form ManageCustomersJPanel
+     * Creates new form UpdateCustomersJPanel
      */
     public CustomerDirectory customerDirectory;
     public JPanel container;
     public EcoSystem system;
 
-    public ManageCustomersJPanel(JPanel userProcessContainer, EcoSystem system, CustomerDirectory customerDirectory) {
+    public UpdateCustomersJPanel(JPanel userProcessContainer, EcoSystem system, CustomerDirectory customerDirectory) {
         initComponents();
         this.system = system;
         this.customerDirectory = customerDirectory;
@@ -173,16 +173,15 @@ public class ManageCustomersJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         int selectedRow = customerJTable.getSelectedRow();
         int count = customerJTable.getSelectedRowCount();
-        if(count == 1){
+        if (count == 1) {
             if (selectedRow >= 0) {
-            CardLayout layout = (CardLayout) container.getLayout();
-            Customer customer = customerDirectory.getCustomerId(selectedRow);
-            ViewCustomersJPanel viewCustomersJPanel = new ViewCustomersJPanel(container, customer, customerDirectory);
-            container.add(viewCustomersJPanel);
-            layout.next(container);
-        }
-        }
-         else {
+                CardLayout layout = (CardLayout) container.getLayout();
+                Customer customer = customerDirectory.getCustomerId(selectedRow);
+                ViewCustomersJPanel viewCustomersJPanel = new ViewCustomersJPanel(system, container, customer, customerDirectory);
+                container.add(viewCustomersJPanel);
+                layout.next(container);
+            }
+        } else {
             JOptionPane.showMessageDialog(null, "Please select a Row!!");
         }
     }//GEN-LAST:event_viewCustomerActionPerformed
@@ -191,17 +190,16 @@ public class ManageCustomersJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         int selectedRow = customerJTable.getSelectedRow();
         int count = customerJTable.getSelectedRowCount();
-        if(count == 1){
+        if (count == 1) {
             if (selectedRow >= 0) {
-            int selectionButton = JOptionPane.YES_NO_OPTION;
-            int selectionResult = JOptionPane.showConfirmDialog(null, "Are you sure to delete??", "Warning", selectionButton);
-            if (selectionResult == JOptionPane.YES_OPTION) {
-                customerDirectory.deleteCustomer(selectedRow,system);
-                populate();
+                int selectionButton = JOptionPane.YES_NO_OPTION;
+                int selectionResult = JOptionPane.showConfirmDialog(null, "Are you sure to delete??", "Warning", selectionButton);
+                if (selectionResult == JOptionPane.YES_OPTION) {
+                    customerDirectory.deleteCustomer(selectedRow, system);
+                    populate();
+                }
             }
-        }
-        }
-        else {
+        } else {
             JOptionPane.showMessageDialog(null, "Please select a Row!!");
         }
     }//GEN-LAST:event_deleteCustomerActionPerformed
@@ -209,7 +207,7 @@ public class ManageCustomersJPanel extends javax.swing.JPanel {
     private void addCustomerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCustomerBtnActionPerformed
         // TODO add your handling code here:
         CardLayout layout = (CardLayout) container.getLayout();
-        CreateCustomersJPanel createCustomersJPanel = new CreateCustomersJPanel(container, system, customerDirectory);
+        AddCustomerJPanel createCustomersJPanel = new AddCustomerJPanel(container, system, customerDirectory);
         container.add(createCustomersJPanel);
         layout.next(container);
     }//GEN-LAST:event_addCustomerBtnActionPerformed

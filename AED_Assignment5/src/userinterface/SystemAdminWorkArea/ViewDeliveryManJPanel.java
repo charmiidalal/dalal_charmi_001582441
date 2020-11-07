@@ -7,12 +7,9 @@ package userinterface.SystemAdminWorkArea;
 
 import Business.DeliveryMan.DeliveryMan;
 import Business.DeliveryMan.DeliveryManDirectory;
+import Business.EcoSystem;
 import java.awt.CardLayout;
 import java.awt.Component;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -28,16 +25,17 @@ public class ViewDeliveryManJPanel extends javax.swing.JPanel {
     public JPanel container;
     public DeliveryMan deliveryMan;
     public DeliveryManDirectory deliveryManDirectory;
-    public ViewDeliveryManJPanel(JPanel container,DeliveryMan deliveryMan,DeliveryManDirectory deliveryManDirectory) {
+    private final EcoSystem system;
+    
+    public ViewDeliveryManJPanel(EcoSystem system,JPanel container,DeliveryMan deliveryMan,DeliveryManDirectory deliveryManDirectory) {
         initComponents();
         this.container = container;
         this.deliveryMan = deliveryMan;
         this.deliveryManDirectory = deliveryManDirectory;
-        
+        this.system = system;
         deliveryManIdTextField.setText(deliveryMan.getDeliveryId());
         deliveryManNameTextField.setText(deliveryMan.getName());
         deliveryManPhoneTextField.setText(deliveryMan.getPhoneNo());
-        image.setIcon(new ImageIcon(deliveryMan.getPhoto()));
         deliveryManIdTextField.setEditable(false);
         deliveryManNameTextField.setEditable(false);
         deliveryManPhoneTextField.setEditable(false);
@@ -182,17 +180,6 @@ public class ViewDeliveryManJPanel extends javax.swing.JPanel {
         deliveryManPhoneTextField.setEditable(true);
         deliveryManAddressTextField.setEditable(true);
     }//GEN-LAST:event_editBtnActionPerformed
-
-    public boolean phoneFormat(String phone){
-        String regex = "^\\(?([0-9]{3})\\)?[-.\\s]?([0-9]{3})[-.\\s]?([0-9]{4})$";
-        Pattern pattern = Pattern.compile(regex);
-        
-        Matcher matcher = pattern.matcher(phone);
-        if(matcher.matches()){
-            return true;
-        }
-        return false;
-    }
     
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
         // TODO add your handling code here:
@@ -204,7 +191,7 @@ public class ViewDeliveryManJPanel extends javax.swing.JPanel {
         if(name.isEmpty() || phone.isEmpty() || address.isEmpty()){
             JOptionPane.showMessageDialog(null, "Please enter all fields!");
         }
-        else if(!phoneFormat(phone))
+        else if(!system.checkValidPhoneFormat(phone))
         {
             JOptionPane.showMessageDialog(null, "Phone format incorrect!");
         }
@@ -222,7 +209,7 @@ public class ViewDeliveryManJPanel extends javax.swing.JPanel {
         container.remove(this);
         Component[] componentArray = container.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        ManageDeliveryJPanel manageDeliveryJPanel = (ManageDeliveryJPanel) component;
+        UpdateDeliveryManJPanel manageDeliveryJPanel = (UpdateDeliveryManJPanel) component;
         manageDeliveryJPanel.populate();
 
         CardLayout layout = (CardLayout) container.getLayout();

@@ -18,21 +18,19 @@ import javax.swing.JPanel;
  *
  * @author Charmi Dalal
  */
-public class CreateFoodItemJPanel extends javax.swing.JPanel {
+public class AddMenuItemJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form CreateFoodItemJPanel
+     * Creates new form AddMenuItemJPanel
      */
     private final JPanel userProcessContainer;
     private final EcoSystem system;
-    private final RestaurantDirectory restaurantDirectory;
     private final MenuDirectory menuDirectory;
     private final UserAccount account;
 
-    public CreateFoodItemJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem system, RestaurantDirectory restaurantDirectory, MenuDirectory menuDirectory) {
+    public AddMenuItemJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem system, RestaurantDirectory restaurantDirectory, MenuDirectory menuDirectory) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
-        this.restaurantDirectory = restaurantDirectory;
         this.system = system;
         this.menuDirectory = menuDirectory;
         this.account = account;
@@ -89,12 +87,16 @@ public class CreateFoodItemJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(87, 87, 87)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblIngrediantDetails)
-                            .addComponent(lblItemName)
-                            .addComponent(btnSave)
-                            .addComponent(lblPrice))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(87, 87, 87)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblIngrediantDetails)
+                                    .addComponent(lblItemName)
+                                    .addComponent(lblPrice)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(77, 77, 77)
+                                .addComponent(btnSave)))
                         .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -105,14 +107,14 @@ public class CreateFoodItemJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(213, 213, 213)
                         .addComponent(lblAddItem)))
-                .addContainerGap(151, Short.MAX_VALUE))
+                .addContainerGap(165, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addComponent(lblAddItem)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -166,7 +168,7 @@ public class CreateFoodItemJPanel extends javax.swing.JPanel {
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        ManageMenuJPanel manageMenuJPanel = (ManageMenuJPanel) component;
+        RestaurantMenuJPanel manageMenuJPanel = (RestaurantMenuJPanel) component;
         manageMenuJPanel.populateMenu();
 
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();

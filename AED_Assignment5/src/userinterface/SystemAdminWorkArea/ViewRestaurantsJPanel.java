@@ -6,7 +6,6 @@
 package userinterface.SystemAdminWorkArea;
 
 import Business.Restaurant.Restaurant;
-import Business.Restaurant.RestaurantDirectory;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.util.regex.Matcher;
@@ -31,7 +30,7 @@ public class ViewRestaurantsJPanel extends javax.swing.JPanel {
         this.container = container;
         this.restaurant = restaurant;
         txtRestaurantID.setText(restaurant.getRestaurantNo());
-        txtManagerName.setText(restaurant.getManagerName());
+        txtManagerName.setText(restaurant.getOperatorName());
         txtAddressStreet.setText(restaurant.getStreetAddress());
         txtPhoneNo.setText(restaurant.getMobileNo());
         txtRestaurantName.setText(restaurant.getRestaurantName());
@@ -71,7 +70,7 @@ public class ViewRestaurantsJPanel extends javax.swing.JPanel {
 
         lblResName.setText(" Name:");
 
-        lblManagerName.setText("Manager Name:");
+        lblManagerName.setText("manager Name:");
 
         lblAddressStreet.setText("Address Street:");
 
@@ -201,7 +200,7 @@ public class ViewRestaurantsJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please Enter Valid Phone No!");
         } else {
             restaurant.setRestaurantName(txtRestaurantName.getText());
-            restaurant.setManagerName(txtManagerName.getText());
+            restaurant.setOperatorName(txtManagerName.getText());
             restaurant.setStreetAddress(txtAddressStreet.getText());
             restaurant.setMobileNo(txtPhoneNo.getText());
             JOptionPane.showMessageDialog(null, "Changes Saved Sucessfully!");
@@ -233,7 +232,7 @@ public class ViewRestaurantsJPanel extends javax.swing.JPanel {
         container.remove(this);
         Component[] componentArray = container.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        ManageRestaurantJPanel manageRestaurantJPanel = (ManageRestaurantJPanel) component;
+        UpdateRestaurantJPanel manageRestaurantJPanel = (UpdateRestaurantJPanel) component;
         manageRestaurantJPanel.populateRestaurants();
         CardLayout layout = (CardLayout) container.getLayout();
         layout.previous(container);

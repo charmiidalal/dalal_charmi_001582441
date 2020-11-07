@@ -23,34 +23,28 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Charmi Dalal
  */
-public class ManageRestaurantOrderJPanel extends javax.swing.JPanel {
+public class RestaurantOrderJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form ManageRestaurantOrderJPanel
+     * Creates new form RestaurantOrderJPanel
      */
     private final JPanel userProcessContainer;
     private final UserAccount account;
     private final EcoSystem business;
-    private final RestaurantDirectory restaurantDirectory;
     private final DeliveryManDirectory deliveryManDirectory;
-    private final MenuDirectory menuDirectory;
-    private final OrderDirectory orderDirectory;
     
-    public ManageRestaurantOrderJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem business, RestaurantDirectory restaurantDirectory, DeliveryManDirectory deliveryManDirectory, MenuDirectory menuDirectory, OrderDirectory orderDirectory) {
+    public RestaurantOrderJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem business, RestaurantDirectory restaurantDirectory, DeliveryManDirectory deliveryManDirectory, MenuDirectory menuDirectory, OrderDirectory orderDirectory) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.account = account;
         this.business = business;
-        this.restaurantDirectory = restaurantDirectory;
         this.deliveryManDirectory = deliveryManDirectory;
-        this.menuDirectory = menuDirectory;
-        this.orderDirectory = orderDirectory;
         populate();
         populateDeliveryManTable();
     }
     
     public void populate() {
-        DefaultTableModel model = (DefaultTableModel) orderTable.getModel();
+        DefaultTableModel model = (DefaultTableModel) tblOrderList.getModel();
         model.setRowCount(0);
         for (Order order : business.getOrderDirectory().getOrderDirectory()) {
             if (order.getRestaurant().getRestaurantNo().equalsIgnoreCase(account.getEmployee().getName())) {
@@ -58,20 +52,20 @@ public class ManageRestaurantOrderJPanel extends javax.swing.JPanel {
                 row[0] = order.getMessage();
                 row[1] = order.getReceiver();
                 row[2] = order.getStatus();
-                row[3] = (order.getResult() == null ? "Waiting" : order.getResult());
+                row[3] = (order.getOrderConfimation() == null ? "Waiting" : order.getOrderConfimation());
                 row[4] = order.getRestaurant().getRestaurantName();
-                row[5] = order.getFoodItem().getItemName();
+                row[5] = order.getItem().getItemName();
                 row[6] = order.getQuantity();
-                row[7] = order.getQuantity() * order.getFoodItem().getPrice();
+                row[7] = order.getQuantity() * order.getItem().getPrice();
                 row[8] = (order.getDeliveryMan() == null) ? "Awaiting Confirmation" : order.getDeliveryMan().getName();
-                row[9] = order.getOrderId();
+                row[9] = order.getOrderNo();
                 model.addRow(row);
             }
         }
     }
     
     public void populateDeliveryManTable(){
-        DefaultTableModel model = (DefaultTableModel) deliveryTable.getModel();
+        DefaultTableModel model = (DefaultTableModel) tblDeliveryMan.getModel();
         model.setRowCount(0);
         for (DeliveryMan deliveryMan : deliveryManDirectory.getDeliveryManDirectory()) {
                 Object[] row = new Object[3];
@@ -93,16 +87,14 @@ public class ManageRestaurantOrderJPanel extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jLabel9 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        orderTable = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        deliveryTable = new javax.swing.JTable();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        lblOrderList = new javax.swing.JLabel();
+        scrollOrderList = new javax.swing.JScrollPane();
+        tblOrderList = new javax.swing.JTable();
+        brnConfirmOrder = new javax.swing.JButton();
+        btnAssignDeliveryMan = new javax.swing.JButton();
+        scrollDeliveryMan = new javax.swing.JScrollPane();
+        tblDeliveryMan = new javax.swing.JTable();
+        btnBack = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -119,10 +111,10 @@ public class ManageRestaurantOrderJPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(204, 204, 204));
 
-        jLabel9.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
-        jLabel9.setText("Orders");
+        lblOrderList.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        lblOrderList.setText("Order List");
 
-        orderTable.setModel(new javax.swing.table.DefaultTableModel(
+        tblOrderList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null},
@@ -148,23 +140,23 @@ public class ManageRestaurantOrderJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(orderTable);
+        scrollOrderList.setViewportView(tblOrderList);
 
-        jButton1.setText("Confirm Order");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        brnConfirmOrder.setText("Confirm Order");
+        brnConfirmOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                brnConfirmOrderActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Assign Delivery Man");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnAssignDeliveryMan.setText("Assign Delivery Man");
+        btnAssignDeliveryMan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnAssignDeliveryManActionPerformed(evt);
             }
         });
 
-        deliveryTable.setModel(new javax.swing.table.DefaultTableModel(
+        tblDeliveryMan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -183,26 +175,12 @@ public class ManageRestaurantOrderJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane3.setViewportView(deliveryTable);
+        scrollDeliveryMan.setViewportView(tblDeliveryMan);
 
-        jButton3.setText("Back");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
-        jButton4.setText("Refresh");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-
-        jButton5.setText("Refresh");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                btnBackActionPerformed(evt);
             }
         });
 
@@ -211,64 +189,52 @@ public class ManageRestaurantOrderJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addComponent(brnConfirmOrder)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(scrollDeliveryMan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 935, Short.MAX_VALUE)
+                    .addComponent(scrollOrderList)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 935, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jButton5)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton2))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jButton3)
-                                        .addGap(335, 335, 335)
-                                        .addComponent(jLabel9)))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jScrollPane2))))
+                                .addGap(410, 410, 410)
+                                .addComponent(lblOrderList))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnAssignDeliveryMan)
+                                .addGap(43, 43, 43)
+                                .addComponent(btnBack)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addGap(36, 36, 36))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton3)
-                        .addGap(18, 18, 18)))
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblOrderList)
+                .addGap(36, 36, 36)
+                .addComponent(scrollOrderList, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
-                    .addComponent(jButton1))
+                .addComponent(brnConfirmOrder)
                 .addGap(32, 32, 32)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(scrollDeliveryMan, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton5))
+                    .addComponent(btnAssignDeliveryMan)
+                    .addComponent(btnBack))
                 .addContainerGap(66, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void brnConfirmOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brnConfirmOrderActionPerformed
         // TODO add your handling code here:
-        int row = orderTable.getSelectedRow();
-        int count = orderTable.getSelectedRowCount();
+        int row = tblOrderList.getSelectedRow();
+        int count = tblOrderList.getSelectedRowCount();
         if (count == 1) {
             if (row >= 0) {
-                String id = (String) orderTable.getValueAt(row, 9);
-                Order order = business.getOrderDirectory().getOrderByOrderId(id);//orderDirectory.getOrderDirectory().get(row);
+                String id = (String) tblOrderList.getValueAt(row, 9);
+                Order order = business.getOrderDirectory().fetchOrder(id);//orderDirectory.getOrderDirectory().get(row);
                 order.setStatus("Confirmed");
                 JOptionPane.showMessageDialog(null, "Order Confirmed!");
                 populate();
@@ -276,26 +242,26 @@ public class ManageRestaurantOrderJPanel extends javax.swing.JPanel {
         } else {
             JOptionPane.showMessageDialog(null, "Select one order!");
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_brnConfirmOrderActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnAssignDeliveryManActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignDeliveryManActionPerformed
         // TODO add your handling code here:
-        int row = orderTable.getSelectedRow();
-        int orderCount = orderTable.getSelectedRowCount();
-        int deliveryRow = deliveryTable.getSelectedRow();
-        int deliverCount = deliveryTable.getSelectedRowCount();
+        int row = tblOrderList.getSelectedRow();
+        int orderCount = tblOrderList.getSelectedRowCount();
+        int deliveryRow = tblDeliveryMan.getSelectedRow();
+        int deliverCount = tblDeliveryMan.getSelectedRowCount();
         if(orderCount ==1 && deliverCount == 1){
             if (row >= 0) {
-                String orderId = (String) orderTable.getValueAt(row,9);
-            Order order = business.getOrderDirectory().getOrderByOrderId(orderId);
+                String orderId = (String) tblOrderList.getValueAt(row,9);
+            Order order = business.getOrderDirectory().fetchOrder(orderId);
             System.out.println(order.getStatus().trim());
             if (order.getStatus().trim().equalsIgnoreCase("Confirmed")) {
                 if(deliverCount == 1){
                     if (deliveryRow >= 0) {
                         System.out.println("In here"+ deliveryRow);
                     order.setDeliveryMan(deliveryManDirectory.getDeliveryManDirectory().get(deliveryRow));
-                    String empId = (String) deliveryTable.getValueAt(deliveryRow,3);
-                    UserAccount user = business.getUserAccountDirectory().getUserByEmployeeId(empId);
+                    String empId = (String) tblDeliveryMan.getValueAt(deliveryRow,3);
+                    UserAccount user = business.getUserAccountDirectory().getUserByEmployeeNo(empId);
                     order.setReceiver(user);
                     order.setStatus("Preparing Order");
                     JOptionPane.showMessageDialog(null, "Delivery Man Assigned!");
@@ -314,40 +280,28 @@ public class ManageRestaurantOrderJPanel extends javax.swing.JPanel {
         else{
             JOptionPane.showMessageDialog(null, "Select one order and one deliveryman!");
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnAssignDeliveryManActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-        populate();
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-        populateDeliveryManTable();
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_btnBackActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable deliveryTable;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JButton brnConfirmOrder;
+    private javax.swing.JButton btnAssignDeliveryMan;
+    private javax.swing.JButton btnBack;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable orderTable;
+    private javax.swing.JLabel lblOrderList;
+    private javax.swing.JScrollPane scrollDeliveryMan;
+    private javax.swing.JScrollPane scrollOrderList;
+    private javax.swing.JTable tblDeliveryMan;
+    private javax.swing.JTable tblOrderList;
     // End of variables declaration//GEN-END:variables
 }

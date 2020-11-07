@@ -25,13 +25,13 @@ import javax.swing.table.DefaultTableModel;
  */
 public class CustomerAreaJPanel extends javax.swing.JPanel {
 
-    private JPanel userProcessContainer;
-    private EcoSystem business;
-    private UserAccount userAccount;
-    private CustomerDirectory customerDirectory;
-    private RestaurantDirectory restaurantDirectory;
-    private DeliveryManDirectory deliveryManDirectory;
-    private MenuDirectory menuDirectory;
+    private final JPanel userProcessContainer;
+    private final EcoSystem business;
+    private final UserAccount userAccount;
+    private final CustomerDirectory customerDirectory;
+    private final RestaurantDirectory restaurantDirectory;
+    private final DeliveryManDirectory deliveryManDirectory;
+    private final MenuDirectory menuDirectory;
 
     /**
      * Creates new form DoctorWorkAreaJPanel
@@ -203,10 +203,9 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
                 Item foodItem = menuDirectory.getFoodItemByIndex(row);
                 String status = "Awaiting Order Confirmation";
 
-                Order orderRequest = business.getOrderDirectory().addOrder();
-                orderRequest.setOrderId("O" + (business.getOrderDirectory().getOrderDirectory().size()));
-                orderRequest.setOrderStatusPercentage(25);
-                orderRequest.setFoodItem(foodItem);
+                Order orderRequest = business.getOrderDirectory().add();
+                orderRequest.setOrderNo("Order" + (business.getOrderDirectory().getOrderDirectory().size()));
+                orderRequest.setItem(foodItem);
                 orderRequest.setRestaurant(restaurant);
                 orderRequest.setCustomer(customer);
                 orderRequest.setQuantity(quantity);

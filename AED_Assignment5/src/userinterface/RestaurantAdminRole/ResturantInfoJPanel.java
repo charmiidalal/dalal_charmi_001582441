@@ -12,11 +12,6 @@ import Business.Restaurant.RestaurantDirectory;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -24,36 +19,22 @@ import javax.swing.JPanel;
  *
  * @author Charmi Dalal
  */
-public class ManageResturantInfoJPanel extends javax.swing.JPanel {
+public class ResturantInfoJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form ManageResturantInfoJPanel
+     * Creates new form ResturantInfoJPanel
      */
-    JFileChooser chooser;
-    File file;
-    BufferedImage img;
-    private JPanel container;
-    private UserAccount account;
-    private EcoSystem system;
-    private RestaurantDirectory restaurantDirectory;
-    private MenuDirectory menuDirectory;
+    private final JPanel container;
     private Restaurant restaurant;
+    private final EcoSystem system;
 
-    public ManageResturantInfoJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem system, RestaurantDirectory restaurantDirectory, MenuDirectory menuDirectory) {
+    public ResturantInfoJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem system, RestaurantDirectory restaurantDirectory, MenuDirectory menuDirectory) {
         initComponents();
         this.container = userProcessContainer;
-        this.account = account;
-        this.system = system;
-        this.restaurantDirectory = restaurantDirectory;
-        this.menuDirectory = menuDirectory;
         this.restaurant = restaurant;
+        this.system = system;
 
-        idTextField.setEditable(false);
-        nameTextField.setEditable(false);
-        managerTextField.setEditable(false);
-        addressTextField.setEditable(false);
-        contactTextField.setEditable(false);
-        licenseTextField.setEditable(false);
+        disableAllFields();
 
         for (Restaurant rest : restaurantDirectory.getRestaurantDirectory()) {
             if (rest.getRestaurantNo().equalsIgnoreCase(account.getEmployee().getName())) {
@@ -61,11 +42,11 @@ public class ManageResturantInfoJPanel extends javax.swing.JPanel {
             }
         }
 
-        idTextField.setText(restaurant.getRestaurantNo());
-        nameTextField.setText(restaurant.getRestaurantName());
-        managerTextField.setText(restaurant.getManagerName());
-        addressTextField.setText(restaurant.getStreetAddress());
-        contactTextField.setText(restaurant.getMobileNo());
+        txtResNo.setText(restaurant.getRestaurantNo());
+        txtResName.setText(restaurant.getRestaurantName());
+        txtManagerName.setText(restaurant.getOperatorName());
+        txtStreetAdd.setText(restaurant.getStreetAddress());
+        txtPhoneNo.setText(restaurant.getMobileNo());
     }
 
     /**
@@ -77,39 +58,39 @@ public class ManageResturantInfoJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        lblResInfo = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        idTextField = new javax.swing.JTextField();
-        nameTextField = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        contactTextField = new javax.swing.JTextField();
-        managerTextField = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        addressTextField = new javax.swing.JTextField();
-        licenseTextField = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
+        txtResNo = new javax.swing.JTextField();
+        txtResName = new javax.swing.JTextField();
+        lblName = new javax.swing.JLabel();
+        lblPhoneNo = new javax.swing.JLabel();
+        lblOperatorName = new javax.swing.JLabel();
+        txtPhoneNo = new javax.swing.JTextField();
+        txtManagerName = new javax.swing.JTextField();
+        lblStreetAddress = new javax.swing.JLabel();
+        txtStreetAdd = new javax.swing.JTextField();
+        txtZipcode = new javax.swing.JTextField();
+        lblZipcode = new javax.swing.JLabel();
         saveBtn = new javax.swing.JButton();
         editBtn = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(204, 204, 204));
 
-        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
-        jLabel1.setText("Restaurant Info");
+        lblResInfo.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        lblResInfo.setText("Restaurant Info");
 
         jLabel2.setText("Restaurant No:");
 
-        jLabel3.setText("Name:");
+        lblName.setText("Name:");
 
-        jLabel4.setText("Phone No:");
+        lblPhoneNo.setText("Phone No:");
 
-        jLabel5.setText("Manager Name:");
+        lblOperatorName.setText("Manager Name:");
 
-        jLabel6.setText("Street Address:");
+        lblStreetAddress.setText("Street Address:");
 
-        jLabel7.setText("Zipcode:");
+        lblZipcode.setText("Zipcode:");
 
         saveBtn.setText("Save");
         saveBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -140,24 +121,24 @@ public class ManageResturantInfoJPanel extends javax.swing.JPanel {
                 .addGap(68, 68, 68)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel6)
-                        .addComponent(jLabel5))
-                    .addComponent(jLabel3))
+                        .addComponent(lblStreetAddress)
+                        .addComponent(lblOperatorName))
+                    .addComponent(lblName))
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(addressTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
-                    .addComponent(managerTextField)
-                    .addComponent(nameTextField))
+                    .addComponent(txtStreetAdd, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
+                    .addComponent(txtManagerName)
+                    .addComponent(txtResName))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel4)
+                    .addComponent(lblZipcode)
+                    .addComponent(lblPhoneNo)
                     .addComponent(jLabel2))
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(idTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
-                    .addComponent(contactTextField)
-                    .addComponent(licenseTextField))
+                    .addComponent(txtResNo, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                    .addComponent(txtPhoneNo)
+                    .addComponent(txtZipcode))
                 .addGap(119, 119, 119))
             .addGroup(layout.createSequentialGroup()
                 .addGap(147, 147, 147)
@@ -169,32 +150,32 @@ public class ManageResturantInfoJPanel extends javax.swing.JPanel {
                 .addGap(0, 259, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(325, 325, 325)
-                .addComponent(jLabel1)
+                .addComponent(lblResInfo)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(39, 39, 39)
-                .addComponent(jLabel1)
+                .addComponent(lblResInfo)
                 .addGap(71, 71, 71)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(idTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblName)
+                    .addComponent(txtResName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtResNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(contactTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
-                    .addComponent(managerTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
+                    .addComponent(txtPhoneNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPhoneNo)
+                    .addComponent(txtManagerName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblOperatorName))
                 .addGap(61, 61, 61)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(licenseTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel6)
-                    .addComponent(addressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtZipcode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblZipcode)
+                    .addComponent(lblStreetAddress)
+                    .addComponent(txtStreetAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(editBtn)
@@ -206,45 +187,44 @@ public class ManageResturantInfoJPanel extends javax.swing.JPanel {
 
     private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed
         // TODO add your handling code here:
-        idTextField.setEditable(false);
-        nameTextField.setEditable(true);
-        managerTextField.setEditable(true);
-        addressTextField.setEditable(true);
-        contactTextField.setEditable(true);
-        licenseTextField.setEditable(false);
+        txtResName.setEditable(true);
+        txtManagerName.setEditable(true);
+        txtStreetAdd.setEditable(true);
+        txtPhoneNo.setEditable(true);
     }//GEN-LAST:event_editBtnActionPerformed
 
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
         // TODO add your handling code here:
-        String id = idTextField.getText();
-        String name = nameTextField.getText();
-        String manager = managerTextField.getText();
-        String address = addressTextField.getText();
-        String contact = contactTextField.getText();
-        String license = licenseTextField.getText();
+        String id = txtResNo.getText();
+        String name = txtResName.getText();
+        String manager = txtManagerName.getText();
+        String address = txtStreetAdd.getText();
+        String contact = txtPhoneNo.getText();
+        String license = txtZipcode.getText();
 
         if (id.isEmpty() || name.isEmpty() || manager.isEmpty() || address.isEmpty() || contact.isEmpty() || license.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Enter all fields!");
-        } else if(!phoneFormat(contact))
-        {
+        } else if (!system.checkValidPhoneFormat(contact)) {
             JOptionPane.showMessageDialog(null, "Phone format incorrect!");
-        }else {
-            restaurant.setManagerName(manager);
+        } else {
+            restaurant.setOperatorName(manager);
             restaurant.setStreetAddress(address);
             restaurant.setMobileNo(contact);
             restaurant.setRestaurantName(name);
-            
+
             JOptionPane.showMessageDialog(null, "Changes saved sucessfully!");
-            
-            idTextField.setEditable(false);
-            nameTextField.setEditable(false);
-            managerTextField.setEditable(false);
-            addressTextField.setEditable(false);
-            contactTextField.setEditable(false);
-            licenseTextField.setEditable(false);
+
+            disableAllFields();
         }
     }//GEN-LAST:event_saveBtnActionPerformed
-
+    public void disableAllFields() {
+        txtResNo.setEditable(false);
+        txtResName.setEditable(false);
+        txtManagerName.setEditable(false);
+        txtStreetAdd.setEditable(false);
+        txtPhoneNo.setEditable(false);
+        txtZipcode.setEditable(false);
+    }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         container.remove(this);
@@ -254,33 +234,22 @@ public class ManageResturantInfoJPanel extends javax.swing.JPanel {
         layout.previous(container);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    public boolean phoneFormat(String phone){
-        String regex = "^\\(?([0-9]{3})\\)?[-.\\s]?([0-9]{3})[-.\\s]?([0-9]{4})$";
-        Pattern pattern = Pattern.compile(regex);
-        
-        Matcher matcher = pattern.matcher(phone);
-        if(matcher.matches()){
-            return true;
-        }
-        return false;
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField addressTextField;
-    private javax.swing.JTextField contactTextField;
     private javax.swing.JButton editBtn;
-    private javax.swing.JTextField idTextField;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JTextField licenseTextField;
-    private javax.swing.JTextField managerTextField;
-    private javax.swing.JTextField nameTextField;
+    private javax.swing.JLabel lblName;
+    private javax.swing.JLabel lblOperatorName;
+    private javax.swing.JLabel lblPhoneNo;
+    private javax.swing.JLabel lblResInfo;
+    private javax.swing.JLabel lblStreetAddress;
+    private javax.swing.JLabel lblZipcode;
     private javax.swing.JButton saveBtn;
+    private javax.swing.JTextField txtManagerName;
+    private javax.swing.JTextField txtPhoneNo;
+    private javax.swing.JTextField txtResName;
+    private javax.swing.JTextField txtResNo;
+    private javax.swing.JTextField txtStreetAdd;
+    private javax.swing.JTextField txtZipcode;
     // End of variables declaration//GEN-END:variables
 }

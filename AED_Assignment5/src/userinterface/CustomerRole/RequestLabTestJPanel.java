@@ -21,28 +21,17 @@ import javax.swing.table.DefaultTableModel;
  */
 public class RequestLabTestJPanel extends javax.swing.JPanel {
 
-    private JPanel userProcessContainer;
-    private EcoSystem business;
-    private UserAccount userAccount;
-    private CustomerDirectory customerDirectory;
-    private RestaurantDirectory restaurantDirectory;
-    private DeliveryManDirectory deliveryManDirectory;
-    private MenuDirectory menuDirectory;
-
+    private final EcoSystem business;
+    private final UserAccount userAccount;
     /**
      * Creates new form RequestLabTestJPanel
      */
     public RequestLabTestJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem business, CustomerDirectory customerDirectory, RestaurantDirectory restaurantDirectory, DeliveryManDirectory deliveryManDirectory, MenuDirectory menuDirectory) {
         initComponents();
 
-        this.userProcessContainer = userProcessContainer;
+        
         this.business = business;
         this.userAccount = account;
-        this.customerDirectory = customerDirectory;
-        this.restaurantDirectory = restaurantDirectory;
-        this.deliveryManDirectory = deliveryManDirectory;
-        this.menuDirectory = menuDirectory;
-        //valueLabel.setText(enterprise.getName());
         populateRequestTable();
     }
 
@@ -164,13 +153,13 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
                 row[0] = order.getMessage();
                 row[1] = order.getReceiver();
                 row[2] = order.getStatus();
-                row[3] = (order.getResult() == null ? "Waiting" : order.getResult());
+                row[3] = (order.getOrderConfimation() == null ? "Waiting" : order.getOrderConfimation());
                 row[4] = order.getRestaurant().getRestaurantName();
-                row[5] = order.getFoodItem().getItemName();
+                row[5] = order.getItem().getItemName();
                 row[6] = order.getQuantity();
-                row[7] = order.getQuantity() * order.getFoodItem().getPrice();
+                row[7] = order.getQuantity() * order.getItem().getPrice();
                 row[8] = (order.getDeliveryMan() == null) ? "Awaiting Confirmation" : order.getDeliveryMan().getName();
-                row[9] = order.getOrderId();
+                row[9] = order.getOrderNo();
                 model.addRow(row);
             }
         }
@@ -183,7 +172,7 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
         if (count == 1) {
             if (row >= 0) {
                 String orderId = (String) workRequestJTable1.getValueAt(row, 9);
-                Order order = business.getOrderDirectory().getOrderByOrderId(orderId);
+                Order order = business.getOrderDirectory().fetchOrder(orderId);
                 if (order.getStatus().equalsIgnoreCase("Completed")) {
                     String comment = orderComment.getText();
                     if (!comment.isEmpty()) {

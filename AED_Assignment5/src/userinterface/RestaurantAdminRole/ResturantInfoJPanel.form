@@ -25,28 +25,28 @@
               <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                      <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblStreetAddress" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblOperatorName" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblName" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="addressTextField" pref="167" max="32767" attributes="0"/>
-                  <Component id="managerTextField" max="32767" attributes="0"/>
-                  <Component id="nameTextField" max="32767" attributes="0"/>
+                  <Component id="txtStreetAdd" pref="167" max="32767" attributes="0"/>
+                  <Component id="txtManagerName" max="32767" attributes="0"/>
+                  <Component id="txtResName" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblZipcode" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblPhoneNo" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="idTextField" pref="170" max="32767" attributes="0"/>
-                  <Component id="contactTextField" max="32767" attributes="0"/>
-                  <Component id="licenseTextField" max="32767" attributes="0"/>
+                  <Component id="txtResNo" pref="170" max="32767" attributes="0"/>
+                  <Component id="txtPhoneNo" max="32767" attributes="0"/>
+                  <Component id="txtZipcode" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="119" max="-2" attributes="0"/>
           </Group>
@@ -61,7 +61,7 @@
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="325" max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <Component id="lblResInfo" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -70,27 +70,27 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <Component id="lblResInfo" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="nameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="idTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblName" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtResName" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtResNo" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="contactTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="managerTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtPhoneNo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblPhoneNo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtManagerName" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblOperatorName" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="licenseTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="addressTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtZipcode" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblZipcode" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblStreetAddress" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtStreetAdd" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="57" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -104,7 +104,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="lblResInfo">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Lucida Grande" size="18" style="1"/>
@@ -117,39 +117,39 @@
         <Property name="text" type="java.lang.String" value="Restaurant No:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="idTextField">
+    <Component class="javax.swing.JTextField" name="txtResNo">
     </Component>
-    <Component class="javax.swing.JTextField" name="nameTextField">
+    <Component class="javax.swing.JTextField" name="txtResName">
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel3">
+    <Component class="javax.swing.JLabel" name="lblName">
       <Properties>
         <Property name="text" type="java.lang.String" value="Name:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel4">
+    <Component class="javax.swing.JLabel" name="lblPhoneNo">
       <Properties>
         <Property name="text" type="java.lang.String" value="Phone No:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel5">
+    <Component class="javax.swing.JLabel" name="lblOperatorName">
       <Properties>
         <Property name="text" type="java.lang.String" value="Manager Name:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="contactTextField">
+    <Component class="javax.swing.JTextField" name="txtPhoneNo">
     </Component>
-    <Component class="javax.swing.JTextField" name="managerTextField">
+    <Component class="javax.swing.JTextField" name="txtManagerName">
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel6">
+    <Component class="javax.swing.JLabel" name="lblStreetAddress">
       <Properties>
         <Property name="text" type="java.lang.String" value="Street Address:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="addressTextField">
+    <Component class="javax.swing.JTextField" name="txtStreetAdd">
     </Component>
-    <Component class="javax.swing.JTextField" name="licenseTextField">
+    <Component class="javax.swing.JTextField" name="txtZipcode">
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel7">
+    <Component class="javax.swing.JLabel" name="lblZipcode">
       <Properties>
         <Property name="text" type="java.lang.String" value="Zipcode:"/>
       </Properties>

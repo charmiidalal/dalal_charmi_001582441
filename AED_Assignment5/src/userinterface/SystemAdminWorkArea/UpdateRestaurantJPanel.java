@@ -19,16 +19,16 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Charmi Dalal
  */
-public class ManageRestaurantJPanel extends javax.swing.JPanel {
+public class UpdateRestaurantJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form ManageRestaurantJPanel
+     * Creates new form UpdateRestaurantJPanel
      */
     public RestaurantDirectory restaurantDirectory;
     public JPanel container;
     public EcoSystem system;
 
-    public ManageRestaurantJPanel(JPanel container, EcoSystem system, RestaurantDirectory restaurantDirectory) {
+    public UpdateRestaurantJPanel(JPanel container, EcoSystem system, RestaurantDirectory restaurantDirectory) {
         initComponents();
         this.container = container;
         this.restaurantDirectory = restaurantDirectory;
@@ -46,7 +46,7 @@ public class ManageRestaurantJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        lblRestaurantList = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblRestaurantList = new javax.swing.JTable();
         addRestaurantBtn = new javax.swing.JButton();
@@ -56,8 +56,8 @@ public class ManageRestaurantJPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(204, 204, 204));
 
-        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
-        jLabel1.setText("Restaurant List");
+        lblRestaurantList.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        lblRestaurantList.setText("Restaurant List");
 
         tblRestaurantList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -116,7 +116,7 @@ public class ManageRestaurantJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(401, 401, 401)
-                        .addComponent(jLabel1))
+                        .addComponent(lblRestaurantList))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(65, 65, 65)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 875, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -135,7 +135,7 @@ public class ManageRestaurantJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(45, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addComponent(lblRestaurantList)
                 .addGap(35, 35, 35)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -158,7 +158,7 @@ public class ManageRestaurantJPanel extends javax.swing.JPanel {
                     Object[] row = new Object[6];
                     row[0] = restaurant.getRestaurantNo();
                     row[1] = restaurant.getRestaurantName();
-                    row[2] = restaurant.getManagerName();
+                    row[2] = restaurant.getOperatorName();
                     row[3] = restaurant.getStreetAddress();
                     row[4] = restaurant.getZipcode();
                     row[5] = restaurant.getMobileNo();
@@ -171,7 +171,7 @@ public class ManageRestaurantJPanel extends javax.swing.JPanel {
     private void addRestaurantBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addRestaurantBtnActionPerformed
         // TODO add your handling code here:
         CardLayout layout = (CardLayout) container.getLayout();
-        CreateRestaurantJPanel createRestaurantJPanel = new CreateRestaurantJPanel(container, system, restaurantDirectory);
+        AddRestaurantJPanel createRestaurantJPanel = new AddRestaurantJPanel(container, system, restaurantDirectory);
         container.add(createRestaurantJPanel);
         layout.next(container);
     }//GEN-LAST:event_addRestaurantBtnActionPerformed
@@ -210,7 +210,7 @@ public class ManageRestaurantJPanel extends javax.swing.JPanel {
         if (count == 1) {
             if (selectedRow >= 0) {
                 CardLayout layout = (CardLayout) container.getLayout();
-                Restaurant restaurant = restaurantDirectory.getRestaurantId(selectedRow);
+                Restaurant restaurant = restaurantDirectory.getRestaurantNo(selectedRow);
                 ViewRestaurantsJPanel viewRestaurantsJPanel = new ViewRestaurantsJPanel(container, restaurant);
                 container.add(viewRestaurantsJPanel);
                 layout.next(container);
@@ -225,8 +225,8 @@ public class ManageRestaurantJPanel extends javax.swing.JPanel {
     private javax.swing.JButton addRestaurantBtn;
     private javax.swing.JButton backBtn;
     private javax.swing.JButton deleteRestaurantBtn;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblRestaurantList;
     private javax.swing.JTable tblRestaurantList;
     private javax.swing.JButton viewRestaurantDetailsBtn;
     // End of variables declaration//GEN-END:variables

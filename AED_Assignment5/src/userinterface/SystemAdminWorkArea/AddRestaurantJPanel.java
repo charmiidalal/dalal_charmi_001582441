@@ -13,8 +13,6 @@ import Business.Role.AdminRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -22,7 +20,7 @@ import javax.swing.JPanel;
  *
  * @author Charmi Dalal
  */
-public class CreateRestaurantJPanel extends javax.swing.JPanel {
+public class AddRestaurantJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form createRestaurantJPanel
@@ -31,7 +29,7 @@ public class CreateRestaurantJPanel extends javax.swing.JPanel {
     private final JPanel container;
     private final EcoSystem system;
 
-    public CreateRestaurantJPanel(JPanel container, EcoSystem system, RestaurantDirectory restaurantDirectory) {
+    public AddRestaurantJPanel(JPanel container, EcoSystem system, RestaurantDirectory restaurantDirectory) {
         initComponents();
         this.restaurantDirectory = restaurantDirectory;
         this.container = container;
@@ -188,7 +186,7 @@ public class CreateRestaurantJPanel extends javax.swing.JPanel {
 
         if (username.isEmpty() || password.isEmpty() || name.isEmpty() || address.isEmpty() || phone.isEmpty() || managerName.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please Enter All Fields!");
-        } else if (!phoneFormat(phone)) {
+        } else if (!system.checkValidPhoneFormat(phone)) {
             JOptionPane.showMessageDialog(null, "Please Enter Valid Phone No.");
         } else if (!system.getUserAccountDirectory().checkIfUsernameIsUnique(username)) {
             JOptionPane.showMessageDialog(null, "Username Already Exists!");
@@ -198,7 +196,7 @@ public class CreateRestaurantJPanel extends javax.swing.JPanel {
             Restaurant restaurant = new Restaurant();
             restaurant.setRestaurantName(name);
             restaurant.setStreetAddress(address);
-            restaurant.setManagerName(managerName);
+            restaurant.setOperatorName(managerName);
             restaurant.setMobileNo(phone);
             restaurant.setZipcode(zipcode);
             restaurantDirectory.add(restaurant);
@@ -224,23 +222,12 @@ public class CreateRestaurantJPanel extends javax.swing.JPanel {
         container.remove(this);
         Component[] componentArray = container.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        ManageRestaurantJPanel manageRestaurantJPanel = (ManageRestaurantJPanel) component;
+        UpdateRestaurantJPanel manageRestaurantJPanel = (UpdateRestaurantJPanel) component;
         manageRestaurantJPanel.populateRestaurants();
 
         CardLayout layout = (CardLayout) container.getLayout();
         layout.previous(container);
     }//GEN-LAST:event_btnBackActionPerformed
-
-    public boolean phoneFormat(String phone) {
-        String regex = "^\\(?([0-9]{3})\\)?[-.\\s]?([0-9]{3})[-.\\s]?([0-9]{4})$";
-        Pattern pattern = Pattern.compile(regex);
-
-        Matcher matcher = pattern.matcher(phone);
-        if (matcher.matches()) {
-            return true;
-        }
-        return false;
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;

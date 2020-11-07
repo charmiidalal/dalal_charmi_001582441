@@ -6,7 +6,6 @@
 package Business.DeliveryMan;
 
 import Business.EcoSystem;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 /**
@@ -30,7 +29,7 @@ public class DeliveryManDirectory {
     }
     
     public DeliveryMan add(DeliveryMan deliveryMan){
-        deliveryMan.setDeliveryId("D"+(deliveryManDirectory.size()+1));
+        deliveryMan.setDeliveryId("DeliveryMan"+(deliveryManDirectory.size()+1));
         deliveryManDirectory.add(deliveryMan);
         return deliveryMan;
     }

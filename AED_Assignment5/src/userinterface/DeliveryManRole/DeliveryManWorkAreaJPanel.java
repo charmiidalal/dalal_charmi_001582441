@@ -19,24 +19,17 @@ import javax.swing.table.DefaultTableModel;
  */
 public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
 
-    private JPanel userProcessContainer;
-    private UserAccount account;
-    private EcoSystem business;
-    private DeliveryManDirectory deliveryManDirectory;
-    private OrderDirectory orderDirectory;
+    private final UserAccount account;
+    private final EcoSystem business;
 
     /**
      * Creates new form LabAssistantWorkAreaJPanel
      */
     public DeliveryManWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem business, DeliveryManDirectory deliveryManDirectory, OrderDirectory orderDirectory) {
         initComponents();
-
-        this.userProcessContainer = userProcessContainer;
+        
         this.account = account;
         this.business = business;
-        this.deliveryManDirectory = deliveryManDirectory;
-        this.orderDirectory = orderDirectory;
-
         populateTable();
     }
 
@@ -51,7 +44,7 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
                     row[1] = order.getSender();
                     row[2] = order.getReceiver();
                     row[3] = order.getStatus();
-                    row[4] = order.getOrderId();
+                    row[4] = order.getOrderNo();
                     row[5] = order.getCustomer().getCustomerStreet();
                     row[6] = order.getRestaurant().getStreetAddress();
                     model.addRow(row);
@@ -152,10 +145,10 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
         }
 
         String selectedOrderId = (String) workRequestJTable.getValueAt(selectedRow, 4);
-        Order order = business.getOrderDirectory().getOrderByOrderId(selectedOrderId);
+        Order order = business.getOrderDirectory().fetchOrder(selectedOrderId);
 
         if (order.getStatus().trim().equalsIgnoreCase("Out For Delivery")) {
-            order.setResult(resultJTextField.getText());
+            order.setOrderConfimation(resultJTextField.getText());
             order.setStatus("Completed");
             resultJTextField.setText("");
             JOptionPane.showMessageDialog(null, "Order updated!");
@@ -179,7 +172,7 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
         }
 
         String selectedOrderId = (String) workRequestJTable.getValueAt(selectedRow, 4);
-        Order order = business.getOrderDirectory().getOrderByOrderId(selectedOrderId);
+        Order order = business.getOrderDirectory().fetchOrder(selectedOrderId);
 
         order.setStatus("Out For Delivery");
         JOptionPane.showMessageDialog(null, "Order updated!");

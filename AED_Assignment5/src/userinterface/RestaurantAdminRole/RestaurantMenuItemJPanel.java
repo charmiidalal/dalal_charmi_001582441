@@ -16,17 +16,16 @@ import javax.swing.JPanel;
  *
  * @author Charmi Dalal
  */
-public class ViewFoodItemJPanel extends javax.swing.JPanel {
+public class RestaurantMenuItemJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form ViewFoodItemJPanel
+     * Creates new form RestaurantMenuItemJPanel
      */
-    private JPanel container;
-    private Item item;
-    private MenuDirectory menuDirectory;
-    //private ;
+    private final JPanel container;
+    private final Item item;
+    private final MenuDirectory menuDirectory;
     
-    public ViewFoodItemJPanel(JPanel container,Item item, MenuDirectory menuDirectory) {
+    public RestaurantMenuItemJPanel(JPanel container,Item item, MenuDirectory menuDirectory) {
         initComponents();
         this.container = container;
         this.item = item;
@@ -128,7 +127,7 @@ public class ViewFoodItemJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(317, 317, 317)
                         .addComponent(lblUpdateMenuItem)))
-                .addContainerGap(312, Short.MAX_VALUE))
+                .addContainerGap(324, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,7 +195,7 @@ public class ViewFoodItemJPanel extends javax.swing.JPanel {
         container.remove(this);
         Component[] componentArray = container.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        ManageMenuJPanel manageMenuJPanel = (ManageMenuJPanel) component;
+        RestaurantMenuJPanel manageMenuJPanel = (RestaurantMenuJPanel) component;
         manageMenuJPanel.populateMenu();
         CardLayout layout = (CardLayout) container.getLayout();
         layout.previous(container);

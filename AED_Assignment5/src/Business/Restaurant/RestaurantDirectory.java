@@ -6,12 +6,8 @@
 package Business.Restaurant;
 
 import Business.EcoSystem;
-import java.awt.image.BufferedImage;
-import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import javax.imageio.ImageIO;
 
 /**
  *
@@ -33,7 +29,7 @@ public class RestaurantDirectory {
     }
     
     public void add(Restaurant restaurant) {
-       restaurant.setRestaurantNo("R"+(restaurantDirectory.size()+1));
+       restaurant.setRestaurantNo("Restaurant"+(restaurantDirectory.size()+1));
        restaurantDirectory.add(restaurant);
     }
     
@@ -47,7 +43,7 @@ public class RestaurantDirectory {
         restaurantDirectory.remove(index);
     }
     
-    public Restaurant getRestaurantId(int index){
+    public Restaurant getRestaurantNo(int index){
         return restaurantDirectory.get(index);
     }
 

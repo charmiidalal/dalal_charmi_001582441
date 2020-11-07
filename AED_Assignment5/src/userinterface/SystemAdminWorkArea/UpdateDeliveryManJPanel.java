@@ -22,7 +22,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Charmi Dalal
  */
-public class ManageDeliveryJPanel extends javax.swing.JPanel {
+public class UpdateDeliveryManJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form ManageDeliveryDirectory
@@ -33,7 +33,7 @@ public class ManageDeliveryJPanel extends javax.swing.JPanel {
     RestaurantDirectory restaurantDirectory;
     DeliveryManDirectory deliveryManDirectory;
 
-    public ManageDeliveryJPanel(JPanel userProcessContainer, EcoSystem system, DeliveryManDirectory deliveryManDirectory) {
+    public UpdateDeliveryManJPanel(JPanel userProcessContainer, EcoSystem system, DeliveryManDirectory deliveryManDirectory) {
         initComponents();
         this.container = userProcessContainer;
         this.system = system;
@@ -172,7 +172,7 @@ public class ManageDeliveryJPanel extends javax.swing.JPanel {
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
         // TODO add your handling code here:
         CardLayout layout = (CardLayout) container.getLayout();
-        CreateDeliveryManJPanel createDeliveryManJPanel = new CreateDeliveryManJPanel(container, system, deliveryManDirectory);
+        AddDeliveryManJPanel createDeliveryManJPanel = new AddDeliveryManJPanel(container, system, deliveryManDirectory);
         container.add(createDeliveryManJPanel);
         layout.next(container);
     }//GEN-LAST:event_addBtnActionPerformed
@@ -212,7 +212,7 @@ public class ManageDeliveryJPanel extends javax.swing.JPanel {
             if (selectedRow >= 0) {
             CardLayout layout = (CardLayout) container.getLayout();
             DeliveryMan deliveryMan = deliveryManDirectory.getDeliveryManId(selectedRow);
-            ViewDeliveryManJPanel viewDeliveryManJPanel = new ViewDeliveryManJPanel(container, deliveryMan, deliveryManDirectory);
+            ViewDeliveryManJPanel viewDeliveryManJPanel = new ViewDeliveryManJPanel(system,container, deliveryMan, deliveryManDirectory);
             container.add(viewDeliveryManJPanel);
             layout.next(container);
         }
