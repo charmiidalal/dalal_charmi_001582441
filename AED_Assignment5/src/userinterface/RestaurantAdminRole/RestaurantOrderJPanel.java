@@ -54,8 +54,8 @@ public class RestaurantOrderJPanel extends javax.swing.JPanel {
                 row[2] = (order.getDeliveryMan() == null) ? "Awaiting Confirmation" : order.getDeliveryMan().getName();
                 row[3] = order.getMessage();
                 row[4] = order.getStatus();
-                row[5] = (order.getOrderConfimation() == null ? "Waiting" : order.getOrderConfimation());
-                row[6] = order.getRestaurant().getRestaurantName();
+                row[5] = order.getRestaurant().getRestaurantName();
+                row[6] = (order.getOrderConfimation() == null ? "Waiting" : order.getOrderConfimation());
                 row[7] = order.getItem().getItemName();
                 row[8] = order.getQuantity();
                 row[9] = order.getQuantity() * order.getItem().getPrice();
@@ -123,14 +123,14 @@ public class RestaurantOrderJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Order No", "Order By", "Deliver By", "Message", "Order Status", "Restaurant Name", "Result", "Item Name", "Quantity", "Total Cost"
+                "Order No", "Order By", "Deliver By", "Feedback", "Order Status", "Restaurant Name", "DeliveryMan Messageg", "Item Name", "Quantity", "Total Cost"
             }
         ) {
             Class[] types = new Class [] {
                 java.lang.Object.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, true, false, false, false, false, false, false, false, false
+                false, true, false, true, false, false, true, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {

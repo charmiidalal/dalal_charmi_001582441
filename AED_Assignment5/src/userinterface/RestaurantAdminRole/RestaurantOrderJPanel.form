@@ -116,10 +116,10 @@
                 <Column editable="false" title="Order No" type="java.lang.Object"/>
                 <Column editable="true" title="Order By" type="java.lang.Object"/>
                 <Column editable="false" title="Deliver By" type="java.lang.String"/>
-                <Column editable="false" title="Message" type="java.lang.String"/>
+                <Column editable="true" title="Feedback" type="java.lang.String"/>
                 <Column editable="false" title="Order Status" type="java.lang.String"/>
                 <Column editable="false" title="Restaurant Name" type="java.lang.Object"/>
-                <Column editable="false" title="Result" type="java.lang.String"/>
+                <Column editable="true" title="DeliveryMan Messageg" type="java.lang.String"/>
                 <Column editable="false" title="Item Name" type="java.lang.Object"/>
                 <Column editable="false" title="Quantity" type="java.lang.Object"/>
                 <Column editable="false" title="Total Cost" type="java.lang.Object"/>
