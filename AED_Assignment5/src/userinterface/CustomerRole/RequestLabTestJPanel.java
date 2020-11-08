@@ -143,10 +143,10 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel2)
                     .addComponent(orderComment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnOrderCmnt))
-                .addContainerGap(242, Short.MAX_VALUE))
+                .addContainerGap(451, Short.MAX_VALUE))
         );
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 740));
     }// </editor-fold>//GEN-END:initComponents
 
     public void populateRequestTable() {
