@@ -81,7 +81,7 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Message", "Sender", "Status", "Order Id", "Customer Address", "Restaurant Address", "Zipcode"
+                "Customer Feedback", "Ordered By", "Order Status", "Order No", "Customer Address", "Restaurant Address", "Zipcode"
             }
         ) {
             Class[] types = new Class [] {
@@ -109,15 +109,15 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
                 processJButtonActionPerformed(evt);
             }
         });
-        add(processJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 390, -1, -1));
+        add(processJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 390, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jLabel1.setText("Update Delivery Details");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 70, -1, 20));
 
-        jLabel2.setText("Confirm Result:");
+        jLabel2.setText("Mark Delivery Complete:");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, -1, -1));
-        add(resultJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 390, 150, -1));
+        add(resultJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 390, 150, -1));
 
         jButton1.setText("Confirm Order Pickup");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -136,7 +136,7 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
             return;
         }
 
-        String selectedOrderId = (String) workRequestJTable.getValueAt(selectedRow, 4);
+        String selectedOrderId = (String) workRequestJTable.getValueAt(selectedRow, 3);
         Order order = business.getOrderDirectory().fetchOrder(selectedOrderId);
 
         if (order.getStatus().trim().equalsIgnoreCase("Out For Delivery")) {
@@ -159,7 +159,7 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
             return;
         }
 
-        String selectedOrderId = (String) workRequestJTable.getValueAt(selectedRow, 4);
+        String selectedOrderId = (String) workRequestJTable.getValueAt(selectedRow, 3);
         Order order = business.getOrderDirectory().fetchOrder(selectedOrderId);
 
         order.setStatus("Out For Delivery");

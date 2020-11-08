@@ -123,7 +123,7 @@ public class RestaurantOrderJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Order Id", "Sender", "Receiver", "Message", "Status", "Restaurant Name", "Result", "Item Name", "Quantity", "Total Cost"
+                "Order No", "Order By", "Deliver By", "Message", "Order Status", "Restaurant Name", "Result", "Item Name", "Quantity", "Total Cost"
             }
         ) {
             Class[] types = new Class [] {
@@ -234,7 +234,7 @@ public class RestaurantOrderJPanel extends javax.swing.JPanel {
         int count = tblOrderList.getSelectedRowCount();
         if (count == 1) {
             if (row >= 0) {
-                String id = (String) tblOrderList.getValueAt(row, 9);
+                String id = (String) tblOrderList.getValueAt(row, 0);
                 Order order = business.getOrderDirectory().fetchOrder(id);
                 order.setStatus("Confirmed");
                 JOptionPane.showMessageDialog(null, "Order Confirmed!");
@@ -253,7 +253,7 @@ public class RestaurantOrderJPanel extends javax.swing.JPanel {
         int deliverCount = tblDeliveryMan.getSelectedRowCount();
         if(orderCount ==1 && deliverCount == 1){
             if (row >= 0) {
-                String orderId = (String) tblOrderList.getValueAt(row,9);
+                String orderId = (String) tblOrderList.getValueAt(row,0);
             Order order = business.getOrderDirectory().fetchOrder(orderId);
             System.out.println(order.getStatus().trim());
             if (order.getStatus().trim().equalsIgnoreCase("Confirmed")) {

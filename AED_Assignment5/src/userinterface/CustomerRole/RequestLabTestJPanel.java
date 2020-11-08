@@ -69,7 +69,7 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Message", "Receiver", "Status", "Result", "Restaurant Name", "Item", "Quantity", "Total Cost", "Order Id"
+                "Message", "Delivery Man", "Status", "Result", "Restaurant Name", "Item", "Quantity", "Total Cost", "Order Id"
             }
         ) {
             Class[] types = new Class [] {
