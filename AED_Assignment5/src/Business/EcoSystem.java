@@ -26,7 +26,6 @@ public class EcoSystem extends Organization {
     private RestaurantDirectory restaurantDirectory;
     private CustomerDirectory customerDirectory;
     private MenuDirectory menuDirectory;
-
     private DeliveryManDirectory deliveryManDirectory;
     private OrderDirectory orderDirectory;
 
@@ -122,7 +121,7 @@ public class EcoSystem extends Organization {
 
     private EcoSystem() {
         super("1");
-        //orderDirectory = new OrderDirectory();
+        orderDirectory = new OrderDirectory();
     }
 
     public boolean checkIfUserIsUnique(String userName) {

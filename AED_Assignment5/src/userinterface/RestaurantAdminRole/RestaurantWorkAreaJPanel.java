@@ -54,7 +54,7 @@ public class RestaurantWorkAreaJPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 204, 102));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        userJButton.setText("Info");
+        userJButton.setText("Restaurant Info");
         userJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 userJButtonActionPerformed(evt);

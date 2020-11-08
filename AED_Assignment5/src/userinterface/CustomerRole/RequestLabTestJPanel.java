@@ -9,6 +9,7 @@ import Business.DeliveryMan.DeliveryManDirectory;
 import Business.EcoSystem;
 import Business.Menu.MenuDirectory;
 import Business.Order.Order;
+import Business.Order.OrderDirectory;
 import Business.Restaurant.RestaurantDirectory;
 import Business.UserAccount.UserAccount;
 import javax.swing.JOptionPane;
@@ -21,17 +22,17 @@ import javax.swing.table.DefaultTableModel;
  */
 public class RequestLabTestJPanel extends javax.swing.JPanel {
 
-    private final EcoSystem business;
+    private final EcoSystem system;
     private final UserAccount userAccount;
+    private final OrderDirectory orderDirectory;
     /**
      * Creates new form RequestLabTestJPanel
      */
-    public RequestLabTestJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem business, CustomerDirectory customerDirectory, RestaurantDirectory restaurantDirectory, DeliveryManDirectory deliveryManDirectory, MenuDirectory menuDirectory) {
+    public RequestLabTestJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem system, CustomerDirectory customerDirectory, RestaurantDirectory restaurantDirectory, DeliveryManDirectory deliveryManDirectory, MenuDirectory menuDirectory, OrderDirectory orderDirectory) {
         initComponents();
-
-        
-        this.business = business;
+        this.system = system;
         this.userAccount = account;
+        this.orderDirectory = orderDirectory;
         populateRequestTable();
     }
 
@@ -48,10 +49,10 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
         enterpriseLabel = new javax.swing.JLabel();
         valueLabel = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        workRequestJTable1 = new javax.swing.JTable();
+        workRequestJTable = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         orderComment = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
+        btnOrderCmnt = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -60,22 +61,22 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         enterpriseLabel.setText("Orders:");
 
-        workRequestJTable1.setModel(new javax.swing.table.DefaultTableModel(
+        workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Message", "Receiver", "Status", "Result", "Restaurant Name", "Food Item", "Quantity", "Total Cost", "Delivery Man", "Order Id"
+                "Message", "Receiver", "Status", "Result", "Restaurant Name", "Item", "Quantity", "Total Cost", "Order Id"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -86,14 +87,18 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(workRequestJTable1);
+        jScrollPane2.setViewportView(workRequestJTable);
+        if (workRequestJTable.getColumnModel().getColumnCount() > 0) {
+            workRequestJTable.getColumnModel().getColumn(2).setResizable(false);
+            workRequestJTable.getColumnModel().getColumn(5).setResizable(false);
+        }
 
         jLabel2.setText("Order Comment:");
 
-        jButton3.setText("Comment");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnOrderCmnt.setText("Comment");
+        btnOrderCmnt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnOrderCmntActionPerformed(evt);
             }
         });
 
@@ -121,7 +126,7 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
                 .addGap(50, 50, 50)
                 .addComponent(orderComment, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
-                .addComponent(jButton3)
+                .addComponent(btnOrderCmnt)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -137,7 +142,7 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(orderComment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3))
+                    .addComponent(btnOrderCmnt))
                 .addContainerGap(242, Short.MAX_VALUE))
         );
 
@@ -145,34 +150,33 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     public void populateRequestTable() {
-        DefaultTableModel model = (DefaultTableModel) workRequestJTable1.getModel();
+        DefaultTableModel model = (DefaultTableModel) workRequestJTable.getModel();
         model.setRowCount(0);
-        for (Order order : business.getOrderDirectory().getOrderDirectory()) {
+        for (Order order : orderDirectory.getOrderDirectory()) {
             if (order.getCustomer().getCustomerNo().equalsIgnoreCase(userAccount.getEmployee().getName())) {
-                Object[] row = new Object[10];
+                Object[] row = new Object[9];
                 row[0] = order.getMessage();
-                row[1] = order.getReceiver();
+                row[1] = (order.getDeliveryMan() == null) ? "Awaiting Confirmation" : order.getDeliveryMan().getName();
                 row[2] = order.getStatus();
                 row[3] = (order.getOrderConfimation() == null ? "Waiting" : order.getOrderConfimation());
                 row[4] = order.getRestaurant().getRestaurantName();
                 row[5] = order.getItem().getItemName();
                 row[6] = order.getQuantity();
                 row[7] = order.getQuantity() * order.getItem().getPrice();
-                row[8] = (order.getDeliveryMan() == null) ? "Awaiting Confirmation" : order.getDeliveryMan().getName();
-                row[9] = order.getOrderNo();
+                row[8] = order.getOrderNo();
                 model.addRow(row);
             }
         }
     }
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnOrderCmntActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderCmntActionPerformed
         // TODO add your handling code here:
-        int row = workRequestJTable1.getSelectedRow();
-        int count = workRequestJTable1.getSelectedRowCount();
+        int row = workRequestJTable.getSelectedRow();
+        int count = workRequestJTable.getSelectedRowCount();
         if (count == 1) {
             if (row >= 0) {
-                String orderId = (String) workRequestJTable1.getValueAt(row, 9);
-                Order order = business.getOrderDirectory().fetchOrder(orderId);
+                String orderId = workRequestJTable.getValueAt(row, 8).toString();
+                Order order = orderDirectory.fetchOrder(orderId);
                 if (order.getStatus().equalsIgnoreCase("Completed")) {
                     String comment = orderComment.getText();
                     if (!comment.isEmpty()) {
@@ -188,16 +192,16 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
         } else {
             JOptionPane.showMessageDialog(null, "Please select one row!");
         }
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnOrderCmntActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnOrderCmnt;
     private javax.swing.JLabel enterpriseLabel;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField orderComment;
     private javax.swing.JLabel valueLabel;
-    private javax.swing.JTable workRequestJTable1;
+    private javax.swing.JTable workRequestJTable;
     // End of variables declaration//GEN-END:variables
 }

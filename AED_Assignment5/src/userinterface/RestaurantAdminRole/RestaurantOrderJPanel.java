@@ -49,16 +49,17 @@ public class RestaurantOrderJPanel extends javax.swing.JPanel {
         for (Order order : business.getOrderDirectory().getOrderDirectory()) {
             if (order.getRestaurant().getRestaurantNo().equalsIgnoreCase(account.getEmployee().getName())) {
                 Object[] row = new Object[10];
-                row[0] = order.getMessage();
-                row[1] = order.getReceiver();
-                row[2] = order.getStatus();
-                row[3] = (order.getOrderConfimation() == null ? "Waiting" : order.getOrderConfimation());
-                row[4] = order.getRestaurant().getRestaurantName();
-                row[5] = order.getItem().getItemName();
-                row[6] = order.getQuantity();
-                row[7] = order.getQuantity() * order.getItem().getPrice();
-                row[8] = (order.getDeliveryMan() == null) ? "Awaiting Confirmation" : order.getDeliveryMan().getName();
-                row[9] = order.getOrderNo();
+                row[0] = order.getOrderNo();
+                row[1] = order.getSender();
+                row[2] = (order.getDeliveryMan() == null) ? "Awaiting Confirmation" : order.getDeliveryMan().getName();
+                row[3] = order.getMessage();
+                row[4] = order.getStatus();
+                row[5] = (order.getOrderConfimation() == null ? "Waiting" : order.getOrderConfimation());
+                row[6] = order.getRestaurant().getRestaurantName();
+                row[7] = order.getItem().getItemName();
+                row[8] = order.getQuantity();
+                row[9] = order.getQuantity() * order.getItem().getPrice();
+                
                 model.addRow(row);
             }
         }
@@ -122,14 +123,14 @@ public class RestaurantOrderJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Message", "Receiver", "Status", "Result", "Restaurant Name", "Food Item", "Quantity", "Total Cost", "Delivery Man", "Order Id"
+                "Order Id", "Sender", "Receiver", "Message", "Status", "Restaurant Name", "Result", "Item Name", "Quantity", "Total Cost"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Object.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false
+                false, true, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -194,7 +195,7 @@ public class RestaurantOrderJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scrollDeliveryMan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 935, Short.MAX_VALUE)
+                    .addComponent(scrollDeliveryMan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1041, Short.MAX_VALUE)
                     .addComponent(scrollOrderList)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -221,9 +222,9 @@ public class RestaurantOrderJPanel extends javax.swing.JPanel {
                 .addComponent(scrollDeliveryMan, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAssignDeliveryMan)
-                    .addComponent(btnBack))
-                .addContainerGap(66, Short.MAX_VALUE))
+                    .addComponent(btnBack)
+                    .addComponent(btnAssignDeliveryMan))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -234,13 +235,13 @@ public class RestaurantOrderJPanel extends javax.swing.JPanel {
         if (count == 1) {
             if (row >= 0) {
                 String id = (String) tblOrderList.getValueAt(row, 9);
-                Order order = business.getOrderDirectory().fetchOrder(id);//orderDirectory.getOrderDirectory().get(row);
+                Order order = business.getOrderDirectory().fetchOrder(id);
                 order.setStatus("Confirmed");
                 JOptionPane.showMessageDialog(null, "Order Confirmed!");
                 populateOrderList();
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Select one order!");
+            JOptionPane.showMessageDialog(null, "Select one order at a time!");
         }
     }//GEN-LAST:event_brnConfirmOrderActionPerformed
 

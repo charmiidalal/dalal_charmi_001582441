@@ -28,14 +28,14 @@ public class MainJFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainJFrame
      */
-    private EcoSystem system;
-    private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
-    private CustomerDirectory customerDirectory;
-    private RestaurantDirectory restaurantDirectory;
-    private DeliveryManDirectory deliveryManDirectory;
-    private EmployeeDirectory employeeDirectory;
-    private MenuDirectory menuDirectory;
-    private OrderDirectory orderDirectory;
+    private final EcoSystem system;
+    private final DB4OUtil dB4OUtil = DB4OUtil.getInstance();
+    private final CustomerDirectory customerDirectory;
+    private final RestaurantDirectory restaurantDirectory;
+    private final DeliveryManDirectory deliveryManDirectory;
+    private final EmployeeDirectory employeeDirectory;
+    private final MenuDirectory menuDirectory;
+    private final OrderDirectory orderDirectory;
 
     public MainJFrame() throws IOException {
         initComponents();
@@ -65,7 +65,18 @@ public class MainJFrame extends javax.swing.JFrame {
         } else {
             this.deliveryManDirectory = system.getDeliveryManDirectory();
         }
-        employeeDirectory = system.getEmployeeDirectory();
+        if (system.getOrderDirectory() == null) {
+            orderDirectory = new OrderDirectory();
+
+        } else {
+            this.orderDirectory = system.getOrderDirectory();
+        }
+        if (system.getEmployeeDirectory() == null) {
+            employeeDirectory = new EmployeeDirectory();
+
+        } else {
+            this.employeeDirectory = system.getEmployeeDirectory();
+        }
     }
 
     /**
@@ -115,8 +126,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         lblPassword.setText("Password:");
 
-        btnLogout.setBackground(new java.awt.Color(237, 56, 51));
-        btnLogout.setForeground(new java.awt.Color(255, 255, 255));
+        btnLogout.setBackground(new java.awt.Color(255, 255, 255));
         btnLogout.setText("Logout");
         btnLogout.setEnabled(false);
         btnLogout.addActionListener(new java.awt.event.ActionListener() {

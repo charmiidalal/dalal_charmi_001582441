@@ -11,6 +11,7 @@ import Business.EcoSystem;
 import Business.Menu.Item;
 import Business.Menu.MenuDirectory;
 import Business.Order.Order;
+import Business.Order.OrderDirectory;
 import Business.Restaurant.Restaurant;
 import Business.Restaurant.RestaurantDirectory;
 import Business.UserAccount.UserAccount;
@@ -26,39 +27,40 @@ import javax.swing.table.DefaultTableModel;
 public class CustomerAreaJPanel extends javax.swing.JPanel {
 
     private final JPanel userProcessContainer;
-    private final EcoSystem business;
+    private final EcoSystem system;
     private final UserAccount userAccount;
     private final CustomerDirectory customerDirectory;
     private final RestaurantDirectory restaurantDirectory;
     private final DeliveryManDirectory deliveryManDirectory;
     private final MenuDirectory menuDirectory;
-
+    private final OrderDirectory orderDirectory;
     /**
      * Creates new form DoctorWorkAreaJPanel
      */
 
-    public CustomerAreaJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem business, CustomerDirectory customerDirectory, RestaurantDirectory restaurantDirectory, DeliveryManDirectory deliveryManDirectory, MenuDirectory menuDirectory) {
+    public CustomerAreaJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem system, CustomerDirectory customerDirectory, RestaurantDirectory restaurantDirectory, DeliveryManDirectory deliveryManDirectory, MenuDirectory menuDirectory,OrderDirectory orderDirectory) {
         initComponents();
 
         this.userProcessContainer = userProcessContainer;
-        this.business = business;
+        this.system = system;
         this.userAccount = account;
         this.customerDirectory = customerDirectory;
         this.restaurantDirectory = restaurantDirectory;
         this.deliveryManDirectory = deliveryManDirectory;
         this.menuDirectory = menuDirectory;
+        this.orderDirectory = orderDirectory;
         populateMenuTable();
     }
 
     public void populateMenuTable() {
         DefaultTableModel model = (DefaultTableModel) tblRestaurantList.getModel();
         model.setRowCount(0);
-        for (Item foodItem : menuDirectory.getMenuDirectory()) {
+        for (Item item : menuDirectory.getMenuDirectory()) {
             Object[] row = new Object[4];
-            row[0] = restaurantDirectory.getRestName(foodItem.getRestaurantNo());
-            row[1] = foodItem.getItemName();
-            row[2] = foodItem.getIngrediants();
-            row[3] = foodItem.getPrice();
+            row[0] = restaurantDirectory.getRestName(item.getRestaurantNo());
+            row[1] = item.getItemName();
+            row[2] = item.getIngrediants();
+            row[3] = item.getPrice();
             model.addRow(row);
         }
     }
@@ -178,9 +180,9 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(lblRestaurantsAvailable, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54)
+                .addGap(55, 55, 55)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnViewOrders)
                     .addComponent(boxQuantityCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -198,21 +200,22 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
         if (count == 1) {
             if (row >= 0) {
                 int quantity = Integer.parseInt(boxQuantityCount.getSelectedItem().toString());
-                Restaurant restaurant = restaurantDirectory.getRestaurant(menuDirectory.getFoodItemByIndex(row).getRestaurantNo());
+                Restaurant restaurant = restaurantDirectory.getRestaurant(menuDirectory.getItemByKey(row).getRestaurantNo());
                 Customer customer = customerDirectory.getCustomer(userAccount.getEmployee().getName());
-                Item foodItem = menuDirectory.getFoodItemByIndex(row);
+                Item item = menuDirectory.getItemByKey(row);
                 String status = "Awaiting Order Confirmation";
 
-                Order orderRequest = business.getOrderDirectory().add();
-                orderRequest.setOrderNo("Order" + (business.getOrderDirectory().getOrderDirectory().size()));
-                orderRequest.setItem(foodItem);
+                Order orderRequest = orderDirectory.add();
+                orderRequest.setOrderNo("Order" + (orderDirectory.getOrderDirectory().size()));
+                orderRequest.setItem(item);
                 orderRequest.setRestaurant(restaurant);
                 orderRequest.setCustomer(customer);
                 orderRequest.setQuantity(quantity);
                 orderRequest.setMessage("Order has been placed");
                 orderRequest.setSender(userAccount);
                 orderRequest.setStatus(status);
-                business.getWorkQueue().getWorkRequestList().add(orderRequest);
+                system.setOrderDirectory(orderDirectory);
+                system.getWorkQueue().getWorkRequestList().add(orderRequest);
                 JOptionPane.showMessageDialog(null, "Your Order has been sucessfully placed!");
             }
         } else {
@@ -224,7 +227,7 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
     private void btnViewOrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewOrdersActionPerformed
         // TODO add your handling code here:
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        RequestLabTestJPanel requestLabTestPanel = new RequestLabTestJPanel(userProcessContainer, userAccount, business, customerDirectory, restaurantDirectory, deliveryManDirectory, menuDirectory);
+        RequestLabTestJPanel requestLabTestPanel = new RequestLabTestJPanel(userProcessContainer, userAccount, system, customerDirectory, restaurantDirectory, deliveryManDirectory, menuDirectory,orderDirectory);
         userProcessContainer.add(requestLabTestPanel);
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnViewOrdersActionPerformed

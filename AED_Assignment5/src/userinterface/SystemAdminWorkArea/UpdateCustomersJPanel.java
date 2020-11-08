@@ -33,10 +33,10 @@ public class UpdateCustomersJPanel extends javax.swing.JPanel {
         this.system = system;
         this.customerDirectory = customerDirectory;
         this.container = userProcessContainer;
-        populate();
+        populateCustomerList();
     }
 
-    public void populate() {
+    public void populateCustomerList() {
         DefaultTableModel model = (DefaultTableModel) customerJTable.getModel();
 
         model.setRowCount(0);
@@ -132,41 +132,39 @@ public class UpdateCustomersJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 105, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 934, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(75, 75, 75))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(addCustomerBtn)
-                        .addGap(132, 132, 132)
-                        .addComponent(viewCustomer)
-                        .addGap(135, 135, 135)
-                        .addComponent(deleteCustomer)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(backBtn)
-                        .addGap(88, 88, 88))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(507, 507, 507))
+                        .addGap(399, 399, 399)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(backBtn)
+                                .addGap(114, 114, 114)
+                                .addComponent(addCustomerBtn)
+                                .addGap(136, 136, 136)
+                                .addComponent(viewCustomer)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(deleteCustomer))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 934, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(57, 57, 57)
+                .addGap(60, 60, 60)
                 .addComponent(jLabel1)
-                .addGap(39, 39, 39)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
-                .addGap(29, 29, 29)
+                .addGap(33, 33, 33)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addCustomerBtn)
                     .addComponent(viewCustomer)
                     .addComponent(deleteCustomer)
                     .addComponent(backBtn))
-                .addGap(229, 229, 229))
+                .addGap(62, 62, 62))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -197,7 +195,7 @@ public class UpdateCustomersJPanel extends javax.swing.JPanel {
                 int selectionResult = JOptionPane.showConfirmDialog(null, "Are you sure to delete??", "Warning", selectionButton);
                 if (selectionResult == JOptionPane.YES_OPTION) {
                     customerDirectory.deleteCustomer(selectedRow, system);
-                    populate();
+                    populateCustomerList();
                 }
             }
         } else {

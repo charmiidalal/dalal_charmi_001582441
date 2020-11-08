@@ -34,10 +34,7 @@ public class RestaurantMenuItemJPanel extends javax.swing.JPanel {
         txtIngrediants.setText(item.getIngrediants());
         txtItemPrice.setText(String.valueOf(item.getPrice()));
         txtItemNo.setText(item.getItemNo());
-        txtItemName.setEditable(false);
-        txtItemNo.setEditable(false);
-        txtIngrediants.setEditable(false);
-        txtItemPrice.setEditable(false);
+        restrictEditOnFields();
     }
 
     /**
@@ -175,11 +172,9 @@ public class RestaurantMenuItemJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please Fill All Fields!");
         }
         else{
-            menuDirectory.updateFoodItem(item.getItemNo(),itemName,ingrediants,price);
-            txtItemName.setEditable(false);
-            txtIngrediants.setEditable(false);
-            txtItemPrice.setEditable(false);
-            JOptionPane.showMessageDialog(null, "Menu Item Updated!");
+            menuDirectory.updateItem(item.getItemNo(),itemName,ingrediants,price);
+            restrictEditOnFields();
+            JOptionPane.showMessageDialog(null, "Menu item successfully!");
         }
     }//GEN-LAST:event_btnSaveActionPerformed
 
@@ -189,7 +184,12 @@ public class RestaurantMenuItemJPanel extends javax.swing.JPanel {
         txtIngrediants.setEditable(true);
         txtItemPrice.setEditable(true);
     }//GEN-LAST:event_btnUpdateActionPerformed
-
+    public void restrictEditOnFields(){
+        txtItemName.setEditable(false);
+        txtItemNo.setEditable(false);
+        txtIngrediants.setEditable(false);
+        txtItemPrice.setEditable(false);
+    }
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
         container.remove(this);

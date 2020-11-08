@@ -33,7 +33,6 @@ public class ResturantInfoJPanel extends javax.swing.JPanel {
         this.container = userProcessContainer;
         this.restaurant = restaurant;
         this.system = system;
-
         disableAllFields();
 
         for (Restaurant rest : restaurantDirectory.getRestaurantDirectory()) {
@@ -41,13 +40,13 @@ public class ResturantInfoJPanel extends javax.swing.JPanel {
                 this.restaurant = rest;
             }
         }
-
         txtResNo.setText(restaurant.getRestaurantNo());
         txtResName.setText(restaurant.getRestaurantName());
         txtManagerName.setText(restaurant.getOperatorName());
         txtStreetAdd.setText(restaurant.getStreetAddress());
         txtPhoneNo.setText(restaurant.getMobileNo());
         txtEmail.setText(restaurant.getEmail());
+        txtZipcode.setText(restaurant.getZipcode());
     }
 
     /**
@@ -123,77 +122,81 @@ public class ResturantInfoJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(68, 68, 68)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(lblOperatorName)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblPhoneNo1)
-                            .addComponent(lblStreetAddress)))
-                    .addComponent(lblName))
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtStreetAdd, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
-                    .addComponent(txtManagerName)
-                    .addComponent(txtResName)
-                    .addComponent(txtEmail))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblZipcode)
-                    .addComponent(lblPhoneNo)
-                    .addComponent(jLabel2))
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtResNo, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
-                    .addComponent(txtZipcode)
-                    .addComponent(txtPhoneNo))
-                .addGap(119, 119, 119))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(147, 147, 147)
+                .addGap(146, 146, 146)
                 .addComponent(saveBtn)
-                .addGap(108, 108, 108)
+                .addGap(109, 109, 109)
                 .addComponent(editBtn)
-                .addGap(84, 84, 84)
+                .addGap(88, 88, 88)
                 .addComponent(jButton1)
-                .addGap(0, 259, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(325, 325, 325)
                 .addComponent(lblResInfo)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(68, 68, 68)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblName)
+                    .addComponent(lblOperatorName)
+                    .addComponent(lblStreetAddress)
+                    .addComponent(lblPhoneNo1))
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtManagerName, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
+                                .addComponent(txtResName))
+                            .addComponent(txtStreetAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblPhoneNo)
+                            .addComponent(jLabel2)
+                            .addComponent(lblZipcode))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtZipcode, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPhoneNo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtResNo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(122, 122, 122))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addComponent(lblResInfo)
-                .addGap(71, 71, 71)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(49, 49, 49)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblName)
-                    .addComponent(txtResName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtResNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(41, 41, 41)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtResName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2)
+                        .addComponent(txtResNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtPhoneNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblPhoneNo)
                     .addComponent(txtManagerName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblOperatorName)
-                    .addComponent(txtPhoneNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(61, 61, 61)
+                    .addComponent(lblOperatorName))
+                .addGap(52, 52, 52)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtZipcode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtStreetAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblZipcode)
                     .addComponent(lblStreetAddress)
-                    .addComponent(txtStreetAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                    .addComponent(txtZipcode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPhoneNo1)
                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(9, 9, 9)
+                .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
                     .addComponent(editBtn)
-                    .addComponent(saveBtn)
-                    .addComponent(jButton1))
-                .addGap(49, 49, 49))
+                    .addComponent(saveBtn))
+                .addGap(30, 30, 30))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -203,6 +206,8 @@ public class ResturantInfoJPanel extends javax.swing.JPanel {
         txtManagerName.setEditable(true);
         txtStreetAdd.setEditable(true);
         txtPhoneNo.setEditable(true);
+        txtEmail.setEditable(true);
+        txtZipcode.setEditable(true);
     }//GEN-LAST:event_editBtnActionPerformed
 
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
@@ -218,9 +223,9 @@ public class ResturantInfoJPanel extends javax.swing.JPanel {
         if (id.isEmpty() || name.isEmpty() || manager.isEmpty() || address.isEmpty() || mobileNo.isEmpty() || email.isEmpty()| zipcode.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Enter all fields!");
         } else if (!system.checkValidPhoneFormat(mobileNo)) {
-            JOptionPane.showMessageDialog(null, "Phone format incorrect!");
+            JOptionPane.showMessageDialog(null, "Please enter correct phone format!");
         }else if (!system.checkValidEmailFormat(email)) {
-            JOptionPane.showMessageDialog(null, "Email format incorrect!");
+            JOptionPane.showMessageDialog(null, "please enter correct email format!");
         } else {
             restaurant.setOperatorName(manager);
             restaurant.setStreetAddress(address);
@@ -228,9 +233,7 @@ public class ResturantInfoJPanel extends javax.swing.JPanel {
             restaurant.setEmail(email);
             restaurant.setRestaurantName(name);
             restaurant.setZipcode(zipcode);
-
-            JOptionPane.showMessageDialog(null, "Changes saved sucessfully!");
-
+            JOptionPane.showMessageDialog(null, "Restaurant info updated successfulyy!");
             disableAllFields();
         }
     }//GEN-LAST:event_saveBtnActionPerformed
@@ -241,6 +244,7 @@ public class ResturantInfoJPanel extends javax.swing.JPanel {
         txtStreetAdd.setEditable(false);
         txtPhoneNo.setEditable(false);
         txtZipcode.setEditable(false);
+        txtEmail.setEditable(false);
     }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:

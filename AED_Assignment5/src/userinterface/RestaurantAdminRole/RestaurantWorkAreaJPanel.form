@@ -25,7 +25,7 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="userJButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Info"/>
+        <Property name="text" type="java.lang.String" value="Restaurant Info"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="userJButtonActionPerformed"/>

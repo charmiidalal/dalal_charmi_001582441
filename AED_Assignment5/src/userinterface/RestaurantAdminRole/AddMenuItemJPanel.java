@@ -145,7 +145,7 @@ public class AddMenuItemJPanel extends javax.swing.JPanel {
             price = Double.parseDouble(txtPrice.getText());
         } catch (NumberFormatException exception) {
             System.out.println(exception);
-            JOptionPane.showMessageDialog(null, "Enter valid price!");
+            JOptionPane.showMessageDialog(null, "Please enter valid price!");
         }
         if (itemName.isEmpty() || ingrediants.isEmpty() || price == 0) {
             JOptionPane.showMessageDialog(null, "Please fill all the fields.");

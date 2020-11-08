@@ -36,7 +36,7 @@ public class MenuDirectory {
         menuDirectory.add(item);
     }
     
-    public Item getFoodItem(String itemId){
+    public Item fetchItem(String itemId){
         for(Item item: menuDirectory){
             if(item.getItemNo().equalsIgnoreCase(itemId)){
                 return item;
@@ -45,7 +45,7 @@ public class MenuDirectory {
         return null;
     }
 
-    public void updateFoodItem(String itemNo, String itemName, String ingrediants, Double price) {
+    public void updateItem(String itemNo, String itemName, String ingrediants, Double price) {
         for(Item item: menuDirectory){
             if(item.getItemNo().equalsIgnoreCase(itemNo)){
                 item.setItemName(itemName);
@@ -63,7 +63,7 @@ public class MenuDirectory {
         }
     }
     
-    public Item getFoodItemByIndex(int index){
-        return menuDirectory.get(index);
+    public Item getItemByKey(int key){
+        return menuDirectory.get(key);
     }
 }

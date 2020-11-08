@@ -119,22 +119,22 @@ public class RestaurantMenuJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 666, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(btnAddItem)
-                        .addGap(51, 51, 51)
-                        .addComponent(btnEditItem)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnDeleteItem)
                         .addGap(29, 29, 29)
-                        .addComponent(backBtn)
-                        .addGap(14, 14, 14)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(201, 201, 201)
-                .addComponent(lblRestaurantMenu)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(backBtn)
+                                .addGap(116, 116, 116)
+                                .addComponent(btnAddItem)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnEditItem)
+                                .addGap(112, 112, 112)
+                                .addComponent(btnDeleteItem))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 746, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(298, 298, 298)
+                        .addComponent(lblRestaurantMenu)))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,14 +142,14 @@ public class RestaurantMenuJPanel extends javax.swing.JPanel {
                 .addGap(19, 19, 19)
                 .addComponent(lblRestaurantMenu)
                 .addGap(28, 28, 28)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(backBtn)
                     .addComponent(btnAddItem)
                     .addComponent(btnEditItem)
-                    .addComponent(btnDeleteItem)
-                    .addComponent(backBtn))
-                .addContainerGap(193, Short.MAX_VALUE))
+                    .addComponent(btnDeleteItem))
+                .addContainerGap(125, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -171,8 +171,8 @@ public class RestaurantMenuJPanel extends javax.swing.JPanel {
     private void btnAddItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddItemActionPerformed
         // TODO add your handling code here:
         CardLayout layout = (CardLayout) container.getLayout();
-        AddMenuItemJPanel createFoodItemJPanel = new AddMenuItemJPanel(container, account, system, restaurantDirectory, menuDirectory);
-        container.add(createFoodItemJPanel);
+        AddMenuItemJPanel addMenuItem = new AddMenuItemJPanel(container, account, system, restaurantDirectory, menuDirectory);
+        container.add(addMenuItem);
         layout.next(container);
     }//GEN-LAST:event_btnAddItemActionPerformed
 
@@ -190,16 +190,14 @@ public class RestaurantMenuJPanel extends javax.swing.JPanel {
         int selectedRow = tblResMenu.getSelectedRow();
         int count = tblResMenu.getSelectedRowCount();
         if (count == 1) {
-            if (selectedRow >= 0) {
-                CardLayout layout = (CardLayout) container.getLayout();
-                String foodItemId = (String) tblResMenu.getValueAt(selectedRow, 0);
-                Item foodItem = menuDirectory.getFoodItem(foodItemId);
-                RestaurantMenuItemJPanel viewCustomersJPanel = new RestaurantMenuItemJPanel(container, foodItem, menuDirectory);
-                container.add(viewCustomersJPanel);
-                layout.next(container);
-            }
+            CardLayout layout = (CardLayout) container.getLayout();
+            String itemID = (String) tblResMenu.getValueAt(selectedRow, 0);
+            Item item = menuDirectory.fetchItem(itemID);
+            RestaurantMenuItemJPanel restaurantMenuItem = new RestaurantMenuItemJPanel(container, item, menuDirectory);
+            container.add(restaurantMenuItem);
+            layout.next(container);
         } else {
-            JOptionPane.showMessageDialog(null, "Please select a Row!!");
+            JOptionPane.showMessageDialog(null, "Please select a row first!");
         }
     }//GEN-LAST:event_btnEditItemActionPerformed
 
@@ -209,14 +207,14 @@ public class RestaurantMenuJPanel extends javax.swing.JPanel {
         int delectedRowCount = tblResMenu.getSelectedRowCount();
         if (delectedRowCount == 1) {
             int confirmOptions = JOptionPane.YES_NO_OPTION;
-            int response = JOptionPane.showConfirmDialog(null, "Are you sure to delete??", "Warning", confirmOptions);
+            int response = JOptionPane.showConfirmDialog(null, "Are you sure want to delete this menu item?", "Warning", confirmOptions);
             if (response == JOptionPane.YES_OPTION) {
                 String itemID = (String) tblResMenu.getValueAt(selectedRow, 0);
                 menuDirectory.deleteItem(itemID);
                 populateMenu();
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Please select a Row!!");
+            JOptionPane.showMessageDialog(null, "Please select a row first!!");
         }
     }//GEN-LAST:event_btnDeleteItemActionPerformed
 

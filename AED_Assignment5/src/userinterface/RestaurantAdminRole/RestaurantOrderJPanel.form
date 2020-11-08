@@ -51,7 +51,7 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="scrollDeliveryMan" alignment="1" pref="935" max="32767" attributes="0"/>
+                  <Component id="scrollDeliveryMan" alignment="1" pref="1041" max="32767" attributes="0"/>
                   <Component id="scrollOrderList" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -85,10 +85,10 @@
               <Component id="scrollDeliveryMan" min="-2" pref="116" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnAssignDeliveryMan" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnBack" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnAssignDeliveryMan" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="66" max="32767" attributes="0"/>
+              <EmptySpace pref="70" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -113,16 +113,16 @@
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="10" rowCount="4">
-                <Column editable="false" title="Message" type="java.lang.String"/>
+                <Column editable="false" title="Order Id" type="java.lang.Object"/>
+                <Column editable="true" title="Sender" type="java.lang.Object"/>
                 <Column editable="false" title="Receiver" type="java.lang.String"/>
+                <Column editable="false" title="Message" type="java.lang.String"/>
                 <Column editable="false" title="Status" type="java.lang.String"/>
-                <Column editable="false" title="Result" type="java.lang.String"/>
                 <Column editable="false" title="Restaurant Name" type="java.lang.Object"/>
-                <Column editable="false" title="Food Item" type="java.lang.Object"/>
+                <Column editable="false" title="Result" type="java.lang.String"/>
+                <Column editable="false" title="Item Name" type="java.lang.Object"/>
                 <Column editable="false" title="Quantity" type="java.lang.Object"/>
                 <Column editable="false" title="Total Cost" type="java.lang.Object"/>
-                <Column editable="false" title="Delivery Man" type="java.lang.Object"/>
-                <Column editable="false" title="Order Id" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">

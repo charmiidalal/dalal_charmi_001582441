@@ -52,7 +52,7 @@ public class CustomerDirectory {
                 customer.setCustomerPhone(customerPhone);
                 customer.setCustomerStreet(customerStreet);
                 customer.setCustomerZipcode(customerZipcode);
-                customer.setCustomerZipcode(customerEmail);
+                customer.setCustomerEmail(customerEmail);
             }
         }
     }
