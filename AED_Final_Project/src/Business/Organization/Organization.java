@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author raunak
+ * @author Anusha
  */
 public abstract class Organization {
 
@@ -21,17 +21,47 @@ public abstract class Organization {
     private EmployeeDirectory employeeDirectory;
     private UserAccountDirectory userAccountDirectory;
     private int organizationID;
-    private static int counter=0;
-    
-    public enum Type{
-        Admin("Admin Organization"), Doctor("Doctor Organization"), Lab("Lab Organization");
+    private static int counter = 0;
+    public ArrayList<Role> roles;
+    private Type type;
+
+    public enum Type {
+        Admin("Admin Organization"),
+        Plumbing("Plumbing Organization"),
+        PackersMovers("Movers Packers Organization"),
+        Cleaning("Cleaning Organization"),
+        Electrician("Electrician Organization"),
+        PropertyManager("Property Manager Organization"),
+        Builder("Builder Organization"),
+        Inspector("Inspector Organization"),
+        Agent("Agent Organization"),
+        Goverment("Goverment Organization"),
+        Photographer("Photographer Organization"),
+        Buyer("Buyer Organization"),
+        Seller("Seller Organization");
+
         private String value;
+
         private Type(String value) {
             this.value = value;
         }
+
         public String getValue() {
             return value;
         }
+
+        @Override
+        public String toString() {
+            return value;
+        }
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
     }
 
     public Organization(String name) {
@@ -40,11 +70,12 @@ public abstract class Organization {
         employeeDirectory = new EmployeeDirectory();
         userAccountDirectory = new UserAccountDirectory();
         organizationID = counter;
+        roles = new ArrayList<>();
         ++counter;
     }
 
     public abstract ArrayList<Role> getSupportedRole();
-    
+
     public UserAccountDirectory getUserAccountDirectory() {
         return userAccountDirectory;
     }
@@ -56,7 +87,7 @@ public abstract class Organization {
     public EmployeeDirectory getEmployeeDirectory() {
         return employeeDirectory;
     }
-    
+
     public String getName() {
         return name;
     }
@@ -77,6 +108,5 @@ public abstract class Organization {
     public String toString() {
         return name;
     }
-    
-    
+
 }

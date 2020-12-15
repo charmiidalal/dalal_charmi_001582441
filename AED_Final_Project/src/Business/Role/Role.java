@@ -6,20 +6,36 @@ package Business.Role;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
 
 /**
  *
- * @author raunak
+ * @author Anusha
  */
 public abstract class Role {
     
     public enum RoleType{
         Admin("Admin"),
-        Doctor("Doctor"),
-        LabAssistant("Lab Assistant");
+        Buyer("Buyer"),
+        Seller("Seller"),
+        Inspector("Inspector"),
+        Agent("Agent"),
+        Builder("Builder"),
+        PropertyManager("Property Manager"),
+        Electrician("Electrician"),
+        Miscellaneous("Miscellaneous"),
+        Cleaning("Cleaning"),
+        PackersMovers("Movers & Packers"),
+        Photographer("Photographer"),
+        Plumbing("Plumbing"),
+        GovermentEmployee("Goverment Employee"),
+        QAadmin("Quality Assuarance Admin"),
+        BrokerAdmin("Broker Admin"),
+        ServiceProviderAdmin("Service Provider Admin"),
+        PropertyAdmin("Property Admin");
         
         private String value;
         private RoleType(String value){
@@ -36,10 +52,11 @@ public abstract class Role {
         }
     }
     
-    public abstract JPanel createWorkArea(JPanel userProcessContainer, 
+   public abstract JPanel createWorkArea(JPanel userProcessContainer, 
             UserAccount account, 
             Organization organization, 
-            Enterprise enterprise, 
+            Enterprise enterprise,
+            Network network,
             EcoSystem business);
 
     @Override
